@@ -1,0 +1,2 @@
+1. Normalize and center the distance matrix before modifying it for consistent scaling and better performance.
+2. Minimize computation redundancy and avoid in-place modifications to improve efficiency and accuracy.

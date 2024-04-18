@@ -1,0 +1,4 @@
+- Experiment with different weights and thresholds.
+- Optimize calculations for efficiency.
+- Consider the impact of multiple future nodes.
+- Simplify and parameterize scoring function.

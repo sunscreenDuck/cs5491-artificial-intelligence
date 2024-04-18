@@ -1,0 +1,21 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    # Normalize the distance matrix
+    normalized_matrix = distance_matrix / np.max(distance_matrix)
+
+    # Calculate the mean distance
+    distance_mean = np.mean(normalized_matrix)
+
+    # Calculate the inverse distances
+    inverse_distances = 1 / normalized_matrix
+
+    # Sum of inverse distances and normalized distances
+    combined_factors = inverse_distances + normalized_matrix / distance_mean
+
+    # Sparsify matrix using 90th percentile
+    sparsified_matrix = np.where(
+        combined_factors > np.percentile(combined_factors, 90), combined_factors, 0
+    )
+
+    return sparsified_matrix
+```

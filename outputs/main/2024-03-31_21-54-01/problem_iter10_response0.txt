@@ -1,0 +1,39 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+
+    threshold = 0.7
+    weight_distance_to_current = 0.4
+    weight_average_distance_to_unvisited = 0.3
+    weight_std_dev_distance_to_unvisited = 0.2
+    weight_distance_to_destination = 0.1
+    weight_num_unvisited_nodes = 0.5
+    
+    scores = {}
+    
+    max_distance = np.amax(distance_matrix)
+    normalized_distance_matrix = distance_matrix / max_distance
+    
+    distances_to_node = normalized_distance_matrix[current_node]
+    average_distance_to_unvisited = np.mean(normalized_distance_matrix[:, list(unvisited_nodes)])
+    std_dev_distance_to_unvisited = np.std(normalized_distance_matrix[:, list(unvisited_nodes)], axis=1)
+    distances_to_destination = normalized_distance_matrix[destination_node]
+    
+    for node in unvisited_nodes:
+        normalized_current_to_node_distance = distances_to_node[node]
+        normalized_destination_to_node_distance = distances_to_destination[node]
+        
+        score = (
+            weight_distance_to_current * normalized_current_to_node_distance -
+            weight_average_distance_to_unvisited * average_distance_to_unvisited[node] +
+            weight_std_dev_distance_to_unvisited * std_dev_distance_to_unvisited[node] -
+            weight_distance_to_destination * normalized_destination_to_node_distance -
+            weight_num_unvisited_nodes * len(unvisited_nodes)
+        )
+        
+        scores[node] = score
+    
+    next_node = min(scores, key=scores.get)
+    if scores[next_node] < threshold:
+        return None  # No suitable next node found
+    return next_node
+```

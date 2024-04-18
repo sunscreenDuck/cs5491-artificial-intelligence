@@ -1,0 +1,823 @@
+[2024-04-01 17:33:26,668][root][INFO] - Workspace: C:\Development\cs5491-artificial-intelligence\outputs\main\2024-04-01_17-33-26
+[2024-04-01 17:33:26,668][root][INFO] - Project Root: C:\Development\cs5491-artificial-intelligence
+[2024-04-01 17:33:26,668][root][INFO] - Using LLM: gpt-3.5-turbo-0613
+[2024-04-01 17:33:26,668][root][INFO] - Using Algorithm: reevo
+[2024-04-01 17:33:28,834][root][INFO] - Problem: tsp_gls
+[2024-04-01 17:33:28,834][root][INFO] - Problem description: Solving Traveling Salesman Problem (TSP) via guided local search. TSP requires finding the shortest path that visits all given nodes and returns to the starting node.
+[2024-04-01 17:33:28,834][root][INFO] - Function name: heuristics
+[2024-04-01 17:33:28,835][root][INFO] - Evaluating seed function...
+[2024-04-01 17:33:28,836][root][INFO] - Seed function code: 
+import numpy as np
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    # It's bad to include long edges in the solution
+    return distance_matrix
+[2024-04-01 17:33:28,836][root][INFO] - Iteration 0: Running Code 0
+[2024-04-01 17:33:30,086][root][INFO] - Iteration 0: Code Run 0 successful!
+[2024-04-01 17:34:00,928][root][INFO] - Iteration 0, response_id 0: Objective value: 10.617516362484723
+[2024-04-01 17:34:00,928][root][INFO] - Iteration 0: Elitist: 10.617516362484723
+[2024-04-01 17:34:00,929][root][INFO] - Iteration 0 finished...
+[2024-04-01 17:34:00,929][root][INFO] - Best obj: 10.617516362484723, Best Code Path: problem_iter0_code0.py
+[2024-04-01 17:34:00,929][root][INFO] - Function Evals: 1
+[2024-04-01 17:34:00,929][root][INFO] - Initial Population Prompt: 
+System Prompt: 
+You are an expert in the domain of optimization heuristics. Your task is to design heuristics that can effectively solve optimization problems.
+Your response outputs Python code and nothing else. Format your code as a Python code string: "```python ... ```".
+
+User Prompt: 
+Write a heuristics function for Solving Traveling Salesman Problem (TSP) via guided local search. TSP requires finding the shortest path that visits all given nodes and returns to the starting node.
+The `heuristics` function takes as input a distance matrix, and returns prior indicators of how bad it is to include each edge in a solution. The return is of the same shape as the input.
+
+def heuristics_v1(distance_matrix: np.ndarray) -> np.ndarray:
+    # It's bad to include long edges in the solution
+    return distance_matrix
+
+
+Improve `heuristics_v1` to give `heuristics_v2`. Output code only and enclose your code with Python code block: ```python ... ```.
+
+
+[2024-04-01 17:34:08,476][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:34:08,495][root][INFO] - Iteration 1: Running Code 0
+[2024-04-01 17:34:09,446][root][INFO] - Iteration 1: Code Run 0 successful!
+[2024-04-01 17:34:09,446][root][INFO] - Iteration 1: Running Code 1
+[2024-04-01 17:34:10,586][root][INFO] - Iteration 1: Code Run 1 successful!
+[2024-04-01 17:34:10,586][root][INFO] - Iteration 1: Running Code 2
+[2024-04-01 17:34:12,033][root][INFO] - Iteration 1: Code Run 2 successful!
+[2024-04-01 17:34:12,033][root][INFO] - Iteration 1: Running Code 3
+[2024-04-01 17:34:13,573][root][INFO] - Iteration 1: Code Run 3 successful!
+[2024-04-01 17:34:13,573][root][INFO] - Iteration 1: Running Code 4
+[2024-04-01 17:34:15,321][root][INFO] - Iteration 1: Code Run 4 successful!
+[2024-04-01 17:34:15,321][root][INFO] - Iteration 1: Running Code 5
+[2024-04-01 17:34:17,220][root][INFO] - Iteration 1: Code Run 5 successful!
+[2024-04-01 17:34:17,221][root][INFO] - Iteration 1: Running Code 6
+[2024-04-01 17:34:19,477][root][INFO] - Iteration 1: Code Run 6 successful!
+[2024-04-01 17:34:19,477][root][INFO] - Iteration 1: Running Code 7
+[2024-04-01 17:34:24,775][root][INFO] - Iteration 1: Code Run 7 successful!
+[2024-04-01 17:34:24,775][root][INFO] - Iteration 1: Running Code 8
+[2024-04-01 17:34:32,443][root][INFO] - Iteration 1: Code Run 8 successful!
+[2024-04-01 17:34:32,443][root][INFO] - Iteration 1: Running Code 9
+[2024-04-01 17:34:42,377][root][INFO] - Iteration 1: Code Run 9 successful!
+[2024-04-01 17:35:32,405][root][INFO] - Error for response_id 0: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_gls/eval.py', '200', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 50.0 seconds
+[2024-04-01 17:36:22,456][root][INFO] - Error for response_id 1: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_gls/eval.py', '200', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 50.0 seconds
+[2024-04-01 17:37:03,484][root][INFO] - Iteration 1, response_id 2: Objective value: 10.816530086681718
+[2024-04-01 17:37:07,283][root][INFO] - Iteration 1, response_id 3: Objective value: 10.812139276307674
+[2024-04-01 17:37:22,012][root][INFO] - Iteration 1, response_id 4: Objective value: 10.6838923717918
+[2024-04-01 17:37:22,022][root][INFO] - Iteration 1, response_id 5: Objective value: 10.822793291731537
+[2024-04-01 17:37:22,032][root][INFO] - Iteration 1, response_id 6: Objective value: 10.610078466245126
+[2024-04-01 17:37:22,043][root][INFO] - Iteration 1, response_id 7: Objective value: 10.61187021517528
+[2024-04-01 17:37:29,588][root][INFO] - Iteration 1, response_id 8: Objective value: 10.663056551795504
+[2024-04-01 17:37:29,589][root][INFO] - Iteration 1, response_id 9: Objective value: 10.816530086681718
+[2024-04-01 17:37:29,598][root][INFO] - Iteration 1: Elitist: 10.610078466245126
+[2024-04-01 17:37:29,598][root][INFO] - Iteration 1 finished...
+[2024-04-01 17:37:29,598][root][INFO] - Best obj: 10.610078466245126, Best Code Path: problem_iter1_code6.py
+[2024-04-01 17:37:29,598][root][INFO] - Function Evals: 11
+[2024-04-01 17:37:29,608][root][INFO] - Short-term Reflection Prompt: 
+System Prompt: 
+You are an expert in the domain of optimization heuristics. Your task is to give hints to design better heuristics.
+
+User Prompt: 
+Below are two heuristics functions for Solving Traveling Salesman Problem (TSP) via guided local search. TSP requires finding the shortest path that visits all given nodes and returns to the starting node.
+The `heuristics` function takes as input a distance matrix, and returns prior indicators of how bad it is to include each edge in a solution. The return is of the same shape as the input.
+
+You are provided with two code versions below, where the second version performs better than the first one.
+
+[Worse code]
+
+    # Calculate the average distance
+    avg_distance = np.mean(distance_matrix)
+    
+    # Initialize the penalty matrix with zeros
+    penalty_matrix = np.zeros_like(distance_matrix)
+    
+    # Iterate over the distance matrix
+    for i in range(distance_matrix.shape[0]):
+        for j in range(distance_matrix.shape[1]):
+            # Compute the penalty value for each edge
+            penalty = distance_matrix[i, j] - avg_distance
+            
+            # Set the penalty value in the penalty matrix
+            penalty_matrix[i, j] = penalty
+    
+    return penalty_matrix
+
+[Better code]
+
+    # Calculate the sum of distances for each node
+    node_distances = np.sum(distance_matrix, axis=1)
+
+    # Calculate the average distance for each node
+    node_avg_distance = node_distances / (distance_matrix.shape[0] - 1)
+
+    # Calculate the prior indicators for each edge
+    edge_indicators = distance_matrix / node_avg_distance[:, np.newaxis]
+
+    return edge_indicators
+
+You respond with some hints for designing better heuristics, based on the two code versions and using less than 20 words.
+[2024-04-01 17:37:31,322][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:37:31,456][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:37:31,506][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:37:31,564][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:37:31,602][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:37:31,879][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:37:31,946][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:37:32,140][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:37:32,141][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:37:32,177][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:37:32,182][root][INFO] - Crossover Prompt: 
+System Prompt: 
+You are an expert in the domain of optimization heuristics. Your task is to design heuristics that can effectively solve optimization problems.
+Your response outputs Python code and nothing else. Format your code as a Python code string: "```python ... ```".
+
+User Prompt: 
+Write a heuristics function for Solving Traveling Salesman Problem (TSP) via guided local search. TSP requires finding the shortest path that visits all given nodes and returns to the starting node.
+The `heuristics` function takes as input a distance matrix, and returns prior indicators of how bad it is to include each edge in a solution. The return is of the same shape as the input.
+
+
+[Worse code]
+def heuristics_v0(distance_matrix: np.ndarray) -> np.ndarray:
+
+    # Calculate the average distance
+    avg_distance = np.mean(distance_matrix)
+    
+    # Initialize the penalty matrix with zeros
+    penalty_matrix = np.zeros_like(distance_matrix)
+    
+    # Iterate over the distance matrix
+    for i in range(distance_matrix.shape[0]):
+        for j in range(distance_matrix.shape[1]):
+            # Compute the penalty value for each edge
+            penalty = distance_matrix[i, j] - avg_distance
+            
+            # Set the penalty value in the penalty matrix
+            penalty_matrix[i, j] = penalty
+    
+    return penalty_matrix
+
+[Better code]
+def heuristics_v1(distance_matrix: np.ndarray) -> np.ndarray:
+
+    # Calculate the sum of distances for each node
+    node_distances = np.sum(distance_matrix, axis=1)
+
+    # Calculate the average distance for each node
+    node_avg_distance = node_distances / (distance_matrix.shape[0] - 1)
+
+    # Calculate the prior indicators for each edge
+    edge_indicators = distance_matrix / node_avg_distance[:, np.newaxis]
+
+    return edge_indicators
+
+[Reflection]
+- Consider individual node properties rather than global statistics.
+- Normalize values based on node characteristics rather than overall averages.
+
+[Improved code]
+Please write an improved function `heuristics_v2`, according to the reflection. Output code only and enclose your code with Python code block: ```python ... ```.
+[2024-04-01 17:37:33,574][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:37:34,496][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:37:34,905][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:37:35,068][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:37:35,929][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:37:35,935][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:37:36,239][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:37:36,544][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:37:37,056][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:37:38,081][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:37:38,105][root][INFO] - Iteration 2: Running Code 0
+[2024-04-01 17:37:39,046][root][INFO] - Iteration 2: Code Run 0 successful!
+[2024-04-01 17:37:39,046][root][INFO] - Iteration 2: Running Code 1
+[2024-04-01 17:37:40,154][root][INFO] - Iteration 2: Code Run 1 successful!
+[2024-04-01 17:37:40,154][root][INFO] - Iteration 2: Running Code 2
+[2024-04-01 17:37:41,488][root][INFO] - Iteration 2: Code Run 2 successful!
+[2024-04-01 17:37:41,488][root][INFO] - Iteration 2: Running Code 3
+[2024-04-01 17:37:42,984][root][INFO] - Iteration 2: Code Run 3 successful!
+[2024-04-01 17:37:42,984][root][INFO] - Iteration 2: Running Code 4
+[2024-04-01 17:37:44,654][root][INFO] - Iteration 2: Code Run 4 successful!
+[2024-04-01 17:37:44,654][root][INFO] - Iteration 2: Running Code 5
+[2024-04-01 17:37:46,481][root][INFO] - Iteration 2: Code Run 5 successful!
+[2024-04-01 17:37:46,482][root][INFO] - Iteration 2: Running Code 6
+[2024-04-01 17:37:48,676][root][INFO] - Iteration 2: Code Run 6 successful!
+[2024-04-01 17:37:48,677][root][INFO] - Iteration 2: Running Code 7
+[2024-04-01 17:37:54,844][root][INFO] - Iteration 2: Code Run 7 successful!
+[2024-04-01 17:37:54,845][root][INFO] - Iteration 2: Running Code 8
+[2024-04-01 17:38:13,083][root][INFO] - Iteration 2: Code Run 8 successful!
+[2024-04-01 17:38:13,083][root][INFO] - Iteration 2: Running Code 9
+[2024-04-01 17:38:32,053][root][INFO] - Iteration 2: Code Run 9 successful!
+[2024-04-01 17:39:27,909][root][INFO] - Iteration 2, response_id 0: Objective value: 10.597306510857736
+[2024-04-01 17:39:32,561][root][INFO] - Iteration 2, response_id 1: Objective value: 10.602535807211684
+[2024-04-01 17:39:32,564][root][INFO] - Iteration 2, response_id 2: Objective value: 10.610078466245126
+[2024-04-01 17:39:36,534][root][INFO] - Iteration 2, response_id 3: Objective value: 10.610078466245126
+[2024-04-01 17:40:26,541][root][INFO] - Error for response_id 4: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_gls/eval.py', '200', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 50.0 seconds
+[2024-04-01 17:40:26,545][root][INFO] - Iteration 2, response_id 5: Objective value: 10.610078466245126
+[2024-04-01 17:40:32,019][root][INFO] - Iteration 2, response_id 6: Objective value: 10.6838923717918
+[2024-04-01 17:40:32,028][root][INFO] - Iteration 2, response_id 7: Objective value: 10.632713993842348
+[2024-04-01 17:40:32,029][root][INFO] - Iteration 2, response_id 8: Objective value: 10.61187021517528
+[2024-04-01 17:40:45,245][root][INFO] - Iteration 2, response_id 9: Objective value: 10.6838923717918
+[2024-04-01 17:40:45,248][root][INFO] - Iteration 2: Elitist: 10.597306510857736
+[2024-04-01 17:40:45,249][root][INFO] - Iteration 2 finished...
+[2024-04-01 17:40:45,251][root][INFO] - Best obj: 10.597306510857736, Best Code Path: problem_iter2_code0.py
+[2024-04-01 17:40:45,253][root][INFO] - Function Evals: 21
+[2024-04-01 17:40:45,254][root][INFO] - Long-term Reflection Prompt: 
+System Prompt: 
+You are an expert in the domain of optimization heuristics. Your task is to give hints to design better heuristics.
+
+User Prompt: 
+Below is your prior long-term reflection on designing heuristics for Solving Traveling Salesman Problem (TSP) via guided local search. TSP requires finding the shortest path that visits all given nodes and returns to the starting node.
+
+
+Below are some newly gained insights.
+- Consider individual node properties rather than global statistics.
+- Normalize values based on node characteristics rather than overall averages.
+- Consider using weighted average instead of shortest edge for edge heuristics.
+- Normalize the distances by node averages for better performance.
+1. Consider using global information rather than local information.
+2. Normalize the indicators to make them comparable across different instances.
+1. Consider using node-level information rather than global statistics.
+2. Normalize distances using node averages rather than global averages.
+1. Consider normalizing the distance matrix to obtain better heuristics values.
+2. Scale the indicators appropriately to avoid overflows and underflows.
+3. Explore different normalization techniques to improve the quality of the heuristics.
+4. Incorporate domain-specific knowledge to enhance the heuristics' performance.
+1. Prioritize edges based on their relative distances to the average distances of their connected nodes.
+2. Avoid normalizing distances to prevent edge cases with small ranges having high heuristics values.
+1. Consider the range of distances to normalize heuristics values instead of the average and standard deviation.
+2. Normalize distances between 0 and 1 instead of using their average and standard deviation.
+Consider using local search instead of prior indicators, and use node-based calculations for better performance.
+1. Prioritize edges with smallest differences, rather than normalizing distances.
+2. Calculate edge heuristics based on the shortest edge for each node.
+- Use a range-based heuristics function to assign higher values to better edges.
+- Normalize distance values to balance edge selection while avoiding division by zero.
+
+Write constructive hints for designing better heuristics, based on prior reflections and new insights and using less than 50 words.
+[2024-04-01 17:40:47,205][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:40:47,214][root][INFO] - Mutation Prompt: 
+System Prompt: 
+You are an expert in the domain of optimization heuristics. Your task is to design heuristics that can effectively solve optimization problems.
+Your response outputs Python code and nothing else. Format your code as a Python code string: "```python ... ```".
+
+User Prompt: 
+Write a heuristics function for Solving Traveling Salesman Problem (TSP) via guided local search. TSP requires finding the shortest path that visits all given nodes and returns to the starting node.
+The `heuristics` function takes as input a distance matrix, and returns prior indicators of how bad it is to include each edge in a solution. The return is of the same shape as the input.
+
+
+[Prior reflection]
+1. Prioritize node-level information and use weighted averages for edge heuristics.
+2. Normalize distances based on node characteristics and consider a range-based heuristics function for edge selection.
+
+[Code]
+def heuristics_v1(distance_matrix: np.ndarray) -> np.ndarray:
+
+    num_nodes = distance_matrix.shape[0]
+    
+    # Calculate the sum of distances for each node
+    node_distances = np.sum(distance_matrix, axis=1)
+    
+    # Calculate the average distance for each node
+    node_avg_distance = node_distances / (num_nodes - 1)
+    
+    # Initialize the penalty matrix with zeros
+    penalty_matrix = np.zeros_like(distance_matrix)
+    
+    # Iterate over the distance matrix
+    for i in range(num_nodes):
+        for j in range(num_nodes):
+            # Compute the penalty value for each edge
+            penalty = distance_matrix[i, j] / (node_avg_distance[i] + node_avg_distance[j])
+            
+            # Set the penalty value in the penalty matrix
+            penalty_matrix[i, j] = penalty
+    
+    return penalty_matrix
+
+[Improved code]
+Please write a mutated function `heuristics_v2`, according to the reflection. Output code only and enclose your code with Python code block: ```python ... ```.
+[2024-04-01 17:40:52,427][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:40:52,445][root][INFO] - Iteration 3: Running Code 0
+[2024-04-01 17:40:53,352][root][INFO] - Iteration 3: Code Run 0 successful!
+[2024-04-01 17:40:53,352][root][INFO] - Iteration 3: Running Code 1
+[2024-04-01 17:40:54,386][root][INFO] - Iteration 3: Code Run 1 successful!
+[2024-04-01 17:40:54,386][root][INFO] - Iteration 3: Running Code 2
+[2024-04-01 17:40:55,671][root][INFO] - Iteration 3: Code Run 2 successful!
+[2024-04-01 17:40:55,671][root][INFO] - Iteration 3: Running Code 3
+[2024-04-01 17:40:57,097][root][INFO] - Iteration 3: Code Run 3 successful!
+[2024-04-01 17:40:57,097][root][INFO] - Iteration 3: Running Code 4
+[2024-04-01 17:40:58,638][root][INFO] - Iteration 3: Code Run 4 successful!
+[2024-04-01 17:41:48,649][root][INFO] - Error for response_id 0: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_gls/eval.py', '200', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 50.0 seconds
+[2024-04-01 17:41:53,160][root][INFO] - Iteration 3, response_id 1: Objective value: 10.622748306903803
+[2024-04-01 17:41:55,787][root][INFO] - Iteration 3, response_id 2: Objective value: 10.636285356911362
+[2024-04-01 17:41:56,258][root][INFO] - Iteration 3, response_id 3: Objective value: 10.597306510857736
+[2024-04-01 17:41:57,206][root][INFO] - Iteration 3, response_id 4: Objective value: 10.741753297022083
+[2024-04-01 17:41:57,206][root][INFO] - Iteration 3 finished...
+[2024-04-01 17:41:57,208][root][INFO] - Best obj: 10.597306510857736, Best Code Path: problem_iter2_code0.py
+[2024-04-01 17:41:57,208][root][INFO] - Function Evals: 26
+[2024-04-01 17:41:59,773][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:41:59,854][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:41:59,878][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:41:59,906][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:41:59,961][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:41:59,994][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:42:00,053][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:42:00,317][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:42:01,033][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:42:01,340][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:42:03,900][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:42:03,901][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:42:04,312][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:42:04,343][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:42:05,539][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:42:05,590][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:42:05,603][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:42:06,152][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:42:06,357][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:42:08,821][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:42:08,841][root][INFO] - Iteration 4: Running Code 0
+[2024-04-01 17:42:09,761][root][INFO] - Iteration 4: Code Run 0 successful!
+[2024-04-01 17:42:09,761][root][INFO] - Iteration 4: Running Code 1
+[2024-04-01 17:42:10,735][root][INFO] - Iteration 4: Code Run 1 successful!
+[2024-04-01 17:42:10,735][root][INFO] - Iteration 4: Running Code 2
+[2024-04-01 17:42:11,875][root][INFO] - Iteration 4: Code Run 2 successful!
+[2024-04-01 17:42:11,875][root][INFO] - Iteration 4: Running Code 3
+[2024-04-01 17:42:13,197][root][INFO] - Iteration 4: Code Run 3 successful!
+[2024-04-01 17:42:13,197][root][INFO] - Iteration 4: Running Code 4
+[2024-04-01 17:42:14,640][root][INFO] - Iteration 4: Code Run 4 execution error!
+[2024-04-01 17:42:14,640][root][INFO] - Iteration 4: Running Code 5
+[2024-04-01 17:42:16,269][root][INFO] - Iteration 4: Code Run 5 successful!
+[2024-04-01 17:42:16,269][root][INFO] - Iteration 4: Running Code 6
+[2024-04-01 17:42:17,976][root][INFO] - Iteration 4: Code Run 6 successful!
+[2024-04-01 17:42:17,977][root][INFO] - Iteration 4: Running Code 7
+[2024-04-01 17:42:20,394][root][INFO] - Iteration 4: Code Run 7 successful!
+[2024-04-01 17:42:20,394][root][INFO] - Iteration 4: Running Code 8
+[2024-04-01 17:42:31,405][root][INFO] - Iteration 4: Code Run 8 successful!
+[2024-04-01 17:42:31,405][root][INFO] - Iteration 4: Running Code 9
+[2024-04-01 17:42:44,846][root][INFO] - Iteration 4: Code Run 9 successful!
+[2024-04-01 17:43:34,853][root][INFO] - Error for response_id 0: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_gls/eval.py', '200', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 50.0 seconds
+[2024-04-01 17:43:39,593][root][INFO] - Iteration 4, response_id 1: Objective value: 10.636285356911362
+[2024-04-01 17:43:48,662][root][INFO] - Iteration 4, response_id 2: Objective value: 10.597306510857736
+[2024-04-01 17:43:49,394][root][INFO] - Iteration 4, response_id 3: Objective value: 10.599985985418066
+[2024-04-01 17:43:49,411][root][INFO] - Iteration 4, response_id 4: Objective value: inf
+[2024-04-01 17:43:50,719][root][INFO] - Iteration 4, response_id 5: Objective value: 10.597306510857736
+[2024-04-01 17:43:50,720][root][INFO] - Iteration 4, response_id 6: Objective value: 10.597306510857736
+[2024-04-01 17:43:52,075][root][INFO] - Iteration 4, response_id 7: Objective value: 10.608508827174282
+[2024-04-01 17:43:55,160][root][INFO] - Iteration 4, response_id 8: Objective value: 10.601044675455093
+[2024-04-01 17:44:01,621][root][INFO] - Iteration 4, response_id 9: Objective value: 10.610078466245126
+[2024-04-01 17:44:01,623][root][INFO] - Iteration 4 finished...
+[2024-04-01 17:44:01,625][root][INFO] - Best obj: 10.597306510857736, Best Code Path: problem_iter2_code0.py
+[2024-04-01 17:44:01,625][root][INFO] - Function Evals: 36
+[2024-04-01 17:44:04,523][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:44:13,469][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:44:13,476][root][INFO] - Iteration 5: Running Code 0
+[2024-04-01 17:44:14,367][root][INFO] - Iteration 5: Code Run 0 successful!
+[2024-04-01 17:44:14,367][root][INFO] - Iteration 5: Running Code 1
+[2024-04-01 17:44:15,553][root][INFO] - Iteration 5: Code Run 1 successful!
+[2024-04-01 17:44:15,553][root][INFO] - Iteration 5: Running Code 2
+[2024-04-01 17:44:16,963][root][INFO] - Iteration 5: Code Run 2 successful!
+[2024-04-01 17:44:16,963][root][INFO] - Iteration 5: Running Code 3
+[2024-04-01 17:44:18,510][root][INFO] - Iteration 5: Code Run 3 successful!
+[2024-04-01 17:44:18,510][root][INFO] - Iteration 5: Running Code 4
+[2024-04-01 17:44:20,345][root][INFO] - Iteration 5: Code Run 4 successful!
+[2024-04-01 17:45:10,347][root][INFO] - Error for response_id 0: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_gls/eval.py', '200', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 50.0 seconds
+[2024-04-01 17:46:00,355][root][INFO] - Error for response_id 1: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_gls/eval.py', '200', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 50.0 seconds
+[2024-04-01 17:46:14,350][root][INFO] - Iteration 5, response_id 2: Objective value: 10.6326107062986
+[2024-04-01 17:46:15,325][root][INFO] - Iteration 5, response_id 3: Objective value: 10.597306510857736
+[2024-04-01 17:46:15,602][root][INFO] - Iteration 5, response_id 4: Objective value: 10.597306510857736
+[2024-04-01 17:46:15,603][root][INFO] - Iteration 5 finished...
+[2024-04-01 17:46:15,603][root][INFO] - Best obj: 10.597306510857736, Best Code Path: problem_iter2_code0.py
+[2024-04-01 17:46:15,603][root][INFO] - Function Evals: 41
+[2024-04-01 17:46:18,745][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:46:18,850][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:46:18,917][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:46:19,000][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:46:19,277][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:46:19,282][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:46:19,388][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:46:19,896][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:46:20,333][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:46:22,348][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:46:24,395][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:46:24,600][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:46:24,805][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:46:25,113][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:46:25,831][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:46:26,649][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:46:26,727][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:46:26,833][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:46:27,570][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:46:28,697][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:46:28,722][root][INFO] - Iteration 6: Running Code 0
+[2024-04-01 17:46:29,624][root][INFO] - Iteration 6: Code Run 0 successful!
+[2024-04-01 17:46:29,624][root][INFO] - Iteration 6: Running Code 1
+[2024-04-01 17:46:30,593][root][INFO] - Iteration 6: Code Run 1 successful!
+[2024-04-01 17:46:30,593][root][INFO] - Iteration 6: Running Code 2
+[2024-04-01 17:46:31,924][root][INFO] - Iteration 6: Code Run 2 successful!
+[2024-04-01 17:46:31,925][root][INFO] - Iteration 6: Running Code 3
+[2024-04-01 17:46:33,461][root][INFO] - Iteration 6: Code Run 3 successful!
+[2024-04-01 17:46:33,461][root][INFO] - Iteration 6: Running Code 4
+[2024-04-01 17:46:35,167][root][INFO] - Iteration 6: Code Run 4 successful!
+[2024-04-01 17:46:35,167][root][INFO] - Iteration 6: Running Code 5
+[2024-04-01 17:46:37,069][root][INFO] - Iteration 6: Code Run 5 successful!
+[2024-04-01 17:46:37,070][root][INFO] - Iteration 6: Running Code 6
+[2024-04-01 17:46:39,365][root][INFO] - Iteration 6: Code Run 6 successful!
+[2024-04-01 17:46:39,366][root][INFO] - Iteration 6: Running Code 7
+[2024-04-01 17:46:45,866][root][INFO] - Iteration 6: Code Run 7 successful!
+[2024-04-01 17:46:45,866][root][INFO] - Iteration 6: Running Code 8
+[2024-04-01 17:47:05,563][root][INFO] - Iteration 6: Code Run 8 successful!
+[2024-04-01 17:47:05,564][root][INFO] - Iteration 6: Running Code 9
+[2024-04-01 17:47:30,223][root][INFO] - Iteration 6: Code Run 9 successful!
+[2024-04-01 17:48:20,228][root][INFO] - Error for response_id 0: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_gls/eval.py', '200', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 50.0 seconds
+[2024-04-01 17:49:10,231][root][INFO] - Error for response_id 1: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_gls/eval.py', '200', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 50.0 seconds
+[2024-04-01 17:49:10,234][root][INFO] - Iteration 6, response_id 2: Objective value: 10.597306510857736
+[2024-04-01 17:49:19,045][root][INFO] - Iteration 6, response_id 3: Objective value: 10.597306510857736
+[2024-04-01 17:49:28,592][root][INFO] - Iteration 6, response_id 4: Objective value: 10.597306510857736
+[2024-04-01 17:49:36,611][root][INFO] - Iteration 6, response_id 5: Objective value: 10.597306510857736
+[2024-04-01 17:49:36,614][root][INFO] - Iteration 6, response_id 6: Objective value: 10.608508827174282
+[2024-04-01 17:49:36,616][root][INFO] - Iteration 6, response_id 7: Objective value: 10.597306510857736
+[2024-04-01 17:49:55,740][root][INFO] - Iteration 6, response_id 8: Objective value: 10.597306510857736
+[2024-04-01 17:49:56,526][root][INFO] - Iteration 6, response_id 9: Objective value: 10.597306510857736
+[2024-04-01 17:49:56,530][root][INFO] - Iteration 6 finished...
+[2024-04-01 17:49:56,531][root][INFO] - Best obj: 10.597306510857736, Best Code Path: problem_iter2_code0.py
+[2024-04-01 17:49:56,531][root][INFO] - Function Evals: 51
+[2024-04-01 17:49:59,429][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:50:02,807][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:50:02,829][root][INFO] - Iteration 7: Running Code 0
+[2024-04-01 17:50:03,674][root][INFO] - Iteration 7: Code Run 0 successful!
+[2024-04-01 17:50:03,674][root][INFO] - Iteration 7: Running Code 1
+[2024-04-01 17:50:04,663][root][INFO] - Iteration 7: Code Run 1 successful!
+[2024-04-01 17:50:04,663][root][INFO] - Iteration 7: Running Code 2
+[2024-04-01 17:50:05,940][root][INFO] - Iteration 7: Code Run 2 successful!
+[2024-04-01 17:50:05,940][root][INFO] - Iteration 7: Running Code 3
+[2024-04-01 17:50:07,436][root][INFO] - Iteration 7: Code Run 3 successful!
+[2024-04-01 17:50:07,436][root][INFO] - Iteration 7: Running Code 4
+[2024-04-01 17:50:09,133][root][INFO] - Iteration 7: Code Run 4 successful!
+[2024-04-01 17:50:59,134][root][INFO] - Error for response_id 0: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_gls/eval.py', '200', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 50.0 seconds
+[2024-04-01 17:51:49,147][root][INFO] - Error for response_id 1: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_gls/eval.py', '200', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 50.0 seconds
+[2024-04-01 17:52:00,838][root][INFO] - Iteration 7, response_id 2: Objective value: 10.597306510857736
+[2024-04-01 17:52:02,735][root][INFO] - Iteration 7, response_id 3: Objective value: 10.597306510857736
+[2024-04-01 17:52:02,737][root][INFO] - Iteration 7, response_id 4: Objective value: 10.597306510857736
+[2024-04-01 17:52:02,738][root][INFO] - Iteration 7 finished...
+[2024-04-01 17:52:02,739][root][INFO] - Best obj: 10.597306510857736, Best Code Path: problem_iter2_code0.py
+[2024-04-01 17:52:02,741][root][INFO] - Function Evals: 56
+[2024-04-01 17:52:05,314][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:52:05,584][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:52:05,668][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:52:05,789][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:52:05,798][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:52:05,899][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:52:05,935][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:52:07,221][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:52:07,242][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:52:07,528][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:52:09,576][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:52:09,783][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:52:10,193][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:52:10,703][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:52:11,009][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:52:11,011][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:52:11,066][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:52:11,075][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:52:11,523][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:52:11,529][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:52:11,555][root][INFO] - Iteration 8: Running Code 0
+[2024-04-01 17:52:12,439][root][INFO] - Iteration 8: Code Run 0 successful!
+[2024-04-01 17:52:12,440][root][INFO] - Iteration 8: Running Code 1
+[2024-04-01 17:52:13,417][root][INFO] - Iteration 8: Code Run 1 successful!
+[2024-04-01 17:52:13,417][root][INFO] - Iteration 8: Running Code 2
+[2024-04-01 17:52:14,657][root][INFO] - Iteration 8: Code Run 2 successful!
+[2024-04-01 17:52:14,657][root][INFO] - Iteration 8: Running Code 3
+[2024-04-01 17:52:16,172][root][INFO] - Iteration 8: Code Run 3 successful!
+[2024-04-01 17:52:16,172][root][INFO] - Iteration 8: Running Code 4
+[2024-04-01 17:52:17,812][root][INFO] - Iteration 8: Code Run 4 successful!
+[2024-04-01 17:52:17,812][root][INFO] - Iteration 8: Running Code 5
+[2024-04-01 17:52:19,720][root][INFO] - Iteration 8: Code Run 5 successful!
+[2024-04-01 17:52:19,721][root][INFO] - Iteration 8: Running Code 6
+[2024-04-01 17:52:22,000][root][INFO] - Iteration 8: Code Run 6 successful!
+[2024-04-01 17:52:22,002][root][INFO] - Iteration 8: Running Code 7
+[2024-04-01 17:52:31,287][root][INFO] - Iteration 8: Code Run 7 successful!
+[2024-04-01 17:52:31,288][root][INFO] - Iteration 8: Running Code 8
+[2024-04-01 17:52:49,297][root][INFO] - Iteration 8: Code Run 8 successful!
+[2024-04-01 17:52:49,298][root][INFO] - Iteration 8: Running Code 9
+[2024-04-01 17:53:16,461][root][INFO] - Iteration 8: Code Run 9 successful!
+[2024-04-01 17:54:06,482][root][INFO] - Error for response_id 0: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_gls/eval.py', '200', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 50.0 seconds
+[2024-04-01 17:54:46,952][root][INFO] - Iteration 8, response_id 1: Objective value: 10.607805033463645
+[2024-04-01 17:55:13,076][root][INFO] - Iteration 8, response_id 2: Objective value: 10.597306510857736
+[2024-04-01 17:55:13,077][root][INFO] - Iteration 8, response_id 3: Objective value: 10.597306510857736
+[2024-04-01 17:55:15,370][root][INFO] - Iteration 8, response_id 4: Objective value: 10.606732229662423
+[2024-04-01 17:56:05,382][root][INFO] - Error for response_id 5: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_gls/eval.py', '200', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 50.0 seconds
+[2024-04-01 17:56:05,384][root][INFO] - Iteration 8, response_id 6: Objective value: 10.597306510857736
+[2024-04-01 17:56:05,386][root][INFO] - Iteration 8, response_id 7: Objective value: 10.606732229662423
+[2024-04-01 17:56:05,394][root][INFO] - Iteration 8, response_id 8: Objective value: 10.604665627148899
+[2024-04-01 17:56:05,396][root][INFO] - Iteration 8, response_id 9: Objective value: 10.606732229662423
+[2024-04-01 17:56:05,397][root][INFO] - Iteration 8 finished...
+[2024-04-01 17:56:05,397][root][INFO] - Best obj: 10.597306510857736, Best Code Path: problem_iter2_code0.py
+[2024-04-01 17:56:05,397][root][INFO] - Function Evals: 66
+[2024-04-01 17:56:09,084][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:56:16,856][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:56:16,880][root][INFO] - Iteration 9: Running Code 0
+[2024-04-01 17:56:17,756][root][INFO] - Iteration 9: Code Run 0 successful!
+[2024-04-01 17:56:17,757][root][INFO] - Iteration 9: Running Code 1
+[2024-04-01 17:56:18,726][root][INFO] - Iteration 9: Code Run 1 successful!
+[2024-04-01 17:56:18,726][root][INFO] - Iteration 9: Running Code 2
+[2024-04-01 17:56:19,955][root][INFO] - Iteration 9: Code Run 2 successful!
+[2024-04-01 17:56:19,955][root][INFO] - Iteration 9: Running Code 3
+[2024-04-01 17:56:21,423][root][INFO] - Iteration 9: Code Run 3 successful!
+[2024-04-01 17:56:21,423][root][INFO] - Iteration 9: Running Code 4
+[2024-04-01 17:56:23,131][root][INFO] - Iteration 9: Code Run 4 execution error!
+[2024-04-01 17:57:13,141][root][INFO] - Error for response_id 0: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_gls/eval.py', '200', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 50.0 seconds
+[2024-04-01 17:58:03,145][root][INFO] - Error for response_id 1: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_gls/eval.py', '200', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 50.0 seconds
+[2024-04-01 17:58:07,595][root][INFO] - Iteration 9, response_id 2: Objective value: 10.597306510857736
+[2024-04-01 17:58:07,597][root][INFO] - Iteration 9, response_id 3: Objective value: 10.597306510857736
+[2024-04-01 17:58:07,610][root][INFO] - Iteration 9, response_id 4: Objective value: inf
+[2024-04-01 17:58:07,612][root][INFO] - Iteration 9 finished...
+[2024-04-01 17:58:07,612][root][INFO] - Best obj: 10.597306510857736, Best Code Path: problem_iter2_code0.py
+[2024-04-01 17:58:07,612][root][INFO] - Function Evals: 71
+[2024-04-01 17:58:09,607][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:58:09,813][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:58:09,825][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:58:10,119][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:58:10,123][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:58:10,124][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:58:10,136][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:58:10,171][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:58:10,197][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:58:10,939][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:58:13,397][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:58:13,482][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:58:13,807][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:58:14,112][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:58:14,420][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:58:14,463][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:58:14,497][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:58:14,727][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:58:14,734][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:58:14,931][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 17:58:14,960][root][INFO] - Iteration 10: Running Code 0
+[2024-04-01 17:58:15,820][root][INFO] - Iteration 10: Code Run 0 successful!
+[2024-04-01 17:58:15,820][root][INFO] - Iteration 10: Running Code 1
+[2024-04-01 17:58:16,857][root][INFO] - Iteration 10: Code Run 1 successful!
+[2024-04-01 17:58:16,858][root][INFO] - Iteration 10: Running Code 2
+[2024-04-01 17:58:18,139][root][INFO] - Iteration 10: Code Run 2 successful!
+[2024-04-01 17:58:18,139][root][INFO] - Iteration 10: Running Code 3
+[2024-04-01 17:58:19,616][root][INFO] - Iteration 10: Code Run 3 successful!
+[2024-04-01 17:58:19,616][root][INFO] - Iteration 10: Running Code 4
+[2024-04-01 17:58:21,334][root][INFO] - Iteration 10: Code Run 4 successful!
+[2024-04-01 17:58:21,334][root][INFO] - Iteration 10: Running Code 5
+[2024-04-01 17:58:23,181][root][INFO] - Iteration 10: Code Run 5 successful!
+[2024-04-01 17:58:23,182][root][INFO] - Iteration 10: Running Code 6
+[2024-04-01 17:58:25,489][root][INFO] - Iteration 10: Code Run 6 successful!
+[2024-04-01 17:58:25,490][root][INFO] - Iteration 10: Running Code 7
+[2024-04-01 17:58:29,745][root][INFO] - Iteration 10: Code Run 7 successful!
+[2024-04-01 17:58:29,746][root][INFO] - Iteration 10: Running Code 8
+[2024-04-01 17:58:36,484][root][INFO] - Iteration 10: Code Run 8 successful!
+[2024-04-01 17:58:36,484][root][INFO] - Iteration 10: Running Code 9
+[2024-04-01 17:58:42,015][root][INFO] - Iteration 10: Code Run 9 successful!
+[2024-04-01 17:59:32,050][root][INFO] - Error for response_id 0: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_gls/eval.py', '200', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 50.0 seconds
+[2024-04-01 18:00:20,405][root][INFO] - Iteration 10, response_id 1: Objective value: 10.597306510857736
+[2024-04-01 18:00:26,347][root][INFO] - Iteration 10, response_id 2: Objective value: 10.606732229662423
+[2024-04-01 18:00:27,099][root][INFO] - Iteration 10, response_id 3: Objective value: 10.597306510857736
+[2024-04-01 18:00:27,102][root][INFO] - Iteration 10, response_id 4: Objective value: 10.597306510857736
+[2024-04-01 18:00:35,578][root][INFO] - Iteration 10, response_id 5: Objective value: 10.597306510857736
+[2024-04-01 18:00:35,579][root][INFO] - Iteration 10, response_id 6: Objective value: 10.597306510857736
+[2024-04-01 18:00:35,589][root][INFO] - Iteration 10, response_id 7: Objective value: 10.610355628595624
+[2024-04-01 18:00:35,590][root][INFO] - Iteration 10, response_id 8: Objective value: 10.597306510857736
+[2024-04-01 18:00:35,591][root][INFO] - Iteration 10, response_id 9: Objective value: 10.604665627148899
+[2024-04-01 18:00:35,592][root][INFO] - Iteration 10 finished...
+[2024-04-01 18:00:35,592][root][INFO] - Best obj: 10.597306510857736, Best Code Path: problem_iter2_code0.py
+[2024-04-01 18:00:35,592][root][INFO] - Function Evals: 81
+[2024-04-01 18:00:39,054][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 18:00:43,131][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-01 18:00:43,147][root][INFO] - Iteration 11: Running Code 0
+[2024-04-01 18:00:44,052][root][INFO] - Iteration 11: Code Run 0 successful!
+[2024-04-01 18:00:44,052][root][INFO] - Iteration 11: Running Code 1
+[2024-04-01 18:00:45,032][root][INFO] - Iteration 11: Code Run 1 successful!
+[2024-04-01 18:00:45,032][root][INFO] - Iteration 11: Running Code 2
+[2024-04-01 18:00:46,137][root][INFO] - Iteration 11: Code Run 2 successful!
+[2024-04-01 18:00:46,138][root][INFO] - Iteration 11: Running Code 3
+[2024-04-01 18:00:47,551][root][INFO] - Iteration 11: Code Run 3 successful!
+[2024-04-01 18:00:47,552][root][INFO] - Iteration 11: Running Code 4
+[2024-04-01 18:00:48,912][root][INFO] - Iteration 11: Code Run 4 successful!
+[2024-04-01 18:08:24,209][root][INFO] - Error for response_id 0: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_gls/eval.py', '200', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 50.0 seconds
+[2024-04-01 18:08:31,561][root][INFO] - Iteration 11, response_id 1: Objective value: 10.597306510857736
+[2024-04-01 18:08:33,561][root][INFO] - Iteration 11, response_id 2: Objective value: 10.610078466245126
+[2024-04-01 18:08:33,563][root][INFO] - Iteration 11, response_id 3: Objective value: 10.597306510857736
+[2024-04-01 18:08:34,351][root][INFO] - Iteration 11, response_id 4: Objective value: 10.597306510857736
+[2024-04-01 18:08:34,351][root][INFO] - Iteration 11 finished...
+[2024-04-01 18:08:34,352][root][INFO] - Best obj: 10.597306510857736, Best Code Path: problem_iter2_code0.py
+[2024-04-01 18:08:34,352][root][INFO] - Function Evals: 86
+[2024-04-01 18:08:34,379][openai._base_client][INFO] - Retrying request to /chat/completions in 0.793092 seconds
+[2024-04-01 18:08:34,379][openai._base_client][INFO] - Retrying request to /chat/completions in 0.806314 seconds
+[2024-04-01 18:08:34,382][openai._base_client][INFO] - Retrying request to /chat/completions in 0.874995 seconds
+[2024-04-01 18:08:34,383][openai._base_client][INFO] - Retrying request to /chat/completions in 0.969923 seconds
+[2024-04-01 18:08:34,387][openai._base_client][INFO] - Retrying request to /chat/completions in 0.948840 seconds
+[2024-04-01 18:08:34,393][openai._base_client][INFO] - Retrying request to /chat/completions in 0.873139 seconds
+[2024-04-01 18:08:34,393][openai._base_client][INFO] - Retrying request to /chat/completions in 0.988247 seconds
+[2024-04-01 18:08:34,397][openai._base_client][INFO] - Retrying request to /chat/completions in 0.948126 seconds
+[2024-04-01 18:08:34,402][openai._base_client][INFO] - Retrying request to /chat/completions in 0.928290 seconds
+[2024-04-01 18:08:34,406][openai._base_client][INFO] - Retrying request to /chat/completions in 0.815504 seconds
+[2024-04-01 18:08:35,189][openai._base_client][INFO] - Retrying request to /chat/completions in 1.702870 seconds
+[2024-04-01 18:08:35,195][openai._base_client][INFO] - Retrying request to /chat/completions in 1.756172 seconds
+[2024-04-01 18:08:35,222][openai._base_client][INFO] - Retrying request to /chat/completions in 1.904835 seconds
+[2024-04-01 18:08:35,268][openai._base_client][INFO] - Retrying request to /chat/completions in 1.863859 seconds
+[2024-04-01 18:08:35,269][openai._base_client][INFO] - Retrying request to /chat/completions in 1.768062 seconds
+[2024-04-01 18:08:35,336][openai._base_client][INFO] - Retrying request to /chat/completions in 1.552091 seconds
+[2024-04-01 18:08:35,344][openai._base_client][INFO] - Retrying request to /chat/completions in 1.806512 seconds
+[2024-04-01 18:08:35,352][openai._base_client][INFO] - Retrying request to /chat/completions in 1.953799 seconds
+[2024-04-01 18:08:35,362][openai._base_client][INFO] - Retrying request to /chat/completions in 1.975875 seconds
+[2024-04-01 18:08:35,387][openai._base_client][INFO] - Retrying request to /chat/completions in 1.525759 seconds
+[2024-04-01 18:08:36,891][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:36,892][root][INFO] - Attempt 1 failed with error: Connection error.
+[2024-04-01 18:08:36,895][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:36,896][root][INFO] - Attempt 1 failed with error: Connection error.
+[2024-04-01 18:08:36,916][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:36,916][root][INFO] - Attempt 1 failed with error: Connection error.
+[2024-04-01 18:08:36,955][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:36,955][root][INFO] - Attempt 1 failed with error: Connection error.
+[2024-04-01 18:08:37,039][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:37,040][root][INFO] - Attempt 1 failed with error: Connection error.
+[2024-04-01 18:08:37,130][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:37,130][root][INFO] - Attempt 1 failed with error: Connection error.
+[2024-04-01 18:08:37,134][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:37,134][root][INFO] - Attempt 1 failed with error: Connection error.
+[2024-04-01 18:08:37,151][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:37,151][root][INFO] - Attempt 1 failed with error: Connection error.
+[2024-04-01 18:08:37,309][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:37,310][root][INFO] - Attempt 1 failed with error: Connection error.
+[2024-04-01 18:08:37,342][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:37,342][root][INFO] - Attempt 1 failed with error: Connection error.
+[2024-04-01 18:08:37,906][openai._base_client][INFO] - Retrying request to /chat/completions in 0.910951 seconds
+[2024-04-01 18:08:37,906][openai._base_client][INFO] - Retrying request to /chat/completions in 0.902414 seconds
+[2024-04-01 18:08:37,922][openai._base_client][INFO] - Retrying request to /chat/completions in 0.989585 seconds
+[2024-04-01 18:08:37,964][openai._base_client][INFO] - Retrying request to /chat/completions in 0.836502 seconds
+[2024-04-01 18:08:38,049][openai._base_client][INFO] - Retrying request to /chat/completions in 0.891406 seconds
+[2024-04-01 18:08:38,135][openai._base_client][INFO] - Retrying request to /chat/completions in 0.984594 seconds
+[2024-04-01 18:08:38,138][openai._base_client][INFO] - Retrying request to /chat/completions in 0.837943 seconds
+[2024-04-01 18:08:38,156][openai._base_client][INFO] - Retrying request to /chat/completions in 0.886486 seconds
+[2024-04-01 18:08:38,319][openai._base_client][INFO] - Retrying request to /chat/completions in 0.891846 seconds
+[2024-04-01 18:08:38,354][openai._base_client][INFO] - Retrying request to /chat/completions in 0.885794 seconds
+[2024-04-01 18:08:38,802][openai._base_client][INFO] - Retrying request to /chat/completions in 1.949638 seconds
+[2024-04-01 18:08:38,811][openai._base_client][INFO] - Retrying request to /chat/completions in 1.841801 seconds
+[2024-04-01 18:08:38,819][openai._base_client][INFO] - Retrying request to /chat/completions in 1.960552 seconds
+[2024-04-01 18:08:38,914][openai._base_client][INFO] - Retrying request to /chat/completions in 1.815005 seconds
+[2024-04-01 18:08:38,942][openai._base_client][INFO] - Retrying request to /chat/completions in 1.604440 seconds
+[2024-04-01 18:08:38,979][openai._base_client][INFO] - Retrying request to /chat/completions in 1.628340 seconds
+[2024-04-01 18:08:39,044][openai._base_client][INFO] - Retrying request to /chat/completions in 1.689645 seconds
+[2024-04-01 18:08:39,126][openai._base_client][INFO] - Retrying request to /chat/completions in 1.988795 seconds
+[2024-04-01 18:08:39,214][openai._base_client][INFO] - Retrying request to /chat/completions in 1.674835 seconds
+[2024-04-01 18:08:39,242][openai._base_client][INFO] - Retrying request to /chat/completions in 1.976466 seconds
+[2024-04-01 18:08:40,550][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:40,550][root][INFO] - Attempt 2 failed with error: Connection error.
+[2024-04-01 18:08:40,610][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:40,610][root][INFO] - Attempt 2 failed with error: Connection error.
+[2024-04-01 18:08:40,654][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:40,655][root][INFO] - Attempt 2 failed with error: Connection error.
+[2024-04-01 18:08:40,732][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:40,732][root][INFO] - Attempt 2 failed with error: Connection error.
+[2024-04-01 18:08:40,737][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:40,737][root][INFO] - Attempt 2 failed with error: Connection error.
+[2024-04-01 18:08:40,756][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:40,756][root][INFO] - Attempt 2 failed with error: Connection error.
+[2024-04-01 18:08:40,781][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:40,781][root][INFO] - Attempt 2 failed with error: Connection error.
+[2024-04-01 18:08:40,890][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:40,891][root][INFO] - Attempt 2 failed with error: Connection error.
+[2024-04-01 18:08:41,116][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:41,117][root][INFO] - Attempt 2 failed with error: Connection error.
+[2024-04-01 18:08:41,222][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:41,222][root][INFO] - Attempt 2 failed with error: Connection error.
+[2024-04-01 18:08:41,560][openai._base_client][INFO] - Retrying request to /chat/completions in 0.930957 seconds
+[2024-04-01 18:08:41,619][openai._base_client][INFO] - Retrying request to /chat/completions in 0.897897 seconds
+[2024-04-01 18:08:41,665][openai._base_client][INFO] - Retrying request to /chat/completions in 0.822488 seconds
+[2024-04-01 18:08:41,746][openai._base_client][INFO] - Retrying request to /chat/completions in 0.804550 seconds
+[2024-04-01 18:08:41,747][openai._base_client][INFO] - Retrying request to /chat/completions in 0.823597 seconds
+[2024-04-01 18:08:41,761][openai._base_client][INFO] - Retrying request to /chat/completions in 0.976619 seconds
+[2024-04-01 18:08:41,795][openai._base_client][INFO] - Retrying request to /chat/completions in 0.899415 seconds
+[2024-04-01 18:08:41,900][openai._base_client][INFO] - Retrying request to /chat/completions in 0.829603 seconds
+[2024-04-01 18:08:42,127][openai._base_client][INFO] - Retrying request to /chat/completions in 0.751245 seconds
+[2024-04-01 18:08:42,232][openai._base_client][INFO] - Retrying request to /chat/completions in 0.871766 seconds
+[2024-04-01 18:08:42,489][openai._base_client][INFO] - Retrying request to /chat/completions in 1.593452 seconds
+[2024-04-01 18:08:42,492][openai._base_client][INFO] - Retrying request to /chat/completions in 1.609609 seconds
+[2024-04-01 18:08:42,520][openai._base_client][INFO] - Retrying request to /chat/completions in 1.787435 seconds
+[2024-04-01 18:08:42,556][openai._base_client][INFO] - Retrying request to /chat/completions in 1.891286 seconds
+[2024-04-01 18:08:42,573][openai._base_client][INFO] - Retrying request to /chat/completions in 1.673155 seconds
+[2024-04-01 18:08:42,698][openai._base_client][INFO] - Retrying request to /chat/completions in 1.663482 seconds
+[2024-04-01 18:08:42,731][openai._base_client][INFO] - Retrying request to /chat/completions in 1.783600 seconds
+[2024-04-01 18:08:42,741][openai._base_client][INFO] - Retrying request to /chat/completions in 1.881819 seconds
+[2024-04-01 18:08:42,881][openai._base_client][INFO] - Retrying request to /chat/completions in 1.657543 seconds
+[2024-04-01 18:08:43,106][openai._base_client][INFO] - Retrying request to /chat/completions in 1.810774 seconds
+[2024-04-01 18:08:44,087][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:44,087][root][INFO] - Attempt 3 failed with error: Connection error.
+[2024-04-01 18:08:44,106][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:44,107][root][INFO] - Attempt 3 failed with error: Connection error.
+[2024-04-01 18:08:44,249][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:44,249][root][INFO] - Attempt 3 failed with error: Connection error.
+[2024-04-01 18:08:44,310][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:44,310][root][INFO] - Attempt 3 failed with error: Connection error.
+[2024-04-01 18:08:44,364][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:44,364][root][INFO] - Attempt 3 failed with error: Connection error.
+[2024-04-01 18:08:44,451][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:44,451][root][INFO] - Attempt 3 failed with error: Connection error.
+[2024-04-01 18:08:44,519][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:44,519][root][INFO] - Attempt 3 failed with error: Connection error.
+[2024-04-01 18:08:44,541][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:44,541][root][INFO] - Attempt 3 failed with error: Connection error.
+[2024-04-01 18:08:44,625][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:44,625][root][INFO] - Attempt 3 failed with error: Connection error.
+[2024-04-01 18:08:44,920][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:44,920][root][INFO] - Attempt 3 failed with error: Connection error.
+[2024-04-01 18:08:45,098][openai._base_client][INFO] - Retrying request to /chat/completions in 0.976558 seconds
+[2024-04-01 18:08:45,114][openai._base_client][INFO] - Retrying request to /chat/completions in 0.884252 seconds
+[2024-04-01 18:08:45,257][openai._base_client][INFO] - Retrying request to /chat/completions in 0.804916 seconds
+[2024-04-01 18:08:45,319][openai._base_client][INFO] - Retrying request to /chat/completions in 0.805204 seconds
+[2024-04-01 18:08:45,374][openai._base_client][INFO] - Retrying request to /chat/completions in 0.796469 seconds
+[2024-04-01 18:08:45,460][openai._base_client][INFO] - Retrying request to /chat/completions in 0.790629 seconds
+[2024-04-01 18:08:45,526][openai._base_client][INFO] - Retrying request to /chat/completions in 0.750668 seconds
+[2024-04-01 18:08:45,548][openai._base_client][INFO] - Retrying request to /chat/completions in 0.888486 seconds
+[2024-04-01 18:08:45,634][openai._base_client][INFO] - Retrying request to /chat/completions in 0.954919 seconds
+[2024-04-01 18:08:45,930][openai._base_client][INFO] - Retrying request to /chat/completions in 0.846993 seconds
+[2024-04-01 18:08:46,000][openai._base_client][INFO] - Retrying request to /chat/completions in 1.740268 seconds
+[2024-04-01 18:08:46,066][openai._base_client][INFO] - Retrying request to /chat/completions in 1.713523 seconds
+[2024-04-01 18:08:46,077][openai._base_client][INFO] - Retrying request to /chat/completions in 1.672699 seconds
+[2024-04-01 18:08:46,127][openai._base_client][INFO] - Retrying request to /chat/completions in 1.842573 seconds
+[2024-04-01 18:08:46,172][openai._base_client][INFO] - Retrying request to /chat/completions in 1.831155 seconds
+[2024-04-01 18:08:46,254][openai._base_client][INFO] - Retrying request to /chat/completions in 1.892074 seconds
+[2024-04-01 18:08:46,280][openai._base_client][INFO] - Retrying request to /chat/completions in 1.817776 seconds
+[2024-04-01 18:08:46,439][openai._base_client][INFO] - Retrying request to /chat/completions in 1.556568 seconds
+[2024-04-01 18:08:46,592][openai._base_client][INFO] - Retrying request to /chat/completions in 1.988489 seconds
+[2024-04-01 18:08:46,780][openai._base_client][INFO] - Retrying request to /chat/completions in 1.752199 seconds
+[2024-04-01 18:08:47,744][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:47,744][root][INFO] - Attempt 4 failed with error: Connection error.
+[2024-04-01 18:08:47,752][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:47,752][root][INFO] - Attempt 4 failed with error: Connection error.
+[2024-04-01 18:08:47,782][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:47,782][root][INFO] - Attempt 4 failed with error: Connection error.
+[2024-04-01 18:08:47,972][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:47,972][root][INFO] - Attempt 4 failed with error: Connection error.
+[2024-04-01 18:08:47,997][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:47,997][root][INFO] - Attempt 4 failed with error: Connection error.
+[2024-04-01 18:08:48,006][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:48,006][root][INFO] - Attempt 4 failed with error: Connection error.
+[2024-04-01 18:08:48,101][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:48,101][root][INFO] - Attempt 4 failed with error: Connection error.
+[2024-04-01 18:08:48,150][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:48,150][root][INFO] - Attempt 4 failed with error: Connection error.
+[2024-04-01 18:08:48,536][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:48,536][root][INFO] - Attempt 4 failed with error: Connection error.
+[2024-04-01 18:08:48,584][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:48,584][root][INFO] - Attempt 4 failed with error: Connection error.
+[2024-04-01 18:08:48,750][openai._base_client][INFO] - Retrying request to /chat/completions in 0.950055 seconds
+[2024-04-01 18:08:48,758][openai._base_client][INFO] - Retrying request to /chat/completions in 0.822215 seconds
+[2024-04-01 18:08:48,786][openai._base_client][INFO] - Retrying request to /chat/completions in 0.799232 seconds
+[2024-04-01 18:08:48,981][openai._base_client][INFO] - Retrying request to /chat/completions in 0.999844 seconds
+[2024-04-01 18:08:49,002][openai._base_client][INFO] - Retrying request to /chat/completions in 0.829490 seconds
+[2024-04-01 18:08:49,012][openai._base_client][INFO] - Retrying request to /chat/completions in 0.795857 seconds
+[2024-04-01 18:08:49,108][openai._base_client][INFO] - Retrying request to /chat/completions in 0.754401 seconds
+[2024-04-01 18:08:49,155][openai._base_client][INFO] - Retrying request to /chat/completions in 0.825068 seconds
+[2024-04-01 18:08:49,540][openai._base_client][INFO] - Retrying request to /chat/completions in 0.919311 seconds
+[2024-04-01 18:08:49,583][openai._base_client][INFO] - Retrying request to /chat/completions in 1.562482 seconds
+[2024-04-01 18:08:49,591][openai._base_client][INFO] - Retrying request to /chat/completions in 0.998842 seconds
+[2024-04-01 18:08:49,591][openai._base_client][INFO] - Retrying request to /chat/completions in 1.781326 seconds
+[2024-04-01 18:08:49,709][openai._base_client][INFO] - Retrying request to /chat/completions in 1.889832 seconds
+[2024-04-01 18:08:49,809][openai._base_client][INFO] - Retrying request to /chat/completions in 1.699464 seconds
+[2024-04-01 18:08:49,834][openai._base_client][INFO] - Retrying request to /chat/completions in 1.546956 seconds
+[2024-04-01 18:08:49,865][openai._base_client][INFO] - Retrying request to /chat/completions in 1.643339 seconds
+[2024-04-01 18:08:49,984][openai._base_client][INFO] - Retrying request to /chat/completions in 1.764119 seconds
+[2024-04-01 18:08:49,984][openai._base_client][INFO] - Retrying request to /chat/completions in 1.531185 seconds
+[2024-04-01 18:08:50,524][openai._base_client][INFO] - Retrying request to /chat/completions in 1.614983 seconds
+[2024-04-01 18:08:50,591][openai._base_client][INFO] - Retrying request to /chat/completions in 1.950173 seconds
+[2024-04-01 18:08:51,147][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:51,147][root][INFO] - Attempt 5 failed with error: Connection error.
+[2024-04-01 18:08:51,375][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:51,375][root][INFO] - Attempt 5 failed with error: Connection error.
+[2024-04-01 18:08:51,382][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:51,382][root][INFO] - Attempt 5 failed with error: Connection error.
+[2024-04-01 18:08:51,511][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:51,511][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:51,511][root][INFO] - Attempt 5 failed with error: Connection error.
+[2024-04-01 18:08:51,511][root][INFO] - Attempt 5 failed with error: Connection error.
+[2024-04-01 18:08:51,517][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:51,517][root][INFO] - Attempt 5 failed with error: Connection error.
+[2024-04-01 18:08:51,601][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:51,601][root][INFO] - Attempt 5 failed with error: Connection error.
+[2024-04-01 18:08:51,751][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:51,751][root][INFO] - Attempt 5 failed with error: Connection error.
+[2024-04-01 18:08:52,141][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:52,142][root][INFO] - Attempt 5 failed with error: Connection error.
+[2024-04-01 18:08:52,156][openai._base_client][INFO] - Retrying request to /chat/completions in 0.813326 seconds
+[2024-04-01 18:08:52,379][openai._base_client][INFO] - Retrying request to /chat/completions in 0.841266 seconds
+[2024-04-01 18:08:52,385][openai._base_client][INFO] - Retrying request to /chat/completions in 0.970743 seconds
+[2024-04-01 18:08:52,523][openai._base_client][INFO] - Retrying request to /chat/completions in 0.758746 seconds
+[2024-04-01 18:08:52,524][openai._base_client][INFO] - Retrying request to /chat/completions in 0.848861 seconds
+[2024-04-01 18:08:52,524][openai._base_client][INFO] - Retrying request to /chat/completions in 0.876201 seconds
+[2024-04-01 18:08:52,544][root][INFO] - Current Chunk Size: 1
+[2024-04-01 18:08:52,544][root][INFO] - Attempt 5 failed with error: Connection error.
+[2024-04-01 18:08:52,604][openai._base_client][INFO] - Retrying request to /chat/completions in 0.920408 seconds
+[2024-04-01 18:08:52,759][openai._base_client][INFO] - Retrying request to /chat/completions in 0.875128 seconds
+[2024-04-01 18:08:52,972][openai._base_client][INFO] - Retrying request to /chat/completions in 1.794699 seconds
+[2024-04-01 18:08:53,148][openai._base_client][INFO] - Retrying request to /chat/completions in 0.799472 seconds
+[2024-04-01 18:08:53,222][openai._base_client][INFO] - Retrying request to /chat/completions in 1.867825 seconds
+[2024-04-01 18:08:53,285][openai._base_client][INFO] - Retrying request to /chat/completions in 1.631342 seconds
+[2024-04-01 18:08:53,358][openai._base_client][INFO] - Retrying request to /chat/completions in 1.932935 seconds
+[2024-04-01 18:08:53,375][openai._base_client][INFO] - Retrying request to /chat/completions in 1.939463 seconds
+[2024-04-01 18:08:53,402][openai._base_client][INFO] - Retrying request to /chat/completions in 1.605259 seconds
+[2024-04-01 18:08:53,527][openai._base_client][INFO] - Retrying request to /chat/completions in 1.930649 seconds
+[2024-04-01 18:08:53,550][openai._base_client][INFO] - Retrying request to /chat/completions in 0.997788 seconds
+[2024-04-01 18:08:53,637][openai._base_client][INFO] - Retrying request to /chat/completions in 1.869065 seconds
+[2024-04-01 18:08:53,950][openai._base_client][INFO] - Retrying request to /chat/completions in 1.899125 seconds

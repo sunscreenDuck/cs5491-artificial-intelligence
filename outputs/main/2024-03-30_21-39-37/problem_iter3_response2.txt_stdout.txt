@@ -1,0 +1,37 @@
+[*] Running ...
+[*] Dataset loaded: C:\Development\cs5491-artificial-intelligence/problems/tsp_constructive\dataset\train50_dataset.npy with 64 instances.
+C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\fromnumeric.py:3504: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\_methods.py:129: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\_methods.py:206: RuntimeWarning: Degrees of freedom <= 0 for slice
+  ret = _var(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
+C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\_methods.py:163: RuntimeWarning: invalid value encountered in divide
+  arrmean = um.true_divide(arrmean, div, out=arrmean,
+C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\_methods.py:198: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+[*] Instance 0: 6.132289539918083
+[*] Instance 1: 7.453035319516296
+[*] Instance 2: 7.404734984204734
+[*] Instance 3: 7.9878053713995
+[*] Instance 4: 6.1733935961019535
+[*] Instance 5: 7.575739558037682
+[*] Instance 6: 6.974178533240957
+[*] Instance 7: 7.955196086498824
+Traceback (most recent call last):
+  File "C:\Development\cs5491-artificial-intelligence/problems/tsp_constructive/eval.py", line 82, in <module>
+    obj = eval_heuristic(node_positions[i])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Development\cs5491-artificial-intelligence/problems/tsp_constructive/eval.py", line 42, in eval_heuristic
+    next_node = select_next_node(
+                ^^^^^^^^^^^^^^^^^
+  File "C:\Development\cs5491-artificial-intelligence\problems\tsp_constructive\gpt.py", line 20, in select_next_node_v2
+    return next_node
+                     
+  File "C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\fromnumeric.py", line 3504, in mean
+    return _methods._mean(a, axis=axis, dtype=dtype,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\_methods.py", line 118, in _mean
+    ret = umr_sum(arr, axis, dtype, out, keepdims, where=where)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

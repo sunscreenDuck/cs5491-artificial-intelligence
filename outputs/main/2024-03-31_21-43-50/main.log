@@ -1,0 +1,365 @@
+[2024-03-31 21:43:50,232][root][INFO] - Workspace: C:\Development\cs5491-artificial-intelligence\outputs\main\2024-03-31_21-43-50
+[2024-03-31 21:43:50,233][root][INFO] - Project Root: C:\Development\cs5491-artificial-intelligence
+[2024-03-31 21:43:50,233][root][INFO] - Using LLM: gpt-3.5-turbo-0613
+[2024-03-31 21:43:50,233][root][INFO] - Using Algorithm: reevo
+[2024-03-31 21:43:51,742][root][INFO] - Problem: tsp_constructive
+[2024-03-31 21:43:51,742][root][INFO] - Problem description: Solving Traveling Salesman Problem (TSP) with constructive heuristics. TSP requires finding the shortest path that visits all given nodes and returns to the starting node.
+[2024-03-31 21:43:51,742][root][INFO] - Function name: select_next_node
+[2024-03-31 21:43:51,744][root][INFO] - Evaluating seed function...
+[2024-03-31 21:43:51,744][root][INFO] - Seed function code: 
+import numpy as np
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    for node in unvisited_nodes:
+        all_distances = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        score = c1 * distance_matrix[current_node][node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][node]
+        scores[node] = score
+    next_node = min(scores, key=scores.get)
+    return next_node
+[2024-03-31 21:43:51,744][root][INFO] - Iteration 0: Running Code 0
+[2024-03-31 21:43:52,190][root][INFO] - Iteration 0: Code Run 0 successful!
+[2024-03-31 21:43:55,500][root][INFO] - Iteration 0, response_id 0: Objective value: 6.273092009780198
+[2024-03-31 21:43:55,500][root][INFO] - Iteration 0: Elitist: 6.273092009780198
+[2024-03-31 21:43:55,500][root][INFO] - Iteration 0 finished...
+[2024-03-31 21:43:55,500][root][INFO] - Best obj: 6.273092009780198, Best Code Path: problem_iter0_code0.py
+[2024-03-31 21:43:55,500][root][INFO] - Function Evals: 1
+[2024-03-31 21:43:55,500][root][INFO] - Initial Population Prompt: 
+System Prompt: 
+You are an expert in the domain of optimization heuristics. Your task is to design heuristics that can effectively solve optimization problems.
+Your response outputs Python code and nothing else. Format your code as a Python code string: "```python ... ```".
+
+User Prompt: 
+Write a select_next_node function for Solving Traveling Salesman Problem (TSP) with constructive heuristics. TSP requires finding the shortest path that visits all given nodes and returns to the starting node.
+The select_next_node function takes as input the current node, the destination_node, a set of unvisited nodes, and a distance matrix, and returns the next node to visit.
+
+
+def select_next_node_v1(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    for node in unvisited_nodes:
+        all_distances = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        score = c1 * distance_matrix[current_node][node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][node]
+        scores[node] = score
+    next_node = min(scores, key=scores.get)
+    return next_node
+
+
+Improve `select_next_node_v1` to give `select_next_node_v2`. Output code only and enclose your code with Python code block: ```python ... ```.
+
+- Try look-ahead mechanisms.
+[2024-03-31 21:44:03,627][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:44:03,858][root][INFO] - Iteration 1: Running Code 0
+[2024-03-31 21:44:04,240][root][INFO] - Iteration 1: Code Run 0 successful!
+[2024-03-31 21:44:04,240][root][INFO] - Iteration 1: Running Code 1
+[2024-03-31 21:44:04,664][root][INFO] - Iteration 1: Code Run 1 successful!
+[2024-03-31 21:44:04,664][root][INFO] - Iteration 1: Running Code 2
+[2024-03-31 21:44:05,139][root][INFO] - Iteration 1: Code Run 2 successful!
+[2024-03-31 21:44:05,139][root][INFO] - Iteration 1: Running Code 3
+[2024-03-31 21:44:05,642][root][INFO] - Iteration 1: Code Run 3 successful!
+[2024-03-31 21:44:05,642][root][INFO] - Iteration 1: Running Code 4
+[2024-03-31 21:44:06,221][root][INFO] - Iteration 1: Code Run 4 successful!
+[2024-03-31 21:44:06,221][root][INFO] - Iteration 1: Running Code 5
+[2024-03-31 21:44:06,866][root][INFO] - Iteration 1: Code Run 5 successful!
+[2024-03-31 21:44:06,866][root][INFO] - Iteration 1: Running Code 6
+[2024-03-31 21:44:07,881][root][INFO] - Iteration 1: Code Run 6 successful!
+[2024-03-31 21:44:07,881][root][INFO] - Iteration 1: Running Code 7
+[2024-03-31 21:44:08,769][root][INFO] - Iteration 1: Code Run 7 successful!
+[2024-03-31 21:44:08,770][root][INFO] - Iteration 1: Running Code 8
+[2024-03-31 21:44:09,568][root][INFO] - Iteration 1: Code Run 8 successful!
+[2024-03-31 21:44:09,569][root][INFO] - Iteration 1: Running Code 9
+[2024-03-31 21:44:10,437][root][INFO] - Iteration 1: Code Run 9 successful!
+[2024-03-31 21:44:30,440][root][INFO] - Error for response_id 0: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_constructive/eval.py', '50', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 20.0 seconds
+[2024-03-31 21:44:30,458][root][INFO] - Iteration 1, response_id 1: Objective value: 20.664273477990022
+[2024-03-31 21:44:50,470][root][INFO] - Error for response_id 2: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_constructive/eval.py', '50', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 20.0 seconds
+[2024-03-31 21:44:50,482][root][INFO] - Iteration 1, response_id 3: Objective value: 6.323212290692091
+[2024-03-31 21:45:10,489][root][INFO] - Error for response_id 4: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_constructive/eval.py', '50', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 20.0 seconds
+[2024-03-31 21:45:10,507][root][INFO] - Iteration 1, response_id 5: Objective value: inf
+[2024-03-31 21:45:10,521][root][INFO] - Iteration 1, response_id 6: Objective value: inf
+[2024-03-31 21:45:10,529][root][INFO] - Iteration 1, response_id 7: Objective value: inf
+[2024-03-31 21:45:30,541][root][INFO] - Error for response_id 8: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_constructive/eval.py', '50', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 20.0 seconds
+[2024-03-31 21:45:50,545][root][INFO] - Error for response_id 9: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_constructive/eval.py', '50', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 20.0 seconds
+[2024-03-31 21:45:50,546][root][INFO] - Iteration 1 finished...
+[2024-03-31 21:45:50,547][root][INFO] - Best obj: 6.273092009780198, Best Code Path: problem_iter0_code0.py
+[2024-03-31 21:45:50,548][root][INFO] - Function Evals: 11
+[2024-03-31 21:45:50,548][root][INFO] - Short-term Reflection Prompt: 
+System Prompt: 
+You are an expert in the domain of optimization heuristics. Your task is to give hints to design better heuristics.
+
+User Prompt: 
+Below are two select_next_node functions for Solving Traveling Salesman Problem (TSP) with constructive heuristics. TSP requires finding the shortest path that visits all given nodes and returns to the starting node.
+The select_next_node function takes as input the current node, the destination_node, a set of unvisited nodes, and a distance matrix, and returns the next node to visit.
+
+
+You are provided with two code versions below, where the second version performs better than the first one.
+
+[Worse code]
+
+    """Select the next node to visit from the unvisited nodes using look-ahead mechanisms."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    
+    for node in unvisited_nodes:
+        remaining_nodes = unvisited_nodes.copy()
+        remaining_nodes.remove(node)
+        
+        all_distances = [distance_matrix[node][i] for i in remaining_nodes]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        
+        num_look_ahead_nodes = min(int(threshold * len(remaining_nodes)), len(remaining_nodes)-1)
+        look_ahead_nodes = sorted(remaining_nodes, key=lambda x: distance_matrix[node][x])[:num_look_ahead_nodes]
+        
+        look_ahead_distances = [distance_matrix[node][i] for i in look_ahead_nodes]
+        average_distance_look_ahead = np.mean(look_ahead_distances)
+        
+        score = c1 * distance_matrix[current_node][node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][node] + c4 * average_distance_look_ahead
+        scores[node] = score
+    
+    next_node = min(scores, key=scores.get)
+    return next_node
+
+[Better code]
+    """Select the next node to visit from the unvisited nodes."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    for node in unvisited_nodes:
+        all_distances = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        score = c1 * distance_matrix[current_node][node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][node]
+        scores[node] = score
+    next_node = min(scores, key=scores.get)
+    return next_node
+
+You respond with some hints for designing better heuristics, based on the two code versions and using less than 20 words.
+[2024-03-31 21:45:53,046][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:45:53,393][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:45:53,472][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:45:53,527][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:45:53,803][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:45:53,804][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:45:53,854][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:45:54,108][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:45:54,414][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:45:54,533][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:45:54,538][root][INFO] - Crossover Prompt: 
+System Prompt: 
+You are an expert in the domain of optimization heuristics. Your task is to design heuristics that can effectively solve optimization problems.
+Your response outputs Python code and nothing else. Format your code as a Python code string: "```python ... ```".
+
+User Prompt: 
+Write a select_next_node function for Solving Traveling Salesman Problem (TSP) with constructive heuristics. TSP requires finding the shortest path that visits all given nodes and returns to the starting node.
+The select_next_node function takes as input the current node, the destination_node, a set of unvisited nodes, and a distance matrix, and returns the next node to visit.
+
+
+
+[Worse code]
+def select_next_node_v0(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+
+    """Select the next node to visit from the unvisited nodes using look-ahead mechanisms."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    
+    for node in unvisited_nodes:
+        remaining_nodes = unvisited_nodes.copy()
+        remaining_nodes.remove(node)
+        
+        all_distances = [distance_matrix[node][i] for i in remaining_nodes]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        
+        num_look_ahead_nodes = min(int(threshold * len(remaining_nodes)), len(remaining_nodes)-1)
+        look_ahead_nodes = sorted(remaining_nodes, key=lambda x: distance_matrix[node][x])[:num_look_ahead_nodes]
+        
+        look_ahead_distances = [distance_matrix[node][i] for i in look_ahead_nodes]
+        average_distance_look_ahead = np.mean(look_ahead_distances)
+        
+        score = c1 * distance_matrix[current_node][node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][node] + c4 * average_distance_look_ahead
+        scores[node] = score
+    
+    next_node = min(scores, key=scores.get)
+    return next_node
+
+[Better code]
+def select_next_node_v1(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    for node in unvisited_nodes:
+        all_distances = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        score = c1 * distance_matrix[current_node][node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][node]
+        scores[node] = score
+    next_node = min(scores, key=scores.get)
+    return next_node
+
+[Reflection]
+1. Consider using a simpler scoring formula without unnecessary terms.
+2. Remove the look-ahead mechanism, if it doesn't significantly improve the solution quality.
+3. Use more descriptive variable names for better readability and maintainability.
+4. Avoid unnecessary calculations and iterations over the unvisited nodes.
+5. Evaluate the performance difference between different versions of the code.
+
+[Improved code]
+Please write an improved function `select_next_node_v2`, according to the reflection. Output code only and enclose your code with Python code block: ```python ... ```.
+[2024-03-31 21:45:57,079][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:45:58,014][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:45:58,060][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:45:58,720][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:45:59,128][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:45:59,222][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:45:59,260][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:45:59,516][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:46:00,874][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:46:02,303][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:46:02,323][root][INFO] - Iteration 2: Running Code 0
+[2024-03-31 21:46:02,690][root][INFO] - Iteration 2: Code Run 0 successful!
+[2024-03-31 21:46:02,690][root][INFO] - Iteration 2: Running Code 1
+[2024-03-31 21:46:03,090][root][INFO] - Iteration 2: Code Run 1 successful!
+[2024-03-31 21:46:03,090][root][INFO] - Iteration 2: Running Code 2
+[2024-03-31 21:46:03,567][root][INFO] - Iteration 2: Code Run 2 successful!
+[2024-03-31 21:46:03,568][root][INFO] - Iteration 2: Running Code 3
+[2024-03-31 21:46:04,126][root][INFO] - Iteration 2: Code Run 3 successful!
+[2024-03-31 21:46:04,127][root][INFO] - Iteration 2: Running Code 4
+[2024-03-31 21:46:04,701][root][INFO] - Iteration 2: Code Run 4 successful!
+[2024-03-31 21:46:04,701][root][INFO] - Iteration 2: Running Code 5
+[2024-03-31 21:46:05,366][root][INFO] - Iteration 2: Code Run 5 successful!
+[2024-03-31 21:46:05,366][root][INFO] - Iteration 2: Running Code 6
+[2024-03-31 21:46:06,073][root][INFO] - Iteration 2: Code Run 6 successful!
+[2024-03-31 21:46:06,073][root][INFO] - Iteration 2: Running Code 7
+[2024-03-31 21:46:06,776][root][INFO] - Iteration 2: Code Run 7 successful!
+[2024-03-31 21:46:06,776][root][INFO] - Iteration 2: Running Code 8
+[2024-03-31 21:46:07,524][root][INFO] - Iteration 2: Code Run 8 successful!
+[2024-03-31 21:46:07,524][root][INFO] - Iteration 2: Running Code 9
+[2024-03-31 21:46:08,454][root][INFO] - Iteration 2: Code Run 9 successful!
+[2024-03-31 21:46:08,461][root][INFO] - Iteration 2, response_id 0: Objective value: 6.373370539746279
+[2024-03-31 21:46:15,252][root][INFO] - Iteration 2, response_id 1: Objective value: 6.323212290692091
+[2024-03-31 21:46:15,254][root][INFO] - Iteration 2, response_id 2: Objective value: 6.273092009780198
+[2024-03-31 21:46:15,265][root][INFO] - Iteration 2, response_id 3: Objective value: 36.99624623434657
+[2024-03-31 21:46:15,276][root][INFO] - Iteration 2, response_id 4: Objective value: 6.566970732198165
+[2024-03-31 21:46:15,931][root][INFO] - Iteration 2, response_id 5: Objective value: 6.302037194063454
+[2024-03-31 21:46:15,932][root][INFO] - Iteration 2, response_id 6: Objective value: 6.273092009780198
+[2024-03-31 21:46:15,942][root][INFO] - Iteration 2, response_id 7: Objective value: 6.657413199430133
+[2024-03-31 21:46:15,945][root][INFO] - Iteration 2, response_id 8: Objective value: 6.273092009780198
+[2024-03-31 21:46:15,947][root][INFO] - Iteration 2, response_id 9: Objective value: 6.273092009780198
+[2024-03-31 21:46:15,949][root][INFO] - Iteration 2 finished...
+[2024-03-31 21:46:15,953][root][INFO] - Best obj: 6.273092009780198, Best Code Path: problem_iter0_code0.py
+[2024-03-31 21:46:15,953][root][INFO] - Function Evals: 21
+[2024-03-31 21:46:15,953][root][INFO] - Long-term Reflection Prompt: 
+System Prompt: 
+You are an expert in the domain of optimization heuristics. Your task is to give hints to design better heuristics.
+
+User Prompt: 
+Below is your prior long-term reflection on designing heuristics for Solving Traveling Salesman Problem (TSP) with constructive heuristics. TSP requires finding the shortest path that visits all given nodes and returns to the starting node.
+- Try look-ahead mechanisms.
+
+Below are some newly gained insights.
+1. Consider using a simpler scoring formula without unnecessary terms.
+2. Remove the look-ahead mechanism, if it doesn't significantly improve the solution quality.
+3. Use more descriptive variable names for better readability and maintainability.
+4. Avoid unnecessary calculations and iterations over the unvisited nodes.
+5. Evaluate the performance difference between different versions of the code.
+1. Consider including a look-ahead mechanism to evaluate the potential future impact of selecting each node.
+2. Use a subset of nodes with the lowest distances for look-ahead evaluation, to reduce computation.
+1. Consider removing look-ahead mechanisms and focusing on immediate node evaluation.
+2. Simplify the calculations by removing unnecessary variables and computations.
+1. Avoid unnecessary computations in the heuristic function.
+2. Simplify the selection process by directly selecting the node with the highest score.
+3. Consider the trade-off between complexity and performance when adding look-ahead mechanisms.
+1. Avoid unnecessary computations and look-ahead mechanisms.
+2. Simplify the scoring criteria and selection process.
+1. Include look-ahead mechanisms to evaluate the future impact of selecting a node.
+2. Consider the average distance to unvisited nodes and the standard deviation of distances.
+3. Balance the importance of different factors using appropriate coefficients.
+4. Consider a subset of nodes for look-ahead rather than all unvisited nodes.
+1. Simplify look-ahead mechanisms for better performance.
+2. Remove unnecessary computations and sorting to improve efficiency.
+- Avoid unnecessary computations and copying of data.
+- Simplify the scoring function by removing look-ahead mechanisms.
+- Consider using different parameter values to improve performance.
+1. Consider removing unnecessary calculations (e.g., look-ahead mechanisms) that don't significantly improve the solution quality.
+2. Simplify the scoring function by removing unused terms (e.g., average_distance_look_ahead).
+3. Evaluate the impact of changing the coefficient values to find an optimal balance.
+1. Consider simplified score calculation and avoid unnecessary iterations.
+2. Remove look-ahead mechanism and avoid unnecessary computations.
+
+Write constructive hints for designing better heuristics, based on prior reflections and new insights and using less than 50 words.
+[2024-03-31 21:46:19,300][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:46:19,314][root][INFO] - Mutation Prompt: 
+System Prompt: 
+You are an expert in the domain of optimization heuristics. Your task is to design heuristics that can effectively solve optimization problems.
+Your response outputs Python code and nothing else. Format your code as a Python code string: "```python ... ```".
+
+User Prompt: 
+Write a select_next_node function for Solving Traveling Salesman Problem (TSP) with constructive heuristics. TSP requires finding the shortest path that visits all given nodes and returns to the starting node.
+The select_next_node function takes as input the current node, the destination_node, a set of unvisited nodes, and a distance matrix, and returns the next node to visit.
+
+
+
+[Prior reflection]
+1. Simplify scoring formula and remove unnecessary terms.
+2. Evaluate and remove ineffective look-ahead mechanisms.
+3. Use descriptive variable names for readability.
+4. Avoid unnecessary calculations and iterations over unvisited nodes.
+5. Compare performance of different versions of the code.- Try look-ahead mechanisms.
+
+[Code]
+def select_next_node_v1(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    for node in unvisited_nodes:
+        all_distances = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        score = c1 * distance_matrix[current_node][node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][node]
+        scores[node] = score
+    next_node = min(scores, key=scores.get)
+    return next_node
+
+[Improved code]
+Please write a mutated function `select_next_node_v2`, according to the reflection. Output code only and enclose your code with Python code block: ```python ... ```.
+[2024-03-31 21:46:25,067][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:46:25,084][root][INFO] - Iteration 3: Running Code 0
+[2024-03-31 21:46:25,464][root][INFO] - Iteration 3: Code Run 0 successful!
+[2024-03-31 21:46:25,464][root][INFO] - Iteration 3: Running Code 1
+[2024-03-31 21:46:25,885][root][INFO] - Iteration 3: Code Run 1 successful!
+[2024-03-31 21:46:25,885][root][INFO] - Iteration 3: Running Code 2
+[2024-03-31 21:46:26,335][root][INFO] - Iteration 3: Code Run 2 successful!
+[2024-03-31 21:46:26,335][root][INFO] - Iteration 3: Running Code 3
+[2024-03-31 21:46:26,805][root][INFO] - Iteration 3: Code Run 3 successful!
+[2024-03-31 21:46:26,805][root][INFO] - Iteration 3: Running Code 4
+[2024-03-31 21:46:27,338][root][INFO] - Iteration 3: Code Run 4 successful!
+[2024-03-31 21:46:29,741][root][INFO] - Iteration 3, response_id 0: Objective value: 6.273092009780198
+[2024-03-31 21:46:29,757][root][INFO] - Iteration 3, response_id 1: Objective value: inf
+[2024-03-31 21:46:30,684][root][INFO] - Iteration 3, response_id 2: Objective value: 6.273092009780198
+[2024-03-31 21:46:31,835][root][INFO] - Iteration 3, response_id 3: Objective value: 6.273092009780198
+[2024-03-31 21:46:31,843][root][INFO] - Iteration 3, response_id 4: Objective value: 6.79835522083129
+[2024-03-31 21:46:31,843][root][INFO] - Iteration 3 finished...
+[2024-03-31 21:46:31,843][root][INFO] - Best obj: 6.273092009780198, Best Code Path: problem_iter0_code0.py
+[2024-03-31 21:46:31,844][root][INFO] - Function Evals: 26
+[2024-03-31 21:46:33,853][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:46:33,957][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:46:34,019][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:46:34,249][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:46:34,295][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:46:34,555][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:46:34,629][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:46:34,654][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:46:34,675][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:46:34,738][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"

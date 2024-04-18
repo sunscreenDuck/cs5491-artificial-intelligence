@@ -1,0 +1,4 @@
+1. Use matrix operations and broadcasting to eliminate nested loops and improve computation efficiency.
+2. Preprocess the distance matrix to remove constraints and normalize distances for more effective heuristics.
+3. Incorporate statistical measures like deviation and standard deviation to compute badness scores for better heuristics.
+4. Utilize numpy functions and minimize unnecessary calculations for improved performance and concise code.

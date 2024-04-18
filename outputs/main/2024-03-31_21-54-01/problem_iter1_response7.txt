@@ -1,0 +1,28 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    threshold = 0.7
+    c1, c2, c3, c4, c5 = 0.4, 0.3, 0.2, 0.1, 0.5
+    scores = {}
+    for node in unvisited_nodes:
+        all_distances = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        score = c1 * distance_matrix[current_node][node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][node] + c5 * lookahead_score(node, unvisited_nodes, distance_matrix)
+        scores[node] = score
+    next_node = min(scores, key=scores.get)
+    return next_node
+
+def lookahead_score(node: int, unvisited_nodes: set, distance_matrix: np.ndarray):
+    """Calculate the lookahead score for a given node."""
+    lookahead_scores = []
+    for next_node in unvisited_nodes:
+        if next_node != node:
+            remaining_nodes = unvisited_nodes - {node, next_node}
+            all_distances = [distance_matrix[next_node][i] for i in remaining_nodes]
+            average_distance_to_remaining = np.mean(all_distances) if remaining_nodes else 0
+            lookahead_score = distance_matrix[node][next_node] + average_distance_to_remaining
+            lookahead_scores.append(lookahead_score)
+    return min(lookahead_scores) if lookahead_scores else 0
+```
+```

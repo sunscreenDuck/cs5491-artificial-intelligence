@@ -1,0 +1,18 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    alpha, beta, gamma = 0.6, 0.3, 0.1
+    scores = {}
+    for node in unvisited_nodes:
+        node_distances = distance_matrix[node][unvisited_nodes - {node}]
+        average_distance_to_unvisited = np.mean(node_distances)
+        std_dev_distance_to_unvisited = np.std(node_distances)
+        score = alpha * distance_matrix[current_node][node] - beta * average_distance_to_unvisited + gamma * std_dev_distance_to_unvisited - distance_matrix[destination_node][node]
+        scores[node] = score
+    next_node = min(scores, key=scores.get)
+    return next_node
+```
+In the improved function `select_next_node_v2`, the variables `c1`, `c2`, `c3`, and `c4` have been replaced with more meaningful variables `alpha`, `beta`, and `gamma`.
+The `all_distances` list has been replaced with `node_distances` which is obtained by indexing the `distance_matrix` directly.
+Unnecessary calculations and set operations have been removed to improve efficiency.
+The final score calculation is done directly without multiplying by specific weights.

@@ -1,0 +1,32 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    n = distance_matrix.shape[0]
+    heuristics = np.zeros_like(distance_matrix)
+
+    # Normalize the distance matrix
+    normalized_matrix = distance_matrix / np.max(distance_matrix)
+
+    # Calculate the average pairwise difference between distances
+    pairwise_diff = np.mean(np.abs(np.diff(normalized_matrix[np.nonzero(normalized_matrix)])))
+
+    for i in range(n):
+        for j in range(n):
+            if i == j:
+                continue
+
+            # Calculate the heuristics value as a combination of factors
+            heuristic_value = 1 / normalized_matrix[i, j]**2 + \
+                              normalized_matrix[i, j]**3 / np.sum(normalized_matrix[i, :]**3) + \
+                              normalized_matrix[i, j]**3 / np.sum(normalized_matrix[:, j]**3) + \
+                              normalized_matrix[i, j]**2 / np.sum(normalized_matrix[:, j]**2) + \
+                              np.exp(-2 * (normalized_matrix[i, j] - pairwise_diff)**2)
+
+            # Set unpromising elements to zero
+            if heuristic_value < 0.25:
+                heuristic_value = 0
+
+            heuristics[i, j] = heuristic_value
+
+    return heuristics
+```
+```

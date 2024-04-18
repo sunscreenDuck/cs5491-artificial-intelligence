@@ -1,0 +1,42 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    lookahead = 3
+    threshold = 0.9
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    
+    for node in unvisited_nodes:
+        unvisited_neighbors = {neighbor for neighbor in unvisited_nodes if neighbor != node}
+        distances_to_neighbors = distance_matrix[node, list(unvisited_neighbors)]
+        average_distance_to_unvisited = np.mean(distances_to_neighbors)
+        std_dev_distance_to_unvisited = np.std(distances_to_neighbors)
+        
+        avg_neighbor_distances = np.mean(distance_matrix[current_node, list(unvisited_neighbors)])
+        
+        if avg_neighbor_distances <= threshold:
+            all_distances = distance_matrix[unvisited_nodes - {node}, list(unvisited_neighbors)].flatten()
+            lookahead_distances = all_distances[np.argsort(all_distances)[:lookahead]]
+            average_lookahead_distance = np.mean(lookahead_distances)
+            std_dev_lookahead_distance = np.std(lookahead_distances)
+            
+            score = c1 * distance_matrix[current_node][node] \
+                    - c2 * average_lookahead_distance \
+                    - c3 * std_dev_lookahead_distance \
+                    - c4 * distance_matrix[destination_node][node]
+        else:
+            score = c1 * distance_matrix[current_node][node] \
+                    - c2 * average_distance_to_unvisited \
+                    - c3 * std_dev_distance_to_unvisited \
+                    - c4 * distance_matrix[destination_node][node]
+        
+        scores[node] = score
+    
+    next_node = min(scores, key=scores.get)
+    return next_node
+```
+In the `select_next_node_v2` function, the following improvements have been made:
+- Introduced a `lookahead` parameter to control the number of nodes to consider for lookahead distance calculation.
+- Changed the `threshold` value to 0.9, indicating that lookahead mechanism will be used only when the average distance to neighbors is less than or equal to the threshold.
+- Reorganized the code for efficiency by using Numpy functions for calculations.
+- Removed unnecessary list comprehensions and utilized vectorized operations.

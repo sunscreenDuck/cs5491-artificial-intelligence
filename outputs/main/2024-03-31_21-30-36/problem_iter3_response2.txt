@@ -1,0 +1,37 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Selects the next node to visit from the unvisited nodes with look-ahead mechanism."""
+
+    # Parameters for the look-ahead mechanism
+    num_lookahead_steps = 3  # Number of lookahead steps
+    lookahead_weight = 0.5  # Weight for the look-ahead heuristic
+    exploration_weight = 0.5  # Weight for the exploration heuristic
+
+    scores = {}
+
+    for node in unvisited_nodes:
+        lookahead_score = 0
+        exploration_score = 0
+
+        # Look-ahead heuristic: Consider the average distance to unvisited nodes after visiting the current node
+        lookahead_distances = []
+        for lookahead_step in range(1, num_lookahead_steps + 1):
+            lookahead_node = current_node
+            lookahead_distance = 0
+            for _ in range(lookahead_step):
+                lookahead_node = select_next_node_v1(lookahead_node, destination_node, unvisited_nodes, distance_matrix)
+                lookahead_distance += distance_matrix[current_node][lookahead_node]
+            lookahead_distances.append(lookahead_distance)
+        average_lookahead_distance = np.mean(lookahead_distances)
+        lookahead_score = lookahead_weight * average_lookahead_distance
+
+        # Exploration heuristic: Consider the distance from the current node to the unvisited node
+        exploration_score = exploration_weight * distance_matrix[current_node][node]
+
+        # Combine the look-ahead and exploration scores
+        score = lookahead_score + exploration_score
+        scores[node] = score
+
+    next_node = min(scores, key=scores.get)
+    return next_node
+```

@@ -1,0 +1,12 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    for node in unvisited_nodes:
+        score = c1 * distance_matrix[current_node][node] - c2 * np.mean([distance_matrix[node][i] for i in unvisited_nodes if i != node]) + c3 * np.std([distance_matrix[node][i] for i in unvisited_nodes if i != node]) - c4 * distance_matrix[destination_node][node]
+        scores[node] = score
+    next_node = min(scores, key=scores.get)
+    return next_node
+```

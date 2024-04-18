@@ -1,0 +1,37 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes with improved look-ahead mechanism."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    
+    for node in unvisited_nodes:
+        all_distances = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        
+        look_aheads = []
+        for next_node in unvisited_nodes - {node}:
+            next_all_distances = [distance_matrix[next_node][i] for i in unvisited_nodes if i != next_node]
+            next_average_distance_to_unvisited = np.mean(next_all_distances)
+            next_std_dev_distance_to_unvisited = np.std(next_all_distances)
+            
+            next_look_aheads = []
+            for third_node in unvisited_nodes - {node, next_node}:
+                third_all_distances = [distance_matrix[third_node][i] for i in unvisited_nodes if i != third_node]
+                third_average_distance_to_unvisited = np.mean(third_all_distances)
+                third_std_dev_distance_to_unvisited = np.std(third_all_distances)
+
+                next_score = c1 * distance_matrix[current_node][next_node] - c2 * next_average_distance_to_unvisited + c3 * next_std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][next_node] + c2 * distance_matrix[next_node][third_node] - c3 * third_average_distance_to_unvisited + c4 * third_std_dev_distance_to_unvisited
+                next_look_aheads.append(next_score)
+            
+            next_lookahead_score = np.mean(next_look_aheads)
+            look_aheads.append(next_lookahead_score)
+        
+        lookahead_score = np.mean(look_aheads)
+        score = c1 * distance_matrix[current_node][node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][node] + threshold * lookahead_score
+        scores[node] = score
+    
+    next_node = min(scores, key=scores.get)
+    return next_node
+```

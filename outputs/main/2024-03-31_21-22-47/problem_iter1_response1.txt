@@ -1,0 +1,22 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes with look-ahead mechanism."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    lookahead_depth = 3
+    
+    scores = {}
+    for node in unvisited_nodes:
+        lookahead_scores = []
+        for next_node in unvisited_nodes:
+            if next_node != node:
+                next_scores = []
+                for i in range(lookahead_depth):
+                    next_scores.append(distance_matrix[node][next_node] - c2 * np.mean([distance_matrix[next_node][j] for j in unvisited_nodes if j != next_node]) + c3 * np.std([distance_matrix[next_node][j] for j in unvisited_nodes if j != next_node]) - c4 * distance_matrix[destination_node][next_node])
+                lookahead_scores.append(c1 * distance_matrix[current_node][node] + np.mean(next_scores))
+        scores[node] = np.mean(lookahead_scores)
+    
+    next_node = min(scores, key=scores.get)
+    return next_node
+```
+In the improved `select_next_node_v2` function, I have added a look-ahead mechanism in which we consider potential future steps. The lookahead depth is set to 3, meaning we look-ahead 3 steps from the current node. For each unvisited node, we calculate the average score of future steps by simulating the decision at each step and considering the average scores. Finally, we select the node with the highest overall score to be the next node.

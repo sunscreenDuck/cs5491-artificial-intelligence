@@ -1,0 +1,30 @@
+1. Avoid unnecessary calculations and use list comprehensions for better performance.
+2. Use meaningful variable names for better code readability and maintainability.
+3. Normalize weights to sum up to 1 for better interpretability and control.
+1. Consider using meaningful variable names and comments to improve code readability.
+2. Adjust weightings and factors based on problem characteristics to improve algorithm performance.
+- Avoid unnecessary computations and use of thresholds.
+- Use numpy functions instead of iterating over the nodes.
+1. Normalize weights to sum up to 1.
+2. Precompute average and standard deviation before the loop to improve efficiency. 
+3. Avoid using np.random.random() for better reproducibility.
+1. Specify meaningful weights that reflect the importance of different factors.
+2. Use subtraction and addition in score calculation to account for both positive and negative factors.
+3. Consider additional factors that can help guide the search towards better solutions.
+1. Use meaningful variable names for better code readability.
+2. Explicitly define the weightings for each factor in the improved heuristics.
+3. Consider alternative methods to select the next node if the score is tied.
+4. Consider incorporating additional factors, such as node degree or node importance, in the heuristics.
+1. Avoid unnecessary calculations and use numpy functions for efficiency.
+2. Include less weights for better balance between different factors.
+3. Consider using set operations to simplify code and avoid unnecessary iterations.
+1. Avoid unnecessary list conversions in the first version.
+2. Calculate relevant distances only once in the second version.
+1. Avoid using numpy for computation.
+2. Use explicit variable names instead of indices.
+3. Minimize the use of redundant calculations.
+4. Simplify and consolidate the weighting scheme.
+5. Remove unnecessary randomization.
+1. Consider using meaningful variable names and comments for better code readability.
+2. Avoid unnecessary calculations and data structures for improved efficiency.
+3. Experiment with different weightings to find better combinations of factors.

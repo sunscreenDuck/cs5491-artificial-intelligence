@@ -1,0 +1,25 @@
+```python
+import numpy as np
+
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    # Normalize distance matrix
+    normalized_matrix = distance_matrix / np.max(distance_matrix)
+    
+    # Calculate average and minimum distances
+    average_distance = np.mean(normalized_matrix)
+    min_distance = np.min(normalized_matrix)
+    
+    # Calculate inverse distances
+    inverse_matrix = 1 / (normalized_matrix + 1e-6)
+    
+    # Combine factors
+    combined_factors = inverse_matrix + 1 / (inverse_matrix.T + 1e-6)
+    
+    # Calculate sparsification threshold
+    sparsification_threshold = average_distance + 0.5 * (min_distance - average_distance)
+    
+    # Sparsify matrix
+    sparsified_matrix = np.where(combined_factors > sparsification_threshold, combined_factors, 0)
+    
+    return sparsified_matrix
+```

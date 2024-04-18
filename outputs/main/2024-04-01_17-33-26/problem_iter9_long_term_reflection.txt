@@ -1,0 +1,4 @@
+1. Use global statistics to normalize distances and prioritize simplicity in the calculation.
+2. Optimize computation with vectorized operations and consider using penalty matrices based on normalized distance matrix.
+3. Explore different normalization techniques and consider using more representative measures of node distances.
+4. Consider using the sum instead of the average for better heuristics and minimize unnecessary calculations.

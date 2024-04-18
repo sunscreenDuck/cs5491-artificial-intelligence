@@ -1,0 +1,3 @@
+1. Combine multiple factors for a more comprehensive evaluation and explore alternative normalization methods.
+2. Use dynamic thresholds for sparsification based on problem-specific characteristics and consider normalizing the distance matrix before calculating the inverse.
+3. Experiment with different normalization techniques and thresholding strategies to improve performance.

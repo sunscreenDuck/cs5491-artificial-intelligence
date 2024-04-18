@@ -1,0 +1,32 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    c1, c2, c3, c4, c5 = 0.25, 0.3, 0.2, 0.15, 0.1
+    scores = {}
+
+    for node in unvisited_nodes:
+        all_distances = []
+        for i in unvisited_nodes:
+            if i != node:
+                all_distances.append(distance_matrix[node][i])
+
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+
+        lookahead_distance = distance_matrix[node][destination_node]
+
+        inter_node_distances = []
+        for i in unvisited_nodes:
+            if i != current_node and i != node:
+                inter_node_distances.append(distance_matrix[current_node][i] + distance_matrix[i][node])
+
+        best_inter_node_distance = min(inter_node_distances)
+
+        score = c1 * distance_matrix[current_node][node] + c2 * average_distance_to_unvisited - c3 * std_dev_distance_to_unvisited - c4 * lookahead_distance + c5 * best_inter_node_distance
+
+        scores[node] = score
+
+    next_node = min(scores, key=scores.get)
+    return next_node
+```
+In this improved version of `select_next_node`, additional factors have been incorporated, such as the best inter-node distance and the balance between them has been fine-tuned. The code has also been optimized by avoiding unnecessary calculations and data transformations.

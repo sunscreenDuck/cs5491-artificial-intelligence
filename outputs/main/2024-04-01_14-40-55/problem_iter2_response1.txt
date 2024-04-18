@@ -1,0 +1,29 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes with look-ahead mechanism."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    
+    for node in unvisited_nodes:
+        all_distances = distance_matrix[node, list(unvisited_nodes - {node})]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        
+        look_ahead_score = 0
+        for next_node in unvisited_nodes - {node}:
+            next_all_distances = distance_matrix[next_node, list(unvisited_nodes - {next_node, node})]
+            next_average_distance_to_unvisited = np.mean(next_all_distances)
+            next_std_dev_distance_to_unvisited = np.std(next_all_distances)
+            
+            next_score = c1 * distance_matrix[current_node][next_node] - c2 * next_average_distance_to_unvisited + c3 * next_std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][next_node]
+            look_ahead_score += next_score
+        
+        lookahead_score = look_ahead_score / len(unvisited_nodes)
+        score = c1 * distance_matrix[current_node][node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][node] + threshold * lookahead_score
+        scores[node] = score
+    
+    next_node = min(scores, key=scores.get)
+    return next_node
+```
+In this improved code, I simplified the calculation of the look-ahead score by directly calculating the average look-ahead score without using an intermediate list (`look_ahead_scores` in the original code). I also avoided unnecessary calculations by directly accessing the relevant distances in the distance matrix using array slicing. This should improve performance and make the code more efficient.

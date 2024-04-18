@@ -1,0 +1,26 @@
+[2024-03-19 22:27:00,762][root][INFO] - Workspace: C:\Development\cs5491-artificial-intelligence\outputs\main\2024-03-19_22-27-00
+[2024-03-19 22:27:00,763][root][INFO] - Project Root: C:\Development\cs5491-artificial-intelligence
+[2024-03-19 22:27:00,763][root][INFO] - Using LLM: gpt-3.5-turbo
+[2024-03-19 22:27:00,763][root][INFO] - Using Algorithm: reevo
+[2024-03-19 22:27:26,630][root][INFO] - Problem: tsp_constructive
+[2024-03-19 22:27:26,630][root][INFO] - Problem description: Solving Traveling Salesman Problem (TSP) with constructive heuristics. TSP requires finding the shortest path that visits all given nodes and returns to the starting node.
+[2024-03-19 22:27:26,630][root][INFO] - Function name: select_next_node
+[2024-03-19 22:27:34,517][root][INFO] - Evaluating seed function...
+[2024-03-19 22:30:56,316][root][INFO] - Seed function code: 
+import numpy as np
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    for node in unvisited_nodes:
+        all_distances = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        score = c1 * distance_matrix[current_node][node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][node]
+        scores[node] = score
+    next_node = min(scores, key=scores.get)
+    return next_node
+[2024-03-19 22:31:24,434][root][INFO] - Iteration 0: Running Code 0
+[2024-03-19 22:31:27,339][root][INFO] - Iteration 0: Code Run 0 execution error!
+[2024-03-19 22:31:32,166][root][INFO] - Iteration 0, response_id 0: Objective value: inf

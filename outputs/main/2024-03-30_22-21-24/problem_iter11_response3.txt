@@ -1,0 +1,22 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    c1, c2, c3, c4 = 0.35, 0.25, 0.25, 0.15
+    
+    next_node = None
+    min_score = float('inf')
+    
+    for node in unvisited_nodes:
+        distances_to_unvisited = distance_matrix[node, list(unvisited_nodes - {node})]
+        average_distance_to_unvisited = np.mean(distances_to_unvisited)
+        std_dev_distance_to_unvisited = np.std(distances_to_unvisited)
+        
+        score = c1 * distance_matrix[current_node, node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node, node]
+        
+        if score < min_score:
+            min_score = score
+            next_node = node
+    
+    return next_node
+```
+In this mutation, I have modified the code to eliminate the unnecessary dictionary creation and use a single variable to keep track of the minimum score and the associated next node. This reduces memory usage and simplifies the code. I have also renamed some variables for better readability.

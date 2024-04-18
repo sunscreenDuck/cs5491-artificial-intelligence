@@ -1,0 +1,33 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+
+    n = distance_matrix.shape[0]
+    heuristics = np.zeros_like(distance_matrix)
+
+    # Normalize the distance matrix
+    normalized_matrix = distance_matrix / np.max(distance_matrix)
+
+    # Calculate the average distance
+    average_distance = np.mean(normalized_matrix)
+
+    # Calculate the maximum distance
+    max_distance = np.max(normalized_matrix)
+
+    for i in range(n):
+        for j in range(n):
+            # Calculate the heuristics value as a combination of factors
+            distance_factor = 1 / normalized_matrix[i, j]
+            average_factor = average_distance / (normalized_matrix[i, j] ** 2)
+            max_factor = 1 - (normalized_matrix[i, j] / max_distance)
+
+            # Set unpromising elements to zero
+            if distance_factor < 0.3 or average_factor < 0.3 or max_factor < 0.3:
+                heuristic_value = 0
+            else:
+                heuristic_value = distance_factor + average_factor + max_factor
+
+            heuristics[i, j] = heuristic_value
+
+    return heuristics
+```
+In this improved version, I have simplified the calculations for the heuristics factors and adjusted the threshold for unpromising elements. The heuristics factors are now based on the inverse of the distance, the average distance, and the maximum distance. If any of these factors fall below 0.3, the corresponding heuristic value is set to 0. Otherwise, the heuristic value is calculated as the sum of the factors.

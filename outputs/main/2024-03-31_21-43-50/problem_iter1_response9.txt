@@ -1,0 +1,29 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    
+    for node in unvisited_nodes:
+        all_distances = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+
+        look_ahead_scores = []
+        for lookahead_node in unvisited_nodes:
+            lookahead_distances = [distance_matrix[lookahead_node][i] for i in unvisited_nodes if i != lookahead_node and i != node]
+            lookahead_average_distance_to_unvisited = np.mean(lookahead_distances)
+            lookahead_std_dev_distance_to_unvisited = np.std(lookahead_distances)
+            lookahead_score = c1 * distance_matrix[node][lookahead_node] - c2 * lookahead_average_distance_to_unvisited + c3 * lookahead_std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][lookahead_node]
+            look_ahead_scores.append(lookahead_score)
+
+        score = c1 * distance_matrix[current_node][node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][node]
+        look_ahead_score = max(look_ahead_scores)
+        final_score = score + threshold * look_ahead_score
+        scores[node] = final_score
+
+    next_node = min(scores, key=scores.get)
+    return next_node
+```
+In the `select_next_node_v2` function, I have added a look-ahead mechanism to improve the selection of the next node. The look-ahead mechanism computes scores for each potential next node, considering the scores of all possible subsequent nodes. The final score is a combination of the original score and the maximum look-ahead score, weighted by a threshold value. This allows the algorithm to make more informed decisions about the next node to visit, considering the potential consequences of that decision.

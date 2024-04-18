@@ -1,0 +1,41 @@
+[*] Running ...
+[*] Dataset loaded: C:\Development\cs5491-artificial-intelligence/problems/tsp_aco\dataset\train150_dataset.npy with 5 instances.
+C:\Development\cs5491-artificial-intelligence\problems\tsp_aco\gpt.py:8: RuntimeWarning: divide by zero encountered in divide
+Traceback (most recent call last):
+  File "C:\Development\cs5491-artificial-intelligence/problems/tsp_aco/eval.py", line 47, in <module>
+    obj = solve(node_pos)
+          ^^^^^^^^^^^^^^^
+  File "C:\Development\cs5491-artificial-intelligence/problems/tsp_aco/eval.py", line 24, in solve
+    obj = aco.run(N_ITERATIONS)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\utils\_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Development\cs5491-artificial-intelligence\problems\tsp_aco\aco.py", line 34, in run
+    paths = self.gen_path(require_prob=False)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Development\cs5491-artificial-intelligence\problems\tsp_aco\aco.py", line 92, in gen_path
+    actions, log_probs = self.pick_move(prev, mask, require_prob)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Development\cs5491-artificial-intelligence\problems\tsp_aco\aco.py", line 114, in pick_move
+    dist = Categorical(dist)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\distributions\categorical.py", line 70, in __init__
+    super().__init__(batch_shape, validate_args=validate_args)
+  File "C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\distributions\distribution.py", line 68, in __init__
+    raise ValueError(
+ValueError: Expected parameter probs (Tensor of shape (30, 150)) of distribution Categorical(probs: torch.Size([30, 150])) to satisfy the constraint Simplex(), but found invalid values:
+tensor([[3.5450e-12, 3.5450e-12, 6.8846e-03,  ..., 3.5450e-12, 9.2494e-03,
+         3.5450e-12],
+        [4.1520e-12, 4.1520e-12, 6.6680e-03,  ..., 4.1520e-12, 1.5793e-02,
+         5.6327e-03],
+        [5.5295e-12, 5.5295e-12, 5.5295e-12,  ..., 5.5295e-12, 2.1418e-02,
+         5.5295e-12],
+        ...,
+        [3.4249e-12, 3.4249e-12, 8.4642e-03,  ..., 3.4249e-12, 7.3842e-03,
+         5.3394e-03],
+        [2.0518e-02, 4.9536e-12, 1.2571e-02,  ..., 9.8030e-03, 4.9536e-12,
+         4.9536e-12],
+        [0.0000e+00, 0.0000e+00, 0.0000e+00,  ..., 0.0000e+00, 0.0000e+00,
+         0.0000e+00]], dtype=torch.float64)
+[0m

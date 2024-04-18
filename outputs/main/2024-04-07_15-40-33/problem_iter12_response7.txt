@@ -1,0 +1,9 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    # Subtract the minimum value from each row and column
+    min_row = np.min(distance_matrix, axis=1)
+    min_col = np.min(distance_matrix, axis=0)
+    heuristics = distance_matrix - min_row[:, np.newaxis] - min_col
+    
+    return heuristics
+```

@@ -1,0 +1,25 @@
+1. Consider the impact of node distances on penalty calculation. 
+2. Optimize computation by avoiding unnecessary operations and loops.
+1. Consider incorporating information about node degrees or neighborhoods.
+2. Explore adaptive or dynamic approaches for adjusting the heuristics values during the search.
+3. Evaluate the impact of different normalization techniques on the heuristics performance.
+1. Normalize distance early to avoid repeating calculations.
+2. Normalize edge distance before computing penalty for better performance.
+1. Normalize distances before applying heuristics.
+2. Consider node distances and weighted average distances for better edge indicators.
+1. Use node characteristics for better normalization and penalty computation.
+2. Consider node importance and average distance for more accurate penalty calculation.
+- In the better code, avoid unnecessary normalizations and use a penalty matrix instead of edge indicators.
+- Consider using pre-calculated node_avg_distance values and avoid unnecessary computations.
+- Optimize using vectorized operations instead of nested loops for efficiency.
+- Avoid unnecessary computations and calculations in the first version.
+- Simplify the penalty calculation by removing the term involving the distance range in the second version.
+1. Consider using normalization techniques to address differences in feature scales.
+2. Explore alternative ways of calculating indicators based on the properties of the problem domain.
+1. Consider normalizing edge indicators by global average distance.
+2. Use average distance from each node to normalize edge indicators.
+3. Incorporate range of distances in penalty calculation.
+4. Utilize sum of distances from each node for better edge indicators.
+5. Normalize average distances by global average for improved edge indicators.
+1. Avoid unnecessary computations and intermediate variables.
+2. Simplify the code by removing redundant steps and variables.

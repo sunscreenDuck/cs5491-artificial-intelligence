@@ -1,0 +1,21 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    
+    # Calculate the average and standard deviation of distances to unvisited nodes
+    all_distances = distance_matrix[current_node][list(unvisited_nodes)]
+    average_distance_to_unvisited = np.mean(all_distances)
+    std_dev_distance_to_unvisited = np.std(all_distances)
+    
+    for node in unvisited_nodes:
+        # Calculate the score using adjusted weights and thresholds
+        score = c1 * distance_matrix[current_node][node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][node]
+        scores[node] = score
+    
+    next_node = min(scores, key=scores.get)
+    return next_node
+```
+In this improved version, we move the calculation of the average and standard deviation of distances to unvisited nodes outside the loop since these values remain constant for each unvisited node. This avoids redundant computations and improves efficiency.

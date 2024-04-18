@@ -1,0 +1,23 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray, num_look_ahead: int = 3) -> int:
+    """Select the next node to visit from the unvisited nodes using a look-ahead mechanism."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    for node in unvisited_nodes:
+        lookahead_scores = []
+        for i in range(num_look_ahead):
+            lookahead_unvisited = unvisited_nodes.copy()
+            lookahead_unvisited.remove(node)
+            if lookahead_unvisited:
+                lookahead_node = select_next_node_v2(node, destination_node, lookahead_unvisited, distance_matrix, num_look_ahead-1)
+                lookahead_score = c1 * distance_matrix[current_node][node] + c1 * distance_matrix[node][lookahead_node] - c2 * distance_matrix[current_node][lookahead_node]
+            else:
+                lookahead_score = c1 * distance_matrix[current_node][node] - c4 * distance_matrix[destination_node][node]
+            lookahead_scores.append(lookahead_score)
+        score = sum(lookahead_scores) / len(lookahead_scores)
+        scores[node] = score
+    next_node = min(scores, key=scores.get)
+    return next_node
+```
+

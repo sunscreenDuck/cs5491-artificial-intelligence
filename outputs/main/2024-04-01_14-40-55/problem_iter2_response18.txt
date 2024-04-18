@@ -1,0 +1,37 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes using look-ahead mechanisms with future information."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    
+    # Calculate future average distance for all unvisited nodes
+    future_average_distances = {}
+    for node in unvisited_nodes:
+        future_distances = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        future_average_distance = np.mean(future_distances)
+        future_average_distances[node] = future_average_distance
+        
+    # Calculate lookahead score for each node
+    for node in unvisited_nodes:
+        all_distances = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        
+        lookahead_score = c1 * distance_matrix[current_node][node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][node] + c2 * future_average_distances[node]
+        
+        scores[node] = lookahead_score
+    
+    # Normalize lookahead scores
+    max_score = max(scores.values())
+    min_score = min(scores.values())
+    for node in scores:
+        scores[node] = (scores[node] - min_score) / (max_score - min_score)
+    
+    # Apply thresholding
+    scores = {node: score for node, score in scores.items() if score >= threshold}
+    
+    # Select node with maximum score
+    next_node = max(scores, key=scores.get)
+    return next_node
+```

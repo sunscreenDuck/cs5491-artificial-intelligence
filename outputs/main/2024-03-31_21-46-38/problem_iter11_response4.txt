@@ -1,0 +1,36 @@
+```python
+from typing import Dict, Set
+import numpy as np
+
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    
+    # Define weights for scoring function
+    weights = {
+        'current_node_weight': 0.4,
+        'average_distance_weight': 0.3,
+        'std_dev_distance_weight': 0.2,
+        'destination_node_weight': 0.1
+    }
+    
+    scores = {}
+    
+    for node in unvisited_nodes:
+        node_distances = distance_matrix[node, [i for i in unvisited_nodes if i != node]]
+        
+        # Calculate scores for each node based on the defined weights
+        current_node_score = weights['current_node_weight'] * distance_matrix[current_node][node]
+        average_distance_score = weights['average_distance_weight'] * np.mean(node_distances)
+        std_dev_distance_score = weights['std_dev_distance_weight'] * np.std(node_distances)
+        destination_node_score = weights['destination_node_weight'] * distance_matrix[destination_node][node]
+        
+        # Calculate total score for the node
+        score = current_node_score - average_distance_score + std_dev_distance_score - destination_node_score
+        
+        scores[node] = score
+    
+    # Select node with the minimum score as the next node to visit
+    next_node = min(scores, key=scores.get)
+    
+    return next_node
+```

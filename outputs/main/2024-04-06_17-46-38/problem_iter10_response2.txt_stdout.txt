@@ -1,0 +1,38 @@
+[*] Running ...
+[*] Dataset loaded: C:\Development\cs5491-artificial-intelligence/problems/tsp_aco\dataset\train50_dataset.npy with 5 instances.
+C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\fromnumeric.py:3504: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\_methods.py:129: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+Traceback (most recent call last):
+  File "C:\Development\cs5491-artificial-intelligence/problems/tsp_aco/eval.py", line 48, in <module>
+    obj = solve(node_pos)
+          ^^^^^^^^^^^^^^^
+  File "C:\Development\cs5491-artificial-intelligence/problems/tsp_aco/eval.py", line 24, in solve
+    obj = aco.run(N_ITERATIONS)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\utils\_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Development\cs5491-artificial-intelligence\problems\tsp_aco\aco.py", line 34, in run
+    paths = self.gen_path(require_prob=False)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Development\cs5491-artificial-intelligence\problems\tsp_aco\aco.py", line 92, in gen_path
+    actions, log_probs = self.pick_move(prev, mask, require_prob)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Development\cs5491-artificial-intelligence\problems\tsp_aco\aco.py", line 114, in pick_move
+    dist = Categorical(dist)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\distributions\categorical.py", line 70, in __init__
+    super().__init__(batch_shape, validate_args=validate_args)
+  File "C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\distributions\distribution.py", line 68, in __init__
+    raise ValueError(
+ValueError: Expected parameter probs (Tensor of shape (30, 50)) of distribution Categorical(probs: torch.Size([30, 50])) to satisfy the constraint Simplex(), but found invalid values:
+tensor([[nan, nan, nan,  ..., nan, nan, nan],
+        [nan, nan, nan,  ..., nan, nan, nan],
+        [nan, nan, nan,  ..., nan, nan, nan],
+        ...,
+        [nan, nan, nan,  ..., nan, nan, nan],
+        [nan, nan, nan,  ..., nan, nan, nan],
+        [nan, nan, nan,  ..., nan, nan, nan]], dtype=torch.float64)
+[0m

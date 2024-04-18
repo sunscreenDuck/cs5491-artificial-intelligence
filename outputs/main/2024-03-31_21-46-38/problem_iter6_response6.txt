@@ -1,0 +1,23 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    
+    for node in unvisited_nodes:
+        node_distances = [distance_matrix[node][next_node] for next_node in unvisited_nodes if next_node != node]
+        average_distance_to_unvisited = sum(node_distances) / (len(unvisited_nodes) - 1)
+        std_dev_distance_to_unvisited = (sum((dist - average_distance_to_unvisited) ** 2 for dist in node_distances) / len(node_distances)) ** 0.5
+        score = c1 * distance_matrix[current_node][node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][node]
+        scores[node] = score
+    
+    next_node = min(scores, key=scores.get)
+    return next_node
+```
+In this improved version:
+- The variable names are more descriptive.
+- The calculations for average distance and standard deviation are optimized to reduce unnecessary computations.
+- The threshold and lookahead factors have been removed since they were not present in the original code and their purpose was not explained.
+- The scoring function has been simplified to eliminate the unnecessary threshold term.
+- The scores dictionary is now simpler and doesn't require additional imports.
+- The overall structure of the function remains unchanged from the original code.

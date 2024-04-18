@@ -1,0 +1,10 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    # Calculate the average distance for each node
+    node_avg_distance = np.mean(distance_matrix, axis=1)
+
+    # Calculate the prior indicators for each edge
+    edge_indicators = np.divide(distance_matrix, node_avg_distance[:, np.newaxis])
+
+    return edge_indicators
+```

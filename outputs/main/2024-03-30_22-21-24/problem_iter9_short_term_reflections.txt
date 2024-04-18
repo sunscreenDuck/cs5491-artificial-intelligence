@@ -1,0 +1,33 @@
+1. Consider using a weighted vector dot product instead of individual weight coefficients.
+2. Avoid unnecessary repetitive calculations for the same values (e.g., distance_matrix[current_node, node]).
+3. Use numpy functions for calculations to improve performance.
+4. Simplify code and eliminate unnecessary variable assignments.
+1. Improve code efficiency by minimizing unnecessary calculations and data structures.
+2. Fine-tune weight coefficients for scoring criteria to achieve better quality solutions.
+1. Avoid magic numbers by using descriptive variable names and weights.
+2. Use consistent terminology and formatting for readability.
+3. Consider using list comprehensions for code simplicity and efficiency.
+- Use meaningful variable and parameter names
+- Avoid unnecessary normalization or scaling
+- Choose appropriate weights for different factors
+- Consider including additional factors if beneficial
+1. Use meaningful variable names for better code readability.
+2. Consider the impact of each weight on the overall score.
+3. Take advantage of set operations for better performance.
+4. Calculate distances between nodes efficiently using numpy.
+5. Utilize numpy functions for obtaining statistical measures.
+6. Simplify the scoring equation for improved readability.
+1. Consider using more meaningful variable names for better code readability.
+2. Normalize the weights (c1,c2,c3,c4) to make them comparable in magnitude.
+3. Use numpy functions for more efficient array operations, e.g., np.mean, np.std.
+1. Consider using weighted scores to balance the importance of different factors.
+2. Calculate statistics (e.g., average, standard deviation) using all distances at once for efficiency and accuracy.
+3. Include more factors in the scoring function to capture relevant information.
+1. Normalize weights to better balance their contributions.
+2. Consider the relative importance of average distance and standard deviation in the scoring function.
+- Experiment with different coefficients to find the best balance between different factors.
+- Consider incorporating more factors into the scoring function to make it more comprehensive.
+1. Use node-specific information for better decision-making.
+2. Consider the impact of removing current node from average and std_dev calculations.
+3. Adjust weights to improve decision-making.
+4. Minimize unnecessary calculations by avoiding repeated distance matrix lookups.

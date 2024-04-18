@@ -1,0 +1,4 @@
+1. Balance and prioritize factors based on problem-specific knowledge.
+2. Experiment with effective combinations of factors and their weights.
+3. Normalize distance matrix and consider average, standard deviation, pairwise difference, and distance to closest neighbors.
+4. Use thresholds to filter out unpromising elements strategically.

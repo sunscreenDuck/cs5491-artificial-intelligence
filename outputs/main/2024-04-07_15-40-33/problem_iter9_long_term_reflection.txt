@@ -1,0 +1,2 @@
+1. Avoid unnecessary calculations and variable assignments.
+2. Normalize distance matrix using maximum value and subtract minimum values once from rows and columns.

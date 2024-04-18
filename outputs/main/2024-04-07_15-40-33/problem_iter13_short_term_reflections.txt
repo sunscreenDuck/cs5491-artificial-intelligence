@@ -1,0 +1,20 @@
+1. Avoid unnecessary centering and scaling for improved heuristic performance.
+2. Normalize the distance matrix and subtract minimum values for better indicator calculation.
+1. Normalize distance matrix and calculate intermediate variables for better performance.
+2. Use intermediate variables for calculating heuristics rather than manipulating the distance matrix directly.
+Centering the matrix is unnecessary and can be avoided for better performance.
+1. Avoid unnecessary intermediate variables and computations.
+2. Perform computations in place to save memory and improve efficiency.
+Avoid modifying the input matrix directly, create a copy instead.
+Separate normalization and minimum subtraction steps for better code clarity.
+Hint 1: Normalize the distance matrix to improve the heuristics function.
+
+Hint 2: Compute row and column minimums for better heuristics calculation.
+- Avoid unnecessary copying and use direct references.
+- Eliminate unnecessary intermediate variables.
+1. Avoid unnecessary calculations and scaling.
+2. Utilize minimum values instead of mean values for better centering and normalization.
+1. Use np.copy() for in-place modification.
+2. Normalize input before applying other transformations.
+3. Account for both row and column minimums when subtracting from the distance matrix.
+Normalize distances, subtract min row and column in separate steps for better performance.

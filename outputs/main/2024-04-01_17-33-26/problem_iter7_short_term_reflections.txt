@@ -1,0 +1,25 @@
+1. Normalize distances before further calculations.
+2. Consider weighted average for node distances using distances as weights.
+- Consider using global statistics for normalization.
+- Utilize a wider range of information, such as distance range, for better indicators.
+1. Normalize distances before calculating indicators.
+2. Consider both node distances when calculating penalty values for edges.
+1. Consider using vectorized operations for improved performance.
+2. Take into account the relative distances between nodes.
+1. Avoid unnecessary calculations and normalizations.
+2. Simplify the calculation of penalty values.
+3. Minimize the number of iterations.
+4. Reduce the number of matrix operations.
+5. Focus on relevant features and remove irrelevant ones.
+- Vectorize computations for improved efficiency.
+- Avoid unnecessary nested loops for improved performance.
+- Normalize values to handle differences in feature scales
+- Consider average distance per node instead of sum of distances
+- Avoid unnecessary calculations in the worse code.
+- Update penalty_matrix incrementally instead of initializing it with zeros in the better code.
+1. Avoid unnecessary normalization and calculations.
+2. Utilize vectorized operations for improved efficiency.
+3. Consider incorporating penalty values based on node average distances.
+1. Normalize the distance matrix after calculating node distances.
+2. Avoid unnecessary calculations and loops.
+3. Consider the sum of distances only once.

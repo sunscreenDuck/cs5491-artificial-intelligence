@@ -1,0 +1,4 @@
+1. Simplify the scoring function and reduce unnecessary calculations.
+2. Incorporate look-ahead mechanisms to consider future choices and improve the quality of node selection.
+3. Adjust weight parameters to better balance the importance of different factors.
+4. Optimize data structure usage and minimize loops and iterations.

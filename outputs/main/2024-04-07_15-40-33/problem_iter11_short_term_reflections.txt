@@ -1,0 +1,22 @@
+1. Normalize based on max distance before subtracting minimum values.
+2. Avoid redundant calculations by assigning minimum row and column values separately.
+1. Avoid unnecessary computations and operations.
+2. Normalize matrix before modifying it to ensure consistent scaling.
+Normalize distance matrix before computing heuristics. Subtract minimum values from rows and columns.
+1. Normalize distances before applying the heuristics.
+2. Subtract row and column minimum values directly from the distance matrix (in-place).
+
+
+1. Normalize distance matrix before operations.
+2. Create a copy of the distance matrix to avoid changing the original values.
+3. Subtract minimum row and column values after normalization.
+1. Avoid modifying input in place.
+2. Minimize computation redundancy to improve efficiency.
+1. Normalize the distance matrix to improve the performance of the heuristic function.
+2. Subtract the minimum value separately from each row and column for better results.
+1. Normalize matrix before subtracting minimum values for better results. 
+2. Avoid duplicate calculations by normalizing distance matrix prior to subtractions.
+1. Normalize and center the distance matrix before applying other operations.
+2. Subtract the minimum value from each row and column for better results.
+- Avoid repeated calculations.
+- Use intermediate variables to store results and reuse them.

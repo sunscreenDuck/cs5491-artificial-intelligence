@@ -1,0 +1,25 @@
+1. Use normalized distance matrix instead of arbitrary indicators.
+2. Give less penalty to long edges to prevent early convergence.
+1. Consider normalizing distance metric more effectively.
+2. Prioritize penalizing long edges over normalizing distance matrix.
+- Consider using more meaningful indicators for edge selection.
+- Avoid unnecessary calculations and matrix transformations.
+- Update the distance matrix directly based on the heuristics.
+1. Normalize distances between [0, 1] and use shortest path to determine priorities.
+2. Prioritize lower distances and reduce the influence of outliers.
+1. Normalize distances to give equal importance to all edges.
+2. Use Dijkstra's algorithm to efficiently find shortest path.
+3. Prioritize edges based on their distance from the optimal path.
+1. Focus on the problem-specific characteristics instead of general statistical properties.
+2. Avoid unnecessary calculations and transformations.
+3. Keep the indicator values consistent with the problem requirements.
+4. Simplify the heuristic by directly using the problem data.
+1. Consider using a more sophisticated normalization technique to balance the impact of different distances.
+2. Use a heuristics value that takes into account both the maximum and minimum distances in the distance matrix.
+1. Incorporate domain knowledge in heuristics.
+2. Focus on the problem-specific characteristics.
+3. Simpler heuristics can sometimes be more effective.
+1. Scaling distance matrix: Normalize by dividing each element by mean or average distance.
+2. Weighted penalization: Apply exponential function to penalize long edges more heavily for better search.
+1. Consider incorporating distance matrix statistics to guide the heuristic calculations.
+2. Identify and amplify indicators that deviate significantly from the average distance.

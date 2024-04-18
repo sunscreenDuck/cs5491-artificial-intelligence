@@ -1,0 +1,21 @@
+[*] Running ...
+[*] Dataset loaded: C:\Development\cs5491-artificial-intelligence/problems/tsp_constructive\dataset\train50_dataset.npy with 64 instances.
+C:\Development\cs5491-artificial-intelligence\problems\tsp_constructive\gpt.py:10: RuntimeWarning: invalid value encountered in divide
+  distances_to_unvisited = distance_matrix[node, list(unvisited_nodes - {node})]
+Traceback (most recent call last):
+  File "C:\Development\cs5491-artificial-intelligence/problems/tsp_constructive/eval.py", line 82, in <module>
+    obj = eval_heuristic(node_positions[i])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Development\cs5491-artificial-intelligence/problems/tsp_constructive/eval.py", line 42, in eval_heuristic
+    next_node = select_next_node(
+                ^^^^^^^^^^^^^^^^^
+  File "C:\Development\cs5491-artificial-intelligence\problems\tsp_constructive\gpt.py", line 10, in select_next_node_v2
+    distances_to_unvisited = distance_matrix[node, list(unvisited_nodes - {node})]
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\fromnumeric.py", line 2953, in min
+    return _wrapreduction(a, np.minimum, 'min', axis, None, out,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\fromnumeric.py", line 88, in _wrapreduction
+    return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: zero-size array to reduction operation minimum which has no identity

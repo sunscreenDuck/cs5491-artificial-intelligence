@@ -1,0 +1,30 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes with improved look-ahead mechanism."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    
+    for node in unvisited_nodes:
+        all_distances = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        average_distance_to_unvisited = np.mean(all_distances)
+        
+        # Look-ahead
+        lookahead_scores = []
+        for lookahead_node in unvisited_nodes:
+            if lookahead_node != node:
+                lookahead_distance = distance_matrix[node][lookahead_node] + distance_matrix[lookahead_node][destination_node]
+                lookahead_scores.append(lookahead_distance)
+        
+        lookahead_scores.sort()
+        lookahead_score = 0
+        if len(lookahead_scores) >= 2:
+            lookahead_score = lookahead_scores[1] - lookahead_scores[0]
+        
+        score = c1 * distance_matrix[current_node][node] - c2 * average_distance_to_unvisited - c3 * distance_matrix[destination_node][node]
+        scores[node] = score + threshold * lookahead_score
+
+    next_node = min(scores, key=scores.get)
+    return next_node
+```
+The improved code removes unnecessary calculations and optimizes the look-ahead mechanism to provide more accurate information for scoring.

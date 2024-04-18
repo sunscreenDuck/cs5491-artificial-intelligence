@@ -1,0 +1,17 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    for node in unvisited_nodes:
+        dist_to_node = distance_matrix[current_node][node]
+        unvisited_distances = distance_matrix[node][list(unvisited_nodes)]
+        
+        # Calculate scores based on heuristic
+        score = c1 * dist_to_node - c2 * np.mean(unvisited_distances) + c3 * np.std(unvisited_distances) - c4 * distance_matrix[destination_node][node]
+        
+        scores[node] = score
+    next_node = min(scores, key=scores.get)
+    return next_node
+```
+In `select_next_node_v2`, I simplified the calculation of `average_distance_to_unvisited` and `std_dev_distance_to_unvisited` by directly using NumPy functions to calculate the mean and standard deviation of distances. I also avoided unnecessary calculations and intermediate variables to improve code readability and performance.

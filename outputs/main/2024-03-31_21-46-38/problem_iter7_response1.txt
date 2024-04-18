@@ -1,0 +1,25 @@
+```python
+import numpy as np
+
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    
+    current_distances = distance_matrix[current_node]
+    destination_distances = distance_matrix[destination_node]
+    
+    for node in unvisited_nodes:
+        unvisited_distances = distance_matrix[node, list(unvisited_nodes - {node})]
+        
+        average_distance_to_unvisited = np.mean(unvisited_distances)
+        std_dev_distance_to_unvisited = np.std(unvisited_distances)
+        
+        score = c1 * current_distances[node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * destination_distances[node]
+        scores[node] = score
+    
+    next_node = min(scores, key=scores.get) if np.random.random() < threshold else np.random.choice(list(unvisited_nodes - {current_node}))
+    return next_node
+```
+The mutated `select_next_node_v2` function improves the efficiency by pre-computing the distances from the current node and the destination node to all other nodes. It also uses numpy indexing to directly access the distances, avoiding redundant computations. Additionally, it incorporates a random selection mechanism for exploration by selecting a random node with a probability of `threshold` if it is smaller than a random number from 0 to 1.

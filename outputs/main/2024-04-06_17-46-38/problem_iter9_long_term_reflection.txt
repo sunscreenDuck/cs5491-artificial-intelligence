@@ -1,0 +1,4 @@
+1. Prioritize factors that capture relevant characteristics of the problem and discard unnecessary calculations.
+2. Normalize distance matrix for comparability and consider additional factors like standard deviation and pairwise differences.
+3. Set appropriate thresholds and update heuristics values in-place for efficiency.
+4. Balance weights and adapt heuristics to specific problem instances.

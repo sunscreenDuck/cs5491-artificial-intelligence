@@ -1,0 +1,24 @@
+Hints for designing better heuristics:
+1. Avoid unnecessary calculations.
+2. Normalize and subtract minimum values efficiently.
+1. Keep the original distance matrix for calculations.
+2. Normalize the matrix after creating a copy.
+3. Subtract the minimum values from rows and columns in the original matrix.
+1. Normalize the distance matrix using the maximum distance.
+2. Subtract the minimum values from each row and column.
+1. Normalize using range method: (distance_matrix - np.min(distance_matrix)) / (np.max(distance_matrix) - np.min(distance_matrix))
+
+2. Precompute minimums outside loop: Move min_row and min_col computations outside the loop to improve performance.
+1. Normalize distance matrix based on the maximum value instead of range.
+2. Calculate minimum values for rows and columns directly from the original distance matrix.
+- Avoid unnecessary variable assignments.
+- Use consistent variable names for clarity.
+- Normalize the distance matrix before calculating row and column minimums.
+1. Normalize by dividing by matrix maximum.
+2. Subtract row and column minimum simultaneously.
+- Normalize distance matrix before centering.
+- Subtract minimum from each row and column after normalization.
+1. Remove unnecessary normalization step.
+2. Calculate minimum row and column values only once.
+- Normalize distance matrix using division and find minimum values before subtraction.
+- Subtract minimum values only once from the distance matrix.

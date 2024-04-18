@@ -1,0 +1,24 @@
+1. Normalize distance matrix by subtracting minimum and dividing by maximum.
+2. Calculate row and column minimums separately, then subtract from normalized matrix.
+3. Avoid unnecessary variable copies for improved efficiency.
+4. Use numpy functions instead of manual calculations for cleaner and more readable code.
+1. Normalize the distance matrix and subtract min from rows and columns.
+2. Avoid copying the distance matrix and prevent self-loops.
+1. Normalize distance matrix before calculating heuristics.
+2. Subtract minimum values from rows and columns instead of full matrix.
+- Normalize distances to a common scale and remove redundancy in calculating minimum distances.
+- Consider the magnitude and range of the distances when designing the heuristics function.
+1. Avoid normalizing the distance matrix and use column and row minimum subtraction.
+2. Use element-wise operations instead of nested loops for efficiency.
+- Avoid unnecessary calculations (e.g., normalization) unless they have a clear benefit.
+- Simplify operations by minimizing unnecessary copying or extra steps.
+- Use more efficient functions (e.g., np.fill_diagonal) when available.
+1. Avoid double normalization and diagonal manipulations.
+2. Use direct row and column minimum subtraction for better performance.
+1. Normalize the distance matrix using a consistent approach.
+2. Subtract the minimum value from each row and column separately.
+3. Avoid setting diagonal elements to infinity unnecessarily.
+1. Normalize distance matrix with the range (Max - Min), not just Max.
+2. Subtract column and row minima to refine indicators' calculation.
+1. Normalize distances for better comparison and scaling.
+2. Use the same method to subtract minimum values from both rows and columns.

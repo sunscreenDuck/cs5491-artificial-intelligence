@@ -1,0 +1,4 @@
+1. Simplify scoring function, adjust weights, and avoid redundant calculations for better performance.
+2. Use set operations, local variables, and eliminate unnecessary calculations to optimize efficiency.
+3. Consider problem-specific insights, factors, constraints, and adjustable parameters for improved heuristics.
+4. Use meaningful variable names, numpy arrays, and minimize code duplication for better code clarity and flexibility.

@@ -1,0 +1,36 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    n = distance_matrix.shape[0]
+    factors = np.zeros((n, n))
+
+    # Calculate the reciprocal of the distance matrix
+    reciprocal_matrix = np.reciprocal(distance_matrix)
+
+    # Calculate the sum of the reciprocal matrix
+    sum_matrix = np.sum(reciprocal_matrix)
+
+    # Calculate the average reciprocal value
+    average_value = sum_matrix / (n * n)
+
+    # Calculate the maximum reciprocal value
+    max_value = np.max(reciprocal_matrix)
+
+    # Calculate the minimum reciprocal value
+    min_value = np.min(reciprocal_matrix)
+
+    # Calculate the range of reciprocal values
+    range_value = max_value - min_value
+
+    # Combine various factors
+    factors += reciprocal_matrix
+    factors += (1 / np.sum(distance_matrix, axis=1)).reshape(n, 1)
+
+    # Calculate the normalized factors
+    normalized_factors = (factors - min_value) / range_value
+    
+    # Sparsify the matrix by setting unpromising elements to zero
+    threshold = average_value * 1.5  # Dynamic threshold
+    sparsified_matrix = np.where(normalized_factors >= threshold, normalized_factors, 0)
+    
+    return sparsified_matrix
+```

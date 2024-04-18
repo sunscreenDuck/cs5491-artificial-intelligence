@@ -1,0 +1,19 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+
+    # Calculate the average distance
+    avg_distance = np.mean(distance_matrix)
+
+    # Initialize the new distance matrix
+    new_distance_matrix = np.copy(distance_matrix)
+
+    # Update the new distance matrix based on the heuristics
+    for i in range(distance_matrix.shape[0]):
+        for j in range(distance_matrix.shape[1]):
+            if distance_matrix[i][j] > avg_distance:
+                new_distance_matrix[i][j] *= 2
+            elif distance_matrix[i][j] < avg_distance / 2:
+                new_distance_matrix[i][j] /= 2
+
+    return new_distance_matrix
+```

@@ -1,0 +1,23 @@
+1. Use the maximum value to normalize the distance matrix (Better code). 
+2. Avoid unnecessary calculations and indexing (Better code).
+1. Normalize the distance matrix before subtracting the minimum values.
+2. Avoid unnecessary copying of the distance matrix before normalizing and subtracting minimum values.
+1. Normalize distance matrix before subtracting row and column minimums.
+2. Compute row and column minimums from the original distance matrix, not the normalized one.
+1. Avoid unnecessary copying and computations. 
+2. Minimize matrix calculations to improve efficiency. 
+3. Normalize distance matrix using maximum value directly. 
+4. Subtract minimum values from each row and column in one step.
+- Avoid creating unnecessary copies of data.
+- Perform operations directly on the normalized matrix.
+- Calculate row and column minimums separately to reduce computation.
+- Use vectorized operations instead of element-wise operations.
+1. Avoid subtracting minimum values twice (Worse code).
+2. Normalize input before manipulating values (Better code).
+1. Normalize the distance matrix to enhance comparability among edges.
+2. Deduct the minimum values from both rows and columns for each element, based on the normalized matrix.
+Use the minimum values on the rows and columns to normalize before subtracting; minimize dependencies.
+Hints for designing better heuristics:
+1. Normalize the input matrix.
+2. Subtract minimum value separately for rows and columns.
+Better heuristics: Normalize matrix, calculate row and column minimums, subtract from each row and column.

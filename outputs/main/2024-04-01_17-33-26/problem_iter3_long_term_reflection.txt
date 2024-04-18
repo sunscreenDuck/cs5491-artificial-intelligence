@@ -1,0 +1,2 @@
+1. Prioritize node-level information and use weighted averages for edge heuristics.
+2. Normalize distances based on node characteristics and consider a range-based heuristics function for edge selection.

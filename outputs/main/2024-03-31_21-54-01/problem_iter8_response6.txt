@@ -1,0 +1,24 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    threshold = 0.5
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    remaining_unvisited_nodes = unvisited_nodes - {current_node}
+    
+    for node in unvisited_nodes:
+        all_distances = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        
+        remaining_average_distance = np.mean([distance_matrix[node][i] for i in remaining_unvisited_nodes])
+        remaining_std_dev_distance = np.std([distance_matrix[node][i] for i in remaining_unvisited_nodes])
+        
+        exploration_score = c2 * remaining_average_distance - c3 * remaining_std_dev_distance
+        exploitation_score = distance_matrix[destination_node][node]
+        
+        score = c1 * (distance_matrix[current_node][node] - average_distance_to_unvisited) - c4 * exploitation_score - threshold * exploration_score
+        scores[node] = score
+        
+    next_node = min(scores, key=scores.get)
+    return next_node
+```

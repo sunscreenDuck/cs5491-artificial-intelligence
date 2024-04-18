@@ -1,0 +1,32 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    n = distance_matrix.shape[0]
+    heuristics = np.zeros_like(distance_matrix)
+
+    # Calculate the average distance
+    average_distance = np.mean(distance_matrix[np.nonzero(distance_matrix)])
+
+    # Calculate the maximum distance
+    max_distance = np.max(distance_matrix)
+
+    for i in range(n):
+        for j in range(n):
+            # Calculate the heuristics value as a combination of factors
+            heuristic_value = 1 / distance_matrix[i, j] + average_distance / distance_matrix[i, j]**2 + distance_matrix[i, j] / max_distance
+            
+            # Set unpromising elements to zero
+            if heuristic_value < 0.5:
+                heuristic_value = 0
+            
+            heuristics[i, j] = heuristic_value
+    
+    # Normalize the heuristics values
+    max_heuristics = np.max(heuristics)
+    min_heuristics = np.min(heuristics)
+    normalized_heuristics = (heuristics - min_heuristics) / (max_heuristics - min_heuristics)
+
+    return normalized_heuristics
+```
+In the improved `heuristics_v2` function, I added the following modifications:
+- Normalized the heuristics values to the range [0, 1] to get a more meaningful representation of the promising edges.
+Please let me know if you need any further assistance.

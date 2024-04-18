@@ -1,0 +1,4 @@
+- Normalize distance matrix before further calculations.
+- Experiment with different normalization and thresholding strategies.
+- Consider mean and standard deviation for threshold calculation.
+- Use inverse of normalized matrix for improved performance.

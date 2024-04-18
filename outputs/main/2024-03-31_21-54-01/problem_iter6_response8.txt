@@ -1,0 +1,49 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    thresholds = {
+        "distance_to_current": 0.7,
+        "average_distance_to_unvisited": 0.3,
+        "std_dev_distance_to_unvisited": 0.2,
+        "distance_to_destination": 1.0
+    }
+    
+    weights = {
+        "distance_to_current": 0.4,
+        "average_distance_to_unvisited": 0.3,
+        "std_dev_distance_to_unvisited": 0.2,
+        "distance_to_destination": 0.1
+    }
+    
+    scores = {}
+    
+    for node in unvisited_nodes:
+        distance_to_current = distance_matrix[current_node][node]
+        all_distances_to_unvisited = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        
+        average_distance_to_unvisited = np.mean(all_distances_to_unvisited)
+        std_dev_distance_to_unvisited = np.std(all_distances_to_unvisited)
+        
+        score = (
+            weights["distance_to_current"] * threshold(distance_to_current, thresholds["distance_to_current"]) +
+            weights["average_distance_to_unvisited"] * threshold(average_distance_to_unvisited, thresholds["average_distance_to_unvisited"]) +
+            weights["std_dev_distance_to_unvisited"] * threshold(std_dev_distance_to_unvisited, thresholds["std_dev_distance_to_unvisited"]) -
+            weights["distance_to_destination"] * distance_matrix[destination_node][node]
+        )
+        
+        scores[node] = score
+    
+    next_node = min(scores, key=scores.get)
+    
+    return next_node
+
+def threshold(value, threshold):
+    """Apply a threshold to a value."""
+    if value < threshold:
+        return 1.0
+    else:
+        return 0.0
+```
+In this improved version of the code, I have added thresholds and weights for better control over the importance of different factors. The thresholds determine whether a factor is considered in the score calculation or not, while the weights determine the contribution of each factor to the overall score.
+I have also created a helper function `threshold` that applies a threshold to a value, returning 1.0 if the value is below the threshold and 0.0 otherwise.
+Feel free to adjust the thresholds and weights based on your problem's characteristics and preferences.

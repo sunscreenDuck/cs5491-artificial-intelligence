@@ -1,0 +1,39 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes with further improved constructive heuristics."""
+
+    threshold = 0.5
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+
+    for node in unvisited_nodes:
+        unvisited_node_list = list(unvisited_nodes - {node})
+
+        unvisited_distances = distance_matrix[node][unvisited_node_list]
+        unvisited_distances = np.append(unvisited_distances, [distance_matrix[node][current_node], distance_matrix[node][destination_node]])
+        average_distance_to_unvisited = np.mean(unvisited_distances)
+        std_dev_distance_to_unvisited = np.std(unvisited_distances)
+
+        look_ahead_scores = c1 * distance_matrix[current_node][node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][node]
+        
+        num_unvisited = len(unvisited_node_list)
+        if num_unvisited > 0:
+            next_unvisited_distances = distance_matrix[unvisited_node_list, :][:, unvisited_node_list]
+            next_average_distance_to_unvisited = np.mean(next_unvisited_distances, axis=1)
+            next_std_dev_distance_to_unvisited = np.std(next_unvisited_distances, axis=1)
+            
+            look_ahead_score = np.mean(c1 * distance_matrix[current_node][unvisited_node_list] - c2 * next_average_distance_to_unvisited + c3 * next_std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][unvisited_node_list])
+            look_ahead_scores += threshold * look_ahead_score / num_unvisited
+        
+        scores[node] = look_ahead_scores
+
+    next_node = min(scores, key=scores.get)
+    return next_node
+```
+In this improved version, unnecessary calculations for distances have been reduced, and the calculation of lookahead scores has been simplified and optimized.
+
+[Explanation]
+1. The calculation of lookahead scores is separated into two parts. First, the score for the current node is calculated using the original formula. Second, if there are unvisited nodes, the look-ahead score is calculated by averaging the look-ahead scores for each unvisited node and taking into account the threshold value.
+2. The look-ahead scores are now added to `look_ahead_scores` directly, instead of storing them in a separate list and calculating their mean later.
+3. The final score for each node is stored in `look_ahead_scores` instead of `scores` to avoid confusion and make the code more readable.
+4. The number of unvisited nodes is now calculated only once and stored in the variable `num_unvisited`.

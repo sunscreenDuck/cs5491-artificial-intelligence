@@ -1,0 +1,33 @@
+[*] Running ...
+[*] Dataset loaded: C:\Development\cs5491-artificial-intelligence/problems/tsp_constructive\dataset\train50_dataset.npy with 64 instances.
+C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\fromnumeric.py:3504: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\_methods.py:129: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\_methods.py:206: RuntimeWarning: Degrees of freedom <= 0 for slice
+  ret = _var(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
+C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\_methods.py:163: RuntimeWarning: invalid value encountered in divide
+  arrmean = um.true_divide(arrmean, div, out=arrmean,
+C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\_methods.py:198: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+[*] Instance 0: 33.253660093983626
+[*] Instance 1: 37.69929504837189
+[*] Instance 2: 35.21367122275288
+[*] Instance 3: 38.10396522304009
+[*] Instance 4: 36.46108827702887
+[*] Instance 5: 36.66824300670564
+[*] Instance 6: 36.34480213273755
+[*] Instance 7: 35.62760168394719
+[*] Instance 8: 34.5472103292404
+[*] Instance 9: 36.62362820415147
+[*] Instance 10: 38.1487533511649
+[*] Instance 11: 35.84972264304976
+[*] Instance 12: 33.77083525526263
+[*] Instance 13: 39.3003408740598
+[*] Instance 14: 34.84417616975142
+[*] Instance 15: 35.77631962692988
+[*] Instance 16: 33.62370307744021
+[*] Instance 17: 35.41369431359995
+[*] Instance 18: 40.80344616446257
+[*] Instance 19: 36.24898321577163
+[*] Instance 20: 32.767267529729715

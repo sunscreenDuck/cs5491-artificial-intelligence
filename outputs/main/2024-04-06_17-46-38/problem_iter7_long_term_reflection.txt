@@ -1,0 +1,4 @@
+1. Incorporate domain-specific factors and normalize values for fair comparison.
+2. Simplify heuristics by reducing factors and assigning appropriate weights.
+3. Consider non-linear relationships and remove unnecessary calculations.
+4. Normalize distances and use dynamic thresholds for improved performance.

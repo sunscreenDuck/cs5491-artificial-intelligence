@@ -1,0 +1,21 @@
+- Consider individual node properties rather than global statistics.
+- Normalize values based on node characteristics rather than overall averages.
+- Consider using weighted average instead of shortest edge for edge heuristics.
+- Normalize the distances by node averages for better performance.
+1. Consider using global information rather than local information.
+2. Normalize the indicators to make them comparable across different instances.
+1. Consider using node-level information rather than global statistics.
+2. Normalize distances using node averages rather than global averages.
+1. Consider normalizing the distance matrix to obtain better heuristics values.
+2. Scale the indicators appropriately to avoid overflows and underflows.
+3. Explore different normalization techniques to improve the quality of the heuristics.
+4. Incorporate domain-specific knowledge to enhance the heuristics' performance.
+1. Prioritize edges based on their relative distances to the average distances of their connected nodes.
+2. Avoid normalizing distances to prevent edge cases with small ranges having high heuristics values.
+1. Consider the range of distances to normalize heuristics values instead of the average and standard deviation.
+2. Normalize distances between 0 and 1 instead of using their average and standard deviation.
+Consider using local search instead of prior indicators, and use node-based calculations for better performance.
+1. Prioritize edges with smallest differences, rather than normalizing distances.
+2. Calculate edge heuristics based on the shortest edge for each node.
+- Use a range-based heuristics function to assign higher values to better edges.
+- Normalize distance values to balance edge selection while avoiding division by zero.

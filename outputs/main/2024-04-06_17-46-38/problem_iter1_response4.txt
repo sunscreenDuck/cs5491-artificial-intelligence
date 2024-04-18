@@ -1,0 +1,20 @@
+```python
+import numpy as np
+
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    # Calculate the inverse of the distance matrix
+    inverse_distances = 1 / distance_matrix
+
+    # Normalize the inverse distances between 0 and 1
+    normalized_distances = (inverse_distances - np.min(inverse_distances)) / (np.max(inverse_distances) - np.min(inverse_distances))
+
+    # Threshold the normalized distances to sparsify the matrix
+    threshold = np.mean(normalized_distances)
+    sparsified_distances = np.where(normalized_distances >= threshold, normalized_distances, 0)
+
+    return sparsified_distances
+```
+This code improves `heuristics_v1` by:
+
+1. Normalizing the inverse distances in the range of [0, 1]. This allows combining different factors by giving equal weightage to each factor.
+2. Sparsifying the matrix by setting elements below the mean threshold to zero. This is done to remove unpromising edges from consideration in the solution.

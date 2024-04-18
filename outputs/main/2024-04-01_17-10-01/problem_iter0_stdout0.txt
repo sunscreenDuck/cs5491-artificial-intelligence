@@ -1,0 +1,24 @@
+[*] Running ...
+[*] Dataset loaded: C:\Development\cs5491-artificial-intelligence/problems/tsp_gls\dataset/train200_dataset.npy with 200 instances.
+[*] Instance 0: 10.560360211540672
+[*] Instance 1: 10.701890832649287
+[*] Instance 2: 10.849737430346975
+[*] Instance 3: 10.38442973939829
+[*] Instance 4: 10.539013147368482
+[*] Instance 5: 10.411002675930714
+[*] Instance 6: 11.12369664933335
+Traceback (most recent call last):
+  File "C:\Development\cs5491-artificial-intelligence/problems/tsp_gls/eval.py", line 50, in <module>
+    obj = solve(instance)
+          ^^^^^^^^^^^^^^^
+  File "C:\Development\cs5491-artificial-intelligence/problems/tsp_gls/eval.py", line 21, in solve
+    result = guided_local_search(inst.distmat, heu, perturbation_moves, iter_limit)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Development\cs5491-artificial-intelligence\problems\tsp_gls\gls.py", line 152, in guided_local_search
+    return _guided_local_search(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numba\core\serialize.py", line 30, in _numba_unpickle
+    def _numba_unpickle(address, bytedata, hashed):
+    
+KeyboardInterrupt
+[0m

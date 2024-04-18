@@ -1,0 +1,53 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes with improved constructive heuristics."""
+
+    # Set the weights for each component of the score calculation
+    weight_distance = 0.4
+    weight_average_distance = 0.3
+    weight_std_dev_distance = 0.2
+    weight_destination_distance = 0.1
+
+    # Calculate the average and standard deviation distance for the unvisited distances from each node
+    unvisited_distances = distance_matrix[unvisited_nodes]
+    average_distance_to_unvisited = np.mean(unvisited_distances, axis=1)
+    std_dev_distance_to_unvisited = np.std(unvisited_distances, axis=1)
+
+    # Calculate the scores for each unvisited node
+    scores = []
+    for node in unvisited_nodes:
+        # Calculate the distance from the current node to the unvisited node
+        distance = distance_matrix[current_node][node]
+
+        # Calculate the distance from the unvisited node to the destination node
+        destination_distance = distance_matrix[destination_node][node]
+
+        # Calculate the lookahead part of the score
+        lookahead_score = 0
+        for next_node in unvisited_nodes:
+            if next_node != node:
+                # Calculate the distance from the next node to the unvisited nodes
+                next_unvisited_distances = distance_matrix[next_node][unvisited_nodes - {node, next_node}]
+                next_average_distance_to_unvisited = np.mean(next_unvisited_distances)
+                next_std_dev_distance_to_unvisited = np.std(next_unvisited_distances)
+
+                # Calculate the lookahead score
+                lookahead_score += weight_distance * distance_matrix[current_node][next_node] \
+                    - weight_average_distance * next_average_distance_to_unvisited \
+                    + weight_std_dev_distance * next_std_dev_distance_to_unvisited \
+                    - weight_destination_distance * distance_matrix[destination_node][next_node]
+
+        # Calculate the score for the current node
+        score = weight_distance * distance \
+            - weight_average_distance * average_distance_to_unvisited[node] \
+            + weight_std_dev_distance * std_dev_distance_to_unvisited[node] \
+            - weight_destination_distance * destination_distance \
+            + lookahead_score
+
+        scores.append(score)
+
+    # Select the node with the minimum score
+    next_node = list(unvisited_nodes)[np.argmin(scores)]
+
+    return next_node
+```

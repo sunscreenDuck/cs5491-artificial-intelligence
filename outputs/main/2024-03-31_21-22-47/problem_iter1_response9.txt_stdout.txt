@@ -1,0 +1,35 @@
+Traceback (most recent call last):
+  File "C:\Program Files\JetBrains\PyCharm Community Edition 2023.3.4\plugins\python-ce\helpers\pydev\pydevd.py", line 16, in <module>
+    from _pydevd_bundle.pydevd_collect_try_except_info import collect_return_info
+  File "C:\Program Files\JetBrains\PyCharm Community Edition 2023.3.4\plugins\python-ce\helpers\pydev\_pydevd_bundle\pydevd_collect_try_except_info.py", line 12, in <module>
+    from _pydevd_bundle.pydevd_constants import IS_PY38_OR_GREATER, IS_PY312_OR_GREATER
+  File "C:\Program Files\JetBrains\PyCharm Community Edition 2023.3.4\plugins\python-ce\helpers\pydev\_pydevd_bundle\pydevd_constants.py", line 84, in <module>
+    IS_AARCH64 = platform.machine().lower() in ['aarch64', 'arm64']
+                 ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\platform.py", line 958, in machine
+    return uname().machine
+           ^^^^^^^
+  File "C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\platform.py", line 856, in uname
+    release, version, csd, ptype = win32_ver()
+                                   ^^^^^^^^^^^
+  File "C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\platform.py", line 371, in win32_ver
+    major, minor, build = map(int, _syscmd_ver()[2].split('.'))
+                                   ^^^^^^^^^^^^^
+  File "C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\platform.py", line 284, in _syscmd_ver
+    info = subprocess.check_output(cmd,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 466, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1201, in communicate
+    self.wait()
+  File "C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1264, in wait
+    return self._wait(timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\subprocess.py", line 1588, in _wait
+    result = _winapi.WaitForSingleObject(self._handle,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

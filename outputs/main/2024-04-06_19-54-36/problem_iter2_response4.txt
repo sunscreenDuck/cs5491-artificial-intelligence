@@ -1,0 +1,7 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    combined_factors = 1 / distance_matrix + 1 / distance_matrix.T
+    mean_factor = np.mean(combined_factors)
+    sparsified_matrix = np.where(combined_factors > mean_factor, combined_factors, 0)
+    return sparsified_matrix
+```

@@ -1,0 +1,34 @@
+```python
+import numpy as np
+
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    
+    for node in unvisited_nodes:
+        all_distances = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        score = c1 * distance_matrix[current_node][node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][node]
+        scores[node] = score
+    
+    # Apply look-ahead mechanism
+    next_node = look_ahead(scores, threshold)
+    return next_node
+
+def look_ahead(scores: dict, threshold: float) -> int:
+    """Apply look-ahead mechanism to select the next node based on a threshold."""
+    max_score = max(scores.values())
+    min_score = min(scores.values())
+    range_score = max_score - min_score
+    threshold_score = min_score + threshold * range_score
+    
+    next_node = min(scores, key=lambda x: (scores[x], x), default=None)
+    if next_node is not None and scores[next_node] >= threshold_score:
+        return next_node
+    
+    return max(scores, key=scores.get)
+
+```

@@ -1,0 +1,4 @@
+1. Simplify scoring function, adjust weights, and incorporate look-ahead mechanisms for more informed decision making.
+2. Optimize calculations, data structure usage, and code organization to improve performance and readability.
+3. Consider additional factors like average and standard deviation of distances for better node selection.
+4. Fine-tune parameters and explore different variations to find optimal solutions.

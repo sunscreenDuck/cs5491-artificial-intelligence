@@ -1,0 +1,10 @@
+[*] Running ...
+[*] Dataset loaded: C:\Development\cs5491-artificial-intelligence/problems/tsp_gls\dataset/train200_dataset.npy with 200 instances.
+[*] Instance 0: 10.537507130504181
+[*] Instance 1: 10.70589431753351
+[*] Instance 2: 10.860024088180124
+[*] Instance 3: 10.38442973939829
+[*] Instance 4: 10.536548369821022
+[*] Instance 5: 10.415423719184878
+[*] Instance 6: 11.126790942199952
+[*] Instance 7: 10.7340823144154

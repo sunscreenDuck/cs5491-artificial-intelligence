@@ -1,0 +1,12 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    # Normalize the distance matrix
+    normalized_matrix = distance_matrix / np.max(distance_matrix)
+    
+    # Apply sparsification by setting unpromising elements to zero
+    threshold = np.std(normalized_matrix)
+    sparsified_matrix = normalized_matrix.copy()
+    sparsified_matrix[sparsified_matrix > threshold] = 0
+    
+    return sparsified_matrix
+```

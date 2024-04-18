@@ -1,0 +1,28 @@
+- Simplify calculations.
+- Avoid unnecessary normalization and weighting.
+- Use matrix transpose for performance.
+- Combine factors directly without intermediate steps.
+1. Consider using more meaningful variable names for better code readability.
+2. Revisit the use of average distance for edge importance calculation in the first code version.
+3. Explore different sparsification thresholds for better pruning in the second code version.
+1. Consider incorporating multiple factors that influence edge selection.
+2. Ensure robustness by handling edge cases and avoiding division by zero.
+3. Adjust the sparsification threshold to control the trade-off between exploration and exploitation.
+1. Consider incorporating both average and minimum distances for better heuristics.
+2. Utilize sparsification based on combined factors to improve heuristics.
+1. Consider using a combined factor that incorporates multiple heuristics.
+2. Sparsify the matrix by setting a threshold based on the mean of the combined factors.
+1. Consider combining factors from distance matrices rather than calculating inverse and summing separately.
+2. Use a more meaningful threshold for sparsifying the matrix.
+1. Exploit more informative features, such as local neighborhood information.
+2. Consider incorporating domain-specific knowledge, e.g., node degree or clustering coefficients.
+3. Explore different heuristics algorithms, such as ant colony optimization or simulated annealing.
+4. Evaluate the performance of heuristics using benchmark instances and integrate cross-validation for robustness.
+1. Normalize the distance matrix before using it in the heuristic.
+2. Consider using other factors (e.g., local search, clustering) to improve the heuristics.
+- Calculate inverse distances for better heuristics.
+- Use sum of inverse distances to determine edge promisingness.
+- Sparsify matrix by setting unpromising elements to zero.
+- Consider multiple factors and weight them appropriately for better heuristics.
+- Use sparsity to reduce complexity and focus on promising connections.
+- Take into account inverse distance, inverse degree, and promising connections.

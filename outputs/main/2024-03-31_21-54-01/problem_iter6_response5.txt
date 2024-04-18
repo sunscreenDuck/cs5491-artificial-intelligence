@@ -1,0 +1,40 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+
+    """Select the next node to visit from the unvisited nodes."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+
+    # Calculate the distance from the current_node to each unvisited node
+    distances_from_current = distance_matrix[current_node]
+    min_distance_to_current = min(distances_from_current[i] for i in unvisited_nodes)
+    max_distance_to_current = max(distances_from_current[i] for i in unvisited_nodes)
+
+    for node in unvisited_nodes:
+        # Calculate the average and standard deviation of distances between unvisited nodes
+        all_distances = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+
+        # Calculate the ratio of current_node to node distance with the average distance to unvisited
+        distance_ratio = distances_from_current[node] / average_distance_to_unvisited
+
+        # If the standard deviation of distances to unvisited nodes is greater than the threshold,
+        # subtract the distance from destination_node to node
+        if std_dev_distance_to_unvisited > threshold:
+            score = (c1 * distance_ratio) - (c4 * distance_matrix[destination_node][node])
+        else:
+            score = c1 * distance_ratio
+
+        scores[node] = score
+
+    next_node = min(scores, key=scores.get)
+    return next_node
+```
+Explanation:
+1. Renamed the variables to improve clarity and readability.
+2. Calculate the distances between the current node and all unvisited nodes only once to avoid unnecessary calculations.
+3. Removed the lookahead score as it was not relevant to the problem.
+
+This improved version takes into account the relationship between the current node's distance to the next node and the average distance to unvisited nodes. If the standard deviation of distances to unvisited nodes is above a threshold, it considers the distance from the destination node to the next node as well.

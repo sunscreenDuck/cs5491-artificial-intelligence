@@ -1,0 +1,4 @@
+1. Normalize distance matrix by subtracting minimum and dividing by range for more effective heuristics.
+2. Calculate row and column minimums separately, then subtract from normalized matrix to refine indicators' calculation.
+3. Minimize unnecessary calculations and copying for improved efficiency.
+4. Utilize numpy functions to simplify operations and improve code readability.

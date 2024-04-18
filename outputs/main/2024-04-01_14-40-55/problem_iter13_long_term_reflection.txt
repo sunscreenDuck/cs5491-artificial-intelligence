@@ -1,0 +1,5 @@
+- Simplify and normalize parameters for clarity and interpretability.
+- Utilize vectorized operations for efficient computation.
+- Use weighting factors and statistical measures for better decision-making.
+- Consider lookahead information to evaluate potential nodes.
+- Optimize code readability and performance with proper variable names, efficient calculations, and code organization.

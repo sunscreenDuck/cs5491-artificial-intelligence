@@ -1,0 +1,8 @@
+1. Simplify calculations, use meaningful variable names, and combine factors directly.
+2. Revisit average distance for edge importance and adjust sparsification threshold for better pruning.
+3. Utilize multiple factors, handle edge cases, and adjust sparsification threshold for trade-off.
+4. Incorporate average and minimum distances, use combined factor for sparsification, and adjust threshold.
+5. Combine factors from distance matrices, choose more meaningful sparsification threshold.
+6. Exploit informative features, incorporate domain-specific knowledge, explore different algorithms, and evaluate heuristics using benchmarks.
+7. Normalize distance matrix, consider additional factors (local search, clustering), and calculate inverse distances.
+8. Use sum of inverse distances, sparsify matrix, weight factors appropriately, and consider inverse degree.

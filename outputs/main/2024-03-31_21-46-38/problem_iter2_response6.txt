@@ -1,0 +1,31 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    
+    # Calculate the average and standard deviation of distances to unvisited nodes
+    all_distances = distance_matrix[current_node, list(unvisited_nodes)]
+    average_distance_to_unvisited = np.mean(all_distances)
+    std_dev_distance_to_unvisited = np.std(all_distances)
+
+    # Look ahead by considering the impact of next two nodes
+    next_nodes = unvisited_nodes
+    if len(next_nodes) >= 2:
+        next_node1 = min(next_nodes, key=lambda x: distance_matrix[current_node][x])
+        next_nodes.remove(next_node1)
+        next_node2 = min(next_nodes, key=lambda x: distance_matrix[current_node][x])
+        lookahead_score1 = c1 * distance_matrix[current_node][next_node1] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][next_node1]
+        lookahead_score2 = c1 * distance_matrix[current_node][next_node2] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][next_node2]
+        lookahead_score = threshold * lookahead_score1 + (1-threshold) * lookahead_score2
+    else:
+        lookahead_score = 0
+
+    for node in unvisited_nodes:
+        score = c1 * distance_matrix[current_node][node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][node] + lookahead_score
+        scores[node] = score
+
+    next_node = min(scores, key=scores.get)
+    return next_node
+```

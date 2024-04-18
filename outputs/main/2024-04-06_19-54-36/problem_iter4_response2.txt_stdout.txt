@@ -1,0 +1,42 @@
+[*] Running ...
+[*] Dataset loaded: C:\Development\cs5491-artificial-intelligence/problems/tsp_aco\dataset\train150_dataset.npy with 5 instances.
+C:\Development\cs5491-artificial-intelligence\problems\tsp_aco\gpt.py:4: RuntimeWarning: divide by zero encountered in divide
+  n = distance_matrix.shape[0]
+Traceback (most recent call last):
+  File "C:\Development\cs5491-artificial-intelligence/problems/tsp_aco/eval.py", line 47, in <module>
+    obj = solve(node_pos)
+          ^^^^^^^^^^^^^^^
+  File "C:\Development\cs5491-artificial-intelligence/problems/tsp_aco/eval.py", line 24, in solve
+    obj = aco.run(N_ITERATIONS)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\utils\_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Development\cs5491-artificial-intelligence\problems\tsp_aco\aco.py", line 34, in run
+    paths = self.gen_path(require_prob=False)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Development\cs5491-artificial-intelligence\problems\tsp_aco\aco.py", line 92, in gen_path
+    actions, log_probs = self.pick_move(prev, mask, require_prob)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Development\cs5491-artificial-intelligence\problems\tsp_aco\aco.py", line 114, in pick_move
+    dist = Categorical(dist)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\distributions\categorical.py", line 70, in __init__
+    super().__init__(batch_shape, validate_args=validate_args)
+  File "C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\torch\distributions\distribution.py", line 68, in __init__
+    raise ValueError(
+ValueError: Expected parameter probs (Tensor of shape (30, 150)) of distribution Categorical(probs: torch.Size([30, 150])) to satisfy the constraint Simplex(), but found invalid values:
+tensor([[2.0110e-02, 4.8552e-12, 1.2322e-02,  ..., 9.6084e-03, 4.8552e-12,
+         4.8552e-12],
+        [4.9691e-03, 2.9332e-12, 1.3275e-02,  ..., 4.0331e-03, 4.4604e-03,
+         4.0472e-03],
+        [5.0357e-03, 2.9726e-12, 1.3453e-02,  ..., 4.0872e-03, 4.5202e-03,
+         4.1015e-03],
+        ...,
+        [3.4591e-12, 3.4591e-12, 6.7179e-03,  ..., 3.4591e-12, 9.0253e-03,
+         3.4591e-12],
+        [6.1613e-12, 6.1613e-12, 6.1613e-12,  ..., 6.1613e-12, 9.2099e-03,
+         6.1613e-12],
+        [4.9379e-03, 4.4541e-03, 1.4204e-02,  ..., 4.7412e-03, 4.6600e-03,
+         7.7022e-03]], dtype=torch.float64)
+[0m

@@ -1,0 +1,41 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    weights = {
+        'distance_to_current': 0.4,
+        'average_distance_to_unvisited': 0.3,
+        'std_dev_distance_to_unvisited': 0.2,
+        'distance_to_destination': 0.1,
+        'lookahead': 0.7
+    }
+    lookahead_threshold = 0.7
+    scores = {}
+
+    for node in unvisited_nodes:
+        node_distances = distance_matrix[node]
+        
+        distance_to_current = node_distances[current_node]
+        average_distance_to_unvisited = np.mean(node_distances[list(unvisited_nodes - {node})])
+        std_dev_distance_to_unvisited = np.std(node_distances[list(unvisited_nodes - {node})]) if len(unvisited_nodes) > 1 else 0
+        distance_to_destination = distance_matrix[destination_node][node]
+
+        if len(unvisited_nodes) > 1:
+            lookahead_nodes = sorted(unvisited_nodes - {node}, key=lambda x: distance_matrix[node][x])[:2]
+            lookahead_score = np.average([weights['distance_to_current'] * distance_to_current -
+                                          weights['average_distance_to_unvisited'] * average_distance_to_unvisited +
+                                          weights['std_dev_distance_to_unvisited'] * std_dev_distance_to_unvisited -
+                                          weights['distance_to_destination'] * distance_to_destination
+                                          for next_node in lookahead_nodes])
+        else:
+            lookahead_score = 0
+
+        score = (weights['distance_to_current'] * distance_to_current +
+                 weights['average_distance_to_unvisited'] * average_distance_to_unvisited +
+                 weights['std_dev_distance_to_unvisited'] * std_dev_distance_to_unvisited +
+                 weights['distance_to_destination'] * distance_to_destination +
+                 weights['lookahead'] * lookahead_threshold * lookahead_score)
+
+        scores[node] = score
+
+    next_node = min(scores, key=scores.get)
+    return next_node
+```

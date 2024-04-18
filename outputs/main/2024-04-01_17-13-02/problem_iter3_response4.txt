@@ -1,0 +1,42 @@
+```python
+import numpy as np
+
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+
+    # Calculate the average distance
+    avg_distance = np.mean(distance_matrix)
+
+    # Calculate the maximum distance
+    max_distance = np.max(distance_matrix)
+
+    # Calculate the minimum distance
+    min_distance = np.min(distance_matrix)
+
+    # Calculate the standard deviation of distances
+    std_distance = np.std(distance_matrix)
+
+    # Calculate the weighted average distance
+    weighted_avg_distance = (avg_distance + max_distance) / 2
+
+    # Initialize the new distance matrix
+    new_distance_matrix = np.copy(distance_matrix)
+
+    # Update the new distance matrix based on the heuristics
+    for i in range(distance_matrix.shape[0]):
+        for j in range(distance_matrix.shape[1]):
+            if distance_matrix[i][j] > weighted_avg_distance:
+                new_distance_matrix[i][j] *= 1.5
+            elif distance_matrix[i][j] < weighted_avg_distance / 2:
+                new_distance_matrix[i][j] /= 1.5
+
+            # Penalize long edges based on standard deviation and minimum distance
+            if distance_matrix[i][j] > std_distance * max_distance:
+                new_distance_matrix[i][j] *= 1.5
+
+            # Encourage short edges based on standard deviation and average distance
+            if distance_matrix[i][j] < std_distance * weighted_avg_distance:
+                new_distance_matrix[i][j] /= 1.5
+
+    return new_distance_matrix
+```
+```

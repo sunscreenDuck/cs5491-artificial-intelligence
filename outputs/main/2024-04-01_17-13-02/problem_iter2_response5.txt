@@ -1,0 +1,15 @@
+```python
+import numpy as np
+
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    # Calculate the maximum distance in the distance matrix
+    max_dist = np.max(distance_matrix)
+    
+    # Create an indicator matrix where each edge has a value equal to its distance
+    indicators = np.copy(distance_matrix)
+    
+    # Assign very negative indicators to long edges
+    indicators[indicators > max_dist / 2] = -1000
+    
+    return indicators
+```

@@ -1,0 +1,34 @@
+1. Normalize distance matrix to [0, 1] range for better comparison.
+2. Remove unnecessary terms and calculations to simplify the heuristic.
+3. Consider the specific problem requirements to tailor the heuristics accordingly.
+4. Consider the computational complexity of the heuristics for scalability.
+5. Test and validate the heuristics on various instances to ensure its effectiveness.
+1. Consider incorporating diversity factors, such as visiting unexplored regions or avoiding overlap.
+2. Use a problem-specific knowledge to guide the design of heuristics functions.
+3. Explore different combinations of factors and weights to find the best-performing heuristics.
+- Consider incorporating more meaningful features, such as local structure, when designing the heuristics.
+- Ensure the heuristics measure captures the problem-specific information effectively.
+- Experiment with different combinations and weights of the factors in the heuristics function.
+- Optimize the heuristics function for computational efficiency.
+- Consider incorporating domain knowledge or problem-specific heuristics to improve performance.
+1. Consider normalizing the distance matrix to improve the performance of the heuristics function.
+2. Use a combination of factors to calculate the heuristics value for each edge in the solution.
+3. Set unpromising elements to zero to reduce the solution space for optimization algorithms.
+1. Consider including more relevant factors in the heuristics calculations.
+2. Use statistical measures to determine thresholds for setting unpromising elements to zero.
+3. Experiment with different combinations of factors to find the most effective ones.
+1. Normalize distance values before applying heuristics.
+2. Combine factors in a way that captures both local and global information.
+3. Set threshold based on the problem characteristics.
+1. Consider additional factors such as maximum distance and average pairwise difference between distances.
+2. Incorporate average distance to closest neighbors to improve the heuristic quality.
+3. Consider relative differences and ratios instead of absolute values.
+1. Normalize distance values before combining them in the heuristics function.
+2. Use a threshold based on the average distance to filter out unpromising elements.
+1. Consider normalizing distance values based on the problem domain instead of mean and standard deviation.
+2. Prioritize relevant factors and simplify the combination for calculating heuristics.
+1. Consider incorporating more factors that capture different aspects of the problem.
+2. Normalize the factors to ensure they have equal influence on the final heuristic value.
+3. Use a weighted sum to combine the factors, assigning higher weights to more important factors.
+4. Set thresholds to eliminate unpromising elements from the heuristics matrix.
+5. Avoid unnecessary calculations by excluding self-edges (i.e., i == j).

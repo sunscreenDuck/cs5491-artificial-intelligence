@@ -1,0 +1,19 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    num_nodes = distance_matrix.shape[0]
+
+    # Calculate the inverse of the distance matrix
+    inverse_distance_matrix = 1.0 / distance_matrix
+
+    # Normalize the inverse distance matrix
+    normalized_inverse_distance_matrix = inverse_distance_matrix / np.sum(inverse_distance_matrix)
+
+    # Calculate the sparsification threshold
+    threshold = np.mean(normalized_inverse_distance_matrix)
+
+    # Sparsify the matrix by setting unpromising elements to zero
+    sparse_matrix = np.where(normalized_inverse_distance_matrix >= threshold, normalized_inverse_distance_matrix, 0)
+
+    return sparse_matrix
+```
+```

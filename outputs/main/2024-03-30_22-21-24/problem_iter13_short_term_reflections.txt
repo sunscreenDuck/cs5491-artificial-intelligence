@@ -1,0 +1,28 @@
+1. Consider using more meaningful weights that reflect the importance of each factor.
+2. Utilize pre-computed values to reduce computation in the select_next_node function.
+1. Consider balancing the weights in the scoring function for a better trade-off.
+2. Remove unnecessary calculations and intermediate variables to improve efficiency.
+3. Consider different combinations of weights to find better solutions.
+1. Focus on simplicity: Combine and simplify calculations to improve the computational efficiency.
+2. Use appropriate weights: Experiment with different weight combinations to find optimal solutions.
+3. Utilize matrix operations: Leverage matrix operations to reduce code complexity and improve performance.
+1. Assign appropriate weights to each parameter in the scoring function.
+2. Calculate distances efficiently to reduce computational complexity.
+3. Use descriptive variable names to improve code readability.
+4. Use sets instead of lists to speed up membership tests.
+1. Normalize the weights to ensure they sum up to 1.
+2. Calculate scores for all unvisited nodes (loop).
+3. Use dot product for weighted sum of features.
+4. Use min instead of argmax for improved selection strategy.
+1. Normalize the weights to ensure they sum up to 1 for better weight distribution.
+2. Include the distance to destination node in the score calculation for better performance.
+1. Consider using meaningful and intuitive weight values for different components. 
+2. Simplify the calculation of distances and scores by precomputing and storing necessary values. 
+3. Combine multiple components using appropriate weights in the score calculation.
+1. Normalize distance matrix for better comparison.
+2. Adjust weights for each score term to reflect their relative importance.
+1. Consider using a more balanced weighting scheme for different components of the scoring function.
+2. Eliminate unnecessary calculations and intermediate variables to improve efficiency.
+3. Remove redundant code and simplify the overall structure of the function.
+1. Normalize weights to improve scoring consistency.
+2. Use dot product instead of explicit arithmetic operations for improved efficiency.

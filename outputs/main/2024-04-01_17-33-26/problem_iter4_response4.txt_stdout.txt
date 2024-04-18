@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "C:\Development\cs5491-artificial-intelligence/problems/tsp_gls/eval.py", line 8, in <module>
+    from gpt import heuristics_v2 as heuristics
+  File "C:\Development\cs5491-artificial-intelligence\problems\tsp_gls\gpt.py", line 1, in <module>
+    import numpy as np
+                       
+NameError: name 'np' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Development\cs5491-artificial-intelligence/problems/tsp_gls/eval.py", line 10, in <module>
+    from gpt import heuristics
+  File "C:\Development\cs5491-artificial-intelligence\problems\tsp_gls\gpt.py", line 1, in <module>
+    import numpy as np
+                       
+NameError: name 'np' is not defined
+[0m

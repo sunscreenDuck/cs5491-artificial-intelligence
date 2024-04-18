@@ -1,0 +1,39 @@
+1. Normalize distance values to improve score calculation accuracy.
+2. Include number of unvisited nodes as a weight in the score calculation.
+3. Consider using a threshold to filter out nodes with low scores.
+4. Optimize calculations by precomputing distance matrix statistics (e.g., mean, standard deviation).
+- Use vectorization and numpy operations for better performance.
+- Remove unnecessary calculations and dictionary creation for improved efficiency.
+- Simplify the scoring function for readability and faster execution.
+- Utilize numpy's built-in functions for mean and standard deviation calculations.
+1. Consider using weights and explicit iteration for better code readability.
+2. Calculate values only once and store them for efficiency.
+3. Normalize weights for better comparability.
+4. Consider alternative scoring strategies.
+- Use intuitive and meaningful variable names.
+- Simplify calculations and remove unnecessary steps.
+- Balance the weights to reflect the importance of each criterion.
+1. Consider normalizing distance values to work with relative values instead of absolute distances.
+2. Explore trade-off between exploitation and exploration for a better balance in the heuristic.
+3. Use remaining unvisited nodes instead of all unvisited nodes for more accurate average distance calculation.
+4. Weight factors based on their relative importance for a more effective scoring.
+1. Use meaningful variable names and comments for better code readability.
+2. Avoid unnecessary calculations, such as repeatedly calculating the maximum distance.
+3. Simplify the weight calculations and normalize criteria values to improve code efficiency.
+1. Normalize input data for improved performance.
+2. Use clear and meaningful variable names.
+3. Consider different weights for each criterion.
+4. Optimize computation by avoiding unnecessary operations.
+5. Reduce the number of iterations over the data.
+1. Normalize the weights to ensure they sum to 1 for better interpretation and control.
+2. Use numpy functions for efficiency.
+3. Calculate distances once and reuse them instead of calculating repeatedly.
+4. Simplify the calculation of the score for better readability and performance.
+5. Use a list of weights instead of a dictionary for better performance.
+1. Normalize input values for better comparison.
+2. Adjust weights to prioritize important factors.
+3. Consider overall problem characteristics.
+4. Use meaningful variable names for better readability.
+1. Use numpy operations instead of list indexing for better performance.
+2. Compute and store intermediate values outside the loop for efficiency.
+3. Utilize a dictionary to store scores and improve readability.

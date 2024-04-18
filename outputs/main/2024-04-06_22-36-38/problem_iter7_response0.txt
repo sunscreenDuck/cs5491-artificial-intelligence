@@ -1,0 +1,31 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    
+    # Normalize the distance matrix using min-max scaling
+    normalized_matrix = (distance_matrix - np.min(distance_matrix)) / (np.max(distance_matrix) - np.min(distance_matrix))
+    
+    # Calculate the inverse of the normalized matrix
+    inverse_matrix = 1 / normalized_matrix
+    
+    # Calculate the mean and standard deviation of the inverse matrix
+    mean = np.mean(inverse_matrix)
+    std_dev = np.std(inverse_matrix)
+    
+    # Calculate the normalized inverse matrix by subtracting the mean and dividing by the standard deviation
+    normalized_inverse_matrix = (inverse_matrix - mean) / std_dev
+    
+    # Apply sparsification by setting unpromising elements to zero
+    threshold = np.mean(normalized_inverse_matrix) - np.std(normalized_inverse_matrix)
+    sparsified_matrix = np.where(normalized_inverse_matrix < threshold, 0, normalized_inverse_matrix)
+    
+    return sparsified_matrix
+```
+The `heuristics_v2` function is an improved version of the `heuristics_v1` function. It includes the following changes:
+
+1. Normalization Technique: The distance matrix is normalized using min-max scaling instead of dividing by the maximum distance. This ensures that the values are within the range [0, 1] and preserves the relative differences between distances.
+
+2. Sparsification Threshold Calculation: The threshold for sparsification is calculated as the mean minus the standard deviation of the normalized inverse matrix. This simplifies the threshold calculation and provides a reasonable trade-off between promisability and exploration.
+
+3. Sparsification using np.where(): The sparsified matrix is computed using the numpy `np.where()` function. It sets elements in the normalized inverse matrix that are less than the threshold to zero and keeps the rest unchanged.
+
+These modifications aim to improve the performance and efficiency of the heuristics function while maintaining its effectiveness in solving the Traveling Salesman Problem.

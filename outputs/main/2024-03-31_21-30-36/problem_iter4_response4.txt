@@ -1,0 +1,19 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    c1, c2 = 0.4, 0.3
+    scores = {}
+    
+    for node in unvisited_nodes:
+        distance_to_current = distance_matrix[current_node][node]
+        average_distance_to_unvisited = np.mean([distance_matrix[node][i] for i in unvisited_nodes if i != node])
+        
+        score = c1 * distance_to_current - c2 * average_distance_to_unvisited
+        
+        scores[node] = score
+    
+    next_node = min(scores, key=scores.get)
+    
+    return next_node
+```
+The improved code simplifies the objective function and removes unnecessary variables and iterations.

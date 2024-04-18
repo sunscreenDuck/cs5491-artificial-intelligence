@@ -1,0 +1,32 @@
+1. Normalize weights to ensure equal contribution.
+2. Avoid unnecessary calculations outside of the loop.
+3. Use numpy operations to improve efficiency and readability.
+1. Consider using numpy functions for faster computations.
+2. Fine-tune the weights and features to improve heuristic performance.
+3. Incorporate additional information about the problem domain to guide the heuristic.
+1. Replace dictionary weights with vector weights for improved efficiency.
+2. Use set operations directly on unvisited_nodes instead of converting to lists for improved performance.
+1. Avoid unnecessary calculations and intermediate variables.
+2. Consider vectorization to improve performance.
+3. Simplify the weighting and scoring calculations for better readability and maintainability.
+1. Simplify the weighting scheme in the worse code.
+2. Replace the loop with numpy vectorization in the better code.
+1. Consider using meaningful variable names for better code readability.
+2. Consider normalizing weights to ensure they sum up to 1.
+3. Use meaningful comments to explain the purpose of each step.
+4. Avoid unnecessary calculations within the loop.
+5. Break down complex calculations into smaller, more manageable steps.
+1. Use descriptive variable names for better code readability.
+2. Use dictionaries to store weights for more flexibility and understandability.
+3. Calculate average and standard deviation outside the loop for efficiency in the better code.
+1. Use a numpy array for weights.
+2. Compute distances to unvisited nodes inside the loop.
+3. Avoid unnecessary calculations, e.g., the average distance to unvisited nodes.
+4. Use set operations to remove the current node from the unvisited nodes set.
+1. Normalize the weights in the worse code for better performance.
+2. Combine the calculation of score and distance matrices as done in the better code.
+1. Remove unnecessary calculations and simplify variable usage.
+2. Utilize set operations for efficiency and clarity.
+3. Use numpy functions instead of manual calculations for speed and readability.
+4. Simplify code structure by breaking down complex calculations into separate steps.
+5. Optimize the code by reordering and grouping the operations for efficiency.

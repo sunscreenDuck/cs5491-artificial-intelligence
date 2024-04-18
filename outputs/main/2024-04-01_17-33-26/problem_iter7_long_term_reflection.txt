@@ -1,0 +1,4 @@
+1. Normalize distances before further calculations and utilize global statistics for normalization.
+2. Use penalty matrix instead of edge indicators and update it incrementally to avoid unnecessary calculations.
+3. Optimize computation with vectorized operations and consider weighted average for node distances.
+4. Minimize unnecessary calculations, loops, and iterations to improve overall performance.

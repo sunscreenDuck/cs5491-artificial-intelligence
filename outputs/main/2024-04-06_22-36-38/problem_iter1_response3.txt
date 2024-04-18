@@ -1,0 +1,26 @@
+```python
+import numpy as np
+
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    # Compute the inverse of the distance matrix
+    inverse_distance_matrix = 1 / distance_matrix
+    
+    # Compute the sum of each row of the inverse distance matrix
+    row_sums = np.sum(inverse_distance_matrix, axis=1)
+    
+    # Compute the probability of selecting each edge based on the sum of row elements
+    probabilities = inverse_distance_matrix / row_sums[:, np.newaxis]
+    
+    # Set unpromising elements to zero based on a threshold
+    threshold = np.mean(distances) / 2
+    probabilities[distance_matrix > threshold] = 0
+    
+    return probabilities
+```
+In `heuristics_v2`, we first compute the inverse of the distance matrix in order to obtain higher values for edges that correspond to shorter distances. Then, we compute the sum of each row of the inverse distance matrix, which represents the total probability of selecting each edge based on its distance to other nodes.
+
+Next, we calculate the probabilities by dividing each element of the inverse distance matrix by the respective row sum. This provides a measure of how promising it is to select each edge.
+
+Finally, we set unpromising elements to zero based on a threshold. The threshold is calculated as half of the mean distance value in the matrix. This sparsifies the matrix by removing edges that are considered unpromising for a TSP solution.
+
+Note: Make sure to import the numpy library at the beginning of your code in order to use the `np.ndarray` type.

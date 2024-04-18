@@ -1,0 +1,45 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """
+    Select the next node to visit from the unvisited nodes using improved heuristics.
+    
+    Args:
+        current_node (int): The current node.
+        destination_node (int): The destination node.
+        unvisited_nodes (set): The set of unvisited nodes.
+        distance_matrix (np.ndarray): The distance matrix.
+    
+    Returns:
+        int: The next node to visit.
+    """
+    # Define the weightings for different factors
+    weights = {
+        'distance_to_current': 0.4,
+        'average_distance_to_unvisited': 0.3,
+        'std_dev_distance_to_unvisited': 0.2,
+        'distance_to_destination': 0.1
+    }
+    
+    # Calculate the distances from the current node to all other unvisited nodes
+    distances_to_unvisited = distance_matrix[current_node][list(unvisited_nodes)]
+    
+    # Calculate the average and standard deviation of distances to other unvisited nodes
+    average_distance_to_unvisited = np.mean(distances_to_unvisited)
+    std_dev_distance_to_unvisited = np.std(distances_to_unvisited)
+    
+    # Calculate the distance to the destination node for each unvisited node
+    distances_to_destination = distance_matrix[current_node][list(unvisited_nodes)] + distance_matrix[destination_node][list(unvisited_nodes)]
+    
+    scores = {}
+    for node, distance_to_destination in zip(unvisited_nodes, distances_to_destination):
+        # Calculate the score as a combination of different factors with weightings
+        score = weights['distance_to_current'] * distance_matrix[current_node][node] \
+                - weights['average_distance_to_unvisited'] * average_distance_to_unvisited \
+                + weights['std_dev_distance_to_unvisited'] * std_dev_distance_to_unvisited \
+                - weights['distance_to_destination'] * distance_to_destination
+        
+        scores[node] = score
+    
+    next_node = min(scores, key=scores.get)
+    return next_node
+```

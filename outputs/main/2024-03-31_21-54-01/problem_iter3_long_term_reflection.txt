@@ -1,0 +1,3 @@
+1. Use a dynamic threshold based on problem characteristics and experiment with scoring mechanisms.
+2. Prioritize exploration of promising options and simplify scoring function by removing unnecessary terms.
+3. Analyze the impact of lookahead mechanism and optimize computation to improve overall performance.

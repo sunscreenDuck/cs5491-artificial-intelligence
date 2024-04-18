@@ -1,0 +1,45 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    threshold = 0.7
+    weight_distance_to_current = 0.4
+    weight_average_distance_to_unvisited = 0.3
+    weight_std_dev_distance_to_unvisited = 0.2
+    weight_distance_to_destination = 0.1
+    weight_num_unvisited_nodes = 0.5
+    
+    scores = {}
+    
+    # Normalize the distances in the distance matrix
+    max_distance = np.amax(distance_matrix)
+    normalized_distance_matrix = distance_matrix / max_distance
+    
+    for node in unvisited_nodes:
+        # Calculate average and standard deviation distances to unvisited nodes
+        distances_to_unvisited = normalized_distance_matrix[node, list(unvisited_nodes - {node})]
+        average_distance_to_unvisited = np.mean(distances_to_unvisited)
+        std_dev_distance_to_unvisited = np.std(distances_to_unvisited)
+        
+        # Calculate normalized distances to current and destination nodes
+        normalized_distance_to_current_node = normalized_distance_matrix[current_node][node]
+        normalized_distance_to_destination_node = normalized_distance_matrix[destination_node][node]
+        
+        # Calculate the score for the current node
+        score = (
+            weight_distance_to_current * normalized_distance_to_current_node +
+            weight_average_distance_to_unvisited * (1 - average_distance_to_unvisited) +
+            weight_std_dev_distance_to_unvisited * (1 - std_dev_distance_to_unvisited) -
+            weight_distance_to_destination * normalized_distance_to_destination_node -
+            weight_num_unvisited_nodes * len(unvisited_nodes)
+        )
+        
+        scores[node] = score
+    
+    next_node = min(scores, key=scores.get)
+    return next_node
+```
+In this improved code, I have made the following changes:
+1. Changed the weights and added appropriate scaling factors to prioritize important factors.
+2. Revised the variable names to be more descriptive and intuitive.
+3. Normalized the distances in the distance matrix for better comparison.
+4. Adjusted the score calculation to reflect the revised weights and normalized distances.
+5. Enclosed the code in a Python code block.

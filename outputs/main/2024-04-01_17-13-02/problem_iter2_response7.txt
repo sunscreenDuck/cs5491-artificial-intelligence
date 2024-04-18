@@ -1,0 +1,16 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    # Initialize an empty matrix for storing the prior indicators
+    prior_indicators = np.zeros_like(distance_matrix)
+    
+    # Iterate over each edge in the distance matrix
+    for i in range(len(distance_matrix)):
+        for j in range(len(distance_matrix)):
+            # Calculate the prior indicator for the current edge
+            prior_indicator = 1 / distance_matrix[i, j]
+            
+            # Assign the prior indicator to the corresponding position in the matrix
+            prior_indicators[i, j] = prior_indicator
+    
+    return prior_indicators
+```

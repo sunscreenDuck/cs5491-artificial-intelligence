@@ -1,0 +1,20 @@
+```python
+import numpy as np
+
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    # Normalize the distance matrix between 0 and 1
+    normalized_matrix = distance_matrix / np.max(distance_matrix)
+
+    # Calculate the average and minimum distances for each edge
+    average_distances = np.mean(distance_matrix, axis=0) + np.mean(distance_matrix, axis=1)
+    minimum_distances = np.min(distance_matrix, axis=0) + np.min(distance_matrix, axis=1)
+
+    # Combine factors using weighted sum
+    combined_factors = 0.6 / average_distances + 0.4 / minimum_distances
+
+    # Sparsify the matrix by setting elements below the sparsification threshold to zero
+    sparsification_threshold = np.percentile(combined_factors, 30)
+    sparsified_matrix = np.where(combined_factors > sparsification_threshold, combined_factors, 0)
+
+    return sparsified_matrix
+```

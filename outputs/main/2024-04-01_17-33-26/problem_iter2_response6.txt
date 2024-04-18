@@ -1,0 +1,23 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    # Initialize a matrix to store the heuristics values
+    heuristics_matrix = np.zeros(distance_matrix.shape)
+
+    # Calculate the maximum and minimum distances in the distance matrix
+    max_distance = np.max(distance_matrix)
+    min_distance = np.min(distance_matrix)
+
+    # Calculate the range of distances
+    distance_range = max_distance - min_distance
+
+    # Calculate the heuristics value for each edge
+    for i in range(distance_matrix.shape[0]):
+        for j in range(distance_matrix.shape[1]):
+            # Normalize the distance between 0 and 1
+            normalized_distance = (distance_matrix[i, j] - min_distance) / distance_range
+
+            # Set the heuristics value as the inverse of the normalized distance
+            heuristics_matrix[i, j] = 1 / (normalized_distance + 0.0001)
+            
+    return heuristics_matrix
+```

@@ -1,0 +1,26 @@
+```
+import numpy as np
+
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    # Calculate the inverse of distance matrix
+    inverse_distance = 1 / distance_matrix
+
+    # Calculate the average distance for each node
+    average_distance = np.average(inverse_distance, axis=1)
+
+    # Calculate the standard deviation of distance for each node
+    std_distance = np.std(inverse_distance, axis=1)
+
+    # Normalize the average and standard deviation
+    normalized_average = (average_distance - np.min(average_distance)) / (np.max(average_distance) - np.min(average_distance))
+    normalized_std = (std_distance - np.min(std_distance)) / (np.max(std_distance) - np.min(std_distance))
+
+    # Calculate the combined factor for each edge
+    combined_factor = normalized_average + normalized_std
+
+    # Sparsify the matrix by setting unpromising elements to zero
+    heuristics_matrix = np.where(combined_factor > np.mean(combined_factor), combined_factor, 0)
+
+    return heuristics_matrix
+```
+(Note: This code assumes that the input distance matrix `distance_matrix` is a NumPy array.)

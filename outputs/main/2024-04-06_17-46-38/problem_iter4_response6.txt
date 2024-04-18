@@ -1,0 +1,41 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    n = distance_matrix.shape[0]
+    heuristics = np.zeros_like(distance_matrix)
+
+    # Calculate the average distance
+    average_distance = np.mean(distance_matrix[np.nonzero(distance_matrix)])
+
+    # Calculate the maximum distance
+    max_distance = np.max(distance_matrix)
+
+    # Calculate the standard deviation of the distance
+    distance_std = np.std(distance_matrix[np.nonzero(distance_matrix)])
+
+    # Calculate the average pairwise difference between distances
+    pairwise_diff = np.mean(np.abs(np.diff(distance_matrix[np.nonzero(distance_matrix)])))
+
+    # Calculate the average distance to closest neighbors
+    min_distances = np.min(distance_matrix, axis=1)
+    avg_min_distance = np.mean(min_distances)
+
+    for i in range(n):
+        for j in range(n):
+            # Calculate the factors for the heuristics value
+            factor1 = (1 / distance_matrix[i, j])
+            factor2 = (average_distance / (distance_matrix[i, j] ** 2))
+            factor3 = (distance_matrix[i, j] / max_distance)
+            factor4 = ((avg_min_distance - distance_matrix[i, j]) / avg_min_distance)
+            factor5 = ((distance_matrix[i, j] - min_distances[i]) / pairwise_diff)
+
+            # Combine factors with appropriate weights to get the heuristic value
+            heuristic_value = factor1 * 0.25 + factor2 * 0.25 + factor3 * 0.2 + factor4 * 0.2 + factor5 * 0.1
+
+            # Set unpromising elements to zero
+            if heuristic_value < 0.25:
+                heuristic_value = 0
+
+            heuristics[i, j] = heuristic_value
+
+    return heuristics
+```

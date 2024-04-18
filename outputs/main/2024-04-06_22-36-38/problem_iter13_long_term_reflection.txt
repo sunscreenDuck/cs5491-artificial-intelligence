@@ -1,0 +1,3 @@
+1. Utilize domain-specific knowledge for sparsification threshold and threshold adaptation for improved performance.
+2. Avoid redundant calculations and unnecessary intermediate variables to simplify code and increase efficiency.
+3. Normalize distance matrix before applying calculations and consider statistical measures for threshold determination.

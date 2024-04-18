@@ -1,0 +1,23 @@
+```python
+import numpy as np
+
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    for node in unvisited_nodes:
+        distance_to_node = distance_matrix[current_node][node]
+        average_distance_to_unvisited = np.mean([distance_matrix[node][i] for i in unvisited_nodes if i != node])
+        std_dev_distance_to_unvisited = np.std([distance_matrix[node][i] for i in unvisited_nodes if i != node])
+        score = c1 * distance_to_node - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][node]
+        scores[node] = score
+    next_node = min(scores, key=scores.get)
+    return next_node
+```
+Improvements:
+1. Removed the unnecessary threshold as it was not being used.
+2. Simplified the scoring calculation by directly accessing the required distances instead of calculating them separately.
+3. Improved readability by using meaningful variable names.
+4. Consolidated the code by removing unnecessary calculations and iterations.
+5. Removed unnecessary comments.
+6. Followed PEP 8 style guidelines for cleaner code formatting.

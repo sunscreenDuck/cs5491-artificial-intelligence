@@ -1,0 +1,31 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes with improved constructive heuristics."""
+
+    # Tunable parameters
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    threshold = 0.7
+
+    scores = {}
+
+    # Calculate average and standard deviation of distances for all unvisited nodes
+    average_distances = np.mean(distance_matrix[list(unvisited_nodes)][:, list(unvisited_nodes)], axis=1)
+    std_dev_distances = np.std(distance_matrix[list(unvisited_nodes)][:, list(unvisited_nodes)], axis=1)
+    
+    for node in unvisited_nodes:
+        # Calculate the score for each unvisited node
+        look_aheads = []
+        for next_node in unvisited_nodes:
+            if next_node != node:
+                next_score = c1 * distance_matrix[current_node][next_node] - c2 * average_distances[next_node] + c3 * std_dev_distances[next_node] - c4 * distance_matrix[destination_node][next_node]
+                look_aheads.append(next_score)
+                
+        lookahead_score = np.mean(look_aheads) if len(look_aheads) > 0 else 0
+        score = c1 * distance_matrix[current_node][node] - c2 * average_distances[node] + c3 * std_dev_distances[node] - c4 * distance_matrix[destination_node][node] + threshold * lookahead_score
+        scores[node] = score
+
+    # Select the node with the minimum score
+    next_node = min(scores, key=scores.get)
+    return next_node
+```
+

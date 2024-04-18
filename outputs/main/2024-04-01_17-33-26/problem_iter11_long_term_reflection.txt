@@ -1,0 +1,4 @@
+1. Utilize precomputed sum of distances for efficiency.
+2. Avoid unnecessary reshaping and vectorize calculations.
+3. Prioritize simplicity and optimize memory usage.
+4. Normalize using average distance and avoid unnecessary vectorized operations.

@@ -1,0 +1,38 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+
+    num_nodes = distance_matrix.shape[0]
+    
+    # Calculate the sum of distances for each node
+    node_distances = np.sum(distance_matrix, axis=1)
+    
+    # Calculate the average distance for each node
+    node_avg_distance = node_distances / (num_nodes - 1)
+    
+    # Calculate the node degrees
+    node_degrees = np.sum(distance_matrix > 0, axis=1)
+    
+    # Calculate the weighted average distance for each node
+    node_weighted_avg_distance = np.zeros(num_nodes)
+    for i in range(num_nodes):
+        node_weighted_avg_distance[i] = np.sum(distance_matrix[i] * (node_degrees / node_avg_distance))
+    
+    # Initialize the penalty matrix with zeros
+    penalty_matrix = np.zeros_like(distance_matrix)
+    
+    # Iterate over the distance matrix
+    for i in range(num_nodes):
+        for j in range(num_nodes):
+            # Compute the penalty value for each edge
+            penalty = distance_matrix[i, j] / (node_weighted_avg_distance[i] + node_weighted_avg_distance[j])
+            
+            # Set the penalty value in the penalty matrix
+            penalty_matrix[i, j] = penalty
+    
+    return penalty_matrix
+```
+The `heuristics_v2` function introduces two improvements:
+1. It calculates the node degrees based on the distance matrix to gain information about the neighborhood of each node. This provides additional insights into the connectivity of the nodes.
+2. It calculates the weighted average distance for each node, where weights are based on node degrees and the inverse of average distances. This method provides a more nuanced measure of node importance, taking into account both local and global characteristics.
+
+These enhancements are expected to improve the performance and accuracy of the heuristic function.

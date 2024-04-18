@@ -1,0 +1,35 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    for node in unvisited_nodes:
+        all_distances = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        score = c1 * distance_matrix[current_node][node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][node]
+        
+        # Look-ahead mechanism to get a glimpse of the future
+        future_score = 0
+        nodes_left = unvisited_nodes - set([node])
+        for next_node in nodes_left:
+            future_score += distance_matrix[node][next_node]  # Add distance from current node to the next node
+            
+            future_scores = []
+            for next_next_node in nodes_left - set([next_node]):
+                next_all_distances = [distance_matrix[next_next_node][i] for i in nodes_left - set([next_next_node])]
+                next_average_distance_to_unvisited = np.mean(next_all_distances)
+                next_std_dev_distance_to_unvisited = np.std(next_all_distances)
+                next_score = c1 * distance_matrix[next_node][next_next_node] - c2 * next_average_distance_to_unvisited + c3 * next_std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][next_next_node]
+                future_scores.append(next_score)
+            
+            future_score += min(future_scores)  # Add the minimum score of the next node to the future score
+        
+        score += threshold * future_score  # Add the future score with a threshold
+        scores[node] = score
+    
+    next_node = min(scores, key=scores.get)
+    return next_node
+```
+In `select_next_node_v2`, I added a look-ahead mechanism to get a glimpse of the future. For each possible next node, I calculate the future score by considering the distance from that node to all other unvisited nodes. I calculate the future score of each possible next node by considering the possible next-next nodes and their scores, and then taking the minimum score. Finally, I add the future score to the current score with a threshold to consider the future impact and select the node with the highest overall score as the next node to visit.

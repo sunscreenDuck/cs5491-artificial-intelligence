@@ -1,0 +1,16 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    threshold = 0.7
+    weights = [0.4, 0.3, 0.2, 0.1]
+    scores = {}
+    for node in unvisited_nodes:
+        all_distances = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        score = sum(weight * value for weight, value in zip(weights, [distance_matrix[current_node][node], -average_distance_to_unvisited, std_dev_distance_to_unvisited, -distance_matrix[destination_node][node]]))
+        scores[node] = score
+    next_node = min(scores, key=scores.get)
+    return next_node
+```
+In this improved code `select_next_node_v2`, the weights are put into a list for better flexibility in trying out different combinations or changing the values. The scoring calculation is simplified by using `sum` and `zip` to calculate the sum of each weighted value. The mutation focuses on code simplification and flexibility, making it easier to experiment with different weight combinations.

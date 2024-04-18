@@ -1,0 +1,13 @@
+[*] Running ...
+[*] Dataset loaded: C:\Development\cs5491-artificial-intelligence/problems/tsp_constructive\dataset\train50_dataset.npy with 64 instances.
+Traceback (most recent call last):
+  File "C:\Development\cs5491-artificial-intelligence/problems/tsp_constructive/eval.py", line 82, in <module>
+    obj = eval_heuristic(node_positions[i])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Development\cs5491-artificial-intelligence/problems/tsp_constructive/eval.py", line 42, in eval_heuristic
+    next_node = select_next_node(
+                ^^^^^^^^^^^^^^^^^
+  File "C:\Development\cs5491-artificial-intelligence\problems\tsp_constructive\gpt.py", line 18, in select_next_node_v2
+    next_node = min(scores, key=scores.get)
+                                   ^^^^^^^^^
+ValueError: all the input array dimensions except for the concatenation axis must match exactly, but along dimension 0, the array at index 0 has size 48 and the array at index 1 has size 2

@@ -1,0 +1,6 @@
+1. Combine multiple factors to improve robustness.
+2. Set a threshold to filter out unpromising elements.
+3. Normalize values for better comparison.
+4. Consider average, maximum, and ratio measures.
+5. Aim for simplicity and efficiency.
+6. Utilize vectorized operations and adaptive thresholding.

@@ -1,0 +1,3 @@
+1. Strike a balance between complexity and effectiveness by simplifying the objective function and focusing on essential components.
+2. Consider incorporating a limited number of lookahead steps to improve decision-making without adding unnecessary complexity.
+3. Regularly fine-tune weight parameters and evaluate different mechanisms to select lookahead nodes for optimal performance.

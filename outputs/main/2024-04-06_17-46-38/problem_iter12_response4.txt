@@ -1,0 +1,67 @@
+Here is an improved version of the `heuristics` function (`heuristics_v2`) for solving the Traveling Salesman Problem (TSP) via stochastic solution sampling:
+
+```python
+def heuristics_v2(distance_matrix):
+    n = distance_matrix.shape[0]
+    heuristics = np.zeros_like(distance_matrix)
+
+    # Normalize the distance matrix
+    normalized_matrix = distance_matrix / np.max(distance_matrix)
+
+    # Calculate the average distance
+    average_distance = np.mean(normalized_matrix[np.nonzero(normalized_matrix)])
+
+    # Calculate the maximum distance
+    max_distance = np.max(normalized_matrix)
+
+    # Calculate the standard deviation of the distance
+    distance_std = np.std(normalized_matrix[np.nonzero(normalized_matrix)])
+
+    # Calculate the average pairwise difference between distances
+    pairwise_diff = np.mean(np.abs(np.diff(normalized_matrix[np.nonzero(normalized_matrix)])))
+
+    # Calculate the average distance to closest neighbors
+    min_distances = np.min(normalized_matrix, axis=1)
+    avg_min_distance = np.mean(min_distances)
+
+    for i in range(n):
+        for j in range(n):
+            # Calculate the heuristics value as a combination of factors
+            factor1 = normalized_matrix[i, j] / max_distance
+            factor2 = normalized_matrix[i, j] / average_distance
+            factor3 = (normalized_matrix[i, j] - min_distances[i]) / (pairwise_diff * distance_std)
+            factor4 = (normalized_matrix[i, j] - min_distances[i]) / (pairwise_diff * avg_min_distance)
+
+            # Set unpromising elements to zero
+            if factor1 < 0.1:
+                factor1 = 0
+            if factor2 < 0.1:
+                factor2 = 0
+            if factor3 < 0.1:
+                factor3 = 0
+            if factor4 < 0.1:
+                factor4 = 0
+
+            # Combine factors using weighted sum
+            total_factor = factor1 + factor2 + factor3 + factor4
+            if total_factor == 0:
+                continue
+            factor1 /= total_factor
+            factor2 /= total_factor
+            factor3 /= total_factor
+            factor4 /= total_factor
+
+            # Calculate the heuristics value
+            heuristic_value = 0.4 * factor1 + 0.3 * factor2 + 0.2 * factor3 + 0.1 * factor4
+
+            heuristics[i, j] = heuristic_value
+
+    return heuristics
+```
+
+[Reflection]
+1. Incorporate additional factors that capture different characteristics of the problem instance, such as distance normalization, distance ratios, and differences between distances.
+2. Normalize the factors properly to ensure fair weighting and meaningful comparisons.
+3. Set appropriate thresholds to filter out unpromising elements, but avoid overly aggressive pruning.
+4. Prioritize factors that have a stronger impact on the heuristic value.
+5. Fine-tune the weighting of the factors to achieve better performance on specific TSP problem instances.

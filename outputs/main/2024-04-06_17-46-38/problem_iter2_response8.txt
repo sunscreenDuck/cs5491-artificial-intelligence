@@ -1,0 +1,14 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    n = distance_matrix.shape[0]
+    heuristics = np.zeros((n, n))
+    inverse_matrix = np.divide(1, distance_matrix, out=np.zeros_like(distance_matrix), where=distance_matrix != 0)
+    row_sums = np.sum(inverse_matrix, axis=1)
+    column_sums = np.sum(inverse_matrix, axis=0)
+    for i in range(n):
+        for j in range(n):
+            if i != j:
+                heuristics[i][j] = (inverse_matrix[i][j] / row_sums[i]) + (inverse_matrix[i][j] / column_sums[j])
+    threshold = np.median(heuristics)
+    return np.where(heuristics > threshold, heuristics, 0)
+```

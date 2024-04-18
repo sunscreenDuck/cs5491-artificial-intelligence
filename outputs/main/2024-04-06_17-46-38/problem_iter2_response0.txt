@@ -1,0 +1,17 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    # Normalize the distance matrix
+    normalized_distances = (distance_matrix - np.min(distance_matrix)) / (np.max(distance_matrix) - np.min(distance_matrix))
+    
+    # Calculate the inverse distances
+    inverse_distances = 1 / normalized_distances
+    
+    # Calculate the threshold for sparsifying the matrix
+    threshold = np.percentile(inverse_distances, 25)
+    
+    # Update the heuristics matrix
+    heuristics_matrix = np.where(inverse_distances >= threshold, inverse_distances, 0)
+    
+    return heuristics_matrix
+```
+The `heuristics_v2` function calculates the heuristics matrix by normalizing the distance matrix and then calculating the inverse distances. It then determines a threshold for sparsifying the matrix based on the 25th percentile of the inverse distances. Finally, it updates the heuristics matrix by setting elements below the threshold to zero.

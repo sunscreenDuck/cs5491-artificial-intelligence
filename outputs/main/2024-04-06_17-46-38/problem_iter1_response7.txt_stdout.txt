@@ -1,0 +1,16 @@
+[*] Running ...
+[*] Dataset loaded: C:\Development\cs5491-artificial-intelligence/problems/tsp_aco\dataset\train50_dataset.npy with 5 instances.
+TypeError: only length-1 arrays can be converted to Python scalars
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Development\cs5491-artificial-intelligence/problems/tsp_aco/eval.py", line 48, in <module>
+    obj = solve(node_pos)
+          ^^^^^^^^^^^^^^^
+  File "C:\Development\cs5491-artificial-intelligence/problems/tsp_aco/eval.py", line 21, in solve
+    heu = heuristics(dist_mat.copy()) + 1e-9
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Development\cs5491-artificial-intelligence\problems\tsp_aco\gpt.py", line 26, in heuristics_v2
+ValueError: setting an array element with a sequence.
+[0m

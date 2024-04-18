@@ -1,0 +1,34 @@
+```python
+import numpy as np
+
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes with improved constructive heuristics."""
+
+    threshold = 0.5
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+
+    scores = {}
+    unvisited_node_list = list(unvisited_nodes - {current_node, destination_node})
+
+    # Calculate average and standard deviation of distances to unvisited nodes for the current node
+    current_unvisited_distances = distance_matrix[current_node][unvisited_node_list]
+    current_average_distance_to_unvisited = np.mean(current_unvisited_distances)
+    current_std_dev_distance_to_unvisited = np.std(current_unvisited_distances)
+
+    for node in unvisited_node_list:
+        # Calculate average and standard deviation of distances to unvisited nodes for the current node
+        unvisited_distances = np.append(distance_matrix[node][unvisited_node_list], [distance_matrix[node][current_node], distance_matrix[node][destination_node]])
+        average_distance_to_unvisited = np.mean(unvisited_distances)
+        std_dev_distance_to_unvisited = np.std(unvisited_distances)
+
+        # Calculate lookahead scores for potential next nodes
+        look_ahead_scores = c1 * distance_matrix[current_node][unvisited_node_list] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][unvisited_node_list]
+
+        # Calculate the score for the current node based on the lookahead scores and other factors
+        score = c1 * distance_matrix[current_node][node] - c2 * current_average_distance_to_unvisited + c3 * current_std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][node] + threshold * np.mean(look_ahead_scores)
+        scores[node] = score
+
+    next_node = min(scores, key=scores.get)
+    return next_node
+```
+The `select_next_node_v2` function now calculates the average and standard deviation of distances to unvisited nodes for the current node only once, outside the loop. Additionally, the lookahead scores are calculated using vectorized operations for a more efficient computation.

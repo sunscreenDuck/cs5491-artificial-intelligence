@@ -1,0 +1,22 @@
+```python
+import numpy as np
+
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    # Normalize the distance matrix
+    normalized_matrix = distance_matrix / np.max(distance_matrix)
+    
+    # Calculate the mean and standard deviation of the inverse matrix
+    mean = np.mean(normalized_matrix)
+    std_dev = np.std(normalized_matrix)
+    
+    # Calculate the normalized inverse matrix by subtracting the mean and dividing by the standard deviation
+    normalized_inverse_matrix = (normalized_matrix - mean) / std_dev
+    
+    # Apply sparsification by setting unpromising elements to zero
+    threshold = mean - std_dev
+    sparsified_matrix = normalized_inverse_matrix.copy()
+    sparsified_matrix[sparsified_matrix < threshold] = 0
+    
+    return sparsified_matrix
+```
+The improved `heuristics_v2` function is similar to the previous version, but with a small modification in the normalization step. Instead of calculating the inverse matrix, we directly normalize the distance matrix and proceed with the rest of the steps as before. This simplifies the code and saves computational resources.

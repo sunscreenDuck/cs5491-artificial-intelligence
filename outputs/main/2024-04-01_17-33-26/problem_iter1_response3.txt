@@ -1,0 +1,23 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    # Calculate the average distance
+    average_distance = np.mean(distance_matrix)
+
+    # Calculate the standard deviation of distances
+    std_distance = np.std(distance_matrix)
+
+    # Initialize the indicator matrix
+    indicator_matrix = np.zeros_like(distance_matrix)
+
+    # Update the indicator matrix based on the distance to the average
+    indicator_matrix[distance_matrix > average_distance] += 1
+
+    # Update the indicator matrix based on the distance to 1 standard deviation above the average
+    indicator_matrix[distance_matrix > (average_distance + std_distance)] += 1
+
+    # Update the indicator matrix based on the distance to 2 standard deviations above the average
+    indicator_matrix[distance_matrix > (average_distance + 2 * std_distance)] += 1
+
+    return indicator_matrix
+```
+

@@ -1,0 +1,31 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    n = distance_matrix.shape[0]
+    heuristics = np.zeros((n, n))
+    
+    # Factor 1: Inverse of distance
+    heuristics += 1 / distance_matrix
+    
+    # Factor 2: Inverse of degree
+    degrees = np.count_nonzero(distance_matrix, axis=1)
+    degrees[degrees == 0] = 1  # Avoid division by zero
+    heuristics += 1 / degrees[:, np.newaxis]
+    
+    # Factor 3: Promising connections
+    connected = np.sum(distance_matrix > 0, axis=0)
+    promising_connections = connected / (n - 1)
+    heuristics += promising_connections[np.newaxis, :] * 2
+    
+    # Factor 4: Symmetry
+    heuristics += np.minimum(heuristics, heuristics.T)
+    
+    # Sparsify the matrix
+    threshold = np.percentile(heuristics, 90)
+    heuristics[heuristics <= threshold] = 0
+    
+    return heuristics
+```
+[Reflection]
+- Added Factor 4: Symmetry to encourage symmetry in the solution.
+- Updated sparsity threshold calculation to be based on the 90th percentile of heuristics values for better pruning.
+- The function `heuristics_v2` now incorporates all the factors mentioned in the reflection for better heuristics in solving the TSP.

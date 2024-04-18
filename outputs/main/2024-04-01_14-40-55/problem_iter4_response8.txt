@@ -1,0 +1,41 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes with a look-ahead mechanism."""
+    threshold = 0.7
+    weight_distance = 0.4
+    weight_avg_distance = 0.3
+    weight_std_dev_distance = 0.2
+    weight_destination_distance = 0.1
+    
+    scores = {}
+    for node in unvisited_nodes:
+        node_distances = distance_matrix[node, list(unvisited_nodes - {node})]
+        avg_distance = np.mean(node_distances)
+        std_dev_distance = np.std(node_distances)
+        
+        lookahead_scores = []
+        for next_node in unvisited_nodes - {node}:
+            next_node_distances = distance_matrix[current_node, list(unvisited_nodes - {node, next_node})]
+            next_avg_distance = np.mean(next_node_distances)
+            next_std_dev_distance = np.std(next_node_distances)
+            
+            lookahead_score = (weight_distance * next_node_distances - weight_avg_distance * next_avg_distance
+                               + weight_std_dev_distance * next_std_dev_distance
+                               - weight_destination_distance * distance_matrix[destination_node, list(unvisited_nodes - {node, next_node})])
+            
+            lookahead_scores.append(np.mean(lookahead_score))
+            
+        average_lookahead_score = np.mean(lookahead_scores)
+        
+        score = (weight_distance * distance_matrix[current_node, node]
+                 - weight_avg_distance * avg_distance
+                 + weight_std_dev_distance * std_dev_distance
+                 - weight_destination_distance * distance_matrix[destination_node, node]
+                 + threshold * average_lookahead_score)
+        
+        scores[node] = score
+    
+    next_node = min(scores, key=scores.get)
+    return next_node
+```
+

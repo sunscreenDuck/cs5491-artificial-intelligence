@@ -1,0 +1,5 @@
+- Use meaningful weights, simplify scoring function, and optimize computation.
+- Consider ratios, selective incorporation, balance in scoring mechanism, and weighing factors.
+- Simplify scoring, balance base and lookahead score, comprehensive metric, and introduce diversity.
+- Add weight parameters, normalize distances, incorporate problem-specific knowledge, and enhance code readability.
+- Experiment with coefficients, simplify logic, reduce calculations, and add conditions for better decision-making.

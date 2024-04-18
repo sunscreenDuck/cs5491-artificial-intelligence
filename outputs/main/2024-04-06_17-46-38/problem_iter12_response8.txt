@@ -1,0 +1,30 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    n = distance_matrix.shape[0]
+    heuristics = np.zeros_like(distance_matrix)
+
+    # Calculate the average distance
+    average_distance = np.mean(distance_matrix)
+
+    # Calculate the standard deviation of the distance
+    distance_std = np.std(distance_matrix)
+
+    # Calculate the average distance to closest neighbors
+    min_distances = np.min(distance_matrix, axis=1)
+    avg_min_distance = np.mean(min_distances)
+
+    for i in range(n):
+        for j in range(n):
+            # Calculate the heuristics value as a combination of factors
+            heuristic_value = (1 / distance_matrix[i, j]) + \
+                              (average_distance / (distance_matrix[i, j] ** 2)) + \
+                              ((avg_min_distance - distance_matrix[i, j]) / avg_min_distance)
+
+            # Set unpromising elements to zero
+            if heuristic_value < 0.5 * distance_std:
+                heuristic_value = 0
+
+            heuristics[i, j] = heuristic_value
+
+    return heuristics
+```

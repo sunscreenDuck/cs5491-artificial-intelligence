@@ -1,0 +1,13 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+
+    normalized_matrix = distance_matrix / np.max(distance_matrix)
+    symmetrical_matrix = np.maximum(normalized_matrix, normalized_matrix.T)
+    
+    average_distance = np.mean(symmetrical_matrix)
+    std_distance = np.std(symmetrical_matrix)
+    
+    promising_edges = np.exp(-(symmetrical_matrix - average_distance) ** 2 / (2 * std_distance ** 2))
+    
+    return promising_edges
+```

@@ -1,0 +1,41 @@
+1. Use a threshold-based approach for better performance.
+2. Use a list of weights instead of individual weights for better code clarity and flexibility.
+3. Use set operations to simplify code logic and increase efficiency.
+4. Use local variables for intermediate calculations to avoid repeated computations.
+1. Consider distances from current node, not to current node. 
+2. Only consider distances to unvisited nodes, not all nodes. 
+3. Use np.mean and np.std to calculate average and standard deviation.
+4. Use relevant coefficients for scoring function.
+5. Use np.random.choice for diversification when the threshold is not met.
+1. Instead of using a fixed threshold, calculate weights based on problem-specific properties.
+2. Avoid unnecessary calculations by directly accessing the required distances. 
+3. Remove numpy dependency for better performance.
+4. Make the code more readable by using appropriate variable names and breaking down complex expressions.
+1. Avoid unnecessary calculations and variables.
+2. Use a consistent and meaningful naming convention for variables.
+3. Simplify computations by using a list instead of multiple variables.
+4. Minimize code duplication and ensure code readability by using the same variable names.
+5. Consider using a consistent randomization approach for selecting the next node.
+1. Consider the weights of different factors carefully for a better score calculation.
+2. Use descriptive variable names for better code readability and understanding.
+3. Avoid unnecessary calculations or data manipulations in the loop for improved efficiency.
+4. Use a more deterministic approach for selecting the next node instead of utilizing a random choice.
+5. Analyze the impact of each factor and their combinations for potential improvements.
+1. Normalize the weights in the better code version.
+2. Consider the inclusion of additional variables in the scoring function in the better code version.
+1. Define and use separate variables for weights in the better code version.
+2. Compute average and standard deviation inside the loop for better accuracy.
+- Use meaningful variable names.
+- Reuse intermediate calculations within the loop.
+- Consider the impact of parameter values on the heuristic's performance.
+1. Consider using meaningful variable names for better code readability.
+2. Avoid hardcoding weights and use a dictionary for better flexibility and maintainability.
+3. Calculate distance to destination node using a combination of distances to current and destination nodes.
+4. Pre-calculate distance matrix and use appropriate indexing for better efficiency.
+5. Consider additional factors or weights to improve the effectiveness of the heuristic.
+1. Use numpy functions for calculations instead of loops.
+2. Use lists instead of dictionaries for weights.
+3. Use set operations instead of list slicing.
+4. Reduce the number of intermediate variables used.
+5. Simplify the formula for calculating the score.
+6. Remove unnecessary operations, like calculating distance to destination for every unvisited node.

@@ -1,0 +1,48 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    weights = {
+        'distance_to_current': 0.4,
+        'average_distance_to_unvisited': 0.3,
+        'std_dev_distance_to_unvisited': 0.2,
+        'distance_to_destination': 0.1,
+    }
+    threshold = 0.7
+    
+    scores = {}
+    
+    for node in unvisited_nodes:
+        distance_to_current = distance_matrix[current_node][node]
+        distance_to_destination = distance_matrix[destination_node][node]
+        
+        all_distances = []
+        unvisited_distances = []
+        
+        for next_node in unvisited_nodes:
+            if next_node != node:
+                unvisited_distances.append(distance_matrix[node][next_node])
+            all_distances.append(distance_matrix[node][next_node])
+        
+        average_distance_to_unvisited = np.mean(unvisited_distances)
+        std_dev_distance_to_unvisited = np.std(unvisited_distances)
+        average_distance = np.mean(all_distances)
+        std_dev_distance = np.std(all_distances)
+        
+        score = (
+            weights['distance_to_current'] * distance_to_current
+            - weights['average_distance_to_unvisited'] * average_distance_to_unvisited
+            + weights['std_dev_distance_to_unvisited'] * std_dev_distance_to_unvisited
+            - weights['distance_to_destination'] * distance_to_destination
+            + threshold * (
+                weights['distance_to_current'] * average_distance
+                - weights['average_distance_to_unvisited'] * average_distance_to_unvisited
+                + weights['std_dev_distance_to_unvisited'] * std_dev_distance
+                - weights['distance_to_destination'] * distance_to_destination
+            )
+        )
+        
+        scores[node] = score
+    
+    next_node = min(scores, key=scores.get)
+    return next_node
+```

@@ -1,0 +1,5 @@
+1. Normalize distances and use meaningful variable names for better comparison and clarity.
+2. Simplify weighting coefficients and calculations to reduce complexity.
+3. Consider alternative distance metrics and set operations for efficiency and avoiding local optima.
+4. Remove unnecessary calculations, consolidating repetitive code and removing redundant variables.
+5. Experiment with various combinations of heuristics to find the most effective approach.

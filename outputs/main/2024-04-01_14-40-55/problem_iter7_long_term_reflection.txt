@@ -1,0 +1,4 @@
+1. Incorporate relevant factors and adjust weights for informed decision-making.
+2. Utilize statistical measures and fine-tune coefficients to capture node information accurately.
+3. Optimize code for efficiency, avoid redundant calculations, and utilize appropriate data structures.
+4. Consider lookahead information and experiment with different combinations to find optimal solutions.

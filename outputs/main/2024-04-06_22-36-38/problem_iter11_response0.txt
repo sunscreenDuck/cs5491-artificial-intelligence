@@ -1,0 +1,20 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    
+    # Calculate the mean and standard deviation of the distance matrix
+    mean = np.mean(distance_matrix)
+    std_dev = np.std(distance_matrix)
+    
+    # Calculate the normalized matrix by subtracting the mean and dividing by the standard deviation
+    normalized_matrix = (distance_matrix - mean) / std_dev
+    
+    # Calculate the exponential of the normalized matrix
+    exp_matrix = np.exp(normalized_matrix)
+    
+    # Apply sparsification by setting unpromising elements to zero
+    threshold = np.mean(exp_matrix) - np.std(exp_matrix)
+    sparsified_matrix = exp_matrix.copy()
+    sparsified_matrix[sparsified_matrix < threshold] = 0
+    
+    return sparsified_matrix
+```

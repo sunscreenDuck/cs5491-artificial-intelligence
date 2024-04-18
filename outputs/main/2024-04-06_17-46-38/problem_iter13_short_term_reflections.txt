@@ -1,0 +1,35 @@
+1. Incorporate more informative factors (e.g., standard deviation, pairwise difference) in the heuristic calculation.
+2. Balance the weight of different factors to reflect their relative importance.
+3. Consider properties of the TSP problem (e.g., average distance, minimum distances) in the heuristics calculation.
+4. Normalize the distance matrix appropriately for effective comparison and weighting.
+1. Focus on meaningful factors for heuristic calculations.
+2. Consider normalization and other statistical measures for better heuristic performance.
+1. Normalize the distance matrix before calculating heuristics.
+2. Consider average distance, maximum distance, standard deviation, pairwise differences, and nearest neighbors. 
+3. Set unpromising elements to zero.
+1. Consider using a weighted combination of different factors in the heuristics. 
+2. Normalize the distance matrix to improve the generalizability of the heuristics.
+3. Use meaningful statistics like average distance, standard deviation, and pairwise differences in distances.
+4. Incorporate factors like average distance to closest neighbors and maximum distance into the heuristics.
+5. Set a threshold to identify unpromising elements and disregard them in the heuristics calculation.
+1. Consider incorporating more factors that capture different characteristics of the problem instance.
+2. Normalize the factors properly to ensure fair weighting and meaningful comparisons.
+3. Set appropriate thresholds to filter out unpromising elements, but avoid overly aggressive pruning.
+4. Prioritize factors that have a stronger impact on the heuristic value.
+5. Test and fine-tune the heuristics based on the specific characteristics of the TSP problem instances.
+- Normalize distance matrix and use average, standard deviation, and pairwise difference as factors.
+- Use average distance to set threshold and include factors that consider distance to closest neighbors.
+- Consider incorporating additional factors, such as distance variance or edge uniqueness.
+- Ensure that heuristics capture both local and global information of the problem.
+- Experiment with different combinations of factors to find the most effective ones.
+1. Normalize distance matrix.
+2. Consider average distance, standard deviation, pairwise difference, and average distance to closest neighbors.
+3. Set a threshold based on the average distance.
+1. Consider removing unnecessary calculations and normalizations.
+2. Focus on key factors that have a significant impact on the heuristics.
+3. Adjust thresholds to filter out unpromising elements effectively.
+4. Optimize the code for better performance and readability.
+1. Normalize, but retain meaningful distances.
+2. Consider leveraging statistical properties of the distance matrix.
+3. Weight the heuristics values based on problem characteristics.
+4. Threshold values to remove unpromising elements.

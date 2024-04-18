@@ -1,0 +1,29 @@
+```python
+import numpy as np
+from sklearn.preprocessing import normalize
+
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    # Calculate the sum of distances for each node
+    node_distances = np.sum(distance_matrix, axis=1)
+    
+    # Calculate the normalization factor for each node
+    norm_factor = (node_distances / distance_matrix.shape[0]).reshape(-1, 1)
+    
+    # Normalize the distance matrix by row
+    normalized_distance_matrix = normalize(distance_matrix, norm='l1', axis=1)
+    
+    # Initialize the penalty matrix with zeros
+    penalty_matrix = np.zeros_like(distance_matrix)
+    
+    # Iterate over the distance matrix
+    for i in range(distance_matrix.shape[0]):
+        for j in range(distance_matrix.shape[0]):
+            # Compute the penalty value for each edge
+            penalty = normalized_distance_matrix[i, j] / (norm_factor[i] + norm_factor[j])
+            
+            # Set the penalty value in the penalty matrix
+            penalty_matrix[i, j] = penalty
+    
+    return penalty_matrix
+```
+In `heuristics_v2`, the distance matrix is first normalized by row using the `normalize` function from `sklearn.preprocessing`. This ensures that each row sums up to 1, and represents the probability distribution of edges connected to each node. The normalization factor for each node is calculated as the mean of distances across all nodes, and is reshaped to a column vector. The penalty for including each edge is calculated as the normalized distance divided by the sum of the normalization factors for the nodes it connects. The resulting penalty matrix represents the prior indicators of how bad it is to include each edge in a solution.

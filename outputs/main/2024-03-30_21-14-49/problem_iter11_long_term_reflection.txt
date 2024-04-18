@@ -1,0 +1,4 @@
+1. Simplify code structure, optimize computations, and focus on the objective function for improved performance.
+2. Include statistical measures and consider the impact of standard deviation to make better decisions.
+3. Incorporate factors like distance to destination and experiment with weighted sum to improve scoring and decision-making.
+4. Use meaningful variable names, avoid unnecessary calculations, and explore nearby nodes for better solutions.

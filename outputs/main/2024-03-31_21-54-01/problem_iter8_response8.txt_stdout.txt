@@ -1,0 +1,78 @@
+[*] Running ...
+[*] Dataset loaded: C:\Development\cs5491-artificial-intelligence/problems/tsp_constructive\dataset\train50_dataset.npy with 64 instances.
+C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\fromnumeric.py:3504: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\_methods.py:129: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\_methods.py:206: RuntimeWarning: Degrees of freedom <= 0 for slice
+  ret = _var(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
+C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\_methods.py:163: RuntimeWarning: invalid value encountered in divide
+  arrmean = um.true_divide(arrmean, div, out=arrmean,
+C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\_methods.py:198: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+[*] Instance 0: 6.400590375418009
+[*] Instance 1: 6.4769967014964
+[*] Instance 2: 7.408921179408237
+[*] Instance 3: 7.473860577696679
+[*] Instance 4: 6.8387992851804285
+[*] Instance 5: 6.906190850096744
+[*] Instance 6: 7.737894722630868
+[*] Instance 7: 6.9780397001750725
+[*] Instance 8: 6.035072256567505
+[*] Instance 9: 7.444867739923797
+[*] Instance 10: 6.8948539671645594
+[*] Instance 11: 6.126748308114681
+[*] Instance 12: 7.099982159952578
+[*] Instance 13: 7.195333959715292
+[*] Instance 14: 7.126029572388905
+[*] Instance 15: 7.209177401577668
+[*] Instance 16: 6.8066802484991955
+[*] Instance 17: 6.290858387456424
+[*] Instance 18: 6.750702598268503
+[*] Instance 19: 6.985502058602745
+[*] Instance 20: 6.309322038865476
+[*] Instance 21: 7.186621194375338
+[*] Instance 22: 6.648993470601971
+[*] Instance 23: 6.645791335152463
+[*] Instance 24: 7.155198223977545
+[*] Instance 25: 7.352343238643388
+[*] Instance 26: 6.3232457514419504
+[*] Instance 27: 6.218405392547326
+[*] Instance 28: 6.738690169031055
+[*] Instance 29: 7.056159439840515
+[*] Instance 30: 6.928135772388814
+[*] Instance 31: 6.226488630742595
+[*] Instance 32: 7.218216184419873
+[*] Instance 33: 6.508040786281334
+[*] Instance 34: 6.648097697830817
+[*] Instance 35: 7.128878311506827
+[*] Instance 36: 6.990804841495644
+[*] Instance 37: 7.460505070109637
+[*] Instance 38: 6.522691479135909
+[*] Instance 39: 6.898080840451831
+[*] Instance 40: 6.918792529600215
+[*] Instance 41: 6.31033790279324
+[*] Instance 42: 6.726065297522931
+[*] Instance 43: 7.619427810451041
+[*] Instance 44: 6.484140054382342
+[*] Instance 45: 6.700165142504723
+[*] Instance 46: 6.489710636478738
+[*] Instance 47: 6.588035646258031
+[*] Instance 48: 6.669029556639974
+[*] Instance 49: 7.017863324734301
+[*] Instance 50: 6.8539494044442355
+[*] Instance 51: 7.0735662280089535
+[*] Instance 52: 7.324479305474446
+[*] Instance 53: 6.809225035667431
+[*] Instance 54: 6.407730586300801
+[*] Instance 55: 7.080940577899317
+[*] Instance 56: 6.7029394716542505
+[*] Instance 57: 6.747766550050318
+[*] Instance 58: 6.83683747450075
+[*] Instance 59: 6.708238286001427
+[*] Instance 60: 7.8796910461686895
+[*] Instance 61: 6.632586592228741
+[*] Instance 62: 6.744761179468551
+[*] Instance 63: 6.274860590773132
+[*] Average:
+6.843014877330956

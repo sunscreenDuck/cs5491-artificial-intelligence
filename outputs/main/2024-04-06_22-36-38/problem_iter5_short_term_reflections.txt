@@ -1,0 +1,27 @@
+1. Normalize and calculate inverse distance matrix.
+2. Set threshold based on mean of normalized inverse distance matrix.
+3. Sparsify matrix by setting unpromising elements to zero.
+- Normalize inverse distance matrix before applying sparsification.
+- Use sum of inverse distance matrix for normalization rather than max distance.
+- Adjust sparsification threshold for better edge selection.
+1. Normalize distance matrix before taking the inverse.
+2. Calculate threshold based on mean - std_dev instead of mean of the combined matrix.
+3. Use normalized inverse distance matrix for sparsification.
+1. Consider normalizing data before applying thresholding.
+2. Use statistical measures like mean and standard deviation to determine threshold.
+3. Preserve original normalized data and apply thresholding on a copy.
+1. Avoid unnecessary normalization and use distances directly.
+2. Use standard deviation for thresholding instead of the maximum value.
+1. Normalize the distance matrix before calculating the inverse.
+2. Use mean and standard deviation for threshold calculation when applying sparsification.
+1. Normalize the distance matrix before further calculations.
+2. Set the sparsification threshold based on the mean and standard deviation of the normalized inverse matrix.
+1. Remove dynamic threshold calculation and set a fixed threshold for sparsification.
+2. Avoid unnecessary calculations such as mean and standard deviation of the inverse matrix.
+Hints for designing better heuristics:
+- Normalize distances before calculations.
+- Consider mean and standard deviation when determining sparsification threshold.
+- Use inverse of normalized matrix for better performance.
+1. Experiment with different normalization techniques and thresholding strategies.
+2. Consider the maximum value in the matrix when calculating the threshold.
+3. Aim to improve performance by adjusting the threshold based on mean and maximum values.

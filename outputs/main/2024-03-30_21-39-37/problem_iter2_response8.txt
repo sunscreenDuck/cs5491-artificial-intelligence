@@ -1,0 +1,25 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """
+    Select the next node to visit from the unvisited nodes.
+    """
+    lookahead = 2  # Number of nodes to consider ahead
+    scores = {}
+    
+    # Check if only 1 node remaining
+    if len(unvisited_nodes) == 1:
+        return list(unvisited_nodes)[0]
+    
+    # Calculate scores for each unvisited node
+    for node in unvisited_nodes:
+        lookahead_nodes = list(unvisited_nodes - {node})[:lookahead]  # Nodes to consider ahead
+        all_distances = [distance_matrix[node][i] for i in lookahead_nodes]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        
+        score = distance_matrix[current_node][node] - average_distance_to_unvisited + std_dev_distance_to_unvisited - distance_matrix[destination_node][node]
+        scores[node] = score
+    
+    next_node = min(scores, key=scores.get)
+    return next_node
+```

@@ -1,0 +1,4 @@
+1. Normalize distances and use meaningful variable names to improve clarity and balance weights.
+2. Utilize numpy operations and avoid unnecessary calculations to optimize computation and improve efficiency.
+3. Consider domain knowledge and tune weights using experimental evaluation to achieve better results.
+4. Simplify the scoring function by reducing the number of weights and terms, and consider both exploration and exploitation aspects.

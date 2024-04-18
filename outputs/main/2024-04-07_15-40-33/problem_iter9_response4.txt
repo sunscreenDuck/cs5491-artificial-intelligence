@@ -1,0 +1,12 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    # Normalize the distance matrix
+    max_distance = np.max(distance_matrix)
+    normalized_matrix = distance_matrix / max_distance
+
+    # Subtract the minimum value from each row and column in place
+    distance_matrix -= np.min(distance_matrix, axis=1)[:, np.newaxis]
+    distance_matrix -= np.min(distance_matrix, axis=0)
+    
+    return distance_matrix
+```

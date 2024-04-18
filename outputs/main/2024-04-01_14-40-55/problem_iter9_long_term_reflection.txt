@@ -1,0 +1,4 @@
+1. Incorporate contextual information, statistical measures, and lookahead to guide the selection and evaluate candidate nodes.
+2. Optimize code, utilize appropriate data structures, and precompute distances for efficiency.
+3. Experiment with different weights, combinations, and factors to improve scoring and decision-making.
+4. Simplify calculations, eliminate redundancies, and eliminate unnecessary conversions and operations for improved performance.

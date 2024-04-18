@@ -1,0 +1,30 @@
+1. Simplify the calculation of scores by removing unnecessary components. 
+2. Remove lookahead calculations to improve performance and reduce complexity. 
+3. Optimize the calculation of average distance and standard deviation. 
+4. Consider adjusting the weights (c1, c2, c3, c4) to improve the heuristic's performance.
+1. Simplify the calculations and avoid redundancy in the score calculation.
+2. Consider incorporating lookahead distances into the scoring function to improve decision making.
+1. Consider incorporating a look-ahead mechanism to enhance the decision-making process.
+2. Calculate distance statistics and use them to improve the scoring mechanism.
+3. Use a combination of different factors to weigh the importance of different variables.
+4. Aim for simplicity and clarity in the code structure and logic.
+1. Simplify code by eliminating unnecessary variables and calculations.
+2. Reduce memory usage by avoiding storing large lists of lookahead scores.
+3. Optimize computations by avoiding redundant calculations with np.mean and np.std.
+4. Enhance readability by using consistent variable names and better code organization.
+1. Use list comprehension instead of set operations for better performance.
+2. Avoid unnecessary calculations within the loop for efficiency.
+1. Consider using more meaningful variable names for clarity.
+2. Combine the calculation of average_distance_to_unvisited and std_dev_distance_to_unvisited.
+3. Avoid unnecessary calculations of the distance_matrix for the same nodes.
+4. Minimize the number of nested loops for better performance.
+5. Consider adjusting the threshold value to find the right balance between exploration and exploitation.
+1. Consider using the minimum score instead of the maximum.
+2. Calculate average and standard deviation of lookahead distances using nested loops.
+1. Avoid redundant calculations of look-ahead distances.
+2. Organize look-ahead distances in separate dictionaries for better code readability.
+3. Consider adding more diversity in coefficients for a better trade-off between exploration and exploitation.
+- Move the calculation of average and standard deviation outside the loop.
+- Calculate lookahead scores outside the loop and store them in dictionaries.
+1. Remove unnecessary variables and calculations.
+2. Simplify the code logic for better readability and performance.

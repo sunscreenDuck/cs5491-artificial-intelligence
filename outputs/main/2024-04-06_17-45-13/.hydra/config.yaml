@@ -1,0 +1,17 @@
+algorithm: reevo
+model: gpt-3.5-turbo-0613
+temperature: 1
+suffix: GPT
+max_fe: 100
+pop_size: 10
+mutation_rate: 0.5
+timeout: 50
+problem:
+  problem_name: tsp_aco
+  problem_type: aco
+  obj_type: min
+  problem_size: 50
+  func_name: heuristics
+  description: Solving Traveling Salesman Problem (TSP) via stochastic solution sampling
+    following "heuristics". TSP requires finding the shortest path that visits all
+    given nodes and returns to the starting node.

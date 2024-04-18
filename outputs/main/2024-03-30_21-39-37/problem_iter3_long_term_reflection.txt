@@ -1,0 +1,5 @@
+1. Use lookahead mechanisms to improve node selection.
+2. Simplify code by removing unnecessary variables and calculations.
+3. Utilize numpy functions instead of list comprehension for efficiency.
+4. Consider larger lookahead and smaller threshold values for improved performance.
+5. Optimize distance matrix calculations with data structures or caching.

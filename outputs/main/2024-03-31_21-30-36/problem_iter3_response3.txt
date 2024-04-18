@@ -1,0 +1,37 @@
+```python
+import numpy as np
+
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    lookahead_steps = 2
+
+    scores = {}
+    for node in unvisited_nodes:
+        lookahead_scores = []
+        for lookahead_step in range(lookahead_steps):
+            lookahead_node = node
+            lookahead_distance = 0
+            for _ in range(lookahead_step):
+                lookahead_candidates = unvisited_nodes - {lookahead_node}
+                lookahead_next_node = min(lookahead_candidates, key=lambda x: distance_matrix[lookahead_node][x])
+                lookahead_distance += distance_matrix[lookahead_node][lookahead_next_node]
+                lookahead_node = lookahead_next_node
+
+            lookahead_candidates = unvisited_nodes - {lookahead_node}
+            lookahead_next_node = min(lookahead_candidates, key=lambda x: distance_matrix[lookahead_node][x])
+            lookahead_distance += distance_matrix[lookahead_node][lookahead_next_node]
+
+            lookahead_scores.append(lookahead_distance)
+
+        average_lookahead_distance = np.mean(lookahead_scores)
+        std_dev_lookahead_distance = np.std(lookahead_scores)
+
+        score = c1 * distance_matrix[current_node][node] - c2 * average_lookahead_distance + c3 * std_dev_lookahead_distance - c4 * distance_matrix[destination_node][node]
+        scores[node] = score
+
+    next_node = min(scores, key=scores.get)
+    return next_node
+```
+In this `select_next_node_v2` function, I have added a lookahead mechanism that looks ahead multiple steps into the future to evaluate the potential path. It calculates the lookahead scores by considering multiple steps and takes into account the average distance and standard deviation of those paths along with other factors.

@@ -1,0 +1,29 @@
+```python
+import numpy as np
+
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    # Normalize the distance matrix
+    normalized_matrix = distance_matrix / np.max(distance_matrix)
+    
+    # Calculate the inverse of the normalized matrix
+    inverse_matrix = 1 / normalized_matrix
+    
+    # Calculate the mean and standard deviation of the inverse matrix
+    mean = np.mean(inverse_matrix)
+    std_dev = np.std(inverse_matrix)
+    
+    # Calculate the normalized inverse matrix by subtracting the mean and dividing by the standard deviation
+    normalized_inverse_matrix = (inverse_matrix - mean) / std_dev
+    
+    # Experiment with different thresholding strategies
+    threshold = np.mean(normalized_inverse_matrix) - np.std(normalized_inverse_matrix)
+    
+    # Combine mean, standard deviation, and threshold to determine the promisingness of an edge
+    promisingness = (normalized_inverse_matrix - mean) / std_dev + threshold
+    
+    # Apply sparsification by setting unpromising elements to zero
+    sparsified_matrix = normalized_inverse_matrix.copy()
+    sparsified_matrix[promisingness < 0] = 0
+    
+    return sparsified_matrix
+```

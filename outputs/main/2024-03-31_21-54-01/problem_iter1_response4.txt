@@ -1,0 +1,27 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    for node in unvisited_nodes:
+        all_distances = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        
+        lookahead_score = 0
+        lookahead_unvisited = unvisited_nodes.copy()
+        lookahead_unvisited.remove(node)
+        for lookahead_node in lookahead_unvisited:
+            next_node_distances = [distance_matrix[lookahead_node][i] for i in lookahead_unvisited if i != lookahead_node]
+            lookahead_average_distance_to_unvisited = np.mean(next_node_distances)
+            lookahead_std_dev_distance_to_unvisited = np.std(next_node_distances)
+            lookahead_score += c1 * distance_matrix[current_node][lookahead_node] - c2 * lookahead_average_distance_to_unvisited + c3 * lookahead_std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][lookahead_node]
+        
+        score = c1 * distance_matrix[current_node][node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][node] + threshold * lookahead_score
+        scores[node] = score
+    
+    next_node = min(scores, key=scores.get)
+    return next_node
+```
+In the improved `select_next_node_v2` function, I have added a look-ahead mechanism to enhance the selection of the next node. For each unvisited node, I calculate the average distance and standard deviation of distances to other unvisited nodes. Then, I perform a look-ahead by temporarily considering each unvisited node as the next node and calculate a lookahead score based on the distances to other unvisited nodes. Finally, I incorporate the lookahead score into the overall score using a threshold and select the node with the highest score as the next node to visit.

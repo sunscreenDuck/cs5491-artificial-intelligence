@@ -1,0 +1,52 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """
+    Select the next node to visit from the unvisited nodes.
+    """
+
+    # Set the weights for each criterion
+    weights = {
+        'distance_to_current': 0.4,
+        'average_distance_to_unvisited': 0.3,
+        'std_dev_distance_to_unvisited': 0.2,
+        'distance_to_destination': 0.1
+    }
+
+    # Calculate the distances of current and destination nodes
+    current_distances = distance_matrix[current_node]
+    destination_distances = distance_matrix[destination_node]
+
+    scores = {}
+    min_score = float('inf')
+    min_score_node = None
+    
+    for node in unvisited_nodes:
+        # Calculate distances of the node to other unvisited nodes
+        node_distances = distance_matrix[node]
+        all_distances = node_distances[list(unvisited_nodes - {node})]
+
+        # Calculate average distance and standard deviation to unvisited nodes
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+
+        # Calculate the score using the weights and criteria values
+        score = (
+            weights['distance_to_current'] * current_distances[node]
+            - weights['average_distance_to_unvisited'] * average_distance_to_unvisited
+            + weights['std_dev_distance_to_unvisited'] * std_dev_distance_to_unvisited
+            - weights['distance_to_destination'] * destination_distances[node]
+        )
+
+        scores[node] = score
+        
+        # Update the minimum score and node
+        if score < min_score:
+            min_score = score
+            min_score_node = node
+
+    return min_score_node
+```
+[Reflection]
+- The improved code avoids unnecessary calculations by calculating the average distance and standard deviation only once for each node.
+- It uses variables `min_score` and `min_score_node` to track the minimum score and corresponding node, avoiding the need to use an additional `min()` function call outside the loop.
+- The code is made more readable by using meaningful variable names and comments.

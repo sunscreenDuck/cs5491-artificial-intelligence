@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "C:\Development\cs5491-artificial-intelligence/problems/tsp_gls/eval.py", line 8, in <module>
+    from gpt import heuristics_v2 as heuristics
+  File "C:\Development\cs5491-artificial-intelligence\problems\tsp_gls\gpt.py", line 2, in <module>
+    from sklearn.preprocessing import normalize
+ModuleNotFoundError: No module named 'sklearn'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Development\cs5491-artificial-intelligence/problems/tsp_gls/eval.py", line 10, in <module>
+    from gpt import heuristics
+  File "C:\Development\cs5491-artificial-intelligence\problems\tsp_gls\gpt.py", line 2, in <module>
+    from sklearn.preprocessing import normalize
+ModuleNotFoundError: No module named 'sklearn'
+[0m

@@ -1,0 +1,46 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+
+    """Select the next node to visit from the unvisited nodes using improved look-ahead mechanisms."""
+    threshold = 0.7
+    c1, c2, c3, c4, c5 = 0.4, 0.3, 0.2, 0.1, 0.8
+    lookahead_steps = 5
+    
+    scores = {}
+    for node in unvisited_nodes:
+        all_distances = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        
+        lookahead_scores = []
+        for step in range(1, lookahead_steps + 1):
+            lookahead_node_candidates = unvisited_nodes.copy()
+            for s in range(step):
+                next_node = min(lookahead_node_candidates, key=lambda x: distance_matrix[node][x])
+                lookahead_node_candidates.remove(next_node)
+            
+            lookahead_unvisited = unvisited_nodes.copy()
+            lookahead_unvisited.remove(lookahead_node[-1])
+            
+            lookahead_distances = [distance_matrix[lookahead_node[-1]][i] for i in lookahead_unvisited]
+            lookahead_average_distance = np.mean(lookahead_distances)
+            lookahead_std_dev_distance = np.std(lookahead_distances)
+            
+            lookahead_score = c1 * distance_matrix[current_node][node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited \
+                - c4 * distance_matrix[destination_node][node] + c5 * sum(distance_matrix[i][j] for i,j in zip(lookahead_node[:-1], lookahead_node[1:])) \
+                - c2 * lookahead_average_distance + c3 * lookahead_std_dev_distance
+            
+            lookahead_scores.append(lookahead_score)
+            
+        score = np.mean(lookahead_scores)
+        scores[node] = score
+    
+    next_node = min(scores, key=scores.get)
+    return next_node
+```
+In the improved code `select_next_node_v2`, I increased the number of lookahead steps to 5 to have a better evaluation of the heuristic search. I also modified the process of selecting a lookahead node by keeping track of a list of lookahead nodes. I removed the `lookahead_node` variable and replaced it with `lookahead_node[-1]` to get the last element in the list. Additionally, I modified the scoring function to include the sum of distances between the lookahead nodes. Finally, I updated the weights for the different components of the scoring function.
+
+Reflection:
+- Experiment with different numbers of lookahead steps to find the optimal balance between accuracy and computational cost.
+- Further fine-tune the weights for the scoring function to achieve better performance.
+- Consider using a random selection strategy to choose the lookahead node for more diverse exploration.

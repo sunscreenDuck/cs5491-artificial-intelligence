@@ -1,0 +1,24 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    # Calculate the average and standard deviation of the distances
+    avg_distance = np.mean(distance_matrix)
+    std_distance = np.std(distance_matrix)
+
+    # Initialize the new distance matrix
+    new_distance_matrix = np.copy(distance_matrix)
+
+    # Update the new distance matrix based on the heuristics
+    for i in range(distance_matrix.shape[0]):
+        for j in range(distance_matrix.shape[1]):
+            # Normalize distance based on standard deviation
+            normalized_distance = (distance_matrix[i][j] - avg_distance) / std_distance
+
+            # Adjust the edge cost based on the normalized distance
+            if normalized_distance > 0:
+                new_distance_matrix[i][j] *= 1 + normalized_distance
+            else:
+                new_distance_matrix[i][j] *= 1 - normalized_distance
+
+    return new_distance_matrix
+```
+

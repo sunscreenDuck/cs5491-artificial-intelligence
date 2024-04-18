@@ -1,0 +1,25 @@
+1. Normalize by the sum instead of the min-max range.
+2. Use mean instead of quantile for sparsification threshold estimation.
+3. Consider the size/shape of the problem domain (e.g. num_nodes) when defining thresholds.
+1. Consider incorporating multiple factors for a more comprehensive evaluation.
+2. Use dynamic thresholds for sparsification to adapt to problem-specific characteristics.
+3. Explore alternative normalization methods to improve performance.
+- Inverse weighting based on distance is more effective.
+- Normalize and sparsify the matrix using an appropriate threshold.
+- Consider the inverse of distance matrix and normalize it by mean and standard deviation for better performance.
+- Use sparsification by setting unpromising elements to zero based on a threshold.
+1. Consider normalizing the distance matrix before calculating the inverse.
+2. Use a dynamic threshold based on percentile or quartile instead of mean.
+3. Experiment with different normalization techniques like logarithmic scaling or min-max scaling.
+- Normalize by the sum of inverse distances rather than the range.
+- Use the mean as the sparsification threshold rather than the 0.5 quantile.
+- Normalize the input matrix to improve comparison between elements.
+1. Utilize normalized and inverse matrices to improve the heuristic's performance.
+2. Consider sparsifying the matrix based on a threshold derived from the properties of the problem.
+1. Consider using the inverse of the distance matrix instead of the reciprocal.
+2. Use mean and standard deviation to normalize the matrix instead of range.
+3. Calculate threshold using mean - std_dev instead of average + 2*std_dev.
+1. Consider different normalization techniques for better scaling.
+2. Explore different thresholding strategies to sparsify the matrix effectively.
+3. Experiment with combining multiple factors in the promise determination step.
+4. Explore alternative ways to calculate the threshold for sparsification.

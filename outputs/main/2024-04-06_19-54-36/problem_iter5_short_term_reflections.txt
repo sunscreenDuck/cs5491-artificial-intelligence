@@ -1,0 +1,27 @@
+1. Consider incorporating multiple factors when designing heuristics.
+2. Aim to create a sparse matrix to improve computational efficiency.
+3. Explore symmetrical operations to enhance the solution quality.
+- Normalize the distance matrix between 0 and 1.
+- Use the median instead of the average for threshold selection.
+- Combine the inverse of the distance matrix with its transpose.
+1. Simplify the normalization step in the first code version.
+2. Use element-wise operations instead of calculating row and column sums separately.
+3. Use more efficient functions like np.median instead of np.mean in the second code version.
+1. Use vectorized operations for efficiency.
+2. Consider different statistical measures for sparsification.
+3. Optimize calculations for improved performance.
+1. Consider using the mean of row and column sums for calculating combined factors.
+2. Sparsify matrix using a threshold based on the mean of row and column sums.
+1. Normalize distance matrix, calculate average, minimum distances, and sparsification threshold. (Worse code)
+2. Combine factors, sparsify matrix using median as threshold. (Better code)
+1. Normalize distance matrix to have values between 0 and 1.
+2. Calculate inverse distance matrix and sum of inverse distances.
+3. Combine factors using mean distance.
+4. Sparsify matrix by setting unpromising elements to zero using percentile threshold.
+1. Normalize distance matrix independently.
+2. Consider average distance, node degrees, and inverse distance for better heuristics.
+3. Set unpromising elements to zero for better sparsity.
+1. Normalize the distance matrix before applying heuristics.
+2. Consider the distribution of edge weights in the problem when designing the heuristics.
+- Simplify computation and reduce noise.
+- Utilize meaningful statistics such as mean instead of percentile.

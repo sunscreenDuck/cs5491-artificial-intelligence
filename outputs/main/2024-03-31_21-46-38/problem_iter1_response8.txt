@@ -1,0 +1,23 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    for node in unvisited_nodes:
+        all_distances = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        lookahead_score = 0
+        for next_node in unvisited_nodes:
+            if next_node != node:
+                next_distances = [distance_matrix[next_node][i] for i in unvisited_nodes if i != next_node]
+                next_average_distance_to_unvisited = np.mean(next_distances)
+                next_std_dev_distance_to_unvisited = np.std(next_distances)
+                lookahead_score += c1 * distance_matrix[node][next_node] - c2 * next_average_distance_to_unvisited + c3 * next_std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][next_node]
+        score = (1 - threshold) * (c1 * distance_matrix[current_node][node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][node]) + threshold * lookahead_score
+        scores[node] = score
+    next_node = min(scores, key=scores.get)
+    return next_node
+```
+In `select_next_node_v2`, I have added a look-ahead mechanism to improve the decision-making process. The idea is to consider the scores obtained by considering the potential next nodes and their impact on the remaining unvisited nodes. The lookahead score is calculated by simulating future steps and selecting the nodes that minimize the objective function. The weight threshold controls the importance given to the lookahead mechanism, allowing a balance between immediate and future benefits. By considering both current and lookahead scores, the function can make more informed decisions and potentially lead to better solutions.

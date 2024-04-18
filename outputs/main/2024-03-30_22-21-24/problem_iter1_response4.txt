@@ -1,0 +1,28 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    for node in unvisited_nodes:
+        all_distances = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        
+        # Calculate look-ahead score
+        look_ahead_score = 0
+        for next_node in unvisited_nodes:
+            if next_node != node:
+                next_distances = [distance_matrix[next_node][i] for i in unvisited_nodes if i != next_node]
+                next_average_distance_to_unvisited = np.mean(next_distances)
+                next_std_dev_distance_to_unvisited = np.std(next_distances)
+                next_score = c1 * distance_matrix[node][next_node] - c2 * next_average_distance_to_unvisited + c3 * next_std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][next_node]
+                look_ahead_score += next_score
+        
+        score = look_ahead_score / len(unvisited_nodes)
+        scores[node] = score
+        
+    next_node = max(scores, key=scores.get)
+    return next_node
+```
+In this improved version, I have added a look-ahead mechanism to the scoring process. For each unvisited node, I calculate the look-ahead score by considering the scores of all possible next nodes. This allows the heuristic to take into account the potential future choices and make a more informed decision. The final score for each node is the average of the look-ahead scores across all unvisited nodes. The node with the highest score is selected as the next node to visit.

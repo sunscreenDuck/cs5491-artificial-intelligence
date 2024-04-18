@@ -1,0 +1,25 @@
+- Reduce the number of features used for scoring in the first code.
+- Simplify the scoring formula in the second code.
+- Avoid unnecessary normalizations, especially if they don't have any significant impact on the final result.
+- Simplify the weighting scheme by using fewer weights and eliminating unnecessary factors.
+1. Consider using constants (c1, c2, c3, c4) for weighting factors to adjust the impact of different variables.
+2. Calculate average and standard deviation of all distances instead of only distances to other unvisited nodes.
+1. Consider using more descriptive variable names for better readability.
+2. Normalize the scores to ensure fairness in weighted sum calculations.
+3. Remove unnecessary variables and calculations for better efficiency.
+4. Experiment with different weights and constants for optimized heuristic performance.
+5. Consider incorporating additional factors or heuristics for more accurate decision-making.
+1. Consider incorporating the standard deviation of distances for better performance.
+2. Experiment with different weight values to find the optimal combination.
+1. Consider using meaningful variable names and avoiding unnecessary calculations.
+2. Experiment with different weight combinations to find the best performance.
+1. Normalize the distances in the better code to make them comparable.
+2. Use optimized values for coefficients c1, c2, c3, and c4 in the better code.
+1. Normalize weights by sum in [Better code].
+2. Consider removing outliers when calculating average and standard deviation.
+3. Consider other node selection strategies like roulette wheel selection or tournament selection.
+1. Consider incorporating both the average distance and standard deviation to balance exploration and exploitation.
+2. Use set operations to simplify code and improve efficiency.
+3. Adjust coefficients to reflect the relative importance of different factors.
+1. Consider using additional information like standard deviation of distances in heuristics.
+2. Consider a finer tuning of the weights/coefficients in the heuristics.

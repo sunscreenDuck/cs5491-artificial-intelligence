@@ -1,0 +1,25 @@
+```python
+import numpy as np
+
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    # Normalize the distance matrix
+    normalized_matrix = distance_matrix / np.max(distance_matrix)
+    
+    # Calculate the average distance for each node
+    avg_distance = np.mean(normalized_matrix, axis=0)
+    
+    # Calculate the minimum distance for each node
+    min_distance = np.min(normalized_matrix, axis=0)
+    
+    # Combine the factors (average distance and minimum distance)
+    combined_factors = avg_distance + min_distance
+    
+    # Adjust the sparsification threshold for better pruning
+    threshold = np.percentile(combined_factors, 50)
+    
+    # Sparsify the matrix
+    sparsified_matrix = np.where(combined_factors > threshold, combined_factors, 0)
+    
+    return sparsified_matrix
+```
+Note: In this mutated function `heuristics_v2`, we incorporate both the average distance and the minimum distance as factors for determining edge importance. We also adjust the sparsification threshold using the 50th percentile of the combined factors.

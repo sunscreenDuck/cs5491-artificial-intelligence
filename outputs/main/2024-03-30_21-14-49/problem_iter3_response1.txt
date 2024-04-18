@@ -1,0 +1,32 @@
+```python
+import numpy as np
+
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = []
+    
+    for node in unvisited_nodes:
+        all_distances = distance_matrix[node, list(unvisited_nodes - {node})]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        score = c1 * distance_matrix[current_node, node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node, node]
+        scores.append(score)
+    
+    normalized_scores = np.array(scores) / sum(scores)
+    cumulative_scores = np.cumsum(normalized_scores)
+    lookahead_scores = c1 * distance_matrix[current_node, list(unvisited_nodes)] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node, list(unvisited_nodes)]
+    lookahead_indices = np.where(lookahead_scores >= threshold)[0]
+    
+    if lookahead_indices.size > 0:
+        next_node_index = lookahead_indices[np.argmax(lookahead_scores[lookahead_indices])]
+        next_node = list(unvisited_nodes)[next_node_index]
+    else:
+        rand_val = np.random.uniform()
+        next_node_index = np.where(cumulative_scores >= rand_val)[0][0]
+        next_node = list(unvisited_nodes)[next_node_index]
+    
+    return next_node
+```
+The function `select_next_node_v2` incorporates the look-ahead mechanism for evaluating node selections. The lookahead mechanism computes lookahead scores for each node and compares them with a specified threshold value. If any lookahead score exceeds the threshold, the node with the maximum lookahead score is selected. Otherwise, a node is selected based on randomly choosing from a cumulative score distribution generated from the normalized scores of the unvisited nodes.

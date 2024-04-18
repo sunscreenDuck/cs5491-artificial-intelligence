@@ -1,0 +1,29 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+
+    n = distance_matrix.shape[0]
+    heuristics = np.zeros((n, n))
+
+    # Calculate the inverse of the distance matrix
+    inverse_matrix = np.divide(1, distance_matrix, out=np.zeros_like(distance_matrix), where=distance_matrix != 0)
+
+    # Calculate the sum of inverses for each row
+    row_sums = np.sum(inverse_matrix, axis=1)
+
+    # Calculate the sum of inverses for each column
+    column_sums = np.sum(inverse_matrix, axis=0)
+
+    # Calculate combined factors for each edge
+    for i in range(n):
+        for j in range(n):
+            if i != j:
+                heuristics[i][j] = (inverse_matrix[i][j] / row_sums[i]) + (inverse_matrix[i][j] / column_sums[j])
+
+    # Normalize the combined factors
+    max_factor = np.max(heuristics)
+    min_factor = np.min(heuristics)
+    normalized_heuristics = (heuristics - min_factor) / (max_factor - min_factor)
+
+    return np.where(normalized_heuristics > 0.5, normalized_heuristics, 0)
+```
+The improved `heuristics_v2` function normalizes the combined factors for each edge after their calculation. The normalization is performed by subtracting the minimum factor and then dividing by the range (maximum minus minimum). The function then sets the values below the threshold of 0.5 to 0, indicating that these edges are not promising.

@@ -1,0 +1,40 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+
+    # Set the weights for each criteria
+    weights = {
+        'distance_to_current': 0.4,
+        'average_distance_to_unvisited': 0.35,
+        'std_dev_distance_to_unvisited': 0.15,
+        'distance_to_destination': 0.1
+    }
+
+    # Calculate the maximum distance in the distance matrix
+    max_distance = np.max(distance_matrix)
+
+    scores = {}
+    for node in unvisited_nodes:
+        # Calculate average distance and standard deviation to unvisited nodes for the current node
+        all_distances = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+
+        # Normalize the distance to current node and distance to destination node
+        normalized_distance_to_current = distance_matrix[current_node][node] / max_distance
+        normalized_distance_to_destination = distance_matrix[destination_node][node] / max_distance
+
+        # Calculate the score using the weights and criteria values
+        score = (
+            weights['distance_to_current'] * normalized_distance_to_current 
+            - weights['average_distance_to_unvisited'] * average_distance_to_unvisited 
+            + weights['std_dev_distance_to_unvisited'] * std_dev_distance_to_unvisited 
+            - weights['distance_to_destination'] * normalized_distance_to_destination
+        )
+
+        scores[node] = score
+
+    # Select the node with the minimum score
+    next_node = min(scores, key=scores.get)
+    return next_node
+```

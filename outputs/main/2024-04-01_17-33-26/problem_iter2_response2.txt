@@ -1,0 +1,17 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    # Calculate the sum and average distances for each node
+    node_distances = np.sum(distance_matrix, axis=1)
+    node_avg_distance = node_distances / (distance_matrix.shape[0] - 1)
+    
+    # Calculate the global average distance
+    global_avg_distance = np.mean(node_distances) / (distance_matrix.shape[0] - 1)
+    
+    # Normalize the average distances by the global average distance
+    node_normalized_avg_distance = node_avg_distance / global_avg_distance
+    
+    # Calculate the prior indicators for each edge
+    edge_indicators = distance_matrix / node_normalized_avg_distance[:, np.newaxis]
+    
+    return edge_indicators
+```

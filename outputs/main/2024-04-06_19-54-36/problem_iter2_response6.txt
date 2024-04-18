@@ -1,0 +1,24 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    n = distance_matrix.shape[0]
+    heuristics_matrix = np.zeros((n, n))
+    
+    # Calculate the inverse of the distance matrix
+    inv_distance_matrix = 1 / distance_matrix
+    
+    # Calculate the average distance for each node
+    average_distances = np.mean(distance_matrix, axis=1)
+    
+    # Calculate the node degrees
+    node_degrees = np.count_nonzero(distance_matrix, axis=1)
+    
+    for i in range(n):
+        for j in range(n):
+            # Calculate the combined factor
+            combined_factor = inv_distance_matrix[i, j] * (1 / node_degrees[i]) * (1 / average_distances[j])
+            
+            # Set promising elements to the combined factor
+            heuristics_matrix[i, j] = combined_factor if combined_factor > 0 else 0
+    
+    return heuristics_matrix
+```

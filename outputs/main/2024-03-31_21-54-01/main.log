@@ -1,0 +1,750 @@
+[2024-03-31 21:54:01,404][root][INFO] - Workspace: C:\Development\cs5491-artificial-intelligence\outputs\main\2024-03-31_21-54-01
+[2024-03-31 21:54:01,404][root][INFO] - Project Root: C:\Development\cs5491-artificial-intelligence
+[2024-03-31 21:54:01,405][root][INFO] - Using LLM: gpt-3.5-turbo-0613
+[2024-03-31 21:54:01,405][root][INFO] - Using Algorithm: reevo
+[2024-03-31 21:54:03,251][root][INFO] - Problem: tsp_constructive
+[2024-03-31 21:54:03,251][root][INFO] - Problem description: Solving Traveling Salesman Problem (TSP) with constructive heuristics. TSP requires finding the shortest path that visits all given nodes and returns to the starting node.
+[2024-03-31 21:54:03,251][root][INFO] - Function name: select_next_node
+[2024-03-31 21:54:03,253][root][INFO] - Evaluating seed function...
+[2024-03-31 21:54:03,253][root][INFO] - Seed function code: 
+import numpy as np
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    for node in unvisited_nodes:
+        all_distances = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        score = c1 * distance_matrix[current_node][node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][node]
+        scores[node] = score
+    next_node = min(scores, key=scores.get)
+    return next_node
+[2024-03-31 21:54:03,253][root][INFO] - Iteration 0: Running Code 0
+[2024-03-31 21:54:03,692][root][INFO] - Iteration 0: Code Run 0 successful!
+[2024-03-31 21:54:06,677][root][INFO] - Iteration 0, response_id 0: Objective value: 6.273092009780198
+[2024-03-31 21:54:06,677][root][INFO] - Iteration 0: Elitist: 6.273092009780198
+[2024-03-31 21:54:06,677][root][INFO] - Iteration 0 finished...
+[2024-03-31 21:54:06,678][root][INFO] - Best obj: 6.273092009780198, Best Code Path: problem_iter0_code0.py
+[2024-03-31 21:54:06,678][root][INFO] - Function Evals: 1
+[2024-03-31 21:54:06,678][root][INFO] - Initial Population Prompt: 
+System Prompt: 
+You are an expert in the domain of optimization heuristics. Your task is to design heuristics that can effectively solve optimization problems.
+Your response outputs Python code and nothing else. Format your code as a Python code string: "```python ... ```".
+
+User Prompt: 
+Write a select_next_node function for Solving Traveling Salesman Problem (TSP) with constructive heuristics. TSP requires finding the shortest path that visits all given nodes and returns to the starting node.
+The select_next_node function takes as input the current node, the destination_node, a set of unvisited nodes, and a distance matrix, and returns the next node to visit.
+
+
+def select_next_node_v1(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    for node in unvisited_nodes:
+        all_distances = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        score = c1 * distance_matrix[current_node][node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][node]
+        scores[node] = score
+    next_node = min(scores, key=scores.get)
+    return next_node
+
+
+Improve `select_next_node_v1` to give `select_next_node_v2`. Output code only and enclose your code with Python code block: ```python ... ```.
+
+- Try look-ahead mechanisms.
+[2024-03-31 21:54:21,377][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:54:21,457][root][INFO] - Iteration 1: Running Code 0
+[2024-03-31 21:54:21,845][root][INFO] - Iteration 1: Code Run 0 successful!
+[2024-03-31 21:54:21,845][root][INFO] - Iteration 1: Running Code 1
+[2024-03-31 21:54:22,287][root][INFO] - Iteration 1: Code Run 1 successful!
+[2024-03-31 21:54:22,287][root][INFO] - Iteration 1: Running Code 2
+[2024-03-31 21:54:22,732][root][INFO] - Iteration 1: Code Run 2 successful!
+[2024-03-31 21:54:22,732][root][INFO] - Iteration 1: Running Code 3
+[2024-03-31 21:54:23,177][root][INFO] - Iteration 1: Code Run 3 successful!
+[2024-03-31 21:54:23,177][root][INFO] - Iteration 1: Running Code 4
+[2024-03-31 21:54:23,638][root][INFO] - Iteration 1: Code Run 4 successful!
+[2024-03-31 21:54:23,639][root][INFO] - Iteration 1: Running Code 5
+[2024-03-31 21:54:24,216][root][INFO] - Iteration 1: Code Run 5 successful!
+[2024-03-31 21:54:24,216][root][INFO] - Iteration 1: Running Code 6
+[2024-03-31 21:54:24,769][root][INFO] - Iteration 1: Code Run 6 successful!
+[2024-03-31 21:54:24,769][root][INFO] - Iteration 1: Running Code 7
+[2024-03-31 21:54:25,421][root][INFO] - Iteration 1: Code Run 7 successful!
+[2024-03-31 21:54:25,421][root][INFO] - Iteration 1: Running Code 8
+[2024-03-31 21:54:26,131][root][INFO] - Iteration 1: Code Run 8 successful!
+[2024-03-31 21:54:26,131][root][INFO] - Iteration 1: Running Code 9
+[2024-03-31 21:54:27,102][root][INFO] - Iteration 1: Code Run 9 successful!
+[2024-03-31 21:54:47,112][root][INFO] - Error for response_id 0: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_constructive/eval.py', '50', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 20.0 seconds
+[2024-03-31 21:54:47,135][root][INFO] - Iteration 1, response_id 1: Objective value: inf
+[2024-03-31 21:54:47,154][root][INFO] - Iteration 1, response_id 2: Objective value: inf
+[2024-03-31 21:55:07,153][root][INFO] - Error for response_id 3: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_constructive/eval.py', '50', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 20.0 seconds
+[2024-03-31 21:55:27,159][root][INFO] - Error for response_id 4: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_constructive/eval.py', '50', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 20.0 seconds
+[2024-03-31 21:55:27,169][root][INFO] - Iteration 1, response_id 5: Objective value: inf
+[2024-03-31 21:55:27,182][root][INFO] - Iteration 1, response_id 6: Objective value: 24.618966587037292
+[2024-03-31 21:55:47,188][root][INFO] - Error for response_id 7: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_constructive/eval.py', '50', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 20.0 seconds
+[2024-03-31 21:56:07,188][root][INFO] - Error for response_id 8: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_constructive/eval.py', '50', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 20.0 seconds
+[2024-03-31 21:56:07,218][root][INFO] - Iteration 1, response_id 9: Objective value: 33.29178765582523
+[2024-03-31 21:56:07,219][root][INFO] - Iteration 1 finished...
+[2024-03-31 21:56:07,219][root][INFO] - Best obj: 6.273092009780198, Best Code Path: problem_iter0_code0.py
+[2024-03-31 21:56:07,219][root][INFO] - Function Evals: 11
+[2024-03-31 21:56:07,220][root][INFO] - Short-term Reflection Prompt: 
+System Prompt: 
+You are an expert in the domain of optimization heuristics. Your task is to give hints to design better heuristics.
+
+User Prompt: 
+Below are two select_next_node functions for Solving Traveling Salesman Problem (TSP) with constructive heuristics. TSP requires finding the shortest path that visits all given nodes and returns to the starting node.
+The select_next_node function takes as input the current node, the destination_node, a set of unvisited nodes, and a distance matrix, and returns the next node to visit.
+
+
+You are provided with two code versions below, where the second version performs better than the first one.
+
+[Worse code]
+
+    """Select the next node to visit from the unvisited nodes."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    
+    for node in unvisited_nodes:
+        all_distances = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        
+        # Calculate the average and standard deviation of distances to unvisited nodes
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        
+        # Calculate the score using the improved look-ahead mechanism
+        lookahead_score = 0
+        for next_node in unvisited_nodes:
+            if next_node != node:
+                # Calculate the score for each possible next node using the lookahead mechanism
+                lookahead_distance = distance_matrix[node][next_node]
+                lookahead_average_distance = (average_distance_to_unvisited * (len(unvisited_nodes) - 1) + lookahead_distance) / len(unvisited_nodes)
+                lookahead_std_dev_distance = np.sqrt(((std_dev_distance_to_unvisited ** 2) * (len(unvisited_nodes) - 1) + (lookahead_distance - lookahead_average_distance) ** 2) / len(unvisited_nodes))
+                lookahead_score += c1 * lookahead_distance - c2 * lookahead_average_distance + c3 * lookahead_std_dev_distance
+        
+        # Calculate the final score by adding the lookahead score to the base score
+        score = c1 * distance_matrix[current_node][node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][node] + threshold * lookahead_score
+        scores[node] = score
+    
+    # Select the next node with the highest score
+    next_node = max(scores, key=scores.get)
+    
+    return next_node
+
+[Better code]
+    """Select the next node to visit from the unvisited nodes."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    for node in unvisited_nodes:
+        all_distances = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        score = c1 * distance_matrix[current_node][node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][node]
+        scores[node] = score
+    next_node = min(scores, key=scores.get)
+    return next_node
+
+You respond with some hints for designing better heuristics, based on the two code versions and using less than 20 words.
+[2024-03-31 21:56:10,119][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:56:10,428][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:56:10,429][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:56:10,430][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:56:10,511][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:56:10,900][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:56:11,348][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:56:11,552][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:56:13,190][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:56:13,192][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:56:13,197][root][INFO] - Crossover Prompt: 
+System Prompt: 
+You are an expert in the domain of optimization heuristics. Your task is to design heuristics that can effectively solve optimization problems.
+Your response outputs Python code and nothing else. Format your code as a Python code string: "```python ... ```".
+
+User Prompt: 
+Write a select_next_node function for Solving Traveling Salesman Problem (TSP) with constructive heuristics. TSP requires finding the shortest path that visits all given nodes and returns to the starting node.
+The select_next_node function takes as input the current node, the destination_node, a set of unvisited nodes, and a distance matrix, and returns the next node to visit.
+
+
+
+[Worse code]
+def select_next_node_v0(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+
+    """Select the next node to visit from the unvisited nodes."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    
+    for node in unvisited_nodes:
+        all_distances = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        
+        # Calculate the average and standard deviation of distances to unvisited nodes
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        
+        # Calculate the score using the improved look-ahead mechanism
+        lookahead_score = 0
+        for next_node in unvisited_nodes:
+            if next_node != node:
+                # Calculate the score for each possible next node using the lookahead mechanism
+                lookahead_distance = distance_matrix[node][next_node]
+                lookahead_average_distance = (average_distance_to_unvisited * (len(unvisited_nodes) - 1) + lookahead_distance) / len(unvisited_nodes)
+                lookahead_std_dev_distance = np.sqrt(((std_dev_distance_to_unvisited ** 2) * (len(unvisited_nodes) - 1) + (lookahead_distance - lookahead_average_distance) ** 2) / len(unvisited_nodes))
+                lookahead_score += c1 * lookahead_distance - c2 * lookahead_average_distance + c3 * lookahead_std_dev_distance
+        
+        # Calculate the final score by adding the lookahead score to the base score
+        score = c1 * distance_matrix[current_node][node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][node] + threshold * lookahead_score
+        scores[node] = score
+    
+    # Select the next node with the highest score
+    next_node = max(scores, key=scores.get)
+    
+    return next_node
+
+[Better code]
+def select_next_node_v1(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    for node in unvisited_nodes:
+        all_distances = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        score = c1 * distance_matrix[current_node][node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][node]
+        scores[node] = score
+    next_node = min(scores, key=scores.get)
+    return next_node
+
+[Reflection]
+- Consider using a more meaningful threshold value that is based on problem-specific characteristics.
+- Explore alternative scoring mechanisms that better capture the problem structure and goals.
+
+[Improved code]
+Please write an improved function `select_next_node_v2`, according to the reflection. Output code only and enclose your code with Python code block: ```python ... ```.
+[2024-03-31 21:56:15,980][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:56:16,467][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:56:16,775][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:56:18,077][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:56:18,719][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:56:19,438][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:56:20,050][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:56:20,358][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:56:21,996][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:56:22,051][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:56:22,076][root][INFO] - Iteration 2: Running Code 0
+[2024-03-31 21:56:22,459][root][INFO] - Iteration 2: Code Run 0 successful!
+[2024-03-31 21:56:22,459][root][INFO] - Iteration 2: Running Code 1
+[2024-03-31 21:56:22,888][root][INFO] - Iteration 2: Code Run 1 execution error!
+[2024-03-31 21:56:22,888][root][INFO] - Iteration 2: Running Code 2
+[2024-03-31 21:56:23,344][root][INFO] - Iteration 2: Code Run 2 successful!
+[2024-03-31 21:56:23,344][root][INFO] - Iteration 2: Running Code 3
+[2024-03-31 21:56:23,800][root][INFO] - Iteration 2: Code Run 3 successful!
+[2024-03-31 21:56:23,801][root][INFO] - Iteration 2: Running Code 4
+[2024-03-31 21:56:24,330][root][INFO] - Iteration 2: Code Run 4 successful!
+[2024-03-31 21:56:24,331][root][INFO] - Iteration 2: Running Code 5
+[2024-03-31 21:56:25,035][root][INFO] - Iteration 2: Code Run 5 successful!
+[2024-03-31 21:56:25,035][root][INFO] - Iteration 2: Running Code 6
+[2024-03-31 21:56:26,361][root][INFO] - Iteration 2: Code Run 6 successful!
+[2024-03-31 21:56:26,361][root][INFO] - Iteration 2: Running Code 7
+[2024-03-31 21:56:27,294][root][INFO] - Iteration 2: Code Run 7 successful!
+[2024-03-31 21:56:27,295][root][INFO] - Iteration 2: Running Code 8
+[2024-03-31 21:56:28,651][root][INFO] - Iteration 2: Code Run 8 successful!
+[2024-03-31 21:56:28,651][root][INFO] - Iteration 2: Running Code 9
+[2024-03-31 21:56:33,003][root][INFO] - Iteration 2: Code Run 9 successful!
+[2024-03-31 21:56:44,030][root][INFO] - Iteration 2, response_id 0: Objective value: 34.274198321849106
+[2024-03-31 21:56:44,040][root][INFO] - Iteration 2, response_id 1: Objective value: inf
+[2024-03-31 21:56:44,718][root][INFO] - Iteration 2, response_id 2: Objective value: 33.622451293015935
+[2024-03-31 21:56:44,731][root][INFO] - Iteration 2, response_id 3: Objective value: 8.726629219936438
+[2024-03-31 21:57:04,743][root][INFO] - Error for response_id 4: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_constructive/eval.py', '50', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 20.0 seconds
+[2024-03-31 21:57:04,745][root][INFO] - Iteration 2, response_id 5: Objective value: 36.99624623434657
+[2024-03-31 21:57:04,747][root][INFO] - Iteration 2, response_id 6: Objective value: 6.273092009780198
+[2024-03-31 21:57:04,748][root][INFO] - Iteration 2, response_id 7: Objective value: 6.566970732198165
+[2024-03-31 21:57:04,772][root][INFO] - Iteration 2, response_id 8: Objective value: 7.310519320400606
+[2024-03-31 21:57:04,774][root][INFO] - Iteration 2, response_id 9: Objective value: 33.29178765582523
+[2024-03-31 21:57:04,774][root][INFO] - Iteration 2 finished...
+[2024-03-31 21:57:04,775][root][INFO] - Best obj: 6.273092009780198, Best Code Path: problem_iter0_code0.py
+[2024-03-31 21:57:04,775][root][INFO] - Function Evals: 21
+[2024-03-31 21:57:04,775][root][INFO] - Long-term Reflection Prompt: 
+System Prompt: 
+You are an expert in the domain of optimization heuristics. Your task is to give hints to design better heuristics.
+
+User Prompt: 
+Below is your prior long-term reflection on designing heuristics for Solving Traveling Salesman Problem (TSP) with constructive heuristics. TSP requires finding the shortest path that visits all given nodes and returns to the starting node.
+- Try look-ahead mechanisms.
+
+Below are some newly gained insights.
+- Consider using a more meaningful threshold value that is based on problem-specific characteristics.
+- Explore alternative scoring mechanisms that better capture the problem structure and goals.
+1. Consider using a min-heap to efficiently retrieve the node with the highest score.
+2. Instead of using a fixed threshold, dynamically determine the threshold based on the problem instance.
+3. Consider incorporating additional factors, such as node degree or adjacency to improve the heuristic.
+4. Prioritize exploring promising options early instead of calculating all possible lookahead scores.
+1. Consider incorporating lookahead mechanism into the better code version.
+2. Adjust weights for score calculation in both code versions to optimize performance.
+1. Consider removing the look-ahead mechanism if it does not significantly improve the results.
+2. Simplify the scoring function by removing unnecessary terms or parameters.
+1. Consider simplifying the calculation of lookahead distance in the first version.
+2. Explore other potential factors to consider in the scoring mechanism.
+1. Consider the impact of the lookahead mechanism on the overall performance and adjust its contribution.
+2. Evaluate the relevance and significance of each heuristic component for better optimization.
+1. Remove unnecessary look-ahead mechanism.
+2. Simplify score calculation by removing threshold and look-ahead score calculation.
+1. Consider removing irrelevant variables and computations.
+2. Simplify the scoring mechanism by removing the look-ahead factor.
+3. Ensure that the scoring formula captures the essential elements of the problem.
+1. Simplify the objective function by removing unnecessary terms and thresholds.
+2. Optimize the computation by avoiding unnecessary calculations in look-ahead mechanism.
+1. Analyze the impact of the lookahead mechanism on the overall performance.
+2. Consider the trade-off between exploration and exploitation in the score calculation.
+3. Utilize statistical measures efficiently to improve the selection process.
+4. Experiment with different weight combinations for the scoring factors.
+
+Write constructive hints for designing better heuristics, based on prior reflections and new insights and using less than 50 words.
+[2024-03-31 21:57:06,949][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:57:06,960][root][INFO] - Mutation Prompt: 
+System Prompt: 
+You are an expert in the domain of optimization heuristics. Your task is to design heuristics that can effectively solve optimization problems.
+Your response outputs Python code and nothing else. Format your code as a Python code string: "```python ... ```".
+
+User Prompt: 
+Write a select_next_node function for Solving Traveling Salesman Problem (TSP) with constructive heuristics. TSP requires finding the shortest path that visits all given nodes and returns to the starting node.
+The select_next_node function takes as input the current node, the destination_node, a set of unvisited nodes, and a distance matrix, and returns the next node to visit.
+
+
+
+[Prior reflection]
+1. Use a dynamic threshold based on problem characteristics and experiment with scoring mechanisms.
+2. Prioritize exploration of promising options and simplify scoring function by removing unnecessary terms.
+3. Analyze the impact of lookahead mechanism and optimize computation to improve overall performance.- Try look-ahead mechanisms.
+
+[Code]
+def select_next_node_v1(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    for node in unvisited_nodes:
+        all_distances = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        score = c1 * distance_matrix[current_node][node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][node]
+        scores[node] = score
+    next_node = min(scores, key=scores.get)
+    return next_node
+
+[Improved code]
+Please write a mutated function `select_next_node_v2`, according to the reflection. Output code only and enclose your code with Python code block: ```python ... ```.
+[2024-03-31 21:57:13,911][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:57:13,927][root][INFO] - Iteration 3: Running Code 0
+[2024-03-31 21:57:14,302][root][INFO] - Iteration 3: Code Run 0 successful!
+[2024-03-31 21:57:14,303][root][INFO] - Iteration 3: Running Code 1
+[2024-03-31 21:57:14,721][root][INFO] - Iteration 3: Code Run 1 successful!
+[2024-03-31 21:57:14,721][root][INFO] - Iteration 3: Running Code 2
+[2024-03-31 21:57:15,172][root][INFO] - Iteration 3: Code Run 2 successful!
+[2024-03-31 21:57:15,172][root][INFO] - Iteration 3: Running Code 3
+[2024-03-31 21:57:15,637][root][INFO] - Iteration 3: Code Run 3 successful!
+[2024-03-31 21:57:15,637][root][INFO] - Iteration 3: Running Code 4
+[2024-03-31 21:57:16,179][root][INFO] - Iteration 3: Code Run 4 successful!
+[2024-03-31 21:57:18,721][root][INFO] - Iteration 3, response_id 0: Objective value: 6.6083304961946165
+[2024-03-31 21:57:18,732][root][INFO] - Iteration 3, response_id 1: Objective value: 6.513479054924498
+[2024-03-31 21:57:19,389][root][INFO] - Iteration 3, response_id 2: Objective value: 6.273092009780198
+[2024-03-31 21:57:19,403][root][INFO] - Iteration 3, response_id 3: Objective value: 7.61471294104687
+[2024-03-31 21:57:19,415][root][INFO] - Iteration 3, response_id 4: Objective value: inf
+[2024-03-31 21:57:19,417][root][INFO] - Iteration 3 finished...
+[2024-03-31 21:57:19,418][root][INFO] - Best obj: 6.273092009780198, Best Code Path: problem_iter0_code0.py
+[2024-03-31 21:57:19,426][root][INFO] - Function Evals: 26
+[2024-03-31 21:57:21,864][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:57:22,103][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:57:22,200][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:57:22,224][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:57:22,241][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:57:22,512][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:57:22,516][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:57:22,823][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:57:23,639][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:57:23,641][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:57:25,788][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:57:27,224][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:57:27,430][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:57:27,431][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:57:27,494][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:57:27,536][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:57:27,734][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:57:28,143][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:57:28,553][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:57:30,907][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:57:30,927][root][INFO] - Iteration 4: Running Code 0
+[2024-03-31 21:57:31,301][root][INFO] - Iteration 4: Code Run 0 successful!
+[2024-03-31 21:57:31,301][root][INFO] - Iteration 4: Running Code 1
+[2024-03-31 21:57:31,731][root][INFO] - Iteration 4: Code Run 1 successful!
+[2024-03-31 21:57:31,731][root][INFO] - Iteration 4: Running Code 2
+[2024-03-31 21:57:32,175][root][INFO] - Iteration 4: Code Run 2 successful!
+[2024-03-31 21:57:32,175][root][INFO] - Iteration 4: Running Code 3
+[2024-03-31 21:57:32,606][root][INFO] - Iteration 4: Code Run 3 successful!
+[2024-03-31 21:57:32,606][root][INFO] - Iteration 4: Running Code 4
+[2024-03-31 21:57:33,067][root][INFO] - Iteration 4: Code Run 4 successful!
+[2024-03-31 21:57:33,068][root][INFO] - Iteration 4: Running Code 5
+[2024-03-31 21:57:33,697][root][INFO] - Iteration 4: Code Run 5 successful!
+[2024-03-31 21:57:33,698][root][INFO] - Iteration 4: Running Code 6
+[2024-03-31 21:57:34,341][root][INFO] - Iteration 4: Code Run 6 successful!
+[2024-03-31 21:57:34,341][root][INFO] - Iteration 4: Running Code 7
+[2024-03-31 21:57:35,137][root][INFO] - Iteration 4: Code Run 7 successful!
+[2024-03-31 21:57:35,137][root][INFO] - Iteration 4: Running Code 8
+[2024-03-31 21:57:36,007][root][INFO] - Iteration 4: Code Run 8 successful!
+[2024-03-31 21:57:36,007][root][INFO] - Iteration 4: Running Code 9
+[2024-03-31 21:57:36,902][root][INFO] - Iteration 4: Code Run 9 successful!
+[2024-03-31 21:57:38,104][root][INFO] - Iteration 4, response_id 0: Objective value: 6.273092009780198
+[2024-03-31 21:57:38,118][root][INFO] - Iteration 4, response_id 1: Objective value: 7.99477320543647
+[2024-03-31 21:57:38,120][root][INFO] - Iteration 4, response_id 2: Objective value: 7.079134823222708
+[2024-03-31 21:57:39,498][root][INFO] - Iteration 4, response_id 3: Objective value: 7.030658936903764
+[2024-03-31 21:57:39,807][root][INFO] - Iteration 4, response_id 4: Objective value: 6.6083304961946165
+[2024-03-31 21:57:40,191][root][INFO] - Iteration 4, response_id 5: Objective value: 6.298739907724561
+[2024-03-31 21:57:40,200][root][INFO] - Iteration 4, response_id 6: Objective value: 23.529423698878475
+[2024-03-31 21:57:40,216][root][INFO] - Iteration 4, response_id 7: Objective value: inf
+[2024-03-31 21:57:40,225][root][INFO] - Iteration 4, response_id 8: Objective value: inf
+[2024-03-31 21:57:40,237][root][INFO] - Iteration 4, response_id 9: Objective value: inf
+[2024-03-31 21:57:40,243][root][INFO] - Iteration 4 finished...
+[2024-03-31 21:57:40,245][root][INFO] - Best obj: 6.273092009780198, Best Code Path: problem_iter0_code0.py
+[2024-03-31 21:57:40,246][root][INFO] - Function Evals: 36
+[2024-03-31 21:57:42,786][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:57:55,176][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:57:55,186][root][INFO] - Iteration 5: Running Code 0
+[2024-03-31 21:57:55,556][root][INFO] - Iteration 5: Code Run 0 successful!
+[2024-03-31 21:57:55,556][root][INFO] - Iteration 5: Running Code 1
+[2024-03-31 21:57:55,998][root][INFO] - Iteration 5: Code Run 1 successful!
+[2024-03-31 21:57:55,999][root][INFO] - Iteration 5: Running Code 2
+[2024-03-31 21:57:56,463][root][INFO] - Iteration 5: Code Run 2 successful!
+[2024-03-31 21:57:56,463][root][INFO] - Iteration 5: Running Code 3
+[2024-03-31 21:57:57,039][root][INFO] - Iteration 5: Code Run 3 successful!
+[2024-03-31 21:57:57,039][root][INFO] - Iteration 5: Running Code 4
+[2024-03-31 21:57:57,603][root][INFO] - Iteration 5: Code Run 4 successful!
+[2024-03-31 21:58:00,061][root][INFO] - Iteration 5, response_id 0: Objective value: 6.273092009780198
+[2024-03-31 21:58:01,974][root][INFO] - Iteration 5, response_id 1: Objective value: 8.699837891076697
+[2024-03-31 21:58:01,985][root][INFO] - Iteration 5, response_id 2: Objective value: 6.273092009780198
+[2024-03-31 21:58:02,471][root][INFO] - Iteration 5, response_id 3: Objective value: 6.273092009780198
+[2024-03-31 21:58:03,916][root][INFO] - Iteration 5, response_id 4: Objective value: 7.0322688765904795
+[2024-03-31 21:58:03,919][root][INFO] - Iteration 5 finished...
+[2024-03-31 21:58:03,921][root][INFO] - Best obj: 6.273092009780198, Best Code Path: problem_iter0_code0.py
+[2024-03-31 21:58:03,921][root][INFO] - Function Evals: 41
+[2024-03-31 21:58:05,922][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:58:05,990][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:58:06,439][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:58:06,449][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:58:06,545][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:58:06,834][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:58:06,870][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:58:07,452][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:58:07,975][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:58:08,283][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:58:11,975][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:58:12,584][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:58:12,597][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:58:12,626][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:58:12,669][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:58:12,890][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:58:14,223][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:58:14,529][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:58:17,066][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:58:18,011][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:58:18,035][root][INFO] - Iteration 6: Running Code 0
+[2024-03-31 21:58:18,409][root][INFO] - Iteration 6: Code Run 0 successful!
+[2024-03-31 21:58:18,409][root][INFO] - Iteration 6: Running Code 1
+[2024-03-31 21:58:18,842][root][INFO] - Iteration 6: Code Run 1 successful!
+[2024-03-31 21:58:18,842][root][INFO] - Iteration 6: Running Code 2
+[2024-03-31 21:58:19,314][root][INFO] - Iteration 6: Code Run 2 successful!
+[2024-03-31 21:58:19,314][root][INFO] - Iteration 6: Running Code 3
+[2024-03-31 21:58:19,850][root][INFO] - Iteration 6: Code Run 3 successful!
+[2024-03-31 21:58:19,850][root][INFO] - Iteration 6: Running Code 4
+[2024-03-31 21:58:20,430][root][INFO] - Iteration 6: Code Run 4 successful!
+[2024-03-31 21:58:20,431][root][INFO] - Iteration 6: Running Code 5
+[2024-03-31 21:58:21,108][root][INFO] - Iteration 6: Code Run 5 successful!
+[2024-03-31 21:58:21,108][root][INFO] - Iteration 6: Running Code 6
+[2024-03-31 21:58:22,065][root][INFO] - Iteration 6: Code Run 6 successful!
+[2024-03-31 21:58:22,067][root][INFO] - Iteration 6: Running Code 7
+[2024-03-31 21:58:25,091][root][INFO] - Iteration 6: Code Run 7 successful!
+[2024-03-31 21:58:25,091][root][INFO] - Iteration 6: Running Code 8
+[2024-03-31 21:58:27,328][root][INFO] - Iteration 6: Code Run 8 successful!
+[2024-03-31 21:58:27,328][root][INFO] - Iteration 6: Running Code 9
+[2024-03-31 21:58:29,202][root][INFO] - Iteration 6: Code Run 9 successful!
+[2024-03-31 21:58:29,204][root][INFO] - Iteration 6, response_id 0: Objective value: 6.273092009780198
+[2024-03-31 21:58:29,719][root][INFO] - Iteration 6, response_id 1: Objective value: 6.393907690893896
+[2024-03-31 21:58:29,722][root][INFO] - Iteration 6, response_id 2: Objective value: 6.273092009780198
+[2024-03-31 21:58:29,724][root][INFO] - Iteration 6, response_id 3: Objective value: 6.273092009780198
+[2024-03-31 21:58:30,184][root][INFO] - Iteration 6, response_id 4: Objective value: 6.273092009780198
+[2024-03-31 21:58:30,640][root][INFO] - Iteration 6, response_id 5: Objective value: 6.6083304961946165
+[2024-03-31 21:58:31,076][root][INFO] - Iteration 6, response_id 6: Objective value: 7.030658936903764
+[2024-03-31 21:58:36,438][root][INFO] - Iteration 6, response_id 7: Objective value: 6.453357203769762
+[2024-03-31 21:58:36,451][root][INFO] - Iteration 6, response_id 8: Objective value: 29.430517267309995
+[2024-03-31 21:58:36,465][root][INFO] - Iteration 6, response_id 9: Objective value: 6.770734851049852
+[2024-03-31 21:58:36,470][root][INFO] - Iteration 6 finished...
+[2024-03-31 21:58:36,473][root][INFO] - Best obj: 6.273092009780198, Best Code Path: problem_iter0_code0.py
+[2024-03-31 21:58:36,474][root][INFO] - Function Evals: 51
+[2024-03-31 21:58:42,073][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:58:46,578][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:58:46,593][root][INFO] - Iteration 7: Running Code 0
+[2024-03-31 21:58:46,973][root][INFO] - Iteration 7: Code Run 0 execution error!
+[2024-03-31 21:58:46,973][root][INFO] - Iteration 7: Running Code 1
+[2024-03-31 21:58:47,339][root][INFO] - Iteration 7: Code Run 1 successful!
+[2024-03-31 21:58:47,339][root][INFO] - Iteration 7: Running Code 2
+[2024-03-31 21:58:47,753][root][INFO] - Iteration 7: Code Run 2 successful!
+[2024-03-31 21:58:47,753][root][INFO] - Iteration 7: Running Code 3
+[2024-03-31 21:58:48,225][root][INFO] - Iteration 7: Code Run 3 successful!
+[2024-03-31 21:58:48,225][root][INFO] - Iteration 7: Running Code 4
+[2024-03-31 21:58:48,696][root][INFO] - Iteration 7: Code Run 4 successful!
+[2024-03-31 21:58:48,706][root][INFO] - Iteration 7, response_id 0: Objective value: inf
+[2024-03-31 21:58:51,937][root][INFO] - Iteration 7, response_id 1: Objective value: 6.273092009780198
+[2024-03-31 21:58:51,939][root][INFO] - Iteration 7, response_id 2: Objective value: 6.273092009780198
+[2024-03-31 21:58:51,952][root][INFO] - Iteration 7, response_id 3: Objective value: inf
+[2024-03-31 21:58:52,653][root][INFO] - Iteration 7, response_id 4: Objective value: 36.99624623434657
+[2024-03-31 21:58:52,654][root][INFO] - Iteration 7 finished...
+[2024-03-31 21:58:52,657][root][INFO] - Best obj: 6.273092009780198, Best Code Path: problem_iter0_code0.py
+[2024-03-31 21:58:52,657][root][INFO] - Function Evals: 56
+[2024-03-31 21:58:54,873][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:58:54,874][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:58:55,061][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:58:55,139][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:58:55,488][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:58:55,538][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:58:55,691][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:58:55,781][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:58:57,126][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:58:57,127][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:58:59,890][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:58:59,942][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:59:00,913][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:59:01,631][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:59:01,836][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:59:02,450][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:59:02,961][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:59:03,171][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:59:03,681][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:59:04,907][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:59:04,929][root][INFO] - Iteration 8: Running Code 0
+[2024-03-31 21:59:05,325][root][INFO] - Iteration 8: Code Run 0 successful!
+[2024-03-31 21:59:05,325][root][INFO] - Iteration 8: Running Code 1
+[2024-03-31 21:59:05,759][root][INFO] - Iteration 8: Code Run 1 successful!
+[2024-03-31 21:59:05,759][root][INFO] - Iteration 8: Running Code 2
+[2024-03-31 21:59:06,240][root][INFO] - Iteration 8: Code Run 2 successful!
+[2024-03-31 21:59:06,240][root][INFO] - Iteration 8: Running Code 3
+[2024-03-31 21:59:06,705][root][INFO] - Iteration 8: Code Run 3 successful!
+[2024-03-31 21:59:06,705][root][INFO] - Iteration 8: Running Code 4
+[2024-03-31 21:59:07,260][root][INFO] - Iteration 8: Code Run 4 successful!
+[2024-03-31 21:59:07,260][root][INFO] - Iteration 8: Running Code 5
+[2024-03-31 21:59:07,845][root][INFO] - Iteration 8: Code Run 5 successful!
+[2024-03-31 21:59:07,845][root][INFO] - Iteration 8: Running Code 6
+[2024-03-31 21:59:08,582][root][INFO] - Iteration 8: Code Run 6 successful!
+[2024-03-31 21:59:08,582][root][INFO] - Iteration 8: Running Code 7
+[2024-03-31 21:59:09,569][root][INFO] - Iteration 8: Code Run 7 successful!
+[2024-03-31 21:59:09,569][root][INFO] - Iteration 8: Running Code 8
+[2024-03-31 21:59:11,819][root][INFO] - Iteration 8: Code Run 8 successful!
+[2024-03-31 21:59:11,819][root][INFO] - Iteration 8: Running Code 9
+[2024-03-31 21:59:14,600][root][INFO] - Iteration 8: Code Run 9 successful!
+[2024-03-31 21:59:14,602][root][INFO] - Iteration 8, response_id 0: Objective value: 6.278079254771866
+[2024-03-31 21:59:14,614][root][INFO] - Iteration 8, response_id 1: Objective value: 6.4372376034929975
+[2024-03-31 21:59:14,871][root][INFO] - Iteration 8, response_id 2: Objective value: 6.309344860409022
+[2024-03-31 21:59:15,593][root][INFO] - Iteration 8, response_id 3: Objective value: 6.393907690893896
+[2024-03-31 21:59:15,596][root][INFO] - Iteration 8, response_id 4: Objective value: 6.273092009780198
+[2024-03-31 21:59:16,821][root][INFO] - Iteration 8, response_id 5: Objective value: 6.273092009780198
+[2024-03-31 21:59:21,270][root][INFO] - Iteration 8, response_id 6: Objective value: 6.618085232438081
+[2024-03-31 21:59:21,284][root][INFO] - Iteration 8, response_id 7: Objective value: 7.859257557739673
+[2024-03-31 21:59:21,298][root][INFO] - Iteration 8, response_id 8: Objective value: 6.843014877330956
+[2024-03-31 21:59:21,301][root][INFO] - Iteration 8, response_id 9: Objective value: 6.273092009780198
+[2024-03-31 21:59:21,303][root][INFO] - Iteration 8 finished...
+[2024-03-31 21:59:21,304][root][INFO] - Best obj: 6.273092009780198, Best Code Path: problem_iter0_code0.py
+[2024-03-31 21:59:21,306][root][INFO] - Function Evals: 66
+[2024-03-31 21:59:24,254][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:59:32,351][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:59:32,370][root][INFO] - Iteration 9: Running Code 0
+[2024-03-31 21:59:32,826][root][INFO] - Iteration 9: Code Run 0 successful!
+[2024-03-31 21:59:32,826][root][INFO] - Iteration 9: Running Code 1
+[2024-03-31 21:59:33,251][root][INFO] - Iteration 9: Code Run 1 successful!
+[2024-03-31 21:59:33,251][root][INFO] - Iteration 9: Running Code 2
+[2024-03-31 21:59:33,707][root][INFO] - Iteration 9: Code Run 2 successful!
+[2024-03-31 21:59:33,708][root][INFO] - Iteration 9: Running Code 3
+[2024-03-31 21:59:34,297][root][INFO] - Iteration 9: Code Run 3 successful!
+[2024-03-31 21:59:34,297][root][INFO] - Iteration 9: Running Code 4
+[2024-03-31 21:59:35,008][root][INFO] - Iteration 9: Code Run 4 successful!
+[2024-03-31 21:59:37,527][root][INFO] - Iteration 9, response_id 0: Objective value: 6.273092009780198
+[2024-03-31 21:59:38,152][root][INFO] - Iteration 9, response_id 1: Objective value: 6.273092009780198
+[2024-03-31 21:59:38,491][root][INFO] - Iteration 9, response_id 2: Objective value: 6.273092009780198
+[2024-03-31 21:59:39,492][root][INFO] - Iteration 9, response_id 3: Objective value: 6.273092009780198
+[2024-03-31 21:59:39,494][root][INFO] - Iteration 9, response_id 4: Objective value: 6.273092009780198
+[2024-03-31 21:59:39,494][root][INFO] - Iteration 9 finished...
+[2024-03-31 21:59:39,494][root][INFO] - Best obj: 6.273092009780198, Best Code Path: problem_iter0_code0.py
+[2024-03-31 21:59:39,494][root][INFO] - Function Evals: 71
+[2024-03-31 21:59:41,754][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:59:41,942][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:59:42,102][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:59:42,137][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:59:42,691][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:59:42,788][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:59:43,032][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:59:43,513][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:59:43,715][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:59:44,227][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:59:48,322][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:59:48,733][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:59:48,734][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:59:48,937][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:59:49,346][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:59:49,586][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:59:50,063][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:59:50,268][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:59:51,293][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:59:51,294][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 21:59:51,311][root][INFO] - Iteration 10: Running Code 0
+[2024-03-31 21:59:51,682][root][INFO] - Iteration 10: Code Run 0 successful!
+[2024-03-31 21:59:51,682][root][INFO] - Iteration 10: Running Code 1
+[2024-03-31 21:59:52,101][root][INFO] - Iteration 10: Code Run 1 successful!
+[2024-03-31 21:59:52,101][root][INFO] - Iteration 10: Running Code 2
+[2024-03-31 21:59:52,513][root][INFO] - Iteration 10: Code Run 2 successful!
+[2024-03-31 21:59:52,513][root][INFO] - Iteration 10: Running Code 3
+[2024-03-31 21:59:52,951][root][INFO] - Iteration 10: Code Run 3 successful!
+[2024-03-31 21:59:52,951][root][INFO] - Iteration 10: Running Code 4
+[2024-03-31 21:59:53,401][root][INFO] - Iteration 10: Code Run 4 successful!
+[2024-03-31 21:59:53,402][root][INFO] - Iteration 10: Running Code 5
+[2024-03-31 21:59:53,964][root][INFO] - Iteration 10: Code Run 5 successful!
+[2024-03-31 21:59:53,964][root][INFO] - Iteration 10: Running Code 6
+[2024-03-31 21:59:54,601][root][INFO] - Iteration 10: Code Run 6 successful!
+[2024-03-31 21:59:54,601][root][INFO] - Iteration 10: Running Code 7
+[2024-03-31 21:59:55,457][root][INFO] - Iteration 10: Code Run 7 successful!
+[2024-03-31 21:59:55,457][root][INFO] - Iteration 10: Running Code 8
+[2024-03-31 21:59:56,169][root][INFO] - Iteration 10: Code Run 8 successful!
+[2024-03-31 21:59:56,169][root][INFO] - Iteration 10: Running Code 9
+[2024-03-31 21:59:57,044][root][INFO] - Iteration 10: Code Run 9 successful!
+[2024-03-31 21:59:57,055][root][INFO] - Iteration 10, response_id 0: Objective value: inf
+[2024-03-31 21:59:57,057][root][INFO] - Iteration 10, response_id 1: Objective value: 6.4372376034929975
+[2024-03-31 21:59:58,258][root][INFO] - Iteration 10, response_id 2: Objective value: 6.273092009780198
+[2024-03-31 21:59:58,895][root][INFO] - Iteration 10, response_id 3: Objective value: 6.273092009780198
+[2024-03-31 22:00:00,214][root][INFO] - Iteration 10, response_id 4: Objective value: 6.637966722531088
+[2024-03-31 22:00:00,217][root][INFO] - Iteration 10, response_id 5: Objective value: 6.273092009780198
+[2024-03-31 22:00:01,336][root][INFO] - Iteration 10, response_id 6: Objective value: 6.843014877330956
+[2024-03-31 22:00:01,346][root][INFO] - Iteration 10, response_id 7: Objective value: inf
+[2024-03-31 22:00:01,359][root][INFO] - Iteration 10, response_id 8: Objective value: 6.483790242704213
+[2024-03-31 22:00:01,361][root][INFO] - Iteration 10, response_id 9: Objective value: 6.278079254771866
+[2024-03-31 22:00:01,364][root][INFO] - Iteration 10 finished...
+[2024-03-31 22:00:01,367][root][INFO] - Best obj: 6.273092009780198, Best Code Path: problem_iter0_code0.py
+[2024-03-31 22:00:01,367][root][INFO] - Function Evals: 81
+[2024-03-31 22:00:03,787][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 22:00:08,938][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 22:00:08,959][root][INFO] - Iteration 11: Running Code 0
+[2024-03-31 22:05:39,557][root][INFO] - Iteration 11: Code Run 0 successful!
+[2024-03-31 22:05:39,558][root][INFO] - Iteration 11: Running Code 1
+[2024-03-31 22:05:43,311][root][INFO] - Iteration 11: Code Run 1 successful!
+[2024-03-31 22:05:43,311][root][INFO] - Iteration 11: Running Code 2
+[2024-03-31 22:05:46,519][root][INFO] - Iteration 11: Code Run 2 successful!
+[2024-03-31 22:05:46,520][root][INFO] - Iteration 11: Running Code 3
+[2024-03-31 22:05:47,320][root][INFO] - Iteration 11: Code Run 3 successful!
+[2024-03-31 22:05:47,321][root][INFO] - Iteration 11: Running Code 4
+[2024-03-31 22:05:48,105][root][INFO] - Iteration 11: Code Run 4 successful!
+[2024-03-31 22:05:48,107][root][INFO] - Iteration 11, response_id 0: Objective value: 6.775427054496868
+[2024-03-31 22:05:48,123][root][INFO] - Iteration 11, response_id 1: Objective value: 6.28919003828838
+[2024-03-31 22:05:48,134][root][INFO] - Iteration 11, response_id 2: Objective value: inf
+[2024-03-31 22:05:48,146][root][INFO] - Iteration 11, response_id 3: Objective value: inf
+[2024-03-31 22:05:48,171][root][INFO] - Iteration 11, response_id 4: Objective value: inf
+[2024-03-31 22:05:48,172][root][INFO] - Iteration 11 finished...
+[2024-03-31 22:05:48,172][root][INFO] - Best obj: 6.273092009780198, Best Code Path: problem_iter0_code0.py
+[2024-03-31 22:05:48,172][root][INFO] - Function Evals: 86
+[2024-03-31 22:05:50,879][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 22:05:51,000][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 22:05:51,002][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 22:05:51,037][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 22:05:51,053][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 22:05:51,093][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 22:05:51,453][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 22:05:51,770][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 22:05:52,091][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 22:05:54,187][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 22:05:57,049][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 22:05:57,788][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 22:05:57,816][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 22:05:57,939][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 22:05:59,837][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 22:06:00,144][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 22:06:00,712][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 22:06:01,374][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 22:06:02,805][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 22:06:06,319][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 22:06:06,338][root][INFO] - Iteration 12: Running Code 0
+[2024-03-31 22:06:06,690][root][INFO] - Iteration 12: Code Run 0 successful!
+[2024-03-31 22:06:06,690][root][INFO] - Iteration 12: Running Code 1
+[2024-03-31 22:06:07,099][root][INFO] - Iteration 12: Code Run 1 successful!
+[2024-03-31 22:06:07,100][root][INFO] - Iteration 12: Running Code 2
+[2024-03-31 22:06:07,459][root][INFO] - Iteration 12: Code Run 2 successful!
+[2024-03-31 22:06:07,459][root][INFO] - Iteration 12: Running Code 3
+[2024-03-31 22:06:07,822][root][INFO] - Iteration 12: Code Run 3 successful!
+[2024-03-31 22:06:07,822][root][INFO] - Iteration 12: Running Code 4
+[2024-03-31 22:06:08,208][root][INFO] - Iteration 12: Code Run 4 successful!
+[2024-03-31 22:06:08,209][root][INFO] - Iteration 12: Running Code 5
+[2024-03-31 22:06:08,586][root][INFO] - Iteration 12: Code Run 5 successful!
+[2024-03-31 22:06:08,586][root][INFO] - Iteration 12: Running Code 6
+[2024-03-31 22:06:09,006][root][INFO] - Iteration 12: Code Run 6 successful!
+[2024-03-31 22:06:09,007][root][INFO] - Iteration 12: Running Code 7
+[2024-03-31 22:06:09,451][root][INFO] - Iteration 12: Code Run 7 successful!
+[2024-03-31 22:06:09,451][root][INFO] - Iteration 12: Running Code 8
+[2024-03-31 22:06:09,952][root][INFO] - Iteration 12: Code Run 8 successful!
+[2024-03-31 22:06:09,953][root][INFO] - Iteration 12: Running Code 9
+[2024-03-31 22:06:10,503][root][INFO] - Iteration 12: Code Run 9 successful!
+[2024-03-31 22:06:10,513][root][INFO] - Iteration 12, response_id 0: Objective value: 6.270891153875265
+[2024-03-31 22:06:10,516][root][INFO] - Iteration 12, response_id 1: Objective value: inf
+[2024-03-31 22:06:10,525][root][INFO] - Iteration 12, response_id 2: Objective value: inf
+[2024-03-31 22:06:10,528][root][INFO] - Iteration 12, response_id 3: Objective value: 6.775427054496868
+[2024-03-31 22:06:10,538][root][INFO] - Iteration 12, response_id 4: Objective value: 7.0043697989867315
+[2024-03-31 22:06:12,683][root][INFO] - Iteration 12, response_id 5: Objective value: 6.483790242704213
+[2024-03-31 22:06:12,690][root][INFO] - Iteration 12, response_id 6: Objective value: inf
+[2024-03-31 22:06:13,336][root][INFO] - Iteration 12, response_id 7: Objective value: 6.585724014287744
+[2024-03-31 22:06:13,818][root][INFO] - Iteration 12, response_id 8: Objective value: 6.483790242704213
+[2024-03-31 22:06:14,639][root][INFO] - Iteration 12, response_id 9: Objective value: 6.361848204803868
+[2024-03-31 22:06:14,644][root][INFO] - Iteration 12: Elitist: 6.270891153875265
+[2024-03-31 22:06:14,646][root][INFO] - Iteration 12 finished...
+[2024-03-31 22:06:14,646][root][INFO] - Best obj: 6.270891153875265, Best Code Path: problem_iter12_code0.py
+[2024-03-31 22:06:14,646][root][INFO] - Function Evals: 96
+[2024-03-31 22:06:17,245][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 22:06:26,770][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-03-31 22:06:26,778][root][INFO] - Iteration 13: Running Code 0
+[2024-03-31 22:06:27,139][root][INFO] - Iteration 13: Code Run 0 successful!
+[2024-03-31 22:06:27,139][root][INFO] - Iteration 13: Running Code 1
+[2024-03-31 22:06:27,524][root][INFO] - Iteration 13: Code Run 1 successful!
+[2024-03-31 22:06:27,524][root][INFO] - Iteration 13: Running Code 2
+[2024-03-31 22:06:27,926][root][INFO] - Iteration 13: Code Run 2 successful!
+[2024-03-31 22:06:27,926][root][INFO] - Iteration 13: Running Code 3
+[2024-03-31 22:06:28,334][root][INFO] - Iteration 13: Code Run 3 successful!
+[2024-03-31 22:06:28,334][root][INFO] - Iteration 13: Running Code 4
+[2024-03-31 22:06:28,736][root][INFO] - Iteration 13: Code Run 4 successful!
+[2024-03-31 22:06:28,737][root][INFO] - Iteration 13, response_id 0: Objective value: 6.270891153875265
+[2024-03-31 22:06:28,738][root][INFO] - Iteration 13, response_id 1: Objective value: 6.270891153875265
+[2024-03-31 22:06:28,739][root][INFO] - Iteration 13, response_id 2: Objective value: 6.270891153875265
+[2024-03-31 22:06:28,750][root][INFO] - Iteration 13, response_id 3: Objective value: 6.403849198362414
+[2024-03-31 22:06:29,018][root][INFO] - Iteration 13, response_id 4: Objective value: 37.044135521572315
+[2024-03-31 22:06:29,019][root][INFO] - Iteration 13 finished...
+[2024-03-31 22:06:29,019][root][INFO] - Best obj: 6.270891153875265, Best Code Path: problem_iter12_code0.py
+[2024-03-31 22:06:29,019][root][INFO] - Function Evals: 101
+[2024-03-31 22:06:29,019][root][INFO] - Best Code Overall: import numpy as np
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    max_distance = np.amax(distance_matrix)
+    
+    normalized_distances_to_current = distance_matrix[current_node] / max_distance
+    normalized_distances_to_destination = distance_matrix[destination_node] / max_distance
+    
+    unvisited_distances = distance_matrix[list(unvisited_nodes)][:, list(unvisited_nodes)]
+    average_distance_to_unvisited = np.mean(unvisited_distances, axis=1)
+    std_dev_distance_to_unvisited = np.std(unvisited_distances, axis=1)
+    
+    scores = c1 * normalized_distances_to_current[list(unvisited_nodes)] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * normalized_distances_to_destination[list(unvisited_nodes)]
+    
+    next_node = np.argmin(scores)
+    return list(unvisited_nodes)[next_node]
+[2024-03-31 22:06:29,019][root][INFO] - Best Code Path Overall: problem_iter12_code0.py
+[2024-03-31 22:06:29,020][root][INFO] - Running validation script...: C:\Development\cs5491-artificial-intelligence/problems/tsp_constructive/eval.py
+[2024-03-31 22:06:32,608][root][INFO] - Validation script finished. Results are saved in best_code_overall_val_stdout.txt.
+[2024-03-31 22:06:32,625][root][INFO] - [*] Running ...
+[2024-03-31 22:06:32,625][root][INFO] - [*] Average for 20: 4.0645549512451975
+[2024-03-31 22:06:32,625][root][INFO] - [*] Average for 50: 6.382075856518835
+[2024-03-31 22:06:32,625][root][INFO] - [*] Average for 100: 8.817921689950378
+[2024-03-31 22:06:32,625][root][INFO] - [*] Average for 200: 12.430437153895781

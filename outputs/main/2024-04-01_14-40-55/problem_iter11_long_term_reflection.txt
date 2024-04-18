@@ -1,0 +1,5 @@
+1. Simplify code and calculations for improved performance.
+2. Experiment with different weights and thresholds to balance factors.
+3. Incorporate lookahead information for better decision-making.
+4. Use statistical measures to guide the selection process.
+5. Consider additional factors and weights in the scoring calculation.

@@ -1,0 +1,5 @@
+1. Simplify scoring formula and remove unnecessary terms.
+2. Evaluate and remove ineffective look-ahead mechanisms.
+3. Use descriptive variable names for readability.
+4. Avoid unnecessary calculations and iterations over unvisited nodes.
+5. Compare performance of different versions of the code.

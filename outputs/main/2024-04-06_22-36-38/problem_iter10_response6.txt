@@ -1,0 +1,21 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    # Normalize the distance matrix
+    normalized_matrix = distance_matrix / np.max(distance_matrix)
+    
+    # Calculate the inverse of the normalized matrix
+    inverse_matrix = 1 / normalized_matrix
+    
+    # Calculate the mean and standard deviation of the inverse matrix
+    mean, std_dev = np.mean(inverse_matrix), np.std(inverse_matrix)
+    
+    # Calculate the threshold directly using the mean and standard deviation
+    threshold = mean - std_dev
+    
+    # Apply sparsification directly on the inverse_matrix without creating a separate normalized_inverse_matrix
+    inverse_matrix[inverse_matrix < threshold] = 0
+    
+    return inverse_matrix
+```
+[Explanation]
+The code improves upon the previous versions by eliminating unnecessary intermediate variables and computations. It calculates the threshold directly using the mean and standard deviation, and applies sparsification directly on the inverse_matrix without creating a separate normalized_inverse_matrix. This reduces the number of operations and memory usage, leading to improved efficiency.

@@ -1,0 +1,5 @@
+1. Use min instead of max for selecting the next node.
+2. Remove redundant calculations and simplify the heuristic.
+3. Consider incorporating look-ahead mechanism for evaluating node selections.
+4. Utilize arrays or lists to store lookahead scores for efficiency.
+5. Adjust scoring weights and thresholds for better performance.

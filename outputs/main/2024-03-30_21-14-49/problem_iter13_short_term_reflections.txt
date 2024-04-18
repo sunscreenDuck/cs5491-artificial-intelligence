@@ -1,0 +1,29 @@
+1. Consider simplifying the code logic and reducing the number of factors used.
+2. Use constant weights and thresholds for simplicity and better performance.
+- Use meaningful variable names.
+- Avoid unnecessary calculations.
+- Simplify code by removing unnecessary nested calculations.
+- Use direct variable assignment instead of dictionary lookups.
+- Remove unused variables.
+- Minimize the number of operations in the score calculation.
+1. Normalize weights for better impact. 
+2. Consider using different weights for distance_to_node and distance_to_destination. 
+3. Use meaningful variable names for better code readability.
+1. Consider evaluating each node individually instead of calculating aggregated statistics.
+2. Use min() instead of np.argmax() to select the next node.
+3. Reconsider the weighting and scoring factors for a better balance.
+4. Remove random noise from the scores to improve decision-making.
+1. Consider using meaningful variable names for better readability.
+2. Use the minimum instead of maximum to select the next node to visit.
+- Simplify the weighting scheme and remove unnecessary calculations.
+- Consider incorporating lookahead distances to make more informed decisions.
+1. Consider using vectorized operations for improved performance.
+2. Break down complex calculations into smaller steps for better readability and maintainability.
+3. Remove random noise to ensure determinism of the heuristic.
+4. Consider using a different aggregation method (e.g., max instead of min) for selecting the next node.
+1. Simplify the weights and threshold used to calculate the score in the worse code version.
+2. Avoid unnecessary calculations and data manipulations, as done in the better code version.
+1. Consider simpler scoring factors and avoid unnecessary calculations.
+2. Use a more efficient method to calculate scores and select next node.
+1. Simplify the calculation of scores and remove unnecessary variables.
+2. Remove lookahead_threshold and the related calculations, as it complicates the code without adding much value.

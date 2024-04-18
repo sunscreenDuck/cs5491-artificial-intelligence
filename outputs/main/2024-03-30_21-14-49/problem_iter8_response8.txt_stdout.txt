@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "C:\Development\cs5491-artificial-intelligence/problems/tsp_constructive/eval.py", line 11, in <module>
+    from gpt import select_next_node_v2 as select_next_node
+  File "C:\Development\cs5491-artificial-intelligence\problems\tsp_constructive\gpt.py", line 10
+    std_dev_distance_to_unvisited = np.std(distance_matrix[current_node, np.array(list(unvisited_nodes)))])
+                                                                                                        ^
+SyntaxError: closing parenthesis ')' does not match opening parenthesis '['
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Development\cs5491-artificial-intelligence/problems/tsp_constructive/eval.py", line 13, in <module>
+    from gpt import select_next_node
+  File "C:\Development\cs5491-artificial-intelligence\problems\tsp_constructive\gpt.py", line 10
+    std_dev_distance_to_unvisited = np.std(distance_matrix[current_node, np.array(list(unvisited_nodes)))])
+                                                                                                        ^
+SyntaxError: closing parenthesis ')' does not match opening parenthesis '['

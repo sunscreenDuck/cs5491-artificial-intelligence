@@ -1,0 +1,14 @@
+```python
+import numpy as np
+
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    # Normalize the distance matrix
+    normalized_matrix = (distance_matrix - np.min(distance_matrix)) / np.ptp(distance_matrix)
+
+    # Subtract the minimum value from each row and column
+    normalized_matrix -= np.min(normalized_matrix, axis=1).reshape((-1, 1))
+    normalized_matrix -= np.min(normalized_matrix, axis=0)
+    
+    return normalized_matrix
+```
+In the improved `heuristics_v2` function, the copy of the distance matrix is eliminated as it is no longer needed. The normalization step is done directly using the numpy functions `np.min` and `np.ptp` to calculate the minimum and range of the distance matrix. The subtraction of minimum values from each row and column is simplified using the `axis` parameter of `np.min`. The resulting normalized matrix is then returned as the indicators.

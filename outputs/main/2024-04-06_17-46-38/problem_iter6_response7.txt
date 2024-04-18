@@ -1,0 +1,23 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+
+    # Normalize the distance matrix
+    normalized_matrix = distance_matrix / np.max(distance_matrix)
+
+    # Calculate the inverse of the normalized matrix
+    inverse_matrix = np.divide(1, normalized_matrix, out=np.zeros_like(normalized_matrix), where=normalized_matrix != 0)
+
+    # Calculate the sum of inverses for each row and column
+    row_sums = np.sum(inverse_matrix, axis=1)
+    column_sums = np.sum(inverse_matrix, axis=0)
+
+    # Calculate combined factors for each edge using vectorized operations
+    heuristics = np.divide(inverse_matrix, row_sums[:, np.newaxis]) + np.divide(inverse_matrix, column_sums)
+
+    # Set elements with low values to zero to sparsify the matrix
+    threshold = np.median(heuristics)
+    sparse_heuristics = np.where(heuristics > threshold, heuristics, 0)
+
+    return sparse_heuristics
+```
+The `heuristics_v2` function improves upon the previous versions by normalizing the distance matrix, which allows for better comparison and interpretation of the heuristic values. It also uses vectorized operations for improved efficiency and readability. Additionally, it sparsifies the matrix by setting elements with low values to zero, reducing computational and memory requirements.

@@ -1,0 +1,3 @@
+1. Simplify code and calculations, remove unnecessary components, experiment with different weights/parameters, and focus on key factors for better performance and readability.
+2. Consider using meaningful variable names, normalizing distances, removing unnecessary calculations, and experimenting with weight combinations for optimized heuristic performance.
+3. Incorporate the standard deviation of distances and consider additional factors or heuristics for more accurate decision-making in the weighted sum calculation.

@@ -1,0 +1,3 @@
+1. Simplify and optimize code by removing unnecessary calculations and using efficient operations (e.g., numpy functions).
+2. Choose meaningful variable names and weights to improve code readability and decision-making.
+3. Normalize weights and consider the relative importance of different factors in the scoring function.

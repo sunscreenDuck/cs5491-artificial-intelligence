@@ -1,0 +1,6 @@
+1. Normalize weights for better distribution and control.
+2. Use efficient operations like numpy functions.
+3. Consider distance from current node to unvisited nodes.
+4. Experiment with different weight combinations for optimal balance.
+5. Use meaningful variable names for better readability.
+6. Avoid unnecessary calculations to optimize performance.

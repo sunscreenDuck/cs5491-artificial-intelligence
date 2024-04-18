@@ -1,0 +1,29 @@
+1. Use min instead of max for selecting the next node.
+2. Remove unnecessary calculation of the average look-ahead score in the worse code.
+1. Remove redundant calculations outside the loop.
+2. Avoid unnecessary look-ahead calculation unless it significantly improves the performance.
+1. Consider including lookahead information in the scoring function.
+2. Use arrays or lists to store lookahead scores instead of recalculating them multiple times.
+3. Calculate average and standard deviation of the lookahead distances only once.
+1. Consider incorporating a look-ahead mechanism to evaluate the impact of visiting each node.
+2. Adjust the scoring weights and thresholds for better performance.
+1. Simplify calculations and remove unnecessary variables and calculations.
+2. Utilize look-ahead mechanism and consider the impact of visiting the next node.
+3. Consider both average and standard deviation of distances to unvisited nodes.
+4. Optimize by calculating distances between nodes only once.
+1. Simplify calculations and remove unnecessary variables.
+2. Consider alternative metrics to measure distances.
+3. Explore different weighting factors for scoring algorithm.
+4. Try different threshold values for look-ahead mechanism.
+5. Investigate alternative methods to calculate look-ahead score.
+1. Remove unnecessary code (e.g., threshold) to simplify the heuristic.
+2. Eliminate the unnecessary lookahead score calculation to improve performance.
+3. Use a simpler scoring function with fewer parameters for better readability.
+4. Consider incorporating additional information (e.g., nearest neighbor or local search).
+5. Explore different selection strategies (e.g., random selection, probabilistic selection).
+- Consider incorporating look-ahead mechanisms to evaluate the impact of selecting different nodes.
+- Use a dynamic threshold based on the current score to determine whether to perform look-ahead evaluations.
+1. Consider incorporating a look-ahead mechanism to improve decision-making based on future node selections.
+2. Use a threshold to selectively apply the look-ahead mechanism to nodes with higher scores.
+1. Avoid redundant computations and reuse intermediate results.
+2. Consider lookahead distances instead of individually calculating look_ahead_score for each node.

@@ -1,0 +1,12 @@
+[*] Running ...
+[*] Dataset loaded: C:\Development\cs5491-artificial-intelligence/problems/tsp_aco\dataset\train150_dataset.npy with 5 instances.
+C:\Development\cs5491-artificial-intelligence\problems\tsp_aco\gpt.py:18: RuntimeWarning: divide by zero encountered in divide
+  combined_factors = inv_distance_matrix * avg_sum
+[*] Instance 0: 64.9407621546865
+[*] Instance 1: 71.4121154067396
+[*] Instance 2: 71.19968137248418
+[*] Instance 3: 69.97120626650843
+[*] Instance 4: 69.82474080646442
+[*] Average:
+69.46970120137664
+[0m

@@ -1,0 +1,40 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes with look-ahead mechanism."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    
+    # Calculate average distance and standard deviation for all unvisited nodes
+    average_distances = {}
+    std_dev_distances = {}
+    for node in unvisited_nodes:
+        all_distances = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        average_distances[node] = np.mean(all_distances)
+        std_dev_distances[node] = np.std(all_distances)
+
+    # Calculate scores for each unvisited node
+    for node in unvisited_nodes:
+        score = c1 * distance_matrix[current_node][node] - c2 * average_distances[node] + c3 * std_dev_distances[node] - c4 * distance_matrix[destination_node][node]
+        
+        lookahead_score = 0
+        if len(unvisited_nodes) > 1:
+            best_candidates = []
+            best_distance = float('inf')
+            
+            # Find the two best lookahead candidates
+            for next_node in unvisited_nodes.difference([node]):
+                lookahead_distance = distance_matrix[node][next_node] + distance_matrix[next_node][destination_node]
+                if lookahead_distance < best_distance:
+                    best_candidates.append((next_node, lookahead_distance))
+                    if len(best_candidates) > 2:
+                        best_candidates = sorted(best_candidates, key=lambda x: x[1])[:2]
+                        best_distance = best_candidates[-1][1]
+
+            lookahead_score = best_candidates[0][1] - best_candidates[1][1]
+
+        scores[node] = score + threshold * lookahead_score
+
+    next_node = min(scores, key=scores.get)
+    return next_node
+```

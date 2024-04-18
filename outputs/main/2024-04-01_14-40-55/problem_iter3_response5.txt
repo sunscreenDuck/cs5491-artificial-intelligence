@@ -1,0 +1,22 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    
+    all_distances = distance_matrix[current_node][list(unvisited_nodes)]
+    mean_distance_to_unvisited = np.mean(all_distances)
+    std_dev_distance_to_unvisited = np.std(all_distances)
+    
+    for node in unvisited_nodes:
+        score = c1 * distance_matrix[current_node][node] - c2 * mean_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][node]
+        scores[node] = score
+    
+    next_node = min(scores, key=scores.get)
+    return next_node
+```
+In the improved code, I have made the following changes:
+- Moved the calculation of `all_distances`, `mean_distance_to_unvisited`, and `std_dev_distance_to_unvisited` outside the loop, as these values are constant for each iteration of the loop.
+- Simplified the calculation of `mean_distance_to_unvisited` and `std_dev_distance_to_unvisited` by using the direct calculation from the `all_distances` array.
+- Adjusted the formula for the score calculation to balance the importance of different factors.

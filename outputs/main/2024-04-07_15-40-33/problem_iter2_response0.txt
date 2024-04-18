@@ -1,0 +1,16 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    # Create a copy of the distance matrix
+    heuristics = distance_matrix.copy()
+
+    # Set the diagonal elements to infinity to prevent self-loops
+    np.fill_diagonal(heuristics, np.inf)
+
+    # Subtract the minimum value from each row and column
+    min_vals = np.minimum(np.min(heuristics, axis=0), np.min(heuristics, axis=1))
+    heuristics -= min_vals[:, np.newaxis]
+    heuristics -= min_vals
+
+    # Return the modified distance matrix
+    return heuristics
+```

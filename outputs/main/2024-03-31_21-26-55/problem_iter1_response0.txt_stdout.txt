@@ -1,0 +1,77 @@
+[*] Running ...
+[*] Dataset loaded: C:\Development\cs5491-artificial-intelligence/problems/tsp_constructive\dataset\train50_dataset.npy with 64 instances.
+C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\fromnumeric.py:3504: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\_methods.py:129: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\_methods.py:206: RuntimeWarning: Degrees of freedom <= 0 for slice
+  ret = _var(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
+C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\_methods.py:163: RuntimeWarning: invalid value encountered in divide
+  arrmean = um.true_divide(arrmean, div, out=arrmean,
+C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\_methods.py:198: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+[*] Instance 0: 6.468985165414264
+[*] Instance 1: 6.221614215527616
+[*] Instance 2: 7.390502651532116
+[*] Instance 3: 7.082557324281807
+[*] Instance 4: 7.020010320375715
+[*] Instance 5: 6.363059088789496
+[*] Instance 6: 7.5387909784789855
+[*] Instance 7: 6.6619989183811255
+[*] Instance 8: 6.947379995165512
+[*] Instance 9: 7.268454087483736
+[*] Instance 10: 6.076521543619218
+[*] Instance 11: 6.6282696956131675
+[*] Instance 12: 6.5883380125287765
+[*] Instance 13: 6.157636591628733
+[*] Instance 14: 6.480164395146973
+[*] Instance 15: 7.30444820298388
+[*] Instance 16: 6.154163112467381
+[*] Instance 17: 5.754751404397848
+[*] Instance 18: 6.4915988871977195
+[*] Instance 19: 6.402735760175825
+[*] Instance 20: 6.091128613698526
+[*] Instance 21: 6.843648167409245
+[*] Instance 22: 6.438113848225892
+[*] Instance 23: 6.928125502853603
+[*] Instance 24: 6.371480057777045
+[*] Instance 25: 7.074548905556462
+[*] Instance 26: 5.972877302770197
+[*] Instance 27: 6.3051944596685034
+[*] Instance 28: 6.429874068893795
+[*] Instance 29: 6.57167642130673
+[*] Instance 30: 6.544685164029725
+[*] Instance 31: 6.410125471368046
+[*] Instance 32: 6.639077963005198
+[*] Instance 33: 6.34503282015611
+[*] Instance 34: 5.870200715087967
+[*] Instance 35: 6.342397886744819
+[*] Instance 36: 6.045255118262828
+[*] Instance 37: 6.926430345492848
+[*] Instance 38: 6.592558918377669
+[*] Instance 39: 6.987158284483616
+[*] Instance 40: 5.797795675130382
+[*] Instance 41: 6.231680088320827
+[*] Instance 42: 6.1912237887891965
+[*] Instance 43: 7.271959814386775
+[*] Instance 44: 6.694566916676763
+Traceback (most recent call last):
+  File "C:\Development\cs5491-artificial-intelligence/problems/tsp_constructive/eval.py", line 82, in <module>
+    obj = eval_heuristic(node_positions[i])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Development\cs5491-artificial-intelligence/problems/tsp_constructive/eval.py", line 42, in eval_heuristic
+    next_node = select_next_node(
+                ^^^^^^^^^^^^^^^^^
+  File "C:\Development\cs5491-artificial-intelligence\problems\tsp_constructive\gpt.py", line 12, in select_next_node_v2
+    lookahead_scores = []
+                          
+  File "C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\fromnumeric.py", line 3645, in std
+    return _methods._std(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\_methods.py", line 206, in _std
+    ret = _var(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\_methods.py", line 193, in _var
+    if isinstance(ret, mu.ndarray):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

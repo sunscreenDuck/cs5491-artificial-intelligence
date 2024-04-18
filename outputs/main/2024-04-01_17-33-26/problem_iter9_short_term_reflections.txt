@@ -1,0 +1,24 @@
+1. Consider using average or sum of distances to calculate node indicators.
+2. Normalize edge indicators by row to handle differences in feature scales.
+3. Consider using a penalty matrix based on normalized distance matrix.
+Consider using the sum of distances and considering an additional factor in the penalty calculation.
+1. Consider using vectorized operations for improved efficiency.
+2. Explore different normalization techniques to handle varying feature scales.
+3. Utilize penalty matrices to better prioritize edges in the solution.
+1. Consider using a more representative measure of node distances.
+2. Incorporate a penalty value that considers node distances in relation to each other.
+1. Use sum instead of average for better heuristics.
+2. Normalize distance matrix by row to handle scale differences.
+3. Consider using penalty matrix in heuristics for better performance.
+- Consider using vectorized operations for better efficiency.
+- Avoid normalizing indicators directly, as it can lead to suboptimal results.
+1. Consider using a more efficient averaging technique (e.g., np.mean) instead of np.sum/(num_nodes-1).
+2. Avoid unnecessary normalization steps and prioritize simplicity in the calculation.
+3. Leverage nested loops to iterate over the distance matrix and compute the penalty directly.
+1. Consider using vectorized operations for better performance.
+2. Use a more robust normalization technique for handling differences in feature scales.
+- Consider using vectorized operations for better performance.
+- Explore alternative ways of normalizing indicators.
+- Test different formulas for penalizing edge distances.
+1. Consider using vectorized operations for efficient computation.
+2. Normalize by row to handle differences in feature scales.

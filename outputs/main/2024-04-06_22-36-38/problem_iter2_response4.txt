@@ -1,0 +1,18 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    n = distance_matrix.shape[0]
+    
+    # Normalize the distance matrix between 0 and 1
+    normalized_distance_matrix = (distance_matrix - np.min(distance_matrix)) / (np.max(distance_matrix) - np.min(distance_matrix))
+    
+    # Calculate the inverse of the normalized distance matrix
+    inverse_distance_matrix = 1 / normalized_distance_matrix
+    
+    # Apply dynamic threshold based on percentile
+    threshold = np.percentile(inverse_distance_matrix, 75)
+    
+    # Sparsify the matrix by setting unpromising elements to zero
+    sparse_matrix = np.where(inverse_distance_matrix >= threshold, inverse_distance_matrix, 0)
+    
+    return sparse_matrix
+```

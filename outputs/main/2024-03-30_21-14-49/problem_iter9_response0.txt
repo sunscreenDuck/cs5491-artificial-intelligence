@@ -1,0 +1,23 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    # Define the weights for the objective function
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    
+    # Calculate the average and standard deviation distances from the current node to unvisited nodes
+    current_distances = distance_matrix[current_node, list(unvisited_nodes)]
+    average_distance_to_unvisited = np.mean(current_distances)
+    std_dev_distance_to_unvisited = np.std(current_distances)
+    
+    scores = (c1 * current_distances +
+              c2 * average_distance_to_unvisited -
+              c3 * std_dev_distance_to_unvisited -
+              c4 * distance_matrix[destination_node, list(unvisited_nodes)]
+             )
+    next_node = np.argmax(scores)
+    return next_node
+```
+In the modified `select_next_node_v2` function:
+1. The distances from the current node to unvisited nodes are calculated only once using array indexing. This eliminates the need for a loop and improves efficiency.
+2. The calculation of the objective function is vectorized using numpy operations, improving performance.
+3. The next node is selected based on the maximum score, assuming a maximization problem.

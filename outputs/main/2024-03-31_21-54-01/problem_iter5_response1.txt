@@ -1,0 +1,46 @@
+```python
+import numpy as np
+
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    
+    min_distance_to_current = min(distance_matrix[current_node][i] for i in unvisited_nodes)
+    max_distance_to_current = max(distance_matrix[current_node][i] for i in unvisited_nodes)
+    
+    for node in unvisited_nodes:
+        all_distances = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        
+        base_score = (c1 * distance_matrix[current_node][node]) / max_distance_to_current
+        lookahead_score =  (c2 * (average_distance_to_unvisited - min_distance_to_current)) / (max_distance_to_current - min_distance_to_current)
+        diversity_score = (c3 * std_dev_distance_to_unvisited) / max_distance_to_current
+        destination_score = (c4 * distance_matrix[destination_node][node]) / max_distance_to_current
+        
+        score = base_score + lookahead_score - diversity_score + destination_score
+        scores[node] = score
+    
+    next_node = min(scores, key=scores.get)
+    return next_node
+```
+I have made several changes to the `select_next_node_v1` function to improve its effectiveness in solving the TSP. Here are the changes and the rationale behind them:
+
+1. Added min_distance_to_current and max_distance_to_current calculations:
+   - Calculated the minimum and maximum distances from the current node to any unvisited node.
+   - These values will be used to normalize the base score and lookahead score.
+
+2. Revised the calculation of base_score, lookahead_score, diversity_score, and destination_score:
+   - Divided each component by max_distance_to_current to normalize the scores.
+   - Simplified the calculation of the lookahead_score to be the difference between the average distance to unvisited nodes and the minimum distance to the current node, divided by the range of distances from the current node to unvisited nodes.
+   - Added a diversity_score component, which measures the standard deviation of distances to unvisited nodes from the current node, divided by max_distance_to_current.
+   - Divided the destination_score by max_distance_to_current to normalize the score.
+
+3. Changed the score calculation:
+   - Adjusted the weights of each component to reflect the reflection and achieve a more balanced scoring mechanism.
+   - The base_score and lookahead_score are positive components, while the diversity_score and destination_score are negative components.
+
+These changes aim to incorporate problem-specific knowledge, simplify the scoring function, enhance code readability, and improve decision-making in selecting the next node to visit.

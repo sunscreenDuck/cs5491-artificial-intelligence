@@ -1,0 +1,39 @@
+```python
+import numpy as np
+
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    num_nodes = len(distance_matrix)
+    heuristics_matrix = np.zeros_like(distance_matrix)
+
+    # Calculate inverse of distance matrix
+    inv_distance_matrix = 1 / distance_matrix
+
+    # Calculate the sum of inverse distances for each node
+    node_sums = np.sum(inv_distance_matrix, axis=1)
+
+    # Calculate the average inverse distance for each edge
+    avg_inv_distances = inv_distance_matrix / node_sums[:, np.newaxis]
+
+    # Calculate the maximum inverse distance for each node
+    max_inv_distances = np.max(avg_inv_distances, axis=0)
+
+    # Calculate the minimum inverse distance for each node
+    min_inv_distances = np.min(avg_inv_distances, axis=0)
+
+    # Calculate the range of inverse distances for each edge
+    range_inv_distances = max_inv_distances - min_inv_distances
+
+    # Calculate the fitness score for each edge using a combination of factors
+    fitness_matrix = (
+        (1 / (distance_matrix ** 2)) +
+        (1 / (avg_inv_distances + 1e-8)) +
+        (range_inv_distances + 1e-8)
+    )
+
+    # Sparsify the matrix by setting unpromising elements to zero
+    threshold = np.percentile(fitness_matrix, 50)
+    heuristics_matrix[fitness_matrix < threshold] = 0
+
+    return heuristics_matrix
+```
+Note: The heuristics function `heuristics_v2` uses a combination of factors to determine the fitness score for each edge. These factors include the inverse of distances, average inverse distances, and range of inverse distances. The fitness score is then used to sparsify the matrix by setting unpromising elements to zero.

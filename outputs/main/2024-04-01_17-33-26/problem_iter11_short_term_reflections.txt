@@ -1,0 +1,23 @@
+1. Avoid unnecessary reshaping operations and optimize calculations for speed.
+2. Use vectorized operations to improve performance and readability.
+1. Avoid unnecessary reshaping for improved code efficiency.
+2. Use node_distances directly to compute penalty_matrix for improved code readability and performance.
+1. Vectorize calculations for improved performance.
+2. Normalize penalty matrix to handle differences in feature scales.
+1. Avoid unnecessary vectorized operations for improved performance.
+2. Use loops for fine-grained control and customization.
+1. Avoid unnecessary calculations and use efficient operations.
+2. Consider the average sum of distances for normalization instead of node average distance.
+- Avoid unnecessary vectorized operations.
+- Minimize the number of iterations.
+- Optimize memory usage.
+- Simplify calculations.
+- Consider optimizing performance by parallelizing computations.
+1. Normalize with the average distance of all nodes instead of the maximum.
+2. Use node distances for both calculations instead of node average distance.
+1. Optimize computation by minimizing unnecessary operations.
+2. Utilize vectorized operations for better performance.
+1. Avoid unnecessary calculations and vectorize computations.
+2. Use nested loops for fine-grained control and access to individual elements.
+1. Normalize by maximum average distance instead of row maximum.
+2. Use precomputed sum of distances for efficiency.

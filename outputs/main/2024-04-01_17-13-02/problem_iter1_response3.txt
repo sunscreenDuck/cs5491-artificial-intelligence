@@ -1,0 +1,29 @@
+```
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    n = distance_matrix.shape[0]
+    max_dist = np.max(distance_matrix)
+    min_dist = np.min(distance_matrix)
+    
+    # Initialize the indicator matrix
+    indicators = np.zeros_like(distance_matrix)
+    
+    # Calculate the mean distance and standard deviation
+    mean_dist = np.mean(distance_matrix)
+    std_dist = np.std(distance_matrix)
+    
+    # Assign indicators based on the distance from the mean
+    indicators[distance_matrix > mean_dist] = -1
+    indicators[distance_matrix < mean_dist] = 1
+    
+    # Normalize the indicators to the range [-1, 1]
+    indicators = (indicators - np.min(indicators)) / (np.max(indicators) - np.min(indicators))
+    
+    # Scale the indicators based on the standard deviation
+    indicators = indicators * std_dist
+    
+    # Assign very negative indicators to long edges
+    indicators[distance_matrix > max_dist / 2] = -1000
+    
+    return indicators
+```
+

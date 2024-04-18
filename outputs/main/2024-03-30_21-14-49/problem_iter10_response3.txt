@@ -1,0 +1,42 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    thresholds = {
+        'average_distance': 0.7,
+        'std_dev_distance': 0.3,
+        'distance_to_destination': 0.2
+    }
+    
+    weights = {
+        'distance_to_node': 0.4,
+        'average_distance_to_unvisited': 0.3,
+        'std_dev_distance_to_unvisited': 0.2,
+        'distance_to_destination': 0.1
+    }
+    
+    scores = {}
+    
+    for node in unvisited_nodes:
+        distance_to_node = distance_matrix[current_node][node]
+        distance_to_destination = distance_matrix[destination_node][node]
+        
+        all_distances = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        
+        score = 0
+        for factor, weight in weights.items():
+            if factor == 'distance_to_node':
+                score += weight * distance_to_node
+            elif factor == 'average_distance_to_unvisited':
+                score -= weight * (average_distance_to_unvisited - thresholds['average_distance']) if average_distance_to_unvisited > thresholds['average_distance'] else 0
+            elif factor == 'std_dev_distance_to_unvisited':
+                score -= weight * (std_dev_distance_to_unvisited - thresholds['std_dev_distance']) if std_dev_distance_to_unvisited > thresholds['std_dev_distance'] else 0
+            elif factor == 'distance_to_destination':
+                score += weight * distance_to_destination
+        
+        scores[node] = score
+    
+    next_node = min(scores, key=scores.get)
+    return next_node
+```

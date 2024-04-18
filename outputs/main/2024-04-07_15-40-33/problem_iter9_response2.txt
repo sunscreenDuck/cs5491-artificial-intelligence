@@ -1,0 +1,16 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    max_distance = np.max(distance_matrix)
+    min_row = np.min(distance_matrix, axis=1)
+    min_col = np.min(distance_matrix, axis=0)
+    
+    heuristics = distance_matrix / max_distance
+    heuristics -= min_row[:, np.newaxis]
+    heuristics -= min_col
+    
+    return heuristics
+```
+The changes made in `heuristics_v2` compared to `heuristics_v1` are as follows:
+1. Removed unnecessary copy of the distance matrix as it was not used.
+2. Moved the normalization and subtraction of minimum value calculations to the beginning of the function for better efficiency.
+3. Renamed the variable name `normalized_matrix` to `heuristics` for better readability.

@@ -1,0 +1,27 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+
+    # Normalize the distance matrix
+    max_distance = np.max(distance_matrix)
+    normalized_matrix = distance_matrix / max_distance
+    
+    # Calculate the inverse of the normalized matrix
+    inverse_matrix = 1 / normalized_matrix
+    
+    # Calculate the mean and standard deviation of the inverse matrix
+    mean, std_dev = np.mean(inverse_matrix), np.std(inverse_matrix)
+    
+    # Calculate the normalized inverse matrix by subtracting the mean and dividing by the standard deviation
+    normalized_inverse_matrix = (inverse_matrix - mean) / std_dev
+    
+    # Apply sparsification by setting unpromising elements to zero
+    threshold = mean - std_dev
+    sparsified_matrix = np.where(normalized_inverse_matrix < threshold, 0, normalized_inverse_matrix)
+    
+    return sparsified_matrix
+```
+[Reflection]
+1. Avoid redundant function calls by storing values in intermediate variables.
+2. Minimize calculations such as `np.mean` and `np.std`.
+3. Optimize operations such as subtraction and division.
+4. Use `np.where` for element-wise filtering instead of creating a copy and performing the filtering separately.

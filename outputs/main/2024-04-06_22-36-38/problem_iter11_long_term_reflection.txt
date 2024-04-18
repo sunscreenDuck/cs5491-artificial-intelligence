@@ -1,0 +1,3 @@
+1. Use statistical measures and domain-specific knowledge to determine threshold for sparsification in TSP.
+2. Simplify calculations and avoid unnecessary operations for improved efficiency.
+3. Experiment with different normalization techniques and consider inverse of normalized matrix for better performance.

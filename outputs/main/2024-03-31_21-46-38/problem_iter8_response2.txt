@@ -1,0 +1,30 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: list) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    weights = {
+        'distances_to_node': 0.4,
+        'average_distance_to_unvisited': 0.3,
+        'std_dev_distance_to_unvisited': 0.2,
+        'distance_to_destination': 0.1
+    }
+    scores = {}
+
+    for node in unvisited_nodes:
+        distances_to_node = distance_matrix[current_node][node]
+        distances_from_node = distance_matrix[node]
+
+        distances_to_unvisited = [distances_from_node[unvisited_node] for unvisited_node in unvisited_nodes - {node}]
+        average_distance_to_unvisited = sum(distances_to_unvisited) / len(distances_to_unvisited)
+        std_dev_distance_to_unvisited = (sum((d - average_distance_to_unvisited) ** 2 for d in distances_to_unvisited) / len(distances_to_unvisited)) ** 0.5
+
+        score = (
+            weights['distances_to_node'] * distances_to_node 
+            - weights['average_distance_to_unvisited'] * average_distance_to_unvisited 
+            + weights['std_dev_distance_to_unvisited'] * std_dev_distance_to_unvisited 
+            - weights['distance_to_destination'] * distance_matrix[destination_node][node]
+        )
+        scores[node] = score
+    
+    next_node = min(scores, key=scores.get)
+    return next_node
+```

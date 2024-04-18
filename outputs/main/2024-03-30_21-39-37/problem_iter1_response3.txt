@@ -1,0 +1,37 @@
+```python
+import numpy as np
+
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    for node in unvisited_nodes:
+        all_distances = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        
+        # Look-ahead mechanism: explore a set number of future steps
+        future_nodes = list(unvisited_nodes - {node})
+        future_scores = []
+        for future_node in future_nodes:
+            future_distances = [distance_matrix[future_node][i] for i in unvisited_nodes if i != future_node]
+            future_average_distance_to_unvisited = np.mean(future_distances)
+            future_std_dev_distance_to_unvisited = np.std(future_distances)
+            future_score = c1 * distance_matrix[node][future_node] - c2 * future_average_distance_to_unvisited + c3 * future_std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][future_node]
+            future_scores.append(future_score)
+        
+        # Calculate the average score of future steps
+        if future_scores:
+            avg_future_score = np.mean(future_scores)
+        else:
+            avg_future_score = 0
+        
+        # Calculate the final score by weighing current score and average future score
+        score = (1 - threshold) * (c1 * distance_matrix[current_node][node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][node]) + threshold * avg_future_score
+        scores[node] = score
+    
+    next_node = min(scores, key=scores.get)
+    return next_node
+```
+In the improved `select_next_node_v2` function, I have added a look-ahead mechanism to explore future steps. This mechanism calculates the average score of future steps, and then combines it with the current score using a weighted average. The weight is controlled by the `threshold` parameter, which determines the trade-off between the current score and the average future score.

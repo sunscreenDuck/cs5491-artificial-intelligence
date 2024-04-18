@@ -1,0 +1,33 @@
+1. Simplify the scoring function by removing unnecessary terms and constants.
+2. Focus on important factors like distance to the next node and destination.
+3. Reduce nested loops or repeated calculations for better performance.
+4. Consider using statistical metrics like mean and standard deviation.
+1. Simplify calculation: Use dot product instead of individual terms in the objective function.
+2. Remove unnecessary variables: Eliminate unused variables to improve code clarity and efficiency.
+3. Avoid unnecessary iterations: Minimize the number of loops and redundant calculations.
+4. Be mindful of thresholding: Use a threshold value to filter out nodes with low scores.
+1. Use numpy operations instead of converting to lists for better performance.
+2. Avoid unnecessary if condition inside the loop for efficiency.
+1. Consider simplifying the calculation formula by reducing the number of terms and coefficients.
+2. Focus on important factors relevant to the problem, such as distance to the node, distance to the destination, and average distances.
+3. Remove unnecessary calculations and pre-compute values where possible.
+1. Consider including lookahead distances in the calculation of average and standard deviation distances.
+2. Add a threshold to balance the importance of current node and lookahead distances.
+1. Simplify the scoring function by removing unnecessary terms and focus on key factors.
+2. Consider incorporating dynamic factors in heuristics to adapt to changing problem instances.
+3. Experiment with different weight combinations to find better trade-offs between different criteria.
+4. Consider using domain-specific knowledge for more effective heuristic design.
+1. Remove unnecessary calculations and variables to simplify the heuristic.
+2. Consider removing the lookahead calculations if they do not significantly improve performance.
+3. Experiment with different weights for the objective function to find better trade-offs.
+1. Use numpy operations for efficiency.
+2. Simplify and optimize the scoring function.
+3. Avoid unnecessary conversions and list manipulations.
+4. Minimize the number of calculations within the loop.
+5. Avoid the use of if statements within the loop.
+1. Simplify the scoring function by removing unnecessary terms and calculations.
+2. Eliminate redundant calculations by computing average and standard deviation only once.
+3. Consider the impact of each constant weight on the objective function and adjust accordingly.
+4. Remove unnecessary lookahead calculations and just use the minimum distance to the destination.
+1. Simplify calculations and reduce the number of intermediate variables.
+2. Consider incorporating more factors to evaluate the next node selection.

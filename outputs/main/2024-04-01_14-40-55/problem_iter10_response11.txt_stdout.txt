@@ -1,0 +1,39 @@
+[*] Running ...
+[*] Dataset loaded: C:\Development\cs5491-artificial-intelligence/problems/tsp_constructive\dataset\train50_dataset.npy with 64 instances.
+C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\fromnumeric.py:3504: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\_methods.py:129: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\_methods.py:206: RuntimeWarning: Degrees of freedom <= 0 for slice
+  ret = _var(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
+C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\_methods.py:163: RuntimeWarning: invalid value encountered in divide
+  arrmean = um.true_divide(arrmean, div, out=arrmean,
+C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\_methods.py:198: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+[*] Instance 0: 5.870896813171073
+[*] Instance 1: 6.155696936448866
+[*] Instance 2: 6.507315215231373
+[*] Instance 3: 6.295737526501464
+[*] Instance 4: 6.4429849216676525
+[*] Instance 5: 6.6301499828629975
+[*] Instance 6: 6.7185242082240855
+[*] Instance 7: 6.5317089241141355
+[*] Instance 8: 6.549450644742553
+[*] Instance 9: 7.024832025302423
+[*] Instance 10: 6.174987896811954
+[*] Instance 11: 5.3989716048340775
+[*] Instance 12: 6.37780115992954
+[*] Instance 13: 6.2794079451916875
+[*] Instance 14: 6.466120453249715
+[*] Instance 15: 6.946847714364327
+[*] Instance 16: 6.044262647728224
+[*] Instance 17: 6.110024222369219
+[*] Instance 18: 6.309013383680498
+[*] Instance 19: 6.5980921145479705
+[*] Instance 20: 5.891958081200764
+[*] Instance 21: 6.902580623119667
+[*] Instance 22: 6.228543674930817
+[*] Instance 23: 6.189705744985023
+[*] Instance 24: 6.327980866786342
+[*] Instance 25: 6.947241636233239
+[*] Instance 26: 6.198952632498656

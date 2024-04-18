@@ -1,0 +1,24 @@
+- Consider removing unnecessary loops and calculations.
+- Utilize matrix operations for faster computation.
+- Eliminate the need for nested loops by using broadcasting operations.
+- Preprocess the distance matrix to remove constraints (e.g., set diagonal elements to infinity).
+- Normalize the distance matrix before applying heuristics.
+1. Avoid using average distance as an indicator.
+2. Consider subtracting column/row minimums to modify the distance matrix.
+1. Normalize distances based on the average distance.
+2. Remove self-loops and normalize distances based on row and column minimums.
+1. Consider incorporating statistical measures for better heuristics.
+2. Explore the use of deviation and standard deviation to compute badness score.
+1. Normalize distances for each edge before calculating deviation.
+2. Remove redundant calculations and in-place modifications for performance improvement.
+- Normalize the distance values to have a common scale.
+- Assign a higher badness value to the edges with high relative distances.
+1. Normalize indicator values to avoid bias on distance distribution.
+2. Subtract row and column minimums to account for individual node distances.
+- Normalize the distance matrix.
+- Subtract the minimum value from each row and column.
+- Avoid unnecessary calculations and iterations.
+- Utilize numpy functions for better performance and concise code.
+- Normalize distances using the min-max normalization for more meaningful indicators.
+1. Consider using a normalization approach to improve the effectiveness of the heuristics.
+2. Look for indicators directly related to the problem to efficiently guide the local search.

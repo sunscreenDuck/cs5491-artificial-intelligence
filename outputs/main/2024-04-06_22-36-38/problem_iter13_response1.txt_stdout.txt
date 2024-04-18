@@ -1,0 +1,10 @@
+[*] Running ...
+[*] Dataset loaded: C:\Development\cs5491-artificial-intelligence/problems/tsp_aco\dataset\train150_dataset.npy with 5 instances.
+[*] Instance 0: 10.521586213773482
+[*] Instance 1: 11.547651231397374
+[*] Instance 2: 11.21838240257516
+[*] Instance 3: 11.08995787803211
+[*] Instance 4: 11.078098436848311
+[*] Average:
+11.091135232525286
+[0m

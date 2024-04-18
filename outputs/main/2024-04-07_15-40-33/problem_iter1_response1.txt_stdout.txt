@@ -1,0 +1,30 @@
+Traceback (most recent call last):
+  File "C:\Development\cs5491-artificial-intelligence/problems/tsp_gls/eval.py", line 8, in <module>
+    from gpt import heuristics_v2 as heuristics
+  File "C:\Development\cs5491-artificial-intelligence\problems\tsp_gls\gpt.py", line 10, in <module>
+    # Calculate the badness multiplier
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Development\cs5491-artificial-intelligence\problems\tsp_gls\gpt.py", line 6, in heuristics_v2
+    
+    ^
+  File "C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\lib\index_tricks.py", line 916, in fill_diagonal
+    a.flat[:end:step] = val
+    ~~~~~~^^^^^^^^^^^
+OverflowError: cannot convert float infinity to integer
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Development\cs5491-artificial-intelligence/problems/tsp_gls/eval.py", line 10, in <module>
+    from gpt import heuristics
+  File "C:\Development\cs5491-artificial-intelligence\problems\tsp_gls\gpt.py", line 10, in <module>
+    # Calculate the badness multiplier
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Development\cs5491-artificial-intelligence\problems\tsp_gls\gpt.py", line 6, in heuristics_v2
+    
+    ^
+  File "C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\lib\index_tricks.py", line 916, in fill_diagonal
+    a.flat[:end:step] = val
+    ~~~~~~^^^^^^^^^^^
+OverflowError: cannot convert float infinity to integer
+[0m

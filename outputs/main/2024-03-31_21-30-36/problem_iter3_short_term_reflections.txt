@@ -1,0 +1,26 @@
+1. Reduce complexity by removing unnecessary variables and calculations.
+2. Simplify the objective function by removing irrelevant terms.
+3. Focus on the main components that directly impact the decision-making process.
+1. Consider removing the look-ahead mechanism as it may not always improve the solution.
+2. Simplify the score calculation and directly evaluate all unvisited nodes.
+1. Consider incorporating a look-ahead mechanism to improve the quality of the selected next node.
+2. Adjust the weights of the scoring components based on problem characteristics and experimentation.
+1. Consider incorporating more factors into the scoring function for better decision making.
+2. Utilize a look-ahead mechanism to consider the impact of potential future moves.
+3. Gather statistics from multiple future steps and consider their average for better decision making.
+1. Consider removing the look-ahead mechanism if the improvement in performance is not significant.
+2. Simplify the scoring mechanism by removing unnecessary variables and terms.
+3. Focus on improving the calculation of the average and standard deviation.
+- Consider incorporating more lookahead steps to improve the accuracy of the heuristic.
+- Fine-tune the weights for the different components of the scoring function.
+- Explore different mechanisms to select the lookahead node, e.g., using a random selection strategy.
+1. Simplify the code by avoiding unnecessary nested loops.
+2. Consider all nodes instead of a limited set for better optimization results.
+1. Incorporate multiple lookahead steps for better performance.
+2. Consider additional factors such as average and standard deviation of distances.
+3. Adjust weight parameters to balance the importance of different objective functions.
+- Consider adding more parameters or metrics to the scoring function. 
+- Implement multiple lookahead steps to better evaluate future node selections. 
+- Use statistics (mean, standard deviation) to evaluate distances within subproblems.
+1. Reduce the number of parameters and variables to simplify the heuristic.
+2. Remove the look-ahead mechanism and threshold to improve the performance.

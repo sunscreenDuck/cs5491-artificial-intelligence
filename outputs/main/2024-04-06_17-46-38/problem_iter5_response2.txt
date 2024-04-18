@@ -1,0 +1,50 @@
+```python
+import numpy as np
+
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    n = distance_matrix.shape[0]
+    heuristics = np.zeros_like(distance_matrix)
+
+    # Calculate the average distance
+    average_distance = np.mean(distance_matrix[np.nonzero(distance_matrix)])
+
+    # Calculate the maximum distance
+    max_distance = np.max(distance_matrix)
+
+    # Calculate the standard deviation of the distance
+    distance_std = np.std(distance_matrix[np.nonzero(distance_matrix)])
+
+    # Calculate the average pairwise difference between distances
+    pairwise_diff = np.mean(np.abs(np.diff(distance_matrix[np.nonzero(distance_matrix)])))
+
+    # Calculate the average distance to closest neighbors
+    min_distances = np.min(distance_matrix, axis=1)
+    avg_min_distance = np.mean(min_distances)
+
+    for i in range(n):
+        for j in range(n):
+            # Calculate the heuristics value as a combination of factors
+            heuristic_value = (1 / distance_matrix[i, j]) + \
+                              (1 / average_distance) + \
+                              (1 / distance_std) + \
+                              (1 / pairwise_diff) + \
+                              (1 / max_distance) + \
+                              (1 / avg_min_distance) + \
+                              (distance_matrix[i, j] / avg_min_distance) + \
+                              (distance_matrix[i, j] / max_distance) + \
+                              (distance_matrix[i, j] / distance_std) + \
+                              (distance_matrix[i, j] / pairwise_diff) + \
+                              (avg_min_distance / distance_matrix[i, j]) + \
+                              (max_distance / distance_matrix[i, j]) + \
+                              (pairwise_diff / distance_matrix[i, j]) + \
+                              (distance_std / distance_matrix[i, j]) + \
+                              (min_distances[i] / distance_matrix[i, j])
+
+            # Set unpromising elements to zero
+            if heuristic_value < 0.25:
+                heuristic_value = 0
+
+            heuristics[i, j] = heuristic_value
+
+    return heuristics
+```

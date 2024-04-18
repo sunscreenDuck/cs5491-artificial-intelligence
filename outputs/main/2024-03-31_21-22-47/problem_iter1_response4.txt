@@ -1,0 +1,22 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray, look_ahead: int) -> int:
+    """Select the next node to visit from the unvisited nodes with look-ahead mechanism."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    for node in unvisited_nodes:
+        look_ahead_scores = []
+        for i in unvisited_nodes:
+            if i != node:
+                all_distances = [distance_matrix[i][j] for j in unvisited_nodes if j != i and j != node]
+                average_distance_to_unvisited = np.mean(all_distances)
+                std_dev_distance_to_unvisited = np.std(all_distances)
+                score = c1 * distance_matrix[current_node][i] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][i]
+                look_ahead_scores.append(score)
+        look_ahead_scores.sort(reverse=True)
+        lookahead_score = sum(look_ahead_scores[:look_ahead])
+        scores[node] = lookahead_score
+    next_node = min(scores, key=scores.get)
+    return next_node
+```
+In the improved `select_next_node_v2` function, the look-ahead mechanism is added to consider the potential benefit of selecting each unvisited node. The function calculates the look-ahead score for each unvisited node by considering a subset of nodes from the unvisited set. The subset size is determined by the look_ahead parameter. Only the nodes with the highest scores are considered in the look-ahead mechanism to reduce computation time. The node with the highest lookahead score is selected as the next node to visit.

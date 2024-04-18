@@ -1,0 +1,33 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray, weights: dict) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    
+    scores = {}
+    min_distance = float('inf')
+    
+    # Normalize the distance matrix
+    normalized_distance_matrix = distance_matrix / np.max(distance_matrix)
+    
+    for node in unvisited_nodes:
+        all_distances = [normalized_distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        
+        # Calculate the heuristic score
+        score = weights['c1'] * normalized_distance_matrix[current_node][node] \
+                - weights['c2'] * average_distance_to_unvisited \
+                + weights['c3'] * std_dev_distance_to_unvisited \
+                - weights['c4'] * normalized_distance_matrix[destination_node][node]
+        
+        scores[node] = score
+        
+        # Track the minimum distance
+        if score < min_distance:
+            min_distance = score
+    
+    # Select the node with the minimum distance
+    next_nodes = [node for node, score in scores.items() if score == min_distance]
+    next_node = next_nodes[np.random.randint(len(next_nodes))]
+    
+    return next_node
+```

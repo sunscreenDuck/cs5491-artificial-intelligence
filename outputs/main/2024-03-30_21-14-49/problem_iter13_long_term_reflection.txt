@@ -1,0 +1,4 @@
+1. Simplify code logic, variable names, and calculations for better readability and maintainability.
+2. Consider using normalized weights and meaningful scoring factors to improve decision-making.
+3. Use efficient methods (e.g., min()) and vectorized operations for improved performance.
+4. Remove random noise and unnecessary calculations to ensure determinism and simplicity.

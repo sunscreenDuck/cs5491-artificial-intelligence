@@ -1,0 +1,4 @@
+1. Normalize distances and subtract min values separately for better performance.
+2. Avoid unnecessary computations and in-place modifications for efficiency.
+3. Utilize row and column minimums for improved heuristics calculation.
+4. Consider creating a copy of the input matrix instead of modifying it directly.

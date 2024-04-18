@@ -1,0 +1,5 @@
+1. Normalize distances and weights for meaningful comparison.
+2. Experiment with different weights and coefficients for trade-offs.
+3. Simplify scoring formula and calculations for efficiency.
+4. Use meaningful variable names and avoid hardcoding constants.
+5. Explore alternative distance metrics and selection mechanisms to avoid local optima.

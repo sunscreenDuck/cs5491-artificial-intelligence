@@ -1,0 +1,29 @@
+```python
+import numpy as np
+
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    # Normalize distance matrix to range [0, 1]
+    normalized_matrix = distance_matrix / np.max(distance_matrix)
+
+    # Calculate shortest path using Dijkstra's algorithm
+    num_nodes = distance_matrix.shape[0]
+    shortest_path = np.inf * np.ones((num_nodes, num_nodes))
+    
+    # Start with initial node as the starting point
+    shortest_path[:, 0] = normalized_matrix[:, 0]
+    
+    # Iterate over each node in the path
+    for i in range(1, num_nodes):
+        # Iterate over each node as the current node
+        for j in range(num_nodes):
+            # Consider all possible previous nodes for the current node
+            for k in range(num_nodes):
+                if normalized_matrix[j, k] + shortest_path[k, i-1] < shortest_path[j, i]:
+                    shortest_path[j, i] = normalized_matrix[j, k] + shortest_path[k, i-1]
+    
+    # Calculate priorities based on shortest path values
+    priorities = 1 - shortest_path / np.max(shortest_path)
+    
+    return priorities
+```
+The `heuristics_v2` function improves upon `heuristics_v1` by calculating the priorities based on the shortest path distance instead of directly using the distance matrix. It normalizes the distance matrix to be in the range [0, 1], then uses Dijkstra's algorithm to find the shortest path from the starting node to each node. The priorities are calculated as 1 minus the normalized shortest path distance values. The higher the priority, the worse it is to include the corresponding edge in the solution.

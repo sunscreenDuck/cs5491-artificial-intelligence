@@ -1,0 +1,35 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    num_nodes = distance_matrix.shape[0]
+    
+    # Calculate the sum of distances for each node
+    node_distances = np.sum(distance_matrix, axis=1)
+    
+    # Calculate the average distance for each node
+    node_avg_distance = node_distances / (num_nodes - 1)
+    
+    # Calculate the minimum and maximum distance for normalization
+    min_distance = np.min(node_distances)
+    max_distance = np.max(node_distances)
+    
+    # Initialize the penalty matrix with zeros
+    penalty_matrix = np.zeros_like(distance_matrix)
+    
+    # Iterate over the distance matrix
+    for i in range(num_nodes):
+        for j in range(num_nodes):
+            if i != j:  # Exclude self-loops
+                # Normalize the distance value based on minimum and maximum distances
+                normalized_distance = (distance_matrix[i, j] - min_distance) / (max_distance - min_distance)
+                
+                # Compute the node importance factor
+                node_importance = 1 / np.sqrt(node_distances[i] * node_distances[j])
+                
+                # Compute the penalty value for each edge
+                penalty = node_importance * (1 - normalized_distance) / (node_avg_distance[i] + node_avg_distance[j])
+                
+                # Set the penalty value in the penalty matrix
+                penalty_matrix[i, j] = penalty
+    
+    return penalty_matrix
+```

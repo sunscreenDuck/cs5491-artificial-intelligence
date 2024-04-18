@@ -1,0 +1,19 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    avg_distance_to_unvisited = np.average(distance_matrix[:, list(unvisited_nodes)], axis=1)
+    std_dev_distance_to_unvisited = np.std(distance_matrix[:, list(unvisited_nodes)], axis=1)
+    scores = (
+        c1 * distance_matrix[current_node] 
+        - c2 * avg_distance_to_unvisited 
+        + c3 * std_dev_distance_to_unvisited 
+        - c4 * distance_matrix[destination_node]
+    )
+    next_node = np.argmin(scores[list(unvisited_nodes)])
+    return next_node
+```
+[Explanation]
+1. Instead of calculating the `average_distance_to_unvisited` and `std_dev_distance_to_unvisited` for each node in each iteration, they can be calculated once for all the nodes outside the loop. This reduces the unnecessary calculations.
+2. Using numpy functions `np.average` and `np.std` provide efficient computations compared to iterating and calculating manually.
+3. Instead of iterating through a dictionary to find the minimum score, `np.argmin` is used to directly find the index of the minimum score from the `scores` array, which represents the unvisited nodes.

@@ -1,0 +1,32 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    
+    for node in unvisited_nodes:
+        # Calculate the scores for each unvisited node
+        all_distances = distance_matrix[node, list(unvisited_nodes - {node})]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        
+        # Calculate the look-ahead score for each next node
+        look_ahead_score = np.sum(
+            c1 * distance_matrix[node, next_node] - c2 * average_distance_to_unvisited +
+            c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node, next_node]
+            for next_node in unvisited_nodes if next_node != node
+        )
+        
+        # Calculate the final score by considering both the original score and the look-ahead score
+        score = c1 * distance_matrix[current_node, node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node, node] + threshold * look_ahead_score
+        
+        # Store the final score for each unvisited node
+        scores[node] = score
+    
+    # Select the next node to visit based on the highest final score
+    next_node = max(scores, key=scores.get)
+    
+    return next_node
+```
+In this improved `select_next_node_v2` function, calculations are simplified by removing unnecessary variables and using matrix operations and list comprehension where possible. Additionally, alternative ways of measuring distances and calculating look-ahead scores are explored.

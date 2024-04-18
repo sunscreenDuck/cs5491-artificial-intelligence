@@ -1,0 +1,15 @@
+```
+import numpy as np
+
+def heuristics_v2(distance_matrix):
+    # Calculate the average distance between nodes
+    average_distance = np.mean(distance_matrix)
+
+    # Calculate the maximum distance between nodes
+    max_distance = np.max(distance_matrix)
+
+    # Calculate the prior indicators of edge inclusion
+    prior_indicators = max_distance - distance_matrix
+
+    return prior_indicators
+```

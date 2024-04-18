@@ -1,0 +1,30 @@
+1. Normalize weights to ensure they sum up to 1 for better weight distribution.
+2. Use numpy array for vectorized operations to improve efficiency.
+1. Choose more appropriate weights for the scoring function.
+2. Consider distances directly from the current node to the unvisited node.
+3. Use average and standard deviation of distances between unvisited nodes.
+4. Consider distances from the destination node to unvisited nodes.
+5. Select the node with the lowest score as the next node.
+1. Normalize the weights to improve the interpretability and comparability of each criterion.
+2. Consider adding more diverse criteria to capture different aspects of the problem.
+3. Experiment with different weight combinations to find the optimal balance for the problem.
+1. Consider using meaningful variable names to improve code readability.
+2. Avoid unnecessary calculations to optimize performance.
+3. Experiment with different weight values to find the best combination for the scoring function.
+1. Consider adjusting weight coefficients to prioritize different factors in the scoring function.
+2. Explore incorporating additional factors or heuristics to improve the quality of the constructively selected next node.
+3. Experiment with different ways of combining or manipulating the distance-related variables in the scoring function.
+- Use meaningful variable names for better code readability.
+- Use dictionary instead of multiple variables to store the weights for scoring function.
+1. Normalize weights to enhance the impact of different factors.
+2. Consider eliminating redundant calculations and improve code efficiency.
+3. Explore different weight combinations to improve the overall performance.
+1. Consider calculating distances only when necessary.
+2. Normalize weights and scores for better control.
+3. Explore alternative scoring functions or heuristics for better optimization.
+1. Divide computation into steps and assign meaningful variable names.
+2. Avoid redundant calculations and use a dictionary to store scores.
+3. Consider using set operations instead of creating a new list.
+1. Normalize weights between 0 and 1 to avoid bias in score calculation.
+2. Use dictionaries to minimize redundancy and improve readability.
+3. Compute distances only once to reduce computational overhead.

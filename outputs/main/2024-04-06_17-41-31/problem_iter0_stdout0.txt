@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "C:\Development\cs5491-artificial-intelligence/problems/tsp_aco/eval.py", line 2, in <module>
+    from aco import ACO
+  File "C:\Development\cs5491-artificial-intelligence\problems\tsp_aco\aco.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'

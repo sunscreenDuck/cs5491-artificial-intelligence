@@ -1,0 +1,24 @@
+```python
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    num_nodes = distance_matrix.shape[0]
+    
+    # Calculate the sum of distances for each node
+    node_distances = np.sum(distance_matrix, axis=1)
+    
+    # Calculate the average distance for each node
+    node_avg_distance = node_distances / (num_nodes - 1)
+    
+    # Initialize the penalty matrix with zeros
+    penalty_matrix = np.zeros_like(distance_matrix)
+    
+    # Iterate over the distance matrix using nested loops
+    for i in range(num_nodes):
+        for j in range(num_nodes):
+            # Compute the penalty value for each edge
+            penalty = distance_matrix[i, j] / (node_avg_distance[i] + node_avg_distance[j])
+            
+            # Set the penalty value in the penalty matrix
+            penalty_matrix[i, j] = penalty
+    
+    return penalty_matrix
+```

@@ -1,0 +1,5 @@
+1. Normalize distance matrix using maximum value.
+2. Subtract minimum values from rows and columns separately.
+3. Avoid unnecessary copying and computations.
+4. Utilize vectorized operations for efficiency.
+5. Minimize matrix calculations and dependencies.

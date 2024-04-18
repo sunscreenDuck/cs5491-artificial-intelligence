@@ -1,0 +1,30 @@
+```python
+import numpy as np
+
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray, look_ahead: int) -> int:
+    """Select the next node to visit from the unvisited nodes with look-ahead mechanism."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    for node in unvisited_nodes:
+        future_nodes = np.random.choice(list(unvisited_nodes - {node}), look_ahead, replace=False)
+        future_scores = []
+        for future_node in future_nodes:
+            future_distances = [distance_matrix[future_node][i] for i in unvisited_nodes if i != future_node and i != node]
+            average_distance_to_unvisited = np.mean(future_distances)
+            std_dev_distance_to_unvisited = np.std(future_distances)
+            score = c1 * distance_matrix[current_node][node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][node]
+            future_scores.append(score)
+        scores[node] = np.mean(future_scores)
+    next_node = min(scores, key=scores.get)
+    return next_node
+```
+In the improved version `select_next_node_v2`, we use a look-ahead mechanism to estimate the score of each unvisited node based on its future performance. The `look_ahead` parameter specifies the number of future nodes to consider.
+
+Within the loop, we randomly select a subset of `look_ahead` future nodes from the unvisited nodes. For each future node, we calculate the average distance to the remaining unvisited nodes and the standard deviation of those distances.
+
+We calculate the score for each node based on the average and standard deviation of future nodes, similar to `select_next_node_v1`. However, instead of using the current node and destination node distances for the whole tour, we only consider the distance between the current node and the unvisited node.
+
+Finally, we take the mean score across all future nodes for each unvisited node and select the node with the minimum score.
+
+This look-ahead mechanism allows us to get a better estimate of the potential future performance of each unvisited node and make more informed decisions in the TSP optimization process.

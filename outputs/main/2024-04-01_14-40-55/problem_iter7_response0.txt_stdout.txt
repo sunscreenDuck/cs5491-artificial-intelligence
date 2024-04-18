@@ -1,0 +1,15 @@
+[*] Running ...
+[*] Dataset loaded: C:\Development\cs5491-artificial-intelligence/problems/tsp_constructive\dataset\train50_dataset.npy with 64 instances.
+[*] Instance 0: 6.7447013444762
+[*] Instance 1: 6.377802773197424
+[*] Instance 2: 7.0698038406716455
+[*] Instance 3: 6.945476277528544
+[*] Instance 4: 6.648218140656791
+[*] Instance 5: 6.603126574701697
+[*] Instance 6: 6.8540339559226044
+[*] Instance 7: 6.595792035767616
+[*] Instance 8: 6.763404541761546
+[*] Instance 9: 6.992937829296099
+[*] Instance 10: 6.524339426236778
+[*] Instance 11: 5.7194149461735595
+[*] Instance 12: 6.505803892424806

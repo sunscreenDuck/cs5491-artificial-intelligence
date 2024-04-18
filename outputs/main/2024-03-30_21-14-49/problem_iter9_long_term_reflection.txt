@@ -1,0 +1,5 @@
+1. Simplify code structure and eliminate redundancy for improved readability and performance.
+2. Optimize computations by using efficient data structures and avoiding unnecessary calculations.
+3. Incorporate relevant factors and a lookahead mechanism to improve decision-making.
+4. Focus on the objective function and consider local neighborhood rather than global statistics.
+5. Use numpy operations for efficiency and avoid unnecessary conversions and list manipulations.

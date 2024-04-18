@@ -1,0 +1,4 @@
+- Use meaningful variable names for code readability and simplify calculations by eliminating unnecessary steps.
+- Adjust weights and thresholds, and consider the impact of multiple future nodes for a better scoring function.
+- Minimize redundant computations and optimize efficiency for improved performance.
+- Incorporate additional factors and constraints, and explore alternative scoring methods or heuristics.

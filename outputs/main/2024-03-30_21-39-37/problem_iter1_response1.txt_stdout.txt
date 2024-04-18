@@ -1,0 +1,14 @@
+[*] Running ...
+[*] Dataset loaded: C:\Development\cs5491-artificial-intelligence/problems/tsp_constructive\dataset\train50_dataset.npy with 64 instances.
+C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\fromnumeric.py:3504: RuntimeWarning: Mean of empty slice.
+  return _methods._mean(a, axis=axis, dtype=dtype,
+C:\Users\sunscreenDuckDuck\AppData\Local\Programs\Python\Python311\Lib\site-packages\numpy\core\_methods.py:129: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+[*] Instance 0: 6.429605070647291
+[*] Instance 1: 7.075768006040708
+[*] Instance 2: 7.085262994985215
+[*] Instance 3: 7.59017521398031
+[*] Instance 4: 7.493551576821455
+[*] Instance 5: 7.204878645942866
+[*] Instance 6: 7.132711126481211
+[*] Instance 7: 7.374046637824957

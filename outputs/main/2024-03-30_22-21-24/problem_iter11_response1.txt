@@ -1,0 +1,18 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    c1, c2, c3, c4 = 0.35, 0.25, 0.25, 0.15
+    
+    n = len(unvisited_nodes)
+    unvisited_nodes_array = np.array(list(unvisited_nodes))
+    distance_to_unvisited = distance_matrix[current_node, unvisited_nodes_array]
+    average_distance_to_unvisited = np.mean(distance_to_unvisited)
+    std_dev_distance_to_unvisited = np.std(distance_to_unvisited)
+    
+    distance_to_destination = distance_matrix[destination_node, unvisited_nodes_array]
+    
+    scores = c1 * distance_to_unvisited - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_to_destination
+    next_node = unvisited_nodes_array[np.argmax(scores)]
+    
+    return next_node
+```

@@ -1,0 +1,5 @@
+1. Simplify code by eliminating redundancy, unnecessary variables, and calculations.
+2. Optimize computations by avoiding redundant calculations and utilizing efficient data structures.
+3. Adjust weights and thresholds for better performance.
+4. Incorporate lookahead mechanism and statistics calculation to improve decision-making.
+5. Maintain clarity, readability, and simplicity in code structure and logic.

@@ -1,0 +1,28 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """
+    Select the next node to visit from the unvisited nodes with improved constructive heuristics.
+    """
+    
+    # Define weights for the heuristic factors
+    c1, c2, c3 = 0.5, 0.4, 0.1
+    
+    scores = {}  # Dictionary to store scores for each unvisited node
+    
+    for node in unvisited_nodes:
+        unvisited_node_list = list(unvisited_nodes - {node})
+        
+        # Calculate average and standard deviation of distances to unvisited nodes
+        all_distances = distance_matrix[node][unvisited_node_list]
+        unvisited_distances = np.concatenate([all_distances, [distance_matrix[node][current_node], distance_matrix[node][destination_node]]])
+        average_distance_to_unvisited = np.mean(unvisited_distances)
+        std_dev_distance_to_unvisited = np.std(unvisited_distances)
+        
+        # Calculate final score for current node
+        score = c1 * distance_matrix[current_node][node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited
+        scores[node] = score
+    
+    # Select the node with the minimum score as the next node to visit
+    next_node = min(scores, key=scores.get)
+    return next_node
+```

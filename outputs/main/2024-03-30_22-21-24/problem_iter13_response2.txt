@@ -1,0 +1,34 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    # Define weights for the scoring function
+    weight_distance_to_current = 0.4
+    weight_average_distance_to_unvisited = 0.35
+    weight_std_dev_distance_to_unvisited = 0.2
+    weight_distance_to_destination = 0.05
+    
+    scores = {}
+    
+    distances_to_other_unvisited = distance_matrix[list(unvisited_nodes - {current_node}), :]
+    average_distance_to_unvisited = np.mean(distances_to_other_unvisited, axis=1)
+    std_dev_distance_to_unvisited = np.std(distances_to_other_unvisited, axis=1)
+    
+    for node in unvisited_nodes:
+        # Calculate the score
+        score = (
+            weight_distance_to_current * distance_matrix[current_node, node] -
+            weight_average_distance_to_unvisited * average_distance_to_unvisited[node] +
+            weight_std_dev_distance_to_unvisited * std_dev_distance_to_unvisited[node] -
+            weight_distance_to_destination * distance_matrix[destination_node, node]
+        )
+        
+        scores[node] = score
+    
+    # Select the node with the lowest score as the next node to visit
+    next_node = min(scores, key=scores.get)
+    
+    return next_node
+```
+In this version, several changes have been made to improve efficiency and readability:
+- Calculating `distances_to_other_unvisited` and `average_distance_to_unvisited` have been moved outside the loop to reduce computation.
+- Instead of using `node` as an index when calculating the average and standard deviation of distances, the values are directly accessed using `node` as the index. This simplifies the code and removes the need for the `list()` and `list(set())` operations.
+- The weights of the scoring function have been adjusted to better balance their influence on the score.

@@ -1,0 +1,23 @@
+```python
+import numpy as np
+
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    # Create a copy of the distance matrix
+    heuristics = np.copy(distance_matrix)
+  
+    # Normalize the distance matrix
+    max_distance = np.max(heuristics)
+    normalized_distance = heuristics / max_distance
+    
+    # Subtract the minimum value from each row and column
+    min_row = np.min(normalized_distance, axis=1)
+    min_col = np.min(normalized_distance, axis=0)
+    heuristics -= np.outer(min_row, np.ones(len(heuristics), dtype=np.float64))
+    heuristics -= min_col
+
+    return heuristics
+```
+In this version, I have made the following improvements:
+1. The variable name `normalized_matrix` has been changed to `normalized_distance` to more accurately reflect the purpose of the variable.
+2. The `np.outer()` function is used to subtract the minimum row values from each row instead of using broadcasting to create a 2D matrix. This improves readability and efficiency.
+3. The data type of the outer matrix is explicitly set to `dtype=np.float64` for consistency and consistency with the type of the distance matrix.

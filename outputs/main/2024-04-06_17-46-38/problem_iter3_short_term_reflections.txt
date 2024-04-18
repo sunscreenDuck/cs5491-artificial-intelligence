@@ -1,0 +1,26 @@
+1. Normalize the values in the distance matrix to improve the heuristics.
+2. Consider a threshold for sparsifying the heuristics matrix to reduce computational complexity.
+1. Consider incorporating more factors into the heuristic calculation.
+2. Explore different ways to normalize and transform the distance matrix.
+3. Experiment with different threshold values to determine unpromising elements.
+4. Find a balance between simplicity and complexity in the heuristic formula.
+1. Consider the inverse of factors related to the distance matrix and apply logarithmic transformation.
+2. Compute a combination factor for each edge by dividing the sum of factors by the number of nodes.
+3. Sparsify the matrix by selecting the top 10% of promising edges using percentile thresholding.
+1. Consider using vectorized operations instead of nested loops. 
+2. Normalize using row sums and column sums instead of the entire distance matrix.
+1. Consider using a threshold-based approach to determine promising elements.
+2. Explore different factors and combinations to determine promising edges.
+1. Consider a wider range of factors for the heuristics function.
+2. Introduce adaptive thresholding based on statistical analysis of the factors.
+3. Incorporate more informative metrics for determining heuristics value.
+4. Set stricter criteria for unpromising elements to be excluded.
+- Consider incorporating more relevant factors into the calculation of the heuristics value.
+- Experiment with different thresholds for determining unpromising elements.
+1. Consider using additional factors for heuristic calculation.
+2. Explore different thresholding techniques to sparsify the heuristics matrix.
+3. Experiment with different combinations of factors for more accurate heuristics.
+- Avoid unnecessary calculations and operations.
+- Consider the input characteristics and optimize code accordingly.
+1. Normalize the inverse distances based on statistical properties.
+2. Consider both row and column sums, and combine factors for each edge.

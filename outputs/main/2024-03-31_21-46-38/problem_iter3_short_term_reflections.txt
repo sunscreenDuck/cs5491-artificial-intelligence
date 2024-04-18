@@ -1,0 +1,33 @@
+1. Consider incorporating more lookahead mechanisms in the heuristics.
+2. Explore different weights for each parameter to improve the effectiveness of the scoring system.
+3. Optimize the calculation of average and standard deviation to reduce computational complexity.
+4. Improve the selection of the next two nodes to consider in the lookahead mechanism.
+1. Simplify the look-ahead mechanism and remove unnecessary calculations.
+2. Combine the look-ahead score with the main score in a single loop to improve efficiency.
+1. Simplify the score calculation.
+2. Consider all unvisited nodes in the look-ahead.
+3. Remove redundant calculations in the look-ahead.
+4. Avoid hard-coded weights, use parameterization.
+5. Experiment with different thresholds to find optimal performance.
+1. Simplify the calculation of lookahead score.
+2. Use consistent variables, e.g., use "current_node" instead of "destination_node".
+3. Consider the impact of each parameter when designing the scoring function.
+4. Use meaningful variable names to improve code readability.
+5. Consider the computational complexity of the lookahead mechanism.
+1. Consider the impact of multiple next nodes instead of just one.
+2. Adjust the weights and thresholds to better reflect the problem's characteristics.
+3. Include effective look-ahead mechanisms to improve the quality of the heuristic.
+1. Avoid unnecessary calculations and look-ahead mechanisms.
+2. Simplify the scoring function and optimize the calculations.
+3. Consider the average and standard deviation of distances for better node selection.
+4. Incorporate the destination_node in the scoring function for better next node selection.
+1. Consider the impact of multiple future nodes to improve look-ahead mechanism.
+2. Simplify the calculation and consider the effect of each component when designing the scoring function.
+3. Reduce unnecessary calculations and loops to improve efficiency.
+4. Consider the impact of action sequence on the final score.
+1. Consider the impact of next nodes in lookahead calculations.
+2. Simplify the score calculation by removing the lookahead component.
+- Remove lookahead calculations if not significantly improving.
+- Minimize the number of calculations within the loop for better performance.
+1. Remove unnecessary look-ahead mechanism.
+2. Simplify scoring function by removing threshold and lookahead score calculations.

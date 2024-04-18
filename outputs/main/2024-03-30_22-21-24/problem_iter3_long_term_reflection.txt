@@ -1,0 +1,5 @@
+1. Simplify code and calculations, remove unnecessary components, and experiment with different weights and parameters.
+2. Focus on key factors, prioritize code readability, and consider alternative scoring methods and selection strategies.
+3. Remove unnecessary calculations, variables, and thresholds for efficiency and simplicity.
+4. Experiment with different weights, explore alternative scoring functions, and simplify computation for better performance.
+5. Consider removing the lookahead feature, normalize distances, and introduce additional parameters to control scoring equation.

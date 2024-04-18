@@ -1,0 +1,15 @@
+```python
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    future_distances = distance_matrix.mean(axis=1)[list(unvisited_nodes)]
+    look_ahead_distances = c2 * future_distances
+    distances_to_unvisited = distance_matrix[current_node, list(unvisited_nodes)]
+    average_distance_to_unvisited = np.mean(distances_to_unvisited)
+    std_dev_distance_to_unvisited = np.std(distances_to_unvisited)
+    scores = c1 * distances_to_unvisited - c3 * average_distance_to_unvisited + c4 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node, list(unvisited_nodes)] + look_ahead_distances
+    next_node = min(unvisited_nodes, key=lambda node: scores[node])
+    return next_node
+```
+The improved code simplifies the calculations and reduces unnecessary variables. It utilizes matrix operations and vectorization to improve efficiency and readability. The look-ahead mechanism is improved by considering the future distances.

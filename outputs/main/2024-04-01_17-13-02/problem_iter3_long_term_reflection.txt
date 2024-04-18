@@ -1,0 +1,3 @@
+1. Utilize problem-specific knowledge and characteristics to simplify and improve the heuristic.
+2. Balance the impact of different distances through more sophisticated normalization techniques or weighted penalization.
+3. Consider incorporating distance matrix statistics to guide the heuristic calculations and prioritize edge selection.

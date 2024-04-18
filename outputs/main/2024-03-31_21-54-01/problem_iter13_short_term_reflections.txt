@@ -1,0 +1,39 @@
+- Normalize distance metrics for better weight balancing.
+- Use vectorized operations for improved computational efficiency.
+- Use meaningful variable names and comments to improve code readability.
+- Consider domain knowledge when selecting weights, and tune them using experimental evaluation.
+- Optimize the computation of average distance and standard deviation by avoiding unnecessary calculations.
+1. Avoid unnecessary computations and variables.
+2. Calculate average and standard deviation within the loop for better accuracy.
+3. Use a dictionary to store scores instead of an array for efficient lookup.
+4. Consider different combinations of c1, c2, c3, and c4 for better results.
+- Avoid unnecessary calculations and use numpy operations for efficiency.
+- Simplify the formula by removing unnecessary terms and normalizations.
+- Use numpy operations to calculate average and standard deviation distances.
+1. Simplify the scoring function by reducing the number of weights and terms.
+2. Utilize numpy functions for efficient computation of mean and standard deviation.
+3. Avoid unnecessary calculations by precomputing distances.
+4. Use numpy functions for indexing and minima calculations.
+1. Consider using meaningful variable names to improve code readability.
+2. Normalize the distance matrix for better comparison.
+3. Balance the weights to avoid dominance of certain factors.
+4. Consider factors, such as average and standard deviation distances, to balance exploration and exploitation.
+5. Consider both current and destination distances while evaluating the next node.
+6. Consider the number of unvisited nodes as a factor in the scoring function.
+1. Normalize input values for more meaningful comparisons.
+2. Use vectorized operations for improved performance.
+3. Consider adjusting weights to reflect problem characteristics.
+4. Eliminate unnecessary computations and avoid redundant calculations.
+5. Leverage additional problem-specific information for better decision-making.
+1. Normalize distances to avoid bias towards larger values.
+2. Consider both exploration and exploitation aspects in the scoring function.
+3. Use set operations to efficiently calculate average and standard deviation distances.
+4. Tune weights and thresholds to balance different factors.
+1. Normalize criteria weights and distances in code version with better performance.
+
+2. Consider distance to destination and number of unvisited nodes as criteria in the scoring function.
+1. Simplify weight calculations and reduce unnecessary normalization.
+2. Combine related terms to simplify score calculation.
+3. Consider local and global information to evaluate next node.
+4. Optimize for balance between current distance, unvisited distances, and destination distance.
+5. Experiment with different coefficients to find the best combination for score calculation.

@@ -1,0 +1,406 @@
+[2024-04-06 19:54:36,297][root][INFO] - Workspace: C:\Development\cs5491-artificial-intelligence\outputs\main\2024-04-06_19-54-36
+[2024-04-06 19:54:36,298][root][INFO] - Project Root: C:\Development\cs5491-artificial-intelligence
+[2024-04-06 19:54:36,298][root][INFO] - Using LLM: gpt-3.5-turbo-0613
+[2024-04-06 19:54:36,298][root][INFO] - Using Algorithm: reevo
+[2024-04-06 19:54:38,066][root][INFO] - Problem: tsp_aco
+[2024-04-06 19:54:38,067][root][INFO] - Problem description: Solving Traveling Salesman Problem (TSP) via stochastic solution sampling following "heuristics". TSP requires finding the shortest path that visits all given nodes and returns to the starting node.
+[2024-04-06 19:54:38,067][root][INFO] - Function name: heuristics
+[2024-04-06 19:54:38,070][root][INFO] - Evaluating seed function...
+[2024-04-06 19:54:38,070][root][INFO] - Seed function code: 
+import numpy as np
+def heuristics_v2(distance_matrix: np.ndarray) -> np.ndarray:
+    return 1 / distance_matrix
+[2024-04-06 19:54:38,070][root][INFO] - Iteration 0: Running Code 0
+[2024-04-06 19:54:41,226][root][INFO] - Iteration 0: Code Run 0 successful!
+[2024-04-06 19:55:18,787][root][INFO] - Iteration 0, response_id 0: Objective value: 12.720284768190336
+[2024-04-06 19:55:18,789][root][INFO] - Iteration 0: Elitist: 12.720284768190336
+[2024-04-06 19:55:18,789][root][INFO] - Iteration 0 finished...
+[2024-04-06 19:55:18,789][root][INFO] - Best obj: 12.720284768190336, Best Code Path: problem_iter0_code0.py
+[2024-04-06 19:55:18,789][root][INFO] - Function Evals: 1
+[2024-04-06 19:55:18,789][root][INFO] - Initial Population Prompt: 
+System Prompt: 
+You are an expert in the domain of optimization heuristics. Your task is to design heuristics that can effectively solve optimization problems.
+Your response outputs Python code and nothing else. Format your code as a Python code string: "```python ... ```".
+
+User Prompt: 
+Write a heuristics function for Solving Traveling Salesman Problem (TSP) via stochastic solution sampling following "heuristics". TSP requires finding the shortest path that visits all given nodes and returns to the starting node.
+The `heuristics` function takes as input a distance matrix, and returns prior indicators of how promising it is to include each edge in a solution. The return is of the same shape as the input.
+
+def heuristics_v1(distance_matrix: np.ndarray) -> np.ndarray:
+    return 1 / distance_matrix
+
+
+Improve `heuristics_v1` to give `heuristics_v2`. Output code only and enclose your code with Python code block: ```python ... ```.
+
+- Try combining various factors to determine how promising it is to select an edge.
+- Try sparsifying the matrix by setting unpromising elements to zero.
+[2024-04-06 19:55:28,093][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 19:55:28,152][root][INFO] - Iteration 1: Running Code 0
+[2024-04-06 19:55:30,558][root][INFO] - Iteration 1: Code Run 0 successful!
+[2024-04-06 19:55:30,558][root][INFO] - Iteration 1: Running Code 1
+[2024-04-06 19:55:34,008][root][INFO] - Iteration 1: Code Run 1 successful!
+[2024-04-06 19:55:34,008][root][INFO] - Iteration 1: Running Code 2
+[2024-04-06 19:55:38,641][root][INFO] - Iteration 1: Code Run 2 successful!
+[2024-04-06 19:55:38,641][root][INFO] - Iteration 1: Running Code 3
+[2024-04-06 19:55:43,486][root][INFO] - Iteration 1: Code Run 3 successful!
+[2024-04-06 19:55:43,487][root][INFO] - Iteration 1: Running Code 4
+[2024-04-06 19:55:48,473][root][INFO] - Iteration 1: Code Run 4 successful!
+[2024-04-06 19:55:48,473][root][INFO] - Iteration 1: Running Code 5
+[2024-04-06 19:55:53,765][root][INFO] - Iteration 1: Code Run 5 successful!
+[2024-04-06 19:55:53,765][root][INFO] - Iteration 1: Running Code 6
+[2024-04-06 19:55:59,196][root][INFO] - Iteration 1: Code Run 6 successful!
+[2024-04-06 19:55:59,196][root][INFO] - Iteration 1: Running Code 7
+[2024-04-06 19:56:04,474][root][INFO] - Iteration 1: Code Run 7 successful!
+[2024-04-06 19:56:04,475][root][INFO] - Iteration 1: Running Code 8
+[2024-04-06 19:56:10,486][root][INFO] - Iteration 1: Code Run 8 successful!
+[2024-04-06 19:56:10,486][root][INFO] - Iteration 1: Running Code 9
+[2024-04-06 19:56:16,320][root][INFO] - Iteration 1: Code Run 9 successful!
+[2024-04-06 19:57:06,325][root][INFO] - Error for response_id 0: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_aco/eval.py', '200', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 50.0 seconds
+[2024-04-06 19:57:56,332][root][INFO] - Error for response_id 1: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_aco/eval.py', '200', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 50.0 seconds
+[2024-04-06 19:58:13,247][root][INFO] - Iteration 1, response_id 2: Objective value: 85.05762648543958
+[2024-04-06 19:58:18,606][root][INFO] - Iteration 1, response_id 3: Objective value: 12.9135545799959
+[2024-04-06 19:58:23,037][root][INFO] - Iteration 1, response_id 4: Objective value: 12.36358854843327
+[2024-04-06 19:58:26,425][root][INFO] - Iteration 1, response_id 5: Objective value: 12.152312596811678
+[2024-04-06 19:58:26,455][root][INFO] - Iteration 1, response_id 6: Objective value: inf
+[2024-04-06 19:58:30,351][root][INFO] - Iteration 1, response_id 7: Objective value: 13.08664539159131
+[2024-04-06 19:58:31,577][root][INFO] - Iteration 1, response_id 8: Objective value: 68.25421973477862
+[2024-04-06 19:58:31,580][root][INFO] - Iteration 1, response_id 9: Objective value: inf
+[2024-04-06 19:58:31,582][root][INFO] - Iteration 1: Elitist: 12.152312596811678
+[2024-04-06 19:58:31,583][root][INFO] - Iteration 1 finished...
+[2024-04-06 19:58:31,583][root][INFO] - Best obj: 12.152312596811678, Best Code Path: problem_iter1_code5.py
+[2024-04-06 19:58:31,583][root][INFO] - Function Evals: 11
+[2024-04-06 19:58:31,589][root][INFO] - Short-term Reflection Prompt: 
+System Prompt: 
+You are an expert in the domain of optimization heuristics. Your task is to give hints to design better heuristics.
+
+User Prompt: 
+Below are two heuristics functions for Solving Traveling Salesman Problem (TSP) via stochastic solution sampling following "heuristics". TSP requires finding the shortest path that visits all given nodes and returns to the starting node.
+The `heuristics` function takes as input a distance matrix, and returns prior indicators of how promising it is to include each edge in a solution. The return is of the same shape as the input.
+
+You are provided with two code versions below, where the second version performs better than the first one.
+
+[Worse code]
+
+    # Compute the inverse of the distance matrix
+    inverse_distance_matrix = 1 / distance_matrix
+
+    # Normalize the inverse distance matrix
+    normalized_matrix = inverse_distance_matrix / np.sum(inverse_distance_matrix)
+
+    # Apply a weight to each element in the normalized matrix
+    weighted_matrix = normalized_matrix * (1 - normalized_matrix)
+
+    # Sparsify the matrix by setting unpromising elements to zero
+    threshold = np.mean(weighted_matrix)
+    sparsified_matrix = np.where(weighted_matrix >= threshold, weighted_matrix, 0)
+
+    return sparsified_matrix
+
+[Better code]
+
+    combined_factors = 1 / distance_matrix + 1 / distance_matrix.T
+    sparsified_matrix = np.where(combined_factors > np.mean(combined_factors), combined_factors, 0)
+    return sparsified_matrix
+
+You respond with some hints for designing better heuristics, based on the two code versions and using less than 20 words.
+[2024-04-06 19:58:33,979][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 19:58:34,161][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 19:58:34,406][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 19:58:34,808][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 19:58:35,701][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 19:58:36,521][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 19:58:36,580][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 19:58:37,033][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 19:58:37,852][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 19:58:40,016][openai._base_client][INFO] - Retrying request to /chat/completions in 0.944648 seconds
+[2024-04-06 19:58:42,245][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 19:58:42,250][root][INFO] - Crossover Prompt: 
+System Prompt: 
+You are an expert in the domain of optimization heuristics. Your task is to design heuristics that can effectively solve optimization problems.
+Your response outputs Python code and nothing else. Format your code as a Python code string: "```python ... ```".
+
+User Prompt: 
+Write a heuristics function for Solving Traveling Salesman Problem (TSP) via stochastic solution sampling following "heuristics". TSP requires finding the shortest path that visits all given nodes and returns to the starting node.
+The `heuristics` function takes as input a distance matrix, and returns prior indicators of how promising it is to include each edge in a solution. The return is of the same shape as the input.
+
+
+[Worse code]
+def heuristics_v0(distance_matrix: np.ndarray) -> np.ndarray:
+
+    # Compute the inverse of the distance matrix
+    inverse_distance_matrix = 1 / distance_matrix
+
+    # Normalize the inverse distance matrix
+    normalized_matrix = inverse_distance_matrix / np.sum(inverse_distance_matrix)
+
+    # Apply a weight to each element in the normalized matrix
+    weighted_matrix = normalized_matrix * (1 - normalized_matrix)
+
+    # Sparsify the matrix by setting unpromising elements to zero
+    threshold = np.mean(weighted_matrix)
+    sparsified_matrix = np.where(weighted_matrix >= threshold, weighted_matrix, 0)
+
+    return sparsified_matrix
+
+[Better code]
+def heuristics_v1(distance_matrix: np.ndarray) -> np.ndarray:
+
+    combined_factors = 1 / distance_matrix + 1 / distance_matrix.T
+    sparsified_matrix = np.where(combined_factors > np.mean(combined_factors), combined_factors, 0)
+    return sparsified_matrix
+
+[Reflection]
+- Simplify calculations.
+- Avoid unnecessary normalization and weighting.
+- Use matrix transpose for performance.
+- Combine factors directly without intermediate steps.
+
+[Improved code]
+Please write an improved function `heuristics_v2`, according to the reflection. Output code only and enclose your code with Python code block: ```python ... ```.
+[2024-04-06 19:58:43,998][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 19:58:45,124][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 19:58:45,328][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 19:58:45,330][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 19:58:46,558][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 19:58:46,762][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 19:58:47,171][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 19:58:47,479][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 19:58:47,510][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 19:58:47,686][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 19:58:47,720][root][INFO] - Iteration 2: Running Code 0
+[2024-04-06 19:58:50,336][root][INFO] - Iteration 2: Code Run 0 successful!
+[2024-04-06 19:58:50,336][root][INFO] - Iteration 2: Running Code 1
+[2024-04-06 19:58:53,566][root][INFO] - Iteration 2: Code Run 1 successful!
+[2024-04-06 19:58:53,567][root][INFO] - Iteration 2: Running Code 2
+[2024-04-06 19:58:57,923][root][INFO] - Iteration 2: Code Run 2 successful!
+[2024-04-06 19:58:57,924][root][INFO] - Iteration 2: Running Code 3
+[2024-04-06 19:59:02,651][root][INFO] - Iteration 2: Code Run 3 successful!
+[2024-04-06 19:59:02,651][root][INFO] - Iteration 2: Running Code 4
+[2024-04-06 19:59:07,589][root][INFO] - Iteration 2: Code Run 4 successful!
+[2024-04-06 19:59:07,590][root][INFO] - Iteration 2: Running Code 5
+[2024-04-06 19:59:12,792][root][INFO] - Iteration 2: Code Run 5 successful!
+[2024-04-06 19:59:12,792][root][INFO] - Iteration 2: Running Code 6
+[2024-04-06 19:59:18,281][root][INFO] - Iteration 2: Code Run 6 successful!
+[2024-04-06 19:59:18,281][root][INFO] - Iteration 2: Running Code 7
+[2024-04-06 19:59:23,985][root][INFO] - Iteration 2: Code Run 7 successful!
+[2024-04-06 19:59:23,986][root][INFO] - Iteration 2: Running Code 8
+[2024-04-06 19:59:30,037][root][INFO] - Iteration 2: Code Run 8 successful!
+[2024-04-06 19:59:30,038][root][INFO] - Iteration 2: Running Code 9
+[2024-04-06 19:59:36,226][root][INFO] - Iteration 2: Code Run 9 successful!
+[2024-04-06 20:00:26,232][root][INFO] - Error for response_id 0: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_aco/eval.py', '200', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 50.0 seconds
+[2024-04-06 20:01:16,234][root][INFO] - Error for response_id 1: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_aco/eval.py', '200', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 50.0 seconds
+[2024-04-06 20:02:05,922][root][INFO] - Iteration 2, response_id 2: Objective value: 55.57809141461765
+[2024-04-06 20:02:13,891][root][INFO] - Iteration 2, response_id 3: Objective value: 68.93743735799265
+[2024-04-06 20:02:20,221][root][INFO] - Iteration 2, response_id 4: Objective value: 12.50020098261037
+[2024-04-06 20:02:24,342][root][INFO] - Iteration 2, response_id 5: Objective value: 12.819071685050735
+[2024-04-06 20:02:27,145][root][INFO] - Iteration 2, response_id 6: Objective value: 13.059755935055946
+[2024-04-06 20:02:29,451][root][INFO] - Iteration 2, response_id 7: Objective value: 69.46970120137664
+[2024-04-06 20:02:31,588][root][INFO] - Iteration 2, response_id 8: Objective value: 12.475531814256179
+[2024-04-06 20:02:32,408][root][INFO] - Iteration 2, response_id 9: Objective value: 12.963122484288883
+[2024-04-06 20:02:32,408][root][INFO] - Iteration 2 finished...
+[2024-04-06 20:02:32,409][root][INFO] - Best obj: 12.152312596811678, Best Code Path: problem_iter1_code5.py
+[2024-04-06 20:02:32,409][root][INFO] - Function Evals: 21
+[2024-04-06 20:02:32,409][root][INFO] - Long-term Reflection Prompt: 
+System Prompt: 
+You are an expert in the domain of optimization heuristics. Your task is to give hints to design better heuristics.
+
+User Prompt: 
+Below is your prior long-term reflection on designing heuristics for Solving Traveling Salesman Problem (TSP) via stochastic solution sampling following "heuristics". TSP requires finding the shortest path that visits all given nodes and returns to the starting node.
+- Try combining various factors to determine how promising it is to select an edge.
+- Try sparsifying the matrix by setting unpromising elements to zero.
+
+Below are some newly gained insights.
+- Simplify calculations.
+- Avoid unnecessary normalization and weighting.
+- Use matrix transpose for performance.
+- Combine factors directly without intermediate steps.
+1. Consider using more meaningful variable names for better code readability.
+2. Revisit the use of average distance for edge importance calculation in the first code version.
+3. Explore different sparsification thresholds for better pruning in the second code version.
+1. Consider incorporating multiple factors that influence edge selection.
+2. Ensure robustness by handling edge cases and avoiding division by zero.
+3. Adjust the sparsification threshold to control the trade-off between exploration and exploitation.
+1. Consider incorporating both average and minimum distances for better heuristics.
+2. Utilize sparsification based on combined factors to improve heuristics.
+1. Consider using a combined factor that incorporates multiple heuristics.
+2. Sparsify the matrix by setting a threshold based on the mean of the combined factors.
+1. Consider combining factors from distance matrices rather than calculating inverse and summing separately.
+2. Use a more meaningful threshold for sparsifying the matrix.
+1. Exploit more informative features, such as local neighborhood information.
+2. Consider incorporating domain-specific knowledge, e.g., node degree or clustering coefficients.
+3. Explore different heuristics algorithms, such as ant colony optimization or simulated annealing.
+4. Evaluate the performance of heuristics using benchmark instances and integrate cross-validation for robustness.
+1. Normalize the distance matrix before using it in the heuristic.
+2. Consider using other factors (e.g., local search, clustering) to improve the heuristics.
+- Calculate inverse distances for better heuristics.
+- Use sum of inverse distances to determine edge promisingness.
+- Sparsify matrix by setting unpromising elements to zero.
+- Consider multiple factors and weight them appropriately for better heuristics.
+- Use sparsity to reduce complexity and focus on promising connections.
+- Take into account inverse distance, inverse degree, and promising connections.
+
+Write constructive hints for designing better heuristics, based on prior reflections and new insights and using less than 50 words.
+[2024-04-06 20:02:37,901][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:02:37,915][root][INFO] - Mutation Prompt: 
+System Prompt: 
+You are an expert in the domain of optimization heuristics. Your task is to design heuristics that can effectively solve optimization problems.
+Your response outputs Python code and nothing else. Format your code as a Python code string: "```python ... ```".
+
+User Prompt: 
+Write a heuristics function for Solving Traveling Salesman Problem (TSP) via stochastic solution sampling following "heuristics". TSP requires finding the shortest path that visits all given nodes and returns to the starting node.
+The `heuristics` function takes as input a distance matrix, and returns prior indicators of how promising it is to include each edge in a solution. The return is of the same shape as the input.
+
+
+[Prior reflection]
+1. Simplify calculations, use meaningful variable names, and combine factors directly.
+2. Revisit average distance for edge importance and adjust sparsification threshold for better pruning.
+3. Utilize multiple factors, handle edge cases, and adjust sparsification threshold for trade-off.
+4. Incorporate average and minimum distances, use combined factor for sparsification, and adjust threshold.
+5. Combine factors from distance matrices, choose more meaningful sparsification threshold.
+6. Exploit informative features, incorporate domain-specific knowledge, explore different algorithms, and evaluate heuristics using benchmarks.
+7. Normalize distance matrix, consider additional factors (local search, clustering), and calculate inverse distances.
+8. Use sum of inverse distances, sparsify matrix, weight factors appropriately, and consider inverse degree.- Try combining various factors to determine how promising it is to select an edge.
+- Try sparsifying the matrix by setting unpromising elements to zero.
+
+[Code]
+def heuristics_v1(distance_matrix: np.ndarray) -> np.ndarray:
+
+    combined_factors = 1 / distance_matrix + 1 / distance_matrix.T
+    sparsified_matrix = np.where(combined_factors > np.mean(combined_factors), combined_factors, 0)
+    return sparsified_matrix
+
+[Improved code]
+Please write a mutated function `heuristics_v2`, according to the reflection. Output code only and enclose your code with Python code block: ```python ... ```.
+[2024-04-06 20:02:42,610][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:02:42,636][root][INFO] - Iteration 3: Running Code 0
+[2024-04-06 20:02:44,940][root][INFO] - Iteration 3: Code Run 0 successful!
+[2024-04-06 20:02:44,940][root][INFO] - Iteration 3: Running Code 1
+[2024-04-06 20:02:48,194][root][INFO] - Iteration 3: Code Run 1 successful!
+[2024-04-06 20:02:48,195][root][INFO] - Iteration 3: Running Code 2
+[2024-04-06 20:02:52,491][root][INFO] - Iteration 3: Code Run 2 successful!
+[2024-04-06 20:02:52,491][root][INFO] - Iteration 3: Running Code 3
+[2024-04-06 20:02:57,087][root][INFO] - Iteration 3: Code Run 3 successful!
+[2024-04-06 20:02:57,087][root][INFO] - Iteration 3: Running Code 4
+[2024-04-06 20:03:01,660][root][INFO] - Iteration 3: Code Run 4 successful!
+[2024-04-06 20:03:51,661][root][INFO] - Error for response_id 0: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_aco/eval.py', '200', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 50.0 seconds
+[2024-04-06 20:03:59,670][root][INFO] - Iteration 3, response_id 1: Objective value: 12.510060850757212
+[2024-04-06 20:03:59,673][root][INFO] - Iteration 3, response_id 2: Objective value: inf
+[2024-04-06 20:03:59,675][root][INFO] - Iteration 3, response_id 3: Objective value: inf
+[2024-04-06 20:04:06,172][root][INFO] - Iteration 3, response_id 4: Objective value: 13.124357541712016
+[2024-04-06 20:04:06,173][root][INFO] - Iteration 3 finished...
+[2024-04-06 20:04:06,173][root][INFO] - Best obj: 12.152312596811678, Best Code Path: problem_iter1_code5.py
+[2024-04-06 20:04:06,173][root][INFO] - Function Evals: 26
+[2024-04-06 20:04:08,289][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:04:08,530][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:04:08,611][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:04:08,693][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:04:09,043][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:04:09,044][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:04:09,046][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:04:09,658][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:04:09,964][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:04:10,886][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:04:12,627][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:04:14,112][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:04:14,187][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:04:14,367][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:04:14,373][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:04:14,427][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:04:14,704][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:04:15,085][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:04:15,289][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:04:16,109][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:04:16,138][root][INFO] - Iteration 4: Running Code 0
+[2024-04-06 20:04:18,407][root][INFO] - Iteration 4: Code Run 0 successful!
+[2024-04-06 20:04:18,407][root][INFO] - Iteration 4: Running Code 1
+[2024-04-06 20:04:21,725][root][INFO] - Iteration 4: Code Run 1 successful!
+[2024-04-06 20:04:21,725][root][INFO] - Iteration 4: Running Code 2
+[2024-04-06 20:04:25,335][root][INFO] - Iteration 4: Code Run 2 successful!
+[2024-04-06 20:04:25,335][root][INFO] - Iteration 4: Running Code 3
+[2024-04-06 20:04:29,005][root][INFO] - Iteration 4: Code Run 3 successful!
+[2024-04-06 20:04:29,005][root][INFO] - Iteration 4: Running Code 4
+[2024-04-06 20:04:32,639][root][INFO] - Iteration 4: Code Run 4 successful!
+[2024-04-06 20:04:32,639][root][INFO] - Iteration 4: Running Code 5
+[2024-04-06 20:04:37,071][root][INFO] - Iteration 4: Code Run 5 successful!
+[2024-04-06 20:04:37,071][root][INFO] - Iteration 4: Running Code 6
+[2024-04-06 20:04:41,832][root][INFO] - Iteration 4: Code Run 6 successful!
+[2024-04-06 20:04:41,832][root][INFO] - Iteration 4: Running Code 7
+[2024-04-06 20:04:46,567][root][INFO] - Iteration 4: Code Run 7 successful!
+[2024-04-06 20:04:46,567][root][INFO] - Iteration 4: Running Code 8
+[2024-04-06 20:04:51,562][root][INFO] - Iteration 4: Code Run 8 successful!
+[2024-04-06 20:04:51,562][root][INFO] - Iteration 4: Running Code 9
+[2024-04-06 20:04:56,757][root][INFO] - Iteration 4: Code Run 9 successful!
+[2024-04-06 20:05:46,770][root][INFO] - Error for response_id 0: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_aco/eval.py', '200', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 50.0 seconds
+[2024-04-06 20:05:46,808][root][INFO] - Iteration 4, response_id 1: Objective value: inf
+[2024-04-06 20:05:46,833][root][INFO] - Iteration 4, response_id 2: Objective value: inf
+[2024-04-06 20:05:46,851][root][INFO] - Iteration 4, response_id 3: Objective value: inf
+[2024-04-06 20:06:36,856][root][INFO] - Error for response_id 4: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_aco/eval.py', '200', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 50.0 seconds
+[2024-04-06 20:07:17,854][root][INFO] - Iteration 4, response_id 5: Objective value: 12.575867864050652
+[2024-04-06 20:07:17,878][root][INFO] - Iteration 4, response_id 6: Objective value: inf
+[2024-04-06 20:07:30,811][root][INFO] - Iteration 4, response_id 7: Objective value: 85.29111565337428
+[2024-04-06 20:07:35,123][root][INFO] - Iteration 4, response_id 8: Objective value: 12.31294328074193
+[2024-04-06 20:07:38,420][root][INFO] - Iteration 4, response_id 9: Objective value: 12.433097104211638
+[2024-04-06 20:07:38,422][root][INFO] - Iteration 4 finished...
+[2024-04-06 20:07:38,423][root][INFO] - Best obj: 12.152312596811678, Best Code Path: problem_iter1_code5.py
+[2024-04-06 20:07:38,423][root][INFO] - Function Evals: 36
+[2024-04-06 20:07:41,747][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:07:47,158][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:07:47,178][root][INFO] - Iteration 5: Running Code 0
+[2024-04-06 20:07:49,677][root][INFO] - Iteration 5: Code Run 0 successful!
+[2024-04-06 20:07:49,677][root][INFO] - Iteration 5: Running Code 1
+[2024-04-06 20:07:52,901][root][INFO] - Iteration 5: Code Run 1 successful!
+[2024-04-06 20:07:52,902][root][INFO] - Iteration 5: Running Code 2
+[2024-04-06 20:07:57,078][root][INFO] - Iteration 5: Code Run 2 successful!
+[2024-04-06 20:07:57,078][root][INFO] - Iteration 5: Running Code 3
+[2024-04-06 20:08:01,528][root][INFO] - Iteration 5: Code Run 3 successful!
+[2024-04-06 20:08:01,528][root][INFO] - Iteration 5: Running Code 4
+[2024-04-06 20:08:06,063][root][INFO] - Iteration 5: Code Run 4 successful!
+[2024-04-06 20:08:56,065][root][INFO] - Error for response_id 0: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_aco/eval.py', '200', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 50.0 seconds
+[2024-04-06 20:09:46,074][root][INFO] - Error for response_id 1: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_aco/eval.py', '200', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 50.0 seconds
+[2024-04-06 20:10:16,725][root][INFO] - Iteration 5, response_id 2: Objective value: 12.591921339840162
+[2024-04-06 20:10:21,738][root][INFO] - Iteration 5, response_id 3: Objective value: 73.4508200027637
+[2024-04-06 20:10:24,343][root][INFO] - Iteration 5, response_id 4: Objective value: 75.18375750691655
+[2024-04-06 20:10:24,343][root][INFO] - Iteration 5 finished...
+[2024-04-06 20:10:24,345][root][INFO] - Best obj: 12.152312596811678, Best Code Path: problem_iter1_code5.py
+[2024-04-06 20:10:24,345][root][INFO] - Function Evals: 41
+[2024-04-06 20:10:26,810][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:10:26,834][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:10:26,875][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:10:27,038][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:10:27,071][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:10:27,076][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:10:27,169][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:10:27,219][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:10:27,443][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:10:30,515][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:10:32,182][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:10:32,464][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:10:32,466][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:10:32,468][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:10:32,872][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:10:32,874][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:10:33,194][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:10:33,226][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:10:33,271][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:10:33,487][httpx][INFO] - HTTP Request: POST https://api.chatanywhere.tech/chat/completions "HTTP/1.1 200 OK"
+[2024-04-06 20:10:33,517][root][INFO] - Iteration 6: Running Code 0
+[2024-04-06 20:10:35,858][root][INFO] - Iteration 6: Code Run 0 successful!
+[2024-04-06 20:10:35,859][root][INFO] - Iteration 6: Running Code 1
+[2024-04-06 20:10:39,069][root][INFO] - Iteration 6: Code Run 1 successful!
+[2024-04-06 20:10:39,070][root][INFO] - Iteration 6: Running Code 2
+[2024-04-06 20:10:43,271][root][INFO] - Iteration 6: Code Run 2 successful!
+[2024-04-06 20:10:43,271][root][INFO] - Iteration 6: Running Code 3
+[2024-04-06 20:10:47,723][root][INFO] - Iteration 6: Code Run 3 successful!
+[2024-04-06 20:10:47,723][root][INFO] - Iteration 6: Running Code 4
+[2024-04-06 20:10:52,227][root][INFO] - Iteration 6: Code Run 4 successful!
+[2024-04-06 20:10:52,227][root][INFO] - Iteration 6: Running Code 5
+[2024-04-06 20:10:56,951][root][INFO] - Iteration 6: Code Run 5 successful!
+[2024-04-06 20:10:56,951][root][INFO] - Iteration 6: Running Code 6
+[2024-04-06 20:11:01,838][root][INFO] - Iteration 6: Code Run 6 successful!
+[2024-04-06 20:11:01,839][root][INFO] - Iteration 6: Running Code 7
+[2024-04-06 20:11:07,329][root][INFO] - Iteration 6: Code Run 7 successful!
+[2024-04-06 20:11:07,329][root][INFO] - Iteration 6: Running Code 8
+[2024-04-06 20:11:15,658][root][INFO] - Iteration 6: Code Run 8 successful!
+[2024-04-06 20:11:15,658][root][INFO] - Iteration 6: Running Code 9
+[2024-04-06 20:13:50,420][root][INFO] - Iteration 6: Code Run 9 successful!
+[2024-04-06 20:14:40,431][root][INFO] - Error for response_id 0: Command '['python', '-u', 'C:\\Development\\cs5491-artificial-intelligence/problems/tsp_aco/eval.py', '200', 'C:\\Development\\cs5491-artificial-intelligence', 'train']' timed out after 50.0 seconds

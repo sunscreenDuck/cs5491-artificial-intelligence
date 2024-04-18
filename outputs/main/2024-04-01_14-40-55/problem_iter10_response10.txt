@@ -1,0 +1,52 @@
+```python
+import numpy as np
+
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """
+    Select the next node to visit from the unvisited nodes with further improvements.
+    """
+
+    importance_weights = np.array([0.4, 0.3, 0.2, 0.1])
+    lookahead_threshold = 0.5
+
+    scores = {}
+
+    for node in unvisited_nodes:
+        remaining_unvisited_nodes = list(unvisited_nodes - {node})
+
+        # Calculate average and std deviation distances to remaining unvisited nodes
+        distances_to_remaining_unvisited = distance_matrix[node][remaining_unvisited_nodes]
+        average_distance_to_unvisited = np.mean(distances_to_remaining_unvisited)
+        std_dev_distance_to_unvisited = np.std(distances_to_remaining_unvisited)
+
+        # Calculate the score for each lookahead node
+        lookahead_scores = []
+        for next_node in remaining_unvisited_nodes:
+            next_remaining_unvisited_nodes = list(unvisited_nodes - {node, next_node})
+            next_distances_to_remaining_unvisited = distance_matrix[next_node][next_remaining_unvisited_nodes]
+            next_avg_distance_to_unvisited = np.mean(next_distances_to_remaining_unvisited)
+            next_std_dev_distance_to_unvisited = np.std(next_distances_to_remaining_unvisited)
+
+            lookahead_score = np.dot(importance_weights, [
+                distance_matrix[current_node][next_node],
+                -next_avg_distance_to_unvisited,
+                next_std_dev_distance_to_unvisited,
+                -distance_matrix[destination_node][next_node]
+            ])
+            lookahead_scores.append(lookahead_score)
+
+        # Calculate the final score for the current node, including the lookahead score
+        total_lookahead_score = np.mean(lookahead_scores) * lookahead_threshold if lookahead_scores else 0
+        node_score = np.dot(importance_weights, [
+            distance_matrix[current_node][node],
+            -average_distance_to_unvisited,
+            std_dev_distance_to_unvisited,
+            -distance_matrix[destination_node][node]
+        ]) + total_lookahead_score
+
+        scores[node] = node_score
+
+    next_node = min(scores, key=scores.get)
+    return next_node
+```
+

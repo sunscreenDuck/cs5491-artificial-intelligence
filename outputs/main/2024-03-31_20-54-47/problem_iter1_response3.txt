@@ -1,0 +1,41 @@
+```python
+import numpy as np
+
+def select_next_node_v2(current_node: int, destination_node: int, unvisited_nodes: set, distance_matrix: np.ndarray) -> int:
+    """Select the next node to visit from the unvisited nodes."""
+    threshold = 0.7
+    c1, c2, c3, c4 = 0.4, 0.3, 0.2, 0.1
+    scores = {}
+    
+    for node in unvisited_nodes:
+        all_distances = [distance_matrix[node][i] for i in unvisited_nodes if i != node]
+        average_distance_to_unvisited = np.mean(all_distances)
+        std_dev_distance_to_unvisited = np.std(all_distances)
+        
+        # Look-ahead mechanism
+        max_look_ahead = min(len(unvisited_nodes), 3)  # Maximum number of look-ahead steps
+        look_ahead_score = 0
+        
+        for _ in range(max_look_ahead):
+            candidate_nodes = set(unvisited_nodes) - set([node])
+            candidate_scores = {}
+            
+            for candidate_node in candidate_nodes:
+                candidate_distances = [distance_matrix[candidate_node][i] for i in candidate_nodes if i != candidate_node]
+                candidate_average_distance = np.mean(candidate_distances)
+                candidate_std_dev_distance = np.std(candidate_distances)
+                candidate_score = c1 * distance_matrix[node][candidate_node] - c2 * candidate_average_distance + c3 * candidate_std_dev_distance - c4 * distance_matrix[destination_node][candidate_node]
+                candidate_scores[candidate_node] = candidate_score
+            
+            best_candidate_score = max(candidate_scores.values())
+            look_ahead_score += best_candidate_score
+            next_look_ahead_node = min(candidate_scores, key=candidate_scores.get)
+            node = next_look_ahead_node
+        
+        score = c1 * distance_matrix[current_node][node] - c2 * average_distance_to_unvisited + c3 * std_dev_distance_to_unvisited - c4 * distance_matrix[destination_node][node] + threshold * look_ahead_score
+        scores[node] = score
+    
+    next_node = min(scores, key=scores.get)
+    return next_node
+```
+In this improved version `select_next_node_v2`, I added a look-ahead mechanism to consider future steps while selecting the next node. The function now explores several steps ahead to evaluate the scores of candidate nodes. The maximum number of look-ahead steps is set as three in the above code but it can be adjusted as per requirements. The look-ahead mechanism calculates the sum of scores obtained from the potential next nodes at each step, and this value is multiplied by a threshold parameter before being added to the overall score of a node. The next node to visit is then selected based on the highest score.
